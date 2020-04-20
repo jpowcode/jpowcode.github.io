@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Home Automation</title><link href="/" rel="alternate"></link><link href="/feeds/home-automation.atom.xml" rel="self"></link><id>/</id><updated>2017-10-31T22:33:00+00:00</updated><entry><title>Http to mqtt bridge</title><link href="/http_to_mqtt.html" rel="alternate"></link><published>2017-10-31T22:33:00+00:00</published><updated>2017-10-31T22:33:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/http_to_mqtt.html</id><summary type="html">&lt;p class="first last"&gt;A Flask app that passes http requests to an mqtt broker.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I am working on a home automation project that will control various aspects of
+my house from heating and lighting to music playing and security. The backend of
+this consists of a server running on a Raspberry Pi. It is my intention for this
+server to be a hub to broker messages between the various different methods of
+communication and the protcols that sit on top of them. For example, I may wish
+to turn my heating up from an app on my mobile phone. This is a breakdown of the
+steps required to make that happen&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The mobile phone app sends an http request to the server&lt;/li&gt;
+&lt;li&gt;The server receives the http request and translates it into an mqtt message on the request temperature change channel&lt;/li&gt;
+&lt;li&gt;A programme concerned with heating control is subscribed to the request temperature change channel  and receives the message.&lt;/li&gt;
+&lt;li&gt;The heating control programme is also subscribed to the current temperature channel which is being pushed out by sensors in each room.&lt;/li&gt;
+&lt;li&gt;A calculation is made by the programme and a message sent out on the set temperature channel.&lt;/li&gt;
+&lt;li&gt;A programme to translate mqtt messages into a protocol suitable for rf communication intercepts the message and sends it out over a 433mhz network.&lt;/li&gt;
+&lt;li&gt;The radiator thermostat receives the rf communication and sets the temperature accordingly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It is the third step that I will describe in this post. Very simply this is a
+small Python programme using the &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; library
+that sits in its own process
+listening for particular http requests. When it gets one it strips out the
+relevent information and publishes it over an MQTT channel using the
+&lt;a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt/0.9"&gt;paho&lt;/a&gt;. A more detailed
+description can be found under the code below.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/6e0db7263d5350a95e6c13deb271bec7.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;from flask import Flask, request
+import paho.mqtt.client as mq
+
+ip = '127.0.0.1' 
+port = 1883 
+
+app = Flask(__name__)
+
+@app.route('/mqtt', methods=['GET'])
+def get_id():    
+    
+  topic = request.args.get('topic')    
+  message = request.args.get('message')    
+  mqtt = mq.Client("restMQTT")    
+  mqtt.connect(ip, port, 15)    
+  mqtt.publish(topic, message)    
+  
+if __name__ == '__main__':    
+  app.run(debug=True)&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;We first import the required libraries for Flask and mqtt. Then define the
+ip address and port for the mqtt server. In this
+case it is just running on the localhost. We then start the Flask app and
+define a route which will call the function get_id when we visit the web
+address at /mqtt. We pull out the topic and message from the http request, set
+up an mqtt client and then publish the message.&lt;/p&gt;
+&lt;p&gt;We can test it all works using the mosquitto broker and its command line tools&lt;/p&gt;
+&lt;p&gt;First install it by following these
+&lt;a class="reference external" href="https://howtoprogram.xyz/2016/10/15/install-mosquitto-mqtt-broker-ubuntu-16-04-lts-xenial-xerus/"&gt;instructions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now start the mosquitto mqtt server&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mosquitto
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Subscribe to a the channel 'test'&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mosquitto_sub -h localhost -t mqtt_test
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Send an http request by typing this into a web browser&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+http://127.0.0.1:5000/mqtt?topic=mqtt_test&amp;amp;message=hello_world
+&lt;/pre&gt;
+&lt;p&gt;The message 'hello_world' should appear in the terminal&lt;/p&gt;
+</content><category term="Home Automation"></category><category term="Home Automation"></category><category term="http"></category><category term="mqtt"></category></entry></feed>

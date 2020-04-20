@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Linux</title><link href="/" rel="alternate"></link><link href="/feeds/linux.atom.xml" rel="self"></link><id>/</id><updated>2015-04-22T21:42:00+01:00</updated><entry><title>Timing a Linux Server to Suspend and Restart</title><link href="/timing-a-linux-server-to-suspend-and-restart.html" rel="alternate"></link><published>2015-04-22T21:42:00+01:00</published><updated>2015-04-22T21:42:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-04-22:/timing-a-linux-server-to-suspend-and-restart.html</id><summary type="html">&lt;p class="first last"&gt;Using rtc wake to enable a server to restart itself.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I run a Ubuntu Linux sever at home for various tasks such as serving out
+media, backing up files and acting as a personal cloud. I don't need it
+on all the time, but I don't want to be bothered turning in on and off.
+A simple fix for this is to make use of the commands rtcwake and
+crontab. The steps for doing this are as follows:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;cron is a service that can be used to schedule events. To run it, in
+a terminal type &lt;em&gt;sudo crontab -e&lt;/em&gt;. It is important to run this using
+sudo as the rtcwake command needs to be run with root privileges. You
+will have a crontab file for each user on your machine, but only the
+one for root will work.&lt;/li&gt;
+&lt;li&gt;Enter the following line at the bottom of the file:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt; &lt;span class="m"&gt;23&lt;/span&gt; *** /usr/sbin/rtcwake -m mem -s &lt;span class="m"&gt;64800&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There are a few things to explain here:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The first two digits represent the minutes past the hour, and the
+second two are the hour that my command will run.&lt;/li&gt;
+&lt;li&gt;The three stars are in place of day, week and month, so my command
+will run every day at 23:00.&lt;/li&gt;
+&lt;li&gt;It is import to include the full path to the rtcwake command. Check
+with the command &lt;em&gt;which rtcwake&lt;/em&gt; that yours is in the same place.&lt;/li&gt;
+&lt;li&gt;The -m mem part tells the rtcwake command to suspend everything and
+save it to RAM. It is also possible to save to disk, but I didn't
+have much success with this.&lt;/li&gt;
+&lt;li&gt;the -s 64800 tells the rtcwake command to restart the machine after
+64800 seconds or 18 hours which is 17:00.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So now my server will shut itself down at 11pm at night and restart at
+5pm every afternoon.&lt;/p&gt;
+&lt;p&gt;When I explained this to my wife she instantly asked what if you're
+doing something with the server at 11pm will you loose it all. So there
+is an interesting question: how could I write a script to check if
+something important was happening and suspend the shutdown?&lt;/p&gt;
+</content><category term="Linux"></category><category term="Linux"></category><category term="Server"></category><category term="Ubuntu"></category></entry><entry><title>Linux Mint graphics driver issue</title><link href="/linux-mint-graphics-driver-issue.html" rel="alternate"></link><published>2015-01-28T23:10:00+00:00</published><updated>2015-01-28T23:10:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-28:/linux-mint-graphics-driver-issue.html</id><summary type="html">&lt;p class="first last"&gt;Some isues with graphics drivers on Linux Mint and a fix.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I just installed Linux Mint 17 Cinamon on my PC. All went well until&amp;nbsp;a
+few minutes after rebooting the screen went all wierd! I don't really
+know how else to describe it, funny squares all over the place. It seems
+to be a driver issue with the Nvidia Cards possibly linked to having a
+dual monitor setup. I'm running a GTX 660. A simple fix seems to be to
+disconnect one monitor restart the machine and&amp;nbsp;change drivers. I opened
+the Driver Manager from the Administration menu and changed my driver to
+nvidia-331. No problems since then.&lt;/p&gt;
+</content><category term="Linux"></category><category term="graphics driver"></category><category term="Linux"></category><category term="Mint"></category><category term="Ubuntu"></category></entry></feed>

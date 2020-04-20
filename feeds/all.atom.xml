@@ -1,0 +1,1462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2017-11-12T22:24:00+00:00</updated><entry><title>Non Transitive Dice</title><link href="/non-transitive-dice.html" rel="alternate"></link><published>2017-11-12T22:24:00+00:00</published><updated>2017-11-12T22:24:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-11-12:/non-transitive-dice.html</id><summary type="html">&lt;p class="first last"&gt;Making a set of special dice&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;A friend of mine wanted to use some special dice called non transitive dice
+with his maths class at school to help with the teaching of probability.
+Non transitive dice are ...&lt;/p&gt;
+&lt;p&gt;He could find any at a reasonable enough price to enable him to buy
+enough for a class of 30 pupils to experiment with so he asked me if
+could make some. I decided to give it a go.&lt;/p&gt;
+&lt;p&gt;First problem: how to make small cubes with rounded edges with enough
+accuracy that they roll well and are not biased.&lt;/p&gt;
+&lt;p&gt;After bit of experimenting with cutting them out of wood with a table
+saw and sanding the edges I decided this was neither going to be easy
+or accurate. I toyed with the idea of laser cutting or using a CBC machine,
+but really I wanted a solution that was not going to take a huge amount of time.
+eBay to the rescue: I bought some blank dice from
+China. A bag of 20 odd for not much money. First problem solved.&lt;/p&gt;
+&lt;p&gt;Second problem: how to mark the dice with the numbers accurately enough that
+they look professional.&lt;/p&gt;
+&lt;p&gt;I tried marking out dots like on a traditional dice but again, getting accuracy was
+difficult. Any slight inaccuracy was very noticeable. Then I tried hand
+writing the numbers. This gave a much more natural look. Second problem
+solved.&lt;/p&gt;
+&lt;p&gt;Third problem: Just writing on the dice with permanent marker tended to rub
+off over time. To solve this I first wrote on the dice with a marker, then
+went over the marker with a small engraving tool in a Dremel. This took
+the shiny surface off the dice. I finished by going over these again with
+the permanent marker.&lt;/p&gt;
+&lt;p&gt;Here is the result:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="/images/nt_dice.jpg"&gt;&lt;img alt="alternate text" class="align-middle" src="images/nt_dice.jpg" style="width: 400px;" /&gt;&lt;/a&gt;&lt;/p&gt;
+</content><category term="Making"></category><category term="Making"></category></entry><entry><title>TI Nspire Repair</title><link href="/ti-nspire-repair.html" rel="alternate"></link><published>2017-11-05T22:08:00+00:00</published><updated>2017-11-05T22:08:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-11-05:/ti-nspire-repair.html</id><summary type="html">&lt;p class="first last"&gt;Repair of a Texas Instruments Nspire that was starting up but freezing.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;A Texas Instruments Nspire I had developed an fault where it would turn on, but
+after a minuite or two it would freeze up. The screen would stay on, but the
+calculator would become completely un responsive. My initial thought was a dodgy
+capacitor. I took it apart and tested them with an ESR meter and they all looked
+fine. The calculator was making a curious humming noise whilst it was glitching
+which was somewhat puzzling. After a closer visual inspection I noticed that
+the battery compartment makes contact with the main pcb by some springy metal clips
+that rely on pressure to stay connected. One of these had worn down the copper
+coating on the pcb and was no longer making a good contact (you can see this in
+the bottom right of the left most image below).  The simple fix was
+to bend it slightly to the side so it made contact with a fresh part of the pcb
+trace which is plenty wide enough to accomodate this. After reassembly it works
+just fine. I can only surmise that the contact between the metal spring and the
+pcb was not good enough to provide enough current for the calculator to fully
+work and as for the curious humming noise?&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/calc3.jpg"&gt;&lt;img alt="im3" class="aligncenter wp-image-200" src="/images/calc3.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/calc4.jpg"&gt;&lt;img alt="im4" class="aligncenter wp-image-198" src="/images/calc4.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/calc5.jpg"&gt;&lt;img alt="im5" class="aligncenter wp-image-202" src="/images/calc5.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="Repair"></category><category term="Repair"></category></entry><entry><title>Mobile Raspberry Pi</title><link href="/mobile_pi.html" rel="alternate"></link><published>2017-10-31T22:36:00+00:00</published><updated>2017-10-31T22:36:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/mobile_pi.html</id><summary type="html">&lt;p class="first last"&gt;Setting up a Raspberry Pi to allow remote access using a phone or tablet.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Does this sound at all familiar? You get a Raspberry as a christmas or birthday
+present, set it up on the familly TV or computer monitor with a power pack
+connected and a keyboard and mouse. You do some stuff on it that you're proud of
+and  want to take it into school to show your mates. Unfortunately, the school
+computer monitors do not have an accessible hdmi port and the keyboards cannot
+be unplugged in because they have been cable tied in and there is no free power
+socket. The ICT technitiatians also frown when you start to pull cables out of
+machines. You could take your laptop in to connect to it, but this is going to
+draw to much attention and anyway isn't the point supposed to be that a Pi is a
+portable coding machine? So how can a Pi be made portable. Well one solution
+would be to buy a portable screen, but this is bit pricy. Here
+is my cheaper solution using stuff you probably already have.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup a wifi hotspot on your mobile phone with a secure password.&lt;/li&gt;
+&lt;li&gt;Install whatever version of the Pi operating system you want, but I reccomend Jessie Lite as you wont be using a graphical user interface.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;Precofigure the Raspberry Pi  with details of your phones wifi hotspot password. Instructions &lt;a class="reference external" href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md"&gt;here&lt;/a&gt; The Pi will connect to it as soon as it is turned on.&lt;/li&gt;
+&lt;li&gt;Power by a portable usb charging pack.&lt;/li&gt;
+&lt;li&gt;Connect to the Pi using ssh via an app on your phone called &lt;a class="reference external" href="https://juicessh.com/"&gt;juicessh&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Use a small bluetooth keyboard that connects to the phone to alllow for faster typing.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This gives you access to a terminal on the Pi. Ok it's not a full desktop
+environment, but for programming you can manage with this. To get multiple
+terminal shells use the &lt;a class="reference external" href="https://kb.iu.edu/d/acuy"&gt;screen&lt;/a&gt; programme.
+Using this you can have a text editor
+open in one terminal, debug code in another and run code in a third. All of
+these can be moved between with some easy to learn keyboard shortcuts.&lt;/p&gt;
+&lt;p&gt;The result of this is the Pi can stay in your bag or pocket and all you need on
+the table is your phone and bluetooth keyboard. Or if you really want to be
+descrete, despense with the keyboard. You can code to your hearts content in
+the smallest of spaces and no one will have a clue what you are doing!&lt;/p&gt;
+</content><category term="Raspberry Pi"></category><category term="Raspberry Pi"></category></entry><entry><title>Http to mqtt bridge</title><link href="/http_to_mqtt.html" rel="alternate"></link><published>2017-10-31T22:33:00+00:00</published><updated>2017-10-31T22:33:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/http_to_mqtt.html</id><summary type="html">&lt;p class="first last"&gt;A Flask app that passes http requests to an mqtt broker.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I am working on a home automation project that will control various aspects of
+my house from heating and lighting to music playing and security. The backend of
+this consists of a server running on a Raspberry Pi. It is my intention for this
+server to be a hub to broker messages between the various different methods of
+communication and the protcols that sit on top of them. For example, I may wish
+to turn my heating up from an app on my mobile phone. This is a breakdown of the
+steps required to make that happen&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The mobile phone app sends an http request to the server&lt;/li&gt;
+&lt;li&gt;The server receives the http request and translates it into an mqtt message on the request temperature change channel&lt;/li&gt;
+&lt;li&gt;A programme concerned with heating control is subscribed to the request temperature change channel  and receives the message.&lt;/li&gt;
+&lt;li&gt;The heating control programme is also subscribed to the current temperature channel which is being pushed out by sensors in each room.&lt;/li&gt;
+&lt;li&gt;A calculation is made by the programme and a message sent out on the set temperature channel.&lt;/li&gt;
+&lt;li&gt;A programme to translate mqtt messages into a protocol suitable for rf communication intercepts the message and sends it out over a 433mhz network.&lt;/li&gt;
+&lt;li&gt;The radiator thermostat receives the rf communication and sets the temperature accordingly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It is the third step that I will describe in this post. Very simply this is a
+small Python programme using the &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; library
+that sits in its own process
+listening for particular http requests. When it gets one it strips out the
+relevent information and publishes it over an MQTT channel using the
+&lt;a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt/0.9"&gt;paho&lt;/a&gt;. A more detailed
+description can be found under the code below.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/6e0db7263d5350a95e6c13deb271bec7.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;from flask import Flask, request
+import paho.mqtt.client as mq
+
+ip = '127.0.0.1' 
+port = 1883 
+
+app = Flask(__name__)
+
+@app.route('/mqtt', methods=['GET'])
+def get_id():    
+    
+  topic = request.args.get('topic')    
+  message = request.args.get('message')    
+  mqtt = mq.Client("restMQTT")    
+  mqtt.connect(ip, port, 15)    
+  mqtt.publish(topic, message)    
+  
+if __name__ == '__main__':    
+  app.run(debug=True)&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;We first import the required libraries for Flask and mqtt. Then define the
+ip address and port for the mqtt server. In this
+case it is just running on the localhost. We then start the Flask app and
+define a route which will call the function get_id when we visit the web
+address at /mqtt. We pull out the topic and message from the http request, set
+up an mqtt client and then publish the message.&lt;/p&gt;
+&lt;p&gt;We can test it all works using the mosquitto broker and its command line tools&lt;/p&gt;
+&lt;p&gt;First install it by following these
+&lt;a class="reference external" href="https://howtoprogram.xyz/2016/10/15/install-mosquitto-mqtt-broker-ubuntu-16-04-lts-xenial-xerus/"&gt;instructions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now start the mosquitto mqtt server&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mosquitto
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Subscribe to a the channel 'test'&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mosquitto_sub -h localhost -t mqtt_test
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Send an http request by typing this into a web browser&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+http://127.0.0.1:5000/mqtt?topic=mqtt_test&amp;amp;message=hello_world
+&lt;/pre&gt;
+&lt;p&gt;The message 'hello_world' should appear in the terminal&lt;/p&gt;
+</content><category term="Home Automation"></category><category term="Home Automation"></category><category term="http"></category><category term="mqtt"></category></entry><entry><title>Pelican</title><link href="/static%20site%20generator%20with%20pelican.html" rel="alternate"></link><published>2017-10-31T22:25:00+00:00</published><updated>2017-10-31T22:25:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/static site generator with pelican.html</id><summary type="html">&lt;p class="first last"&gt;Blog update, now using Pelican static site generator.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I got fed up with &lt;a class="reference external" href="https://wordpress.com/"&gt;Wordpress&lt;/a&gt; . I know it has it's
+uses and is a great blogging platform, but my minimal server just couldn't cope.
+I spent a long time trying, but despite my best efforts at configuring Apache and
+MySQL I just couldn't get the database to stop crashing. For a simple static blog
+I figured I didn't really need Wordpress anyway. I'm fairly comfortable with
+Python so I decided to look for a solution that utilised it. Three options looked
+attractive: &lt;a class="reference external" href="https://getnikola.com/"&gt;Nikola&lt;/a&gt; , &lt;a class="reference external" href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;
+and &lt;a class="reference external" href="http://lucumr.pocoo.org/2015/12/21/introducing-lektor/"&gt;Lektor&lt;/a&gt;.
+I started with Nikola and very quickly ran into some installation problems.
+Not a good sign so I tried Pelican. A very different experience, it installed
+quickly with minimum fuss and got a good looking site up and running. I've also
+decided to host the blog on Github which was not too difficult a process
+and is described in the Pelican tutorials. So now I get free hosting as well.
+For comments I'm using &lt;a class="reference external" href="https://disqus.com/"&gt;Disqus&lt;/a&gt; which takes the pressure
+off me having to deal with spam. All in all I'm very happy with Pelican and would
+recommend it for a simple blog.&lt;/p&gt;
+</content><category term="Python"></category><category term="Python"></category><category term="Pelican"></category><category term="Blog"></category></entry><entry><title>Plickers Import</title><link href="/plickers-import.html" rel="alternate"></link><published>2017-10-30T21:16:00+00:00</published><updated>2017-10-30T21:16:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-30:/plickers-import.html</id><summary type="html">&lt;p class="first last"&gt;A Python script to import questions into the Plickers app.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="https://www.plickers.com"&gt;Plickers&lt;/a&gt; is a website designed for obtaining feedback from pupils in a classroom environment. The basic process is as follows&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The teacher sets up multiple choice questions (typically with 4 answers) on the Plickers website to gauge whether or not pupils understand a certain concept.&lt;/li&gt;
+&lt;li&gt;The teacher sets up a mobile device with the plickers app.&lt;/li&gt;
+&lt;li&gt;Pupils are all given an individual QR code like thing in the shape of a square  which they can hold up in any one of four orientations to answer the question presented to them on a classroom projector.&lt;/li&gt;
+&lt;li&gt;The teacher then scans the room with the camera on the mobile device. The app recognises in which orientation each pupil is holding their QR code like thing and stores the data.&lt;/li&gt;
+&lt;li&gt;The teacher can then use this information to plan their next teaching steps. For example they could chose to change the seating in the next lesson to put pupils who understand together with those that don't.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of the main drawbacks that this website has is that it can't import questions from an outside source or export questions to an outside source. This makes it nigh on impossible for teams of teachers to share questions. To help with this I have written a Python script that can read questions from a CSV file and simulate the necessary mouse clicks to import them into the website. This allows teachers to collaborate by sharing their CSV files and importing each other's into their own Plickers accounts. To run the script you will need to follow these steps. The steps are written for a Ubuntu style operating system. If you are running Windows first follow the extra steps below and then return to this poiint.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Download the repository from my GitHub page &lt;a class="reference external" href="https://github.com/jpowcode/plickers_import"&gt;here&lt;/a&gt;. For windows users use the directory C:\cycwin64\home\&amp;quot;user_name&amp;quot;\plickers_import&lt;/li&gt;
+&lt;li&gt;Setup a virtual environment for Python, activate it and install dependencies&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=plickers'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;virtualenv plickers_import
+cd plickers_import
+source bin/activate
+pip install selenium&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;ol class="arabic simple" start="3"&gt;
+&lt;li&gt;Put your Plickers username and password into the first two lines of the file login-details.txt Please make sure your password is not the same as for any other websites you use as it will be stored here in plain text which is not very secure.&lt;/li&gt;
+&lt;li&gt;Write you questions into the CSV file in the example format given in the downloaded file.&lt;ul&gt;
+&lt;li&gt;Column A is the text for the question.&lt;/li&gt;
+&lt;li&gt;Column B should be an M for a multiple choice question and T for a True/False question&lt;/li&gt;
+&lt;li&gt;Column C contains the correct answer A, B, C or D for multiple choice or T or F for a True/False question&lt;/li&gt;
+&lt;li&gt;Columns D, E, F and G contain the answers for the questions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run the script&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python plickers_import.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Extra steps for windows users&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1. Dowload and install &lt;a class="reference external" href="https://www.cygwin.com/"&gt;Cygwin&lt;/a&gt; During the install
+proceedure make sure to click on the word 'Default' next to Python. See the
+image below.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="/images/small-plickers.jpg"&gt;&lt;img alt="small-plickers" class="aligncenter wp-image-203" src="/images/small-plickers.jpg" style="width: 240px; height: 135px;" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;Download and install &lt;a class="reference external" href="https://www.mozilla.org/en-US/firefox/new"&gt;Firefox&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Download &lt;a class="reference external" href="https://github.com/mozilla/geckodriver/releases"&gt;Gecko Drivers&lt;/a&gt; , unzip the file and put it in C:\cycwin64\home\&amp;quot;user_name&amp;quot;\plickers_import\Scripts&lt;/li&gt;
+&lt;li&gt;Start Cygwin and run these commands&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=cygwin'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;easy_install pip
+easy_install virtualenv&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;ol class="arabic simple" start="5"&gt;
+&lt;li&gt;Now follow the steps above&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Explanation of the code&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;First make the relevent imports. We will be using the Python &lt;a class="reference external" href="https://pypi.python.org/pypi/selenium"&gt;selenium&lt;/a&gt;
+libaray that can simulate mouse clicks on a webpage.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_import'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;import time
+import csv
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Next we initialise a driver instance to the Firefox browser. We add the  WebDriverWait function as an attribute to the driver so it can
+be accessed more easily. This function is used to make the driver wait a
+certain amount of time (here 5 seconds) for an event to occur.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_init'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def init_driver():
+  driver = webdriver.Firefox()    
+  driver.wait = WebDriverWait(driver, 5)    
+  return driver&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The lookup function takes two arguments: a driver instance and a query lookup (a string).
+It finds the sign in link on that page and clicks it.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_lookup'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def lookup(driver, query):
+    driver.get(query)
+    try:
+        link = driver.find_element_by_link_text('Sign in')
+        link.click()
+
+    except TimeoutException:
+        print("Can't find sign in link")&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The login function takes the driver as an input. Reads login details from a file
+and enters login details into the fields in the webpage.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_login'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def login(driver):
+    try:
+        with open('login_details.txt', 'r') as file:
+            login_name = file.readline()
+            password = file.readline()
+
+    except IOError:
+        print('login_details.txt file not found')
+
+    try:
+        username = driver.find_element_by_name("email")
+        username.send_keys(login_name)
+
+        username = driver.find_element_by_name("password")
+        username.send_keys(password)
+
+        button = driver.find_element_by_class_name("btn")
+        button.click()
+
+    except TimeoutException:
+        print('enter login failed')&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The click_new_question function looks for an element in the html of the
+page with a class name 'btn', if it finds one it clicks it.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_question'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def click_new_question():
+    try:
+        button = driver.find_element_by_class_name("btn")
+        button.click()
+
+    except TimeoutException:
+        print("new question button failed")
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The add_tf_question function conssits mainly of css locations for the
+various aspects of the question dialogue. I found these by using the
+developer tools in my browser and ispect the element I was interested in.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_add_tf'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def add_tf_question(driver, question):
+    click_new_question()
+    time.sleep(1)
+
+    radio_button_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) \
+    &gt; div:nth-child(1)"
+
+    check_box_1_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(3) &gt; div:nth-child(3) &gt; div:nth-child(1)"
+
+    check_box_2_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(4) &gt; div:nth-child(3) &gt; div:nth-child(1)"
+
+    save_button_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(2) \
+    &gt; div:nth-child(3)"
+
+    if question[2] == 'T':
+        box_to_tick = check_box_1_css
+    elif question[2] == 'F':
+        box_to_tick = check_box_2_css
+
+    try:
+        radio_button = driver.find_element_by_css_selector(radio_button_css)
+        radio_button.click()
+
+        text = driver.find_element_by_css_selector(".ng-touched")
+        text.send_keys(question[0])
+
+        check_box = driver.find_element_by_css_selector(box_to_tick)
+        check_box.click()
+
+        save_button = driver.find_element_by_css_selector(save_button_css)
+        save_button.click()
+
+    except TimeoutException:
+        print("failed to add question")&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;We call the functions in the main section of the programme. The time.sleep()
+calls are there to ensure that the webpage has enough time to render
+before the programme carries on with the next function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_main'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;if __name__ == "__main__":
+    driver = init_driver()
+    lookup(driver, "https://www.plickers.com/")
+    time.sleep(2)
+    login(driver)
+    time.sleep(10)
+
+    with open('test_questions.csv') as file:
+        reader = csv.reader(file, delimiter=',')
+        for sample_question in reader:
+            if sample_question[1] == 'M':
+                add_multi_question(driver, sample_question)
+                time.sleep(1)
+            elif sample_question[1] == 'T':
+                add_tf_question(driver, sample_question)
+
+    time.sleep(20)
+    driver.quit()
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+</content><category term="Python"></category><category term="Plickers"></category><category term="Python"></category><category term="Selenium"></category></entry><entry><title>Robotic arm using Bioloid AX-12 servos Part 3</title><link href="/robot-turntable.html" rel="alternate"></link><published>2016-10-19T21:53:00+01:00</published><updated>2016-10-19T21:53:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-19:/robot-turntable.html</id><summary type="html">&lt;p class="first last"&gt;Adding a turntable to my dynamixel robotic arm.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I finally got around to putting my robot arm on a turntable. In a stroke of luck
+I found what looked to be perfect in a parts bin for stepper motors at my local
+&lt;a class="reference external" href="http://www.makerspace.org.uk"&gt;Makerspace&lt;/a&gt; It looks like a large gear on top of a
+bearing and included a toothed belt and accompanying toothed pulley. The servo
+shaft needed to be packed out with some copper tube to make it the right diameter
+for the pulley. I've then mounted it upside down on some wooden blocks to get it
+at the same level as the turnable gear. It seems to work rather well! Check out
+the photos below and let me know what you think.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/turn1.jpg"&gt;&lt;img alt="im1" class="aligncenter wp-image-201" src="/images/turn1.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/turn2.jpg"&gt;&lt;img alt="im2" class="aligncenter wp-image-197" src="/images/turn2.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/turn3.jpg"&gt;&lt;img alt="im3" class="aligncenter wp-image-200" src="/images/turn3.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/turn4.jpg"&gt;&lt;img alt="im4" class="aligncenter wp-image-198" src="/images/turn4.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/turn5.jpg"&gt;&lt;img alt="im5" class="aligncenter wp-image-202" src="/images/turn5.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/turn6.jpg"&gt;&lt;img alt="im6" class="aligncenter wp-image-200" src="/images/turn6.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/turn7.jpg"&gt;&lt;img alt="im7" class="aligncenter wp-image-198" src="/images/turn7.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/turn9.jpg"&gt;&lt;img alt="im9" class="aligncenter wp-image-202" src="/images/turn9.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/turn8.jpg"&gt;&lt;img alt="im8" class="aligncenter wp-image-202" src="/images/turn8.jpg" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="Robotics"></category><category term="Robotics"></category></entry><entry><title>Send email without a server</title><link href="/send-email-without-a-server.html" rel="alternate"></link><published>2016-10-19T21:43:00+01:00</published><updated>2016-10-19T21:43:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-19:/send-email-without-a-server.html</id><summary type="html">&lt;p class="first last"&gt;Use the Gmail API to send emails without needing to run a server.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Sending email alerts from a Python programme can be incredibly useful. For example,
+a home security system could email you when an intruder is detected. One way to
+do this would be to set up an email server, but it is possible to do this using a
+web based service. Gmail provides an &lt;a class="reference external" href="https://developers.google.com/gmail/imap/imap-smtp"&gt;API&lt;/a&gt;
+to allow you to use a python script to instruct an email account you have to send
+an email. I have a separate Gmail acount registed to use for alerting from scripts
+and that's all I use it for. It will send an email to another account I have which i
+look at one my phone. The code below contains a function that takes as input a
+message and a list of email accounts to send the message to. It is descibed in these
+steps:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;import the &lt;a class="reference external" href="https://docs.python.org/2/library/smtplib.html"&gt;smtplib&lt;/a&gt; library which can be used to send email using the Simple Mail Transfer Protocol.&lt;/li&gt;
+&lt;li&gt;Define variables for the email address to send from and the username and password for this account&lt;/li&gt;
+&lt;li&gt;link to the Gmail smtp api and assign this to the server variable&lt;/li&gt;
+&lt;li&gt;Login to the api&lt;/li&gt;
+&lt;li&gt;loop over all the email addreses in the list and send the message to each of them.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/6b5570cd4fa89420361fd62943ef32ee.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;import smtplib
+
+def email_alert(message, addresses):        
+	fromaddr = 'email address to send from'        
+	username = 'username of email to send from'        
+	password = 'password of email to send from'
+	
+	server = smtplib.SMTP('smtp.gmail.com:587')        
+	server.starttls()        
+	server.login(username, password)        
+	
+	for address in addresses:            
+		server.sendmail(fromaddr, address, message)        
+	server.quit()&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+</content><category term="Python"></category><category term="Python"></category><category term="Home Automation"></category><category term="IoT"></category></entry><entry><title>Power Supply Build</title><link href="/power-supply-build.html" rel="alternate"></link><published>2016-10-19T21:19:00+01:00</published><updated>2016-10-19T21:19:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-19:/power-supply-build.html</id><summary type="html">&lt;p class="first last"&gt;Building a variable voltage and current limited powersupply using and old server
+power supply.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;My local &lt;a class="reference external" href="http://www.makerspace.org.uk"&gt;Makerspace&lt;/a&gt; has some shelves called
+Hack or Die Anything on these shelves
+must be taken for a project or within a few weeks it willed be binned. I found a
+rather nice Network Attached Storage device made by Netgear which obviously didn't
+work or wouldn't have been sat on the shelves! However, the case was extruded
+aluminium and rather nice. Sat right next to it was a 50V server power supply
+that looked almost the right size to slot inside the case. And with slight hacksaw
+modifications it did. Ebay provided the rest in the form of a programmable dc-dc
+converter with a display for current and voltage. The result is a 0-50V variable
+power supply with programmable settings, voltage and current displays.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img alt="im1" class="aligncenter wp-image-201" src="/images/power1.jpg" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="im2" class="aligncenter wp-image-197" src="/images/power2.jpg" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="im3" class="aligncenter wp-image-200" src="/images/power3.jpg" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img alt="im4" class="aligncenter wp-image-198" src="/images/power4.jpg" /&gt;        &lt;img alt="im5" class="aligncenter wp-image-202" src="/images/power5.jpg" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="Electronics"></category><category term="Electronics"></category></entry><entry><title>Making a Scikit learn classifier</title><link href="/making-a-scikit-learn-classifier.html" rel="alternate"></link><published>2016-10-18T22:08:00+01:00</published><updated>2016-10-18T22:08:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-18:/making-a-scikit-learn-classifier.html</id><summary type="html">&lt;p class="first last"&gt;Writing a custom made classifier for Scikit learn using Kaggle's Titanic dataset as an example.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Sklearn has many built in classifiers that can be imported and used. In this post
+I will describe how to make your own classifier that is compatible with all the
+other sklearn modules such as cross validation. &lt;a class="reference external" href="https://www.kaggle.com/"&gt;Kaggle&lt;/a&gt;
+provides a dataset
+based on the Titanic sinking. It includes a list of all the passengers that
+were onboard along with information about: whether or not they survived; age;
+sex; cabin class and a few other things. I am going to build a very basic
+classifier here that just asks: is the passenger male or female, if they are
+female then predict they survived, if they are male predict they perished. This
+classifier can predict with about 75% accuarcy.&lt;/p&gt;
+&lt;p&gt;Import the relevant python modules. Pandas to handle the data as a dataframe;
+crossvalidation from sklearn to allow splitting of the data into a training set
+and a test set; preprocessing from sklearn for some basic munging functions;
+&lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html"&gt;ClassifierMixin&lt;/a&gt;
+and &lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html"&gt;BaseEstimator&lt;/a&gt;
+are the sklearn base classes that give us the
+required structure for our estimator.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=sklearnclassifier.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;import pandas as pd
+from sklearn import cross_validation
+from sklearn import preprocessing
+from sklearn.base import ClassifierMixin, BaseEstimator&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Import the data set (it will need to be in your working directory) and convert
+it to a Pandas data set and drop some of the columns that won't be required.
+The first row of the summary variable will hold the mean values for each feature.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=read.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;TDat = pd.read_csv('trainData.csv', header=0)
+TDat_proc = TDat.drop(['Name', 'PassengerId', 'Ticket', 'Cabin', 'Embarked', 'Fare', 'Age'], axis=1)
+summary = TDat_proc.describe()&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Now define some processing functions. &lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html"&gt;MinMaxScalar&lt;/a&gt;
+scales each feature into a
+given range. &lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html"&gt;LabelEncoder&lt;/a&gt;
+is used to transform the categorical data of the sex
+column into numerical data.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=preproc.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;min_max_scaler = preprocessing.MinMaxScaler()
+catToNum = preprocessing.LabelEncoder()
+TDat_proc.Sex = catToNum.fit_transform(TDat_proc.Sex)&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Define a class that inherits from the BaseEstimator and ClassifierMixin classes.
+It must contain two functions: fit and predict. Predict simply returns a list of
+1's or 0's for each element on the data set. It returns a 1 if the element is a
+female or a 0 if they are a male.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=classifier.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;class Classifier(BaseEstimator, ClassifierMixin):
+    def fit(self, data, classes):
+        pass
+    
+    def predict(self, data):
+        return [1 if data[i][1] == 0 else 0 for i in range(len(data))]&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Turn the dataframe into a numpy array and split it into the features [Sex] and
+the target [Survived]&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=data.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;data = TDat_proc.values
+train_features = data[:, 1:]
+train_target = data[:, 0]&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Define an instance of the class and call it using the cross validation function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=scores.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;clfSX = Classifier()
+scores = cross_validation.cross_val_score(clfSX, train_features, train_target, cv=10)
+print 'Sex based classifier'
+print scores.mean(), scores.std() &lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;This is obviously a very basic classifier. The aim of this post was to get
+across the concept of building your own classifier. More details can be found
+&lt;a class="reference external" href="http://scikit.ml/api/base.html"&gt;here&lt;/a&gt; with information about how to use training
+data with the fit method.&lt;/p&gt;
+</content><category term="Python"></category><category term="Python"></category><category term="Machine Learning"></category></entry><entry><title>Qbot micro tips</title><link href="/Qbot%20micro%20tips.html" rel="alternate"></link><published>2016-10-18T21:27:00+01:00</published><updated>2016-10-18T21:27:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-18:/Qbot micro tips.html</id><summary type="html">&lt;p class="first last"&gt;Some tips for using the Hobbying Qbot Micro&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I own a &lt;a class="reference external" href="http://www.hobbyking.com/hobbyking/store/__29595__Q_BOT_Micro_Quadcopter_w_2_4gHz_RF_Module_Spektrum_JR_Futaba_compatible_.html"&gt;Qbot Micro&lt;/a&gt;
+Quadcopter from HobbyKing which I bought because it came with a
+tx module that would allow me to fly it with my &lt;a class="reference external" href="http://www.hobbyking.co.uk/hobbyking/store/__51442__Turnigy_9XR_PRO_Radio_Transmitter_Mode_2_without_module_.html"&gt;Turnigy 9XR transmitter&lt;/a&gt;
+. This is
+in contrast to something like a &lt;a class="reference external" href="http://www.hubsan.com/product/index413.html"&gt;Hubsan&lt;/a&gt;
+which comes with it's own transmitter.
+There is nothing wrong with using this it's just nicer to use my own. Anyway,
+there are a few points that might help people out there to fly the Qbot a bit more
+successfully. Firstly, it has an acrobatic mode which causes it to do a flip when
+the controls are pushed 100% in any direction. I found it pretty unflyable with this
+mode turned on with my limited skills. It should be possible to turn this off, but
+I can't figure out how. Instead I've altered the mixer on my Transmitter so that
+the maximum values on the Aileron, Elevator and Rudder are set to 90%. This stops
+the Qbot doing flips and makes it easier to fly. Secondly, I discovered that spare
+parts are not so easy to buy from the UK warehouse. They seem to only be stocked
+in the international warehouse and I can't be bothered with the hassle of that.
+However, Hubsan spares are easy and cheap to come by on Ebay. The propellers and
+motors are compatible and I've used a few replacements now with no issues.&lt;/p&gt;
+</content><category term="Radio Control"></category><category term="quadcopters"></category></entry><entry><title>Issue with Python package Folium</title><link href="/Issue%20with%20Python%20package%20Folium.html" rel="alternate"></link><published>2016-10-17T21:41:00+01:00</published><updated>2016-10-17T21:41:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-17:/Issue with Python package Folium.html</id><summary type="html">&lt;p class="first last"&gt;A problem with Chrome rendering Folium maps.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="https://pypi.python.org/pypi/folium"&gt;Folium&lt;/a&gt; is a Python package used to
+create data visualisations of spatial data.
+I've noticed an issue with the way Google Chrome renders the Folium maps.
+The resolution is not always consistent for two indentical base maps that have
+slightly different points ploted on them. For example, the two maps below were
+created using exactly the same setings. The only difference being that the data
+points plotted are different. You can see that Chrome has given each map a
+different initial zoom and the text size can even be different on the two maps.
+However rendering in Firefox causes no such problems. I've no idea why this is,
+but in case you run into issues, try a different browser and see whether that
+fixes it.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="56%" /&gt;
+&lt;col width="44%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/small-folium1.jpg"&gt;&lt;img alt="alternate text" class="align-middle" src="images/small-folium1.jpg" style="width: 400px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/small-folium2.jpg"&gt;&lt;img alt="alternate text" class="align-middle" src="images/small-folium2.jpg" style="width: 400px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="Python"></category><category term="Python"></category></entry><entry><title>Review of 858D Hot air rework station</title><link href="/review-of-858d-hot-air-rework-station.html" rel="alternate"></link><published>2015-11-14T12:37:00+00:00</published><updated>2015-11-14T12:37:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-11-14:/review-of-858d-hot-air-rework-station.html</id><summary type="html">&lt;p class="first last"&gt;A review and look inside a cheap chinese hot ai gun.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;A hot air rework station was something I'd wanted for a while, but not
+something I wanted to pay hundreds of pounds for initially until I'd
+seen how much use they got. I picked up one of these cheap Chinese
+models from Ebay after seeing it reviewed on the &lt;a class="reference external" href="https://www.youtube.com/watch?v=vva2t21sOAs"&gt;EEV
+Blog.&lt;/a&gt;&amp;nbsp;There are lots of
+different ones on Ebay with various different logos, but they all look
+like exactly the same model. I was a bit concerned by some of the
+comments on the EEV forum about them not being wired safely, but given
+how cheap they were I'd thought I'd take the risk and take it apart
+before using it to check he wiring myself. On inspection it looks to be
+ok. The mains is wired ok and the earth is all connected up as it should
+be. The circuit board is all trough-hole component and looks like it
+hasn't had that much care with wonky heat-sinks and transistors and
+blobs of glue squirted in abundance around the cable entry point.
+&amp;nbsp;Having said that the solder joints are ok, there's heat shrink around
+the switch contacts and the cables are neatly tied together. All in all
+for the money I'm pleased. I'll see how it works in practice and report
+back.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="56%" /&gt;
+&lt;col width="44%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/small-2015-11-14_10.36.06.jpg"&gt;&lt;img alt="small-2015-11-14-10.36.06" class="aligncenter wp-image-203" src="/images/small-2015-11-14_10.36.06.jpg" style="width: 480px; height: 270px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_10.52.00.jpg"&gt;&lt;img alt="2015-11-14 10.52.00" class="aligncenter wp-image-196" src="/images/2015-11-14_10.52.00.jpg" style="width: 480px; height: 270px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_10.42.20.jpg"&gt;&lt;img alt="2015-11-14 10.42.20" class="aligncenter wp-image-194" src="/images/2015-11-14_10.42.20.jpg" style="width: 350px; height: 620px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_10.35.50.jpg"&gt;&lt;img alt="2015-11-14 10.35.50" class="aligncenter wp-image-193" src="/images/2015-11-14_10.35.50.jpg" style="width: 350px; height: 620px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've now used this a few times to desolder some surface mount chips and
+it worked pretty well. The only small gripe I have is how long it takes
+to cool down when replaced on the stand. This wouldn't be a problem
+apart from the fact that it does this with the fan still running and my
+desk is quite close to the curtains. Bit of a fire risk maybe? It turns
+it off when it's sufficiently cool.&lt;/p&gt;
+</content><category term="Reviews"></category><category term="Review"></category></entry><entry><title>Review of Xytronic LF-1700 soldering iron</title><link href="/review-of-xytronic-lf-1700-soldering-iron.html" rel="alternate"></link><published>2015-11-14T12:21:00+00:00</published><updated>2015-11-14T12:21:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-11-14:/review-of-xytronic-lf-1700-soldering-iron.html</id><summary type="html">&lt;p class="first last"&gt;A good quality high powered soldering iron from Xytronic.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I have a few surface mount projects I'd like to work on as decided it
+was time to replace my ageing 18W fixed temperature soldering iron with
+decent temperature controlled soldering station. After doing a bit of
+research my first impressions were just how expensive these things were.
+A Weller would have been nice, but the price was off putting. In the end
+I plumped for this &lt;a class="reference external" href="http://www.xytronic.com/"&gt;Xytronic&lt;/a&gt; model from
+&lt;a class="reference external" href="http://www.rapidonline.com/"&gt;Rapid electronics&lt;/a&gt;. First impressions
+are pretty good. It's very solidly built, with both the stand and the
+base unit feeling like they will last a long time. The iron itself feels
+quite nice to hold, the bits are easy to change and the connection to
+the base unit feels quite reliable. My first job was to solder a few
+banana plugs onto some power cables. This is a job that my old 18w iron
+just could not cope with. The heat wicked away so fast through the mass
+of the banana plug that it just would not heat enough to let the solder
+stick. The Xytronic however with it's 100w of power has no such
+difficulty. I changed the bit to a nice wide chisel tip to allow the
+heat to transfer and it worked like a dream. &amp;nbsp;Next up will be having a
+go at some surface mount components.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img alt="small-2015-11-14-11.04.34" class="aligncenter wp-image-201" src="/images/small-2015-11-14_11.04.34.jpg" style="width: 500px; height: 280px;" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="2015-11-14-11.05.23" class="aligncenter wp-image-197" src="/images/2015-11-14_11.05.23.jpg" style="width: 500px; height: 280px;" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="small-2015-11-14-11.04.14" class="aligncenter wp-image-200" src="/images/small-2015-11-14_11.04.14.jpg" style="width: 500px; height: 280px;" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_11.05.49.jpg"&gt;&lt;img alt="2015-11-14-11.05.49" class="aligncenter wp-image-198" src="/images/2015-11-14_11.05.49.jpg" style="width: 270px; height: 485px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/small-2015-11-14_11.04.54.jpg"&gt;&lt;img alt="small-2015-11-14-11.04.54" class="aligncenter wp-image-202" src="/images/small-2015-11-14_11.04.54.jpg" style="width: 270px; height: 485px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I'v now used this to solder a few surface mount components including
+some fairly small package sizes. It performed really well. It heats up
+and changes temperature in virtually no time at all so soldering
+different components that need different temperature is not a problem.
+There's loads of power so heat transfer is rapid. A very good purchase.&lt;/p&gt;
+</content><category term="Reviews"></category><category term="Review"></category></entry><entry><title>Hitachi hard disk recorder repair</title><link href="/hitachi-hard-disk-recorder-repair.html" rel="alternate"></link><published>2015-10-30T22:38:00+00:00</published><updated>2015-10-30T22:38:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-30:/hitachi-hard-disk-recorder-repair.html</id><summary type="html">&lt;p class="first last"&gt;A simple repair of a hard disk recorder.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I've been watching the &lt;a class="reference external" href="https://www.youtube.com/user/EEVblog"&gt;EEV
+Blog&lt;/a&gt; videos by David Jones
+recently and was inspired by some of his repairs to give it a go myself.
+I found an old hard disk recorder, a Hitachi HDR080 that I'd stuffed
+away in a dark corner of my spare room. It had completely died a few
+years ago. There was no power getting to either the hard disk or the
+front control panel. &amp;nbsp;I suspected a power supply failure a first
+inspection revealed an electrolytic capacitor with a domed top. You can
+see the offending capacitor in the photo below left. I found a spare and
+replaced it. It's the big black on the left of the centre photo below.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/2015-10-30_16.06.45.jpg"&gt;&lt;img alt="2015-10-30 16.06.45" class="aligncenter wp-image-185" src="/images/2015-10-30_16.06.45.jpg" style="width: 385px; height: 217px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/2015-10-30_16.05.35.jpg"&gt;&lt;img alt="2015-10-30 16.05.35" class="aligncenter wp-image-188" src="/images/2015-10-30_16.05.35.jpg" style="width: 379px; height: 214px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/2015-10-30_16.05.49.jpg"&gt;&lt;img alt="2015-10-30 16.05.49" class="aligncenter wp-image-186" src="/images/2015-10-30_16.05.49.jpg" style="width: 386px; height: 217px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This did the trick and the recorder powered up. Unfortunately it failed
+to properly tune in all the channels. Playback was fine but recording a
+new channel gave it problems. A bit of an internet search revealed that
+in 2012 my local TV transmitter had it's analogue signal turned off.
+Even though my recorder has a digital tuner this causes problems for
+some reason. I did try searching for a firmware update, but to no avail.
+According to some forums Hitachi did offer to upgrade the software if
+you sent your unit back, but that was more than 3 years ago so I think I
+will call this one a done. A successful repair, but unfortunately
+scuppered by things out of my control :-x&lt;/p&gt;
+</content><category term="Repair"></category><category term="Electronics"></category><category term="Repair"></category></entry><entry><title>Arduino Tips Number 3: Scheduling tasks</title><link href="/arduino-tips-number-3-scheduling-tasks.html" rel="alternate"></link><published>2015-10-20T22:10:00+01:00</published><updated>2015-10-20T22:10:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-20:/arduino-tips-number-3-scheduling-tasks.html</id><summary type="html">&lt;p class="first last"&gt;Using a library to time events on a set interval.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Often an Arduino sketch needs to do things at regular time intervals.
+For example, my home automation system has data collection boards that
+record temperature, humidity, light and motion. This can be done using
+the built in delay function, but everything halts whilst you wait for a
+delay or
+the&amp;nbsp;&lt;a class="reference external" href="https://www.arduino.cc/en/Reference/Millis"&gt;millis&amp;nbsp;&lt;/a&gt;function.
+This all gets a bit complicated, but there is an easier and much more
+convenient way by using the &lt;a class="reference external" href="http://playground.arduino.cc/Code/Timer"&gt;timer
+library&lt;/a&gt;. This simple bit of
+code demonstrates how it works in my home automation system. We start by
+importing the library and setting up timer variable. In the setup
+function we call the timer.every function with arguments 2000 (in
+milliseconds) and findTemp. This will call my function findTemp
+(defiened later in the code), which contains all of the gubbins to read
+my temperature sensors. This will be called every two seconds. In the
+loop function we call the timer.update function which will repeatedly
+check the time to determine if a timer.every needs to be called.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/64b818bece119f62e0f4.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;#include "Timer.h"
+Timer timer;
+
+void setup()
+  {
+  timer.every(2000, findTemp);
+  }
+  
+void loop()
+  {
+  timer.update();
+  }&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;In my home automation code I define several different timer.every
+functions to call different functions for example to read smoke
+detectors, light sensors, motion sensors and humidity sensors. They are
+all timed at different intervals for different uses.&lt;/p&gt;
+</content><category term="Arduino"></category><category term="Arduino"></category><category term="Home Automation"></category><category term="Robotics"></category><category term="IoT"></category></entry><entry><title>Arduino Tips Number 2: Moving Averages</title><link href="/arduino-tips-number-2-moving-averages.html" rel="alternate"></link><published>2015-10-19T21:13:00+01:00</published><updated>2015-10-19T21:13:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-19:/arduino-tips-number-2-moving-averages.html</id><summary type="html">&lt;p class="first last"&gt;Calculate moving averages easily for smoothing sensor data.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Sometimes when you collect data it can be quite noisy and you need to
+smooth it out. A &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average"&gt;moving
+average&lt;/a&gt; is perfect for
+this. There is a good library that makes this easy called
+&lt;a class="reference external" href="https://github.com/asheeshr/Microsmooth"&gt;microsmooth&lt;/a&gt;. If you have
+the latest version of the Arduino IDE installed it is easy enough to
+install this. Select the Sketch/include library/manage libraries option
+form the menu and search for microsmooth. &amp;nbsp;I've written a small
+programme to below to demonstrate it's use. This programme will read a
+value from a light sensor connected to analogue pin A0 once every half a
+second and write both the unsmoothed and the smoothed value to the
+Serial port.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/04cd40554b76955271ab.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;#include &lt;microsmooth.h&gt;
+
+uint16_t *l_ptr;
+const int lightPin =  A0;
+
+void setup()
+  {
+  l_ptr = ms_init(SMA);
+  
+  Serial.begin(9600);
+  Serial.println("StartSerial");
+  }
+  
+void loop()
+  {
+  int lightSensor  = analogRead(lightPin);
+  int lightSmooth = sma_filter(lightSensor, l_ptr);
+  Serial.print(lightSensor);
+  Serial.println(lightSmooth);
+  delay(500);
+  }&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The code works as follows:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;before the setup function we import the library and then setup a
+pointer to accept the smoothed value and an integer to hold the value
+of the analogue pin to be read (this just aids in readability of the
+code later on).&lt;/li&gt;
+&lt;li&gt;in the setup function we initialise the pointer using an function
+from the microsmooth library and setup the serial port.&lt;/li&gt;
+&lt;li&gt;in the main loop we read the value of the light sensor (or any other
+sensor) pass this value in to the microsmooth sma function, which is
+a simple moving average, and print both the unsmoothed and the
+smoothed values to the serial port.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are other types of smoothing available in the library&lt;/p&gt;
+</content><category term="Arduino"></category><category term="Arduino"></category><category term="Home Automation"></category><category term="Robotics"></category></entry><entry><title>Search documentation from your IDE</title><link href="/search-documentation-from-your-ide.html" rel="alternate"></link><published>2015-10-15T21:13:00+01:00</published><updated>2015-10-15T21:13:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-15:/search-documentation-from-your-ide.html</id><summary type="html">&lt;p class="first last"&gt;Using Zeal for documentation searching form Atom.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I stumbled across &lt;a class="reference external" href="https://zealdocs.org/"&gt;Zeal&lt;/a&gt;&amp;nbsp;in a magazine. It's a
+GUI for displaying the documentation for various different programming
+languages and tools all in one place. There are also plugins for various
+different IDE and text editors. I use the Atom browser and installed
+&lt;a class="reference external" href="https://atom.io/packages/atom-zeal"&gt;atom-zeal&lt;/a&gt;. Now all I have to do
+is put the cursor over a word in my code, press ctrl-h and up pops zeal
+with the relevant documentation.&lt;/p&gt;
+</content><category term="Tools"></category><category term="Atom IDE"></category><category term="Linux"></category></entry><entry><title>Pyboard Basics</title><link href="/pyboard-basics.html" rel="alternate"></link><published>2015-10-13T21:27:00+01:00</published><updated>2015-10-13T21:27:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-13:/pyboard-basics.html</id><summary type="html">&lt;p class="first last"&gt;Running Micro Python on a microcontroller.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;There seems to be a new and different micro controller development board
+being released every week at the moment. There also seems to be a trend
+towards supporting different languages. I just got myself a
+&lt;a class="reference external" href="https://micropython.org/"&gt;Pyboard&lt;/a&gt; to play with. The clue is in the
+name with this one: it come preloaded with a restricted version of
+Python called MicroPython. IT took me a while to get set up with using
+this on Ubuntu so I thought I'd give a brief description here. First we
+are going to need a need a command line tool called minicom which can be
+installed with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install minicom
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Plug your Pyboard into the USB port and run minicom with this command:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;minicom -D /dev/ttyACM0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now hit ctrl-a, this will instruct minicom to accept commands, followed
+by ctrl-c which will send a keyboard interrupt tot the pyboard and you
+should now see an interactive command prompt or REPL (read, evaluate,
+print loop). Navigate to the PYBFLASH folder, open the main.py file with
+your favourite editor, edit it and save it. Now return to the command
+prompt with minicom running and hit ctrl-d this will perfom a soft
+restart of the pyboard. When it restarts it will run the main.py file.
+You should either see the output of your code at the command prompt or
+more likely a runtime error. Correct it, hit ctrl-d and repeat. If
+anything goes seriously wrong you will need to do a hard reset of the
+Pyboard by pressing the reset button on the board itself. Before doing
+this however, make sure you quit minicom by hitting ctrl-a, followed by
+x (without the ctrl). I have found failing to do this can cause Ubuntu
+to crash.&lt;/p&gt;
+</content><category term="Python"></category><category term="Internet of Things"></category><category term="Pyboard"></category><category term="Python"></category></entry><entry><title>More Python Decorators</title><link href="/more-python-decorators.html" rel="alternate"></link><published>2015-05-01T18:20:00+01:00</published><updated>2015-05-01T18:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-05-01:/more-python-decorators.html</id><summary type="html">&lt;p class="first last"&gt;Python decorators for errors and memoization&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I've read a few introductory books and articles about python now and
+decided it was time to look for a more advanced book. I've started
+reading &lt;a class="reference external" href="http://www.amazon.co.uk/Python-Experts-Voice-Open-Source/dp/1430227575"&gt;Pro
+Python&lt;/a&gt;&amp;nbsp;by
+&lt;a class="reference external" href="http://martyalchin.com/"&gt;Marty Alchin&lt;/a&gt;. It goes into a lot more
+depth about python. One of the chapters talks a lot about functions and
+describes several more applications of decorators. Briefly as follows&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;A decorator that will suppress any error raised by using a try/except
+block&lt;/li&gt;
+&lt;li&gt;A memoization decorator that &amp;quot;remembers&amp;quot; arguments&amp;nbsp;that a function
+has been called with in the past and it's corresponding return
+values. If the decorated function is called with the same arguments
+again it simply returns the value stored in the cache instead of
+performing the calculation again.&lt;/li&gt;
+&lt;li&gt;A decorator that turns a function into a decorator function! I know,
+bends your brain a bit doesn't it?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I thoroughly recommend reading this book if you want to learn more about
+the decorators. If you know any other good uses for decorators please
+let me know in the comments.&lt;/p&gt;
+</content><category term="Python"></category><category term="decorators"></category><category term="Python"></category></entry><entry><title>Timing a Linux Server to Suspend and Restart</title><link href="/timing-a-linux-server-to-suspend-and-restart.html" rel="alternate"></link><published>2015-04-22T21:42:00+01:00</published><updated>2015-04-22T21:42:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-04-22:/timing-a-linux-server-to-suspend-and-restart.html</id><summary type="html">&lt;p class="first last"&gt;Using rtc wake to enable a server to restart itself.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I run a Ubuntu Linux sever at home for various tasks such as serving out
+media, backing up files and acting as a personal cloud. I don't need it
+on all the time, but I don't want to be bothered turning in on and off.
+A simple fix for this is to make use of the commands rtcwake and
+crontab. The steps for doing this are as follows:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;cron is a service that can be used to schedule events. To run it, in
+a terminal type &lt;em&gt;sudo crontab -e&lt;/em&gt;. It is important to run this using
+sudo as the rtcwake command needs to be run with root privileges. You
+will have a crontab file for each user on your machine, but only the
+one for root will work.&lt;/li&gt;
+&lt;li&gt;Enter the following line at the bottom of the file:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt; &lt;span class="m"&gt;23&lt;/span&gt; *** /usr/sbin/rtcwake -m mem -s &lt;span class="m"&gt;64800&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There are a few things to explain here:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The first two digits represent the minutes past the hour, and the
+second two are the hour that my command will run.&lt;/li&gt;
+&lt;li&gt;The three stars are in place of day, week and month, so my command
+will run every day at 23:00.&lt;/li&gt;
+&lt;li&gt;It is import to include the full path to the rtcwake command. Check
+with the command &lt;em&gt;which rtcwake&lt;/em&gt; that yours is in the same place.&lt;/li&gt;
+&lt;li&gt;The -m mem part tells the rtcwake command to suspend everything and
+save it to RAM. It is also possible to save to disk, but I didn't
+have much success with this.&lt;/li&gt;
+&lt;li&gt;the -s 64800 tells the rtcwake command to restart the machine after
+64800 seconds or 18 hours which is 17:00.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So now my server will shut itself down at 11pm at night and restart at
+5pm every afternoon.&lt;/p&gt;
+&lt;p&gt;When I explained this to my wife she instantly asked what if you're
+doing something with the server at 11pm will you loose it all. So there
+is an interesting question: how could I write a script to check if
+something important was happening and suspend the shutdown?&lt;/p&gt;
+</content><category term="Linux"></category><category term="Linux"></category><category term="Server"></category><category term="Ubuntu"></category></entry><entry><title>Arduino Tips Number 1: Using an External IDE</title><link href="/arduino-tips-number-1-using-an-external-ide.html" rel="alternate"></link><published>2015-04-19T21:17:00+01:00</published><updated>2015-04-19T21:17:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-04-19:/arduino-tips-number-1-using-an-external-ide.html</id><summary type="html">&lt;p class="first last"&gt;Using an IDE other that the basic Arduino IDE for programming.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.arduino.cc/"&gt;Arduino&lt;/a&gt; is a great resource, but I'm not a
+great fan of the Intergrated Development Environment (IDE) that it comes
+with. It can however be configured to work with an external IDE. I'm
+using the &lt;a class="reference external" href="https://atom.io/"&gt;Atom&lt;/a&gt;&amp;nbsp;IDE which has a few packages that
+can be installed to help with things like &amp;nbsp;code completion. To configure
+this follow these steps&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;In the Arduino IDE click the &lt;em&gt;File&lt;/em&gt; menu followed by &lt;em&gt;Preferences&lt;/em&gt;.
+Check the box that says &amp;quot;Use external editor&amp;quot; and click on &lt;em&gt;OK&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;In the Atom IDE click the &lt;em&gt;Edit&lt;/em&gt; menu followed by &lt;em&gt;Preferences&lt;/em&gt;.
+Click on the &lt;em&gt;Install&lt;/em&gt; option and a search bar should appear. Type in
+&lt;em&gt;Arduino&lt;/em&gt;. Hit the &lt;em&gt;Install&lt;/em&gt; button for the the package
+&amp;quot;&lt;a class="reference external" href="https://atom.io/packages/language-arduino"&gt;language-arduino&lt;/a&gt;&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;My work flow for programming an Arduino now goes like this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Open a file in both the Atom and Arduino IDE's.&lt;/li&gt;
+&lt;li&gt;Edit some code in Atom and save it.&lt;/li&gt;
+&lt;li&gt;Alt-Tab to switch to the Arduino IDE.&lt;/li&gt;
+&lt;li&gt;Either Ctrl-R to verify the code or Ctrl-U to download it to the chip&lt;/li&gt;
+&lt;li&gt;Alt-Tab back to the Atom IDE and edit some more.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This give me the power and ease of using the same IDE for editing all my
+code, but takes very little time and faff to set up.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update October 2017&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've now discovered &lt;a class="reference external" href="http://platformio.org/"&gt;PlatformIO&lt;/a&gt; which integrates
+very nicely with the &lt;a class="reference external" href="https://atom.io/"&gt;Atom Editor&lt;/a&gt; and allows programming
+of many different microcontrollers directly from the editor.&lt;/p&gt;
+</content><category term="Arduino"></category><category term="Arduino"></category><category term="Atom IDE"></category></entry><entry><title>Some Python Decorators</title><link href="/some-python-decorators.html" rel="alternate"></link><published>2015-03-01T17:13:00+00:00</published><updated>2015-03-01T17:13:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-03-01:/some-python-decorators.html</id><summary type="html">&lt;p class="first last"&gt;Python decorators for counting, timing and logging.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I've been learning how to use decorators in Python. As far I understand
+it a decorator takes as input a function, does something with or to the
+function and then returns the function. To test out this functionality
+I've written five examples. First the following preamble is included at
+the top of the file containing the decorator functions:&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=preample.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;from functools import wraps
+from datetime import datetime as dt
+import logging
+                    
+logging.basicConfig(format='%(message)s',level=logging.NOTSET)&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;countit&lt;/strong&gt; - will print a line to the terminal every time the function
+is called with the number of times it has been called.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=countit.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def countit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and logs the number of times the function has been 
+	called to the terminal"""
+	
+	@wraps(interceptedFunction)
+	def counter(*args, **kwargs):
+		counter.called += 1
+		functionName = interceptedFunction.func_name
+		actualResult = interceptedFunction(*args, **kwargs)
+		logging.debug('\n ######  Function: [{fnc}] =&gt;  [{count}]  ######'
+					.format(fnc=functionName, count=counter.called))
+		return actualResult
+	counter.called = 0
+	return counter&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;timeit&lt;/strong&gt; - times how long a function takes to run and prints this to
+the terminal.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=timeit.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def timeit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs times the duration of thefunction and then returns it 
+	and logs it to the terminal """
+	
+	@wraps(interceptedFunction)
+	def timer(*args, **kwargs):
+		functionName = interceptedFunction.func_name
+		start = dt.now()
+		actualResult = interceptedFunction(*args, **kwargs)
+		stop = dt.now()
+		executionTime = stop - start
+		logging.debug('Function: [{fnc}] =&gt; Took [{timed}]'
+					.format(fnc=functionName, timed=executionTime))
+		
+		return actualResult
+	
+	return timer&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;logit&lt;/strong&gt; - prints to the the terminal the output that is returned from
+a function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=logit.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def logit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and logs what the function returns to the terminal
+	as well as the input to the function"""
+	
+	@wraps(interceptedFunction)
+	def logger(*args, **kwargs):
+		functionName = interceptedFunction.func_name
+		functionArguments = []
+		
+		if kwargs is not None:
+			for arg in args:
+				functionArguments.append(arg)
+            
+		actualResult = interceptedFunction(*args, **kwargs)
+		logging.debug('Function: [{fnc}] =&gt; Returns [{returned}] with input {inp}'
+					.format(fnc=functionName, returned=actualResult, inp=functionArguments))
+		return actualResult
+	
+	return logger&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;beforeit&lt;/strong&gt; - runs a function that is passed as an argument to the
+decorator before each function call.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=beforeit.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def beforeit(inputFunc):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and calls another function (inputFunc) first """
+	functionName = inputFunc.func_name
+	def beforeFunc(interceptedFunction):		
+		@wraps(interceptedFunction)
+		def before(*args, **kwargs):
+			inputFunc()
+			actualResult = interceptedFunction(*args, **kwargs)
+			return actualResult					
+		return before
+	return beforeFunc&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;afterit&lt;/strong&gt; - runs a function that is passed as an argument to the
+decorator after each function call.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=afterit.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def afterit(inputFunc):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and calls another function (inputFunc) after """
+	functionName = inputFunc.func_name
+	def afterFunc(interceptedFunction):				
+		@wraps(interceptedFunction)
+		def after(*args, **kwargs):			
+			actualResult = interceptedFunction(*args, **kwargs)
+			inputFunc()
+			return actualResult			
+		return after
+	return afterFunc&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Each of these decorators can be used individually or as a group. For
+example, this is a function that computes prime numbers in a rather
+inefficient manner by calculating the factors of each number smaller
+than it (a better method would be to use the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes"&gt;seive of
+Eratosthenes&lt;/a&gt;).
+It has been decorated with the first three functions above. It is then
+called three times as follows:&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=funcall.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;import time, random
+from pythonDecorators import *
+
+@logit
+@timeit
+@countit
+def isprime(p):
+	i=2
+	while i&lt;= p/2:
+		if p%i==0:
+			return False
+		i=i+1
+	return True
+	
+for num in (7919, 399941, 1042709):
+	isprime(num)&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The output produced is:&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/3b86f826d03c7852570b.js?file=output'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt; ######  Function: [isprime] =&gt;  [1]  ######
+Function: [isprime] =&gt; Took [0:00:00.008360]
+Function: [isprime] =&gt; Returns [True] with input [7919]
+
+ ######  Function: [isprime] =&gt;  [2]  ######
+Function: [isprime] =&gt; Took [0:00:00.120358]
+Function: [isprime] =&gt; Returns [True] with input [399941]
+
+ ######  Function: [isprime] =&gt;  [3]  ######
+Function: [isprime] =&gt; Took [0:00:00.251844]
+Function: [isprime] =&gt; Returns [True] with input [1042709]
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;So whenever I am writing a new python programme I can now import my
+decorators file and I will have access to the timeit, countit and logit
+beforit and afterit decorators to aid in debugging.&lt;/p&gt;
+&lt;p&gt;If you can think of any other useful applications for decorators please
+let me know in the comments.&lt;/p&gt;
+</content><category term="Python"></category><category term="Python"></category></entry><entry><title>Robotic arm using Bioloid AX-12A servos Part 2</title><link href="/robotic-arm-using-bioloid-ax-12a-servos-part-2.html" rel="alternate"></link><published>2015-01-31T12:24:00+00:00</published><updated>2015-01-31T12:24:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-31:/robotic-arm-using-bioloid-ax-12a-servos-part-2.html</id><summary type="html">&lt;p class="first last"&gt;Calculating the position of a robotic arm using inverse kinematics&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;In this post I will describe how I calculate the servo postions to place
+the tip of the arm at some specified coordinates. For example, if the
+arm needs to pick something up off the ground in a specific place there
+will be several combinations of joint positions that will get the arm to
+that place. I created a simple app
+using&amp;nbsp;&lt;a class="reference external" href="https://www.geogebra.org/"&gt;Geogebra&lt;/a&gt; to demonstrate and
+test different joint positions. Moving the sliders changes the length of
+the joint position and gabbing and moving a point will change the joint
+angles. This will be useful for testing the code that controls the arm.
+This app can also be viewed on
+&lt;a class="reference external" href="http://tube.geogebra.org/student/m557391"&gt;Geogebratube&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Simulation of the degrees of freedom of a robotic arm." class="size-full wp-image-153" src="/images/robot_arm_geogebra.png" style="width: 800px; height: 500px;" /&gt;&lt;/p&gt;
+&lt;p&gt;To calculate the joint positions I have adapted a programme created by
+&lt;a class="reference external" href="https://studywolf.wordpress.com/2013/04/11/inverse-kinematics-of-3-link-arm-with-constrained-minimization-in-python/"&gt;studywolf&lt;/a&gt;
+to work for a 4 degree of freedom arm. The programme takes as input the
+current position of the arm and the desired position of the arm and uses
+an optimisation algorithm from the
+&lt;a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html"&gt;scipy&lt;/a&gt;
+library to find joint positions that require the smallest change
+possible to reach the desired position. I've decommented the code,
+broken it up and described it below. The original code is on studywolfs
+&lt;a class="reference external" href="https://github.com/studywolf/blog/tree/master/InvKin"&gt;github page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We need to import math, numpy and scipy.optimise libraries. The init
+method of the class checks whether any parameters have been passed and
+creates any that are missing. The inputs are&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;q - an array holding the initial joint positions.&lt;/li&gt;
+&lt;li&gt;q0 - an array holding the resiting joint positions&lt;/li&gt;
+&lt;li&gt;L - an array holding the lengths of the joints.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Two arrays max_angles and min_angles are also created to provide
+limits of movement on the arm's joint positions to prevent it from over
+extending or moving to positions that are restricted by brackets.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/525dd84515f94aa834f8.js?file=initfunc.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;import math
+import numpy as np
+import scipy.optimize  
+
+class Arm3Link:
+    
+    def __init__(self, q = None, q0 = None, L = None):       
+		
+        if q is None: 
+	        q = [math.pi/4, math.pi/4, 0, 0]
+	self.q = q
+			
+        if q0 is None: 
+		q0 = np.array([math.pi/4, math.pi/4, 0, 0]) 
+	self.q0 = q0
+			
+        if L is None: 
+		L = np.array([1, 1, 1, 1]) 
+	self.L = L
+			
+        self.max_angles = [math.pi, math.pi, math.pi, math.pi ]
+        self.min_angles = [0, 0, -math.pi, -math.pi]&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The get_xy method takes as input an array of joint positions and
+calculates the (x,y) coordinates of the the end of the arm using some
+trigonometry. Details on studywolf's blog.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/525dd84515f94aa834f8.js?file=getxyfunc.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def get_xy(self, q=None):
+		       
+        if q is None: 
+		q = self.q
+
+        x = self.L[0]*np.cos(q[0]) + \
+            self.L[1]*np.cos(q[0]+q[1]) + \
+            self.L[2]*np.cos(q[0]+q[1]+q[2]) + \
+            self.L[3]*np.cos(np.sum(q)) 
+            
+
+        y = self.L[0]*np.sin(q[0]) + \
+            self.L[1]*np.sin(q[0]+q[1]) + \
+	    self.L[2]*np.sin(q[0]+q[1]+q[2]) + \
+            self.L[3]*np.sin(np.sum(q))
+
+        return [x, y]&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The inv_kin method is the one that does all the grunt work using the
+scipy.optimise function.&lt;/p&gt;
+&lt;p&gt;distance_to_default is the function that will be minimised. It is a
+measure of how far all the joints will have to move. The weight array
+puts heavier penalties on some joints moving that others.&lt;/p&gt;
+&lt;p&gt;x_constraint calculates the distance in the x-direction from the
+current position to a new position with given joint angles.
+y_constraint does the same in the y direction.&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/525dd84515f94aa834f8.js?file=invkinfunc.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def inv_kin(self, xy):
+        
+        def distance_to_default(q, *args): 
+            weight = [1, 1, 1.3, 1] 
+            return np.sqrt(np.sum([(qi - q0i)**2 * wi for qi,q0i,wi in zip(q, self.q0, weight)]))
+
+        def x_constraint(q, xy):          
+            x = ( self.L[0]*np.cos(q[0]) + self.L[1]*np.cos(q[0]+q[1]) + 
+                self.L[2]*np.cos(q[0]+q[1]+q[2]) + self.L[3]*np.cos(np.sum(q)) ) - xy[0]
+            return x
+
+        def y_constraint(q, xy): 
+            y = ( self.L[0]*np.sin(q[0]) + self.L[1]*np.sin(q[0]+q[1]) + 
+                self.L[2]*np.sin(q[0]+q[1]+q[2]) + self.L[3]*np.sin(np.sum(q)) ) - xy[1]
+            return y
+
+        return scipy.optimize.fmin_slsqp( func=distance_to_default, 
+            x0=self.q, eqcons=[x_constraint, y_constraint], 
+            args=(xy,), iprint=0) 
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;To get all of this to work we create a function findJointPos that
+creates an instance of the class and calls the inv_kin method. It
+returns an array cotaining the optimal joint positions to place the arm
+in this positon. For example if we call findJoinPos(2, 2) and we get the
+angles [-0.33, 0.84, 0.56, 0.80] which are in radians. Converting these
+to degrees gives approximately [-19, 48, 32, 46]. Using the Geogebra
+demo above to set the angles we can see that the arm does indeed get to
+the point (2,2).&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/525dd84515f94aa834f8.js?file=findjoitposfunc.py'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;def findJointPos(x, y):
+   
+    arm = Arm3Link()
+    xy = [x, y]
+    return arm.inv_kin(xy)
+    
+print findJointPos(2,2)&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+</content><category term="Robotics"></category><category term="Geogebra"></category><category term="Inverse Kinematics"></category><category term="Programming"></category><category term="Python"></category><category term="Robotics"></category></entry><entry><title>Linux Mint graphics driver issue</title><link href="/linux-mint-graphics-driver-issue.html" rel="alternate"></link><published>2015-01-28T23:10:00+00:00</published><updated>2015-01-28T23:10:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-28:/linux-mint-graphics-driver-issue.html</id><summary type="html">&lt;p class="first last"&gt;Some isues with graphics drivers on Linux Mint and a fix.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I just installed Linux Mint 17 Cinamon on my PC. All went well until&amp;nbsp;a
+few minutes after rebooting the screen went all wierd! I don't really
+know how else to describe it, funny squares all over the place. It seems
+to be a driver issue with the Nvidia Cards possibly linked to having a
+dual monitor setup. I'm running a GTX 660. A simple fix seems to be to
+disconnect one monitor restart the machine and&amp;nbsp;change drivers. I opened
+the Driver Manager from the Administration menu and changed my driver to
+nvidia-331. No problems since then.&lt;/p&gt;
+</content><category term="Linux"></category><category term="graphics driver"></category><category term="Linux"></category><category term="Mint"></category><category term="Ubuntu"></category></entry><entry><title>Robotic arm using Bioloid AX-12A servos Part 1</title><link href="/robotic-arm-using-bioloid-ax-12a-servos.html" rel="alternate"></link><published>2015-01-24T20:20:00+00:00</published><updated>2015-01-24T20:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-24:/robotic-arm-using-bioloid-ax-12a-servos.html</id><summary type="html">&lt;p class="first last"&gt;A robotic arm built from Dynamixel serially addressable servos.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Building robots is a bit of a passion of mine; from roamers to arms and
+walkers. I'm going to write about some of them starting with a
+multi-part post about a robotic arm. In this post I will describe the
+various bits and contruction of the arm.&lt;/p&gt;
+&lt;p&gt;I'm using &lt;a class="reference external" href="http://www.trossenrobotics.com/dynamixel-ax-12-robot-actuator.aspx"&gt;Dynamixel&lt;/a&gt;
+AX-12A servos. These are slightly different to your usual hobby servos
+as are controlled via a serial bus rather than with PWM signals. This
+makes them much easier to wire together as they can be daisy chained.
+They can also feedback information about themselves to the controller
+such as thier temperature, load and position. These servos can be
+interfaced to a PC in several different ways. I will be using a
+&lt;a class="reference external" href="http://www.trossenrobotics.com/robotis-bioloid-usb2dynamixel.aspx"&gt;USB2Dynamixel
+controller&lt;/a&gt;
+that interfaces from USB to a signal the Dynamixel servos can
+understand.&lt;/p&gt;
+&lt;p&gt;To construct the arm I am using plastic brackets from the &lt;a class="reference external" href="http://www.robotis.com/xe/bioloid_en"&gt;Robotis
+Bioloid Construction Kit&lt;/a&gt;. This
+provides lots of different brackets and attachments for connecting
+servos together to form arms, hexapods and bipeds. I looked various
+different arms available from
+&lt;a class="reference external" href="http://www.crustcrawler.com/"&gt;Crustcrawler&lt;/a&gt; and
+&lt;a class="reference external" href="http://www.lynxmotion.com/"&gt;LynxMotion&lt;/a&gt; and settled on a 9 servo
+design, one to rotate the base, two for the main shoulder joint, three
+more joints in the arm, one write rotate and two for the gripper.
+Robotis provide various bits of software. &lt;a class="reference external" href="http://support.robotis.com/en/software/roboplus/roboplus_motion_main.htm"&gt;RoboPlus
+Motion&lt;/a&gt;:
+using this servos can be dynamically set to test positions. This is
+useful for working out different servo settings for various positions
+that the arm will need to be in. &lt;a class="reference external" href="http://support.robotis.com/en/software/roboplus/roboplus_task_main.htm"&gt;RoboPlus
+Task&lt;/a&gt;:
+a C like programming language. I will not be using this to control the
+arm as it is limited in features. Instead I will be using a &lt;a class="reference external" href="https://github.com/iandanforth/pydynamixel"&gt;Python
+library&lt;/a&gt; for control.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="52%" /&gt;
+&lt;col width="48%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Full arm in crouched position&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="Full arm in crouched position" class="size-medium wp-image-99" src="/images/robot_arm1.jpg" style="width: 300px; height: 169px;" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Detail of the gripper&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="Detail of the gripper" class="size-medium wp-image-96" src="/images/robot_arm2.jpg" style="width: 300px; height: 169px;" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Detail of the shoulder&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="Detail of the shoulder join" class="size-medium wp-image-97" src="/images/robot_arm3.jpg" style="width: 300px; height: 169px;" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="Robotics"></category><category term="Programming"></category><category term="Python"></category><category term="Robotics"></category></entry><entry><title>Android apps for programmers, makers and hackers</title><link href="/android-apps-for-programmers-makers-and-hackers.html" rel="alternate"></link><published>2015-01-17T20:38:00+00:00</published><updated>2015-01-17T20:38:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-17:/android-apps-for-programmers-makers-and-hackers.html</id><summary type="html">&lt;p class="first last"&gt;A selection of useful apps for programmers and makers.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;A while ago I bought a new Android phone, a Motorola Moto-G. What's
+the frst thing I did? Install loads of apps for programming and other stuff for general making and hacking. I'm going
+to describe them here. I haven't used all of them yet so I'd be interest to know, if anyone is using them and what for?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;General Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.estrongs.android.pop&amp;amp;hl=en_GB"&gt;ES File Explorer&lt;/a&gt;
+View the file system on your phone/tablet.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.opticron.grapher&amp;amp;hl=en_GB"&gt;Grapher&lt;/a&gt;
+Graph mathematical functions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Programming Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.hipipal.qpyplus&amp;amp;hl=en_GB"&gt;Q Python&lt;/a&gt;
+Write and run python scripts.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=org.pocketworkstation.pckeyboard&amp;amp;hl=en_GB"&gt;Hackers Keyboard&lt;/a&gt;
+If you want to programme on Android it's often difficult to enter some
+characters on the default &amp;nbsp;keyboard. The hackers keyboard gives you
+all the keys you could ever need.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=jackpal.androidterm&amp;amp;hl=en_GB"&gt;Terminal Emulator&lt;/a&gt;
+Android is based on Linux and contains a hidden command shell. This
+app gives you access to it.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.oscd.manpages&amp;amp;hl=en_GB"&gt;*nix manpagees&lt;/a&gt;
+Full listing of all the Linux command man pages.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.henrythompson.quoda&amp;amp;hl=en_GB"&gt;Quoda&lt;/a&gt;
+and &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.aor.droidedit&amp;amp;hl=en_GB"&gt;Droid
+Edit&lt;/a&gt;
+Fully featured text editors for writing code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Network Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.overlook.android.fing&amp;amp;hl=en_GB"&gt;Fing&lt;/a&gt;
+Scans the WiFi you are currently connected to and gives details on all
+other devices connected to it include IP addresses
+and MAC addressess. Very useful for setting up and testing your home
+network.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite&amp;amp;hl=en_GB"&gt;Webdavnav&lt;/a&gt;
+If you have a webdav enabled server this gives you access to all the files on it.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.sonelli.juicessh&amp;amp;hl=en_GB"&gt;JuiceSSH&lt;/a&gt;
+Sets up an ssh connection to another computer on your network. Use it
+for server admin.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.realvnc.viewer.android&amp;amp;hl=en_GB"&gt;VNC Viewer&lt;/a&gt;
+Give you a full graphical connection to another computer on your
+network.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Arduino Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.primavera.arduino.listener&amp;amp;hl=en_GB"&gt;Arduino UNO Communicator&lt;/a&gt;
+Connects to your Arduino UNO board and allows it to send messages to
+your phone.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=name.antonsmirnov.android.arduinodroid2&amp;amp;hl=en_GB"&gt;Arduino Droid&lt;/a&gt;
+Full IDE and compile for the arduino. Programme an
+&lt;a class="reference external" href="http://www.arduino.cc/"&gt;Arduino&lt;/a&gt; from a tablet or phone.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Design Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.grabcad&amp;amp;hl=en_GB"&gt;Grab CAD&lt;/a&gt;and&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.thingiverse&amp;amp;hl=en_GB"&gt;Thingiverse&lt;/a&gt;
+Apps that allow you to browse the libraries of
+&lt;a class="reference external" href="http://www.thingiverse.com/"&gt;Thingiverse&lt;/a&gt; and
+&lt;a class="reference external" href="http://grabcad.com/"&gt;Grabcad&lt;/a&gt;. These are libraries of downloadable
+resources that can be 3D printed or lasercut.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.autocadws&amp;amp;hl=en_GB"&gt;AutoCAD360&lt;/a&gt;
+and
+&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.ADRViewer&amp;amp;hl=en_GB"&gt;AutoDesk360&lt;/a&gt;
+View and edit autocad files.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.fbd.activities&amp;amp;hl=en_GB"&gt;AutoDesk Force Effect&lt;/a&gt;
+and Force &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.forceeffectmotion&amp;amp;hl=en_GB"&gt;Efffect Motion&lt;/a&gt;
+Invent and design a working contraption! Experiment with forces and joints.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.Fysc&amp;amp;hl=en_GB"&gt;Inventor Publisher&lt;/a&gt;
+Veiw your inventor publisher files.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.sketchbookexpress&amp;amp;hl=en_GB"&gt;Sketchbook Mobile Express&lt;/a&gt;
+Design and sketch.&lt;/p&gt;
+&lt;p&gt;I Hope you find some of these useful.&amp;nbsp;If there is anything else you think I might like please let me know.&lt;/p&gt;
+</content><category term="Tools"></category><category term="Android"></category><category term="Arduino"></category><category term="CAD"></category><category term="Programming"></category></entry><entry><title>BIG numbers in C</title><link href="/big-numbers-in-c.html" rel="alternate"></link><published>2015-01-13T22:25:00+00:00</published><updated>2015-01-13T22:25:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-13:/big-numbers-in-c.html</id><summary type="html">&lt;p class="first last"&gt;Calculating with really big numbers in C using gmp.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I enjoy learning about different programming languages. One of my
+favourite resources for finding programming challenges is the &lt;a class="reference external" href="https://projecteuler.net/"&gt;Project
+Euler&lt;/a&gt; website. There are almost 500
+problems building up in difficulty. I have recently been learning&amp;nbsp;to
+programme in C after originally learning Python. I usually a sizable
+chunk of time trying to work out how to do things in C that would be
+trivial in Python. One huge difference is in the C's handling of BIG
+integers. In Python there is no practical limit to the size of integers.
+However, in C we are limited by the operating system to either
+2&lt;sup&gt;32&lt;/sup&gt;-1 for 32 bit systems or 2&lt;sup&gt;64&lt;/sup&gt;-1 for 64 bit systems.
+In many of the Project Euler problems we are required to find&amp;nbsp;very big
+numbers. The solution is to use the
+&lt;a class="reference external" href="http://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library"&gt;gmp&lt;/a&gt;
+(Gnu multi-precision) library. Basically this library converts an
+integer into a string of single digit numbers. It contains&amp;nbsp;functions for
+performing all the basic arithmetical operations on these strings.&amp;nbsp;Here
+is a step by step guide on how to get started. All commands will be
+based on a&amp;nbsp;Ubuntu operating system.&lt;/p&gt;
+&lt;p&gt;First install the library, run this command in the terminal with this
+command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libgmp3-dev
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Copy this code into a file named big_numbers.c&lt;/p&gt;
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/c28fffbb1759b0f12e3d.js?file=big_numbers.c'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;gmp.h&gt;
+
+int main(int argc, char *argv[]){
+	mpz_t num1, num2, output;		//declare big number variables
+	mpz_init(num1);		                //initialise bignumber variables
+	mpz_init(num2);
+	mpz_init(output);
+	
+	//set num1 to be the first command line argument in deciaml notation and num2 to be the second argument
+	mpz_set_str(num1, argv[1], 10); 
+	mpz_set_str(num2, argv[2], 10);
+	
+	//multiply num1 by num2 and save the output to output variable
+	mpz_mul(output, num1, num2);
+	
+	//need special print function to display output variable as it is not a normal variable. 
+	gmp_printf("%Zd\n", output);
+	
+	return 0;
+}&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;compile with this command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gcc big_numbers.c -o big_numbers -lgmp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and run with this command to test multiplying some big numbers together&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./big_numbers &lt;span class="m"&gt;999999999999&lt;/span&gt; &lt;span class="m"&gt;999999999999&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The following links give some further information:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.cs.colorado.edu/~srirams/classes/doku.php/gmp_usage_tutorial"&gt;Sriram Sankaranarayanan's tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://beej.us/blog/data/pi-chudnovsky-gmp/"&gt;Beej's Bit Bucket&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://stackoverflow.com/questions/822734/square-root-of-bignum-using-gmp"&gt;Stackoverflow discussion&lt;/a&gt;&lt;/p&gt;
+</content><category term="C"></category><category term="C"></category></entry><entry><title>Hello Blogging world!</title><link href="/hello-world.html" rel="alternate"></link><published>2015-01-10T18:07:00+00:00</published><updated>2015-01-10T18:07:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-10:/hello-world.html</id><content type="html">&lt;p&gt;Welcome to my Blog about programming miscellanea. I will be writing
+about whatever interests me in the world of programming, electronics and making
+amonst other stuff.&lt;/p&gt;
+</content><category term="Uncategorised"></category></entry></feed>

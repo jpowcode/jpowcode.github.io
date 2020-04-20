@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Electronics</title><link href="/" rel="alternate"></link><link href="/feeds/electronics.atom.xml" rel="self"></link><id>/</id><updated>2016-10-19T21:19:00+01:00</updated><entry><title>Power Supply Build</title><link href="/power-supply-build.html" rel="alternate"></link><published>2016-10-19T21:19:00+01:00</published><updated>2016-10-19T21:19:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-19:/power-supply-build.html</id><summary type="html">&lt;p class="first last"&gt;Building a variable voltage and current limited powersupply using and old server
+power supply.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;My local &lt;a class="reference external" href="http://www.makerspace.org.uk"&gt;Makerspace&lt;/a&gt; has some shelves called
+Hack or Die Anything on these shelves
+must be taken for a project or within a few weeks it willed be binned. I found a
+rather nice Network Attached Storage device made by Netgear which obviously didn't
+work or wouldn't have been sat on the shelves! However, the case was extruded
+aluminium and rather nice. Sat right next to it was a 50V server power supply
+that looked almost the right size to slot inside the case. And with slight hacksaw
+modifications it did. Ebay provided the rest in the form of a programmable dc-dc
+converter with a display for current and voltage. The result is a 0-50V variable
+power supply with programmable settings, voltage and current displays.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img alt="im1" class="aligncenter wp-image-201" src="/images/power1.jpg" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="im2" class="aligncenter wp-image-197" src="/images/power2.jpg" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="im3" class="aligncenter wp-image-200" src="/images/power3.jpg" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img alt="im4" class="aligncenter wp-image-198" src="/images/power4.jpg" /&gt;        &lt;img alt="im5" class="aligncenter wp-image-202" src="/images/power5.jpg" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content><category term="Electronics"></category><category term="Electronics"></category></entry></feed>

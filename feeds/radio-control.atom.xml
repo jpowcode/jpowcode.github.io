@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Radio Control</title><link href="/" rel="alternate"></link><link href="/feeds/radio-control.atom.xml" rel="self"></link><id>/</id><updated>2016-10-18T21:27:00+01:00</updated><entry><title>Qbot micro tips</title><link href="/Qbot%20micro%20tips.html" rel="alternate"></link><published>2016-10-18T21:27:00+01:00</published><updated>2016-10-18T21:27:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-18:/Qbot micro tips.html</id><summary type="html">&lt;p class="first last"&gt;Some tips for using the Hobbying Qbot Micro&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I own a &lt;a class="reference external" href="http://www.hobbyking.com/hobbyking/store/__29595__Q_BOT_Micro_Quadcopter_w_2_4gHz_RF_Module_Spektrum_JR_Futaba_compatible_.html"&gt;Qbot Micro&lt;/a&gt;
+Quadcopter from HobbyKing which I bought because it came with a
+tx module that would allow me to fly it with my &lt;a class="reference external" href="http://www.hobbyking.co.uk/hobbyking/store/__51442__Turnigy_9XR_PRO_Radio_Transmitter_Mode_2_without_module_.html"&gt;Turnigy 9XR transmitter&lt;/a&gt;
+. This is
+in contrast to something like a &lt;a class="reference external" href="http://www.hubsan.com/product/index413.html"&gt;Hubsan&lt;/a&gt;
+which comes with it's own transmitter.
+There is nothing wrong with using this it's just nicer to use my own. Anyway,
+there are a few points that might help people out there to fly the Qbot a bit more
+successfully. Firstly, it has an acrobatic mode which causes it to do a flip when
+the controls are pushed 100% in any direction. I found it pretty unflyable with this
+mode turned on with my limited skills. It should be possible to turn this off, but
+I can't figure out how. Instead I've altered the mixer on my Transmitter so that
+the maximum values on the Aileron, Elevator and Rudder are set to 90%. This stops
+the Qbot doing flips and makes it easier to fly. Secondly, I discovered that spare
+parts are not so easy to buy from the UK warehouse. They seem to only be stocked
+in the international warehouse and I can't be bothered with the hassle of that.
+However, Hubsan spares are easy and cheap to come by on Ebay. The propellers and
+motors are compatible and I've used a few replacements now with no issues.&lt;/p&gt;
+</content><category term="Radio Control"></category><category term="quadcopters"></category></entry></feed>

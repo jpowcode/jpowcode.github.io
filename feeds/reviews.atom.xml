@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Reviews</title><link href="/" rel="alternate"></link><link href="/feeds/reviews.atom.xml" rel="self"></link><id>/</id><updated>2015-11-14T12:37:00+00:00</updated><entry><title>Review of 858D Hot air rework station</title><link href="/review-of-858d-hot-air-rework-station.html" rel="alternate"></link><published>2015-11-14T12:37:00+00:00</published><updated>2015-11-14T12:37:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-11-14:/review-of-858d-hot-air-rework-station.html</id><summary type="html">&lt;p class="first last"&gt;A review and look inside a cheap chinese hot ai gun.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;A hot air rework station was something I'd wanted for a while, but not
+something I wanted to pay hundreds of pounds for initially until I'd
+seen how much use they got. I picked up one of these cheap Chinese
+models from Ebay after seeing it reviewed on the &lt;a class="reference external" href="https://www.youtube.com/watch?v=vva2t21sOAs"&gt;EEV
+Blog.&lt;/a&gt;&amp;nbsp;There are lots of
+different ones on Ebay with various different logos, but they all look
+like exactly the same model. I was a bit concerned by some of the
+comments on the EEV forum about them not being wired safely, but given
+how cheap they were I'd thought I'd take the risk and take it apart
+before using it to check he wiring myself. On inspection it looks to be
+ok. The mains is wired ok and the earth is all connected up as it should
+be. The circuit board is all trough-hole component and looks like it
+hasn't had that much care with wonky heat-sinks and transistors and
+blobs of glue squirted in abundance around the cable entry point.
+&amp;nbsp;Having said that the solder joints are ok, there's heat shrink around
+the switch contacts and the cables are neatly tied together. All in all
+for the money I'm pleased. I'll see how it works in practice and report
+back.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="56%" /&gt;
+&lt;col width="44%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/small-2015-11-14_10.36.06.jpg"&gt;&lt;img alt="small-2015-11-14-10.36.06" class="aligncenter wp-image-203" src="/images/small-2015-11-14_10.36.06.jpg" style="width: 480px; height: 270px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_10.52.00.jpg"&gt;&lt;img alt="2015-11-14 10.52.00" class="aligncenter wp-image-196" src="/images/2015-11-14_10.52.00.jpg" style="width: 480px; height: 270px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_10.42.20.jpg"&gt;&lt;img alt="2015-11-14 10.42.20" class="aligncenter wp-image-194" src="/images/2015-11-14_10.42.20.jpg" style="width: 350px; height: 620px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_10.35.50.jpg"&gt;&lt;img alt="2015-11-14 10.35.50" class="aligncenter wp-image-193" src="/images/2015-11-14_10.35.50.jpg" style="width: 350px; height: 620px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've now used this a few times to desolder some surface mount chips and
+it worked pretty well. The only small gripe I have is how long it takes
+to cool down when replaced on the stand. This wouldn't be a problem
+apart from the fact that it does this with the fan still running and my
+desk is quite close to the curtains. Bit of a fire risk maybe? It turns
+it off when it's sufficiently cool.&lt;/p&gt;
+</content><category term="Reviews"></category><category term="Review"></category></entry><entry><title>Review of Xytronic LF-1700 soldering iron</title><link href="/review-of-xytronic-lf-1700-soldering-iron.html" rel="alternate"></link><published>2015-11-14T12:21:00+00:00</published><updated>2015-11-14T12:21:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-11-14:/review-of-xytronic-lf-1700-soldering-iron.html</id><summary type="html">&lt;p class="first last"&gt;A good quality high powered soldering iron from Xytronic.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;I have a few surface mount projects I'd like to work on as decided it
+was time to replace my ageing 18W fixed temperature soldering iron with
+decent temperature controlled soldering station. After doing a bit of
+research my first impressions were just how expensive these things were.
+A Weller would have been nice, but the price was off putting. In the end
+I plumped for this &lt;a class="reference external" href="http://www.xytronic.com/"&gt;Xytronic&lt;/a&gt; model from
+&lt;a class="reference external" href="http://www.rapidonline.com/"&gt;Rapid electronics&lt;/a&gt;. First impressions
+are pretty good. It's very solidly built, with both the stand and the
+base unit feeling like they will last a long time. The iron itself feels
+quite nice to hold, the bits are easy to change and the connection to
+the base unit feels quite reliable. My first job was to solder a few
+banana plugs onto some power cables. This is a job that my old 18w iron
+just could not cope with. The heat wicked away so fast through the mass
+of the banana plug that it just would not heat enough to let the solder
+stick. The Xytronic however with it's 100w of power has no such
+difficulty. I changed the bit to a nice wide chisel tip to allow the
+heat to transfer and it worked like a dream. &amp;nbsp;Next up will be having a
+go at some surface mount components.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img alt="small-2015-11-14-11.04.34" class="aligncenter wp-image-201" src="/images/small-2015-11-14_11.04.34.jpg" style="width: 500px; height: 280px;" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="2015-11-14-11.05.23" class="aligncenter wp-image-197" src="/images/2015-11-14_11.05.23.jpg" style="width: 500px; height: 280px;" /&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="small-2015-11-14-11.04.14" class="aligncenter wp-image-200" src="/images/small-2015-11-14_11.04.14.jpg" style="width: 500px; height: 280px;" /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external" href="/images/2015-11-14_11.05.49.jpg"&gt;&lt;img alt="2015-11-14-11.05.49" class="aligncenter wp-image-198" src="/images/2015-11-14_11.05.49.jpg" style="width: 270px; height: 485px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external" href="/images/small-2015-11-14_11.04.54.jpg"&gt;&lt;img alt="small-2015-11-14-11.04.54" class="aligncenter wp-image-202" src="/images/small-2015-11-14_11.04.54.jpg" style="width: 270px; height: 485px;" /&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I'v now used this to solder a few surface mount components including
+some fairly small package sizes. It performed really well. It heats up
+and changes temperature in virtually no time at all so soldering
+different components that need different temperature is not a problem.
+There's loads of power so heat transfer is rapid. A very good purchase.&lt;/p&gt;
+</content><category term="Reviews"></category><category term="Review"></category></entry></feed>
