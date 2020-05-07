@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Explorations with a Rigol DS1054Z Oscilloscope Part 1</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/explorations-with-a-rigol-ds1054z-oscilloscope-part-1.html" rel="bookmark"
+                   title="Permalink to Explorations with a Rigol DS1054Z Oscilloscope Part 1">Explorations with a Rigol DS1054Z Oscilloscope Part 1</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-12-06T22:29:00+00:00">
+                Sun 06 December 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I recently acquired a Rigol DS1054Z oscilloscope. On researching the internet
+for tutorials I was disappointed, but the apparat lack of them. There are lots
+of tutorials on other scopes and generic tutorials but not much specific to the
+Rigol. So decided I'd  better write some myself.</p>
+<p>I'm planning a series of blog posts as I find out the
+things I can do with this scope. The following resources seem like good places to start.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/channel/UC2DjFE7Xf11URZqWBigcVOQ">EEV
+Blog</a></li>
+<li><a class="reference external" href="https://www.youtube.com/channel/UCLzhNnl9a0-RZz7VyTrkcHw">RigolTech</a></li>
+<li><a class="reference external" href="http://ecee.colorado.edu/~mcclurel/txyzscopes.pdf">Tektronix xyz's of
+oscilloscopes</a></li>
+<li><a class="reference external" href="https://learn.sparkfun.com/tutorials/how-to-use-an-oscilloscope">Sparkfun
+tutoria</a>l</li>
+<li><a class="reference external" href="http://media.digikey.com/pdf/Data%20Sheets/Parallax%20PDFs/Signals.pdf">Parrallax understanding
+signals</a></li>
+<li><a class="reference external" href="https://www.youtube.com/channel/UCZFlznLV3IyePfbc2TfDetA">Tinsel
+Koala</a></li>
+<li><a class="reference external" href="https://www.youtube.com/user/w2aew/featured">w2aew</a></li>
+<li><a class="reference external" href="https://www.youtube.com/channel/UCOTPsWDzNAosVd6vc3pCPHQ">mjlorton</a></li>
+</ul>
+<p>As I read through and watch these resources I am going to put them in
+the context of the Rigol scope and write about my findings here.</p>
+<p><strong>Testing the Channels</strong></p>
+<p>First off I'm going to test the scope works by using the inbuilt test
+signal. The scope outputs a basic square wave function on the metal
+terminals at the bottom right of the front panel. Follow these steps</p>
+<ol class="arabic simple">
+<li>Connect the probe to channel 1.</li>
+<li>Make sure the switch on the probe is set to 10x</li>
+<li>Connect the black ground clip of the probe to the bottom metal
+connector of the test signal</li>
+<li>Insert the test clip onto the end of the probe and attach it to the
+top metal connector of the test signal</li>
+<li>You may now need to fiddle with the settings to get the scope to
+trigger. Twist the trigger dial until the trigger voltage is about
+1V. The waveform should now stabalise.</li>
+<li>By twisting the vertical controls next to the channel dials you can
+change the vertical voltage scale,</li>
+<li>By twisting the horizontal dials you can change the horizontal time
+scale and show more or less periods of the waveform.</li>
+</ol>
+<p><a class="reference external" href="http://jpowcode.com/wp-content/uploads/2015/12/DS1054Z_DS1ZA172114964_2015-12-06_22.14.45.png"><img alt="DS1054Z-DS1ZA172114964-2015-12-06-22.14.45" class="aligncenter size-full wp-image-214" src="http://jpowcode.com/wp-content/uploads/2015/12/DS1054Z_DS1ZA172114964_2015-12-06_22.14.45.png" style="width: 800px; height: 480px;" /></a></p>
+<p><a class="reference external" href="http://jpowcode.com/wp-content/uploads/2015/12/DS1054Z_DS1ZA172114964_2015-12-06_22.15.04.png"><img alt="DS1054Z-DS1ZA172114964-2015-12-06-22.15.04" class="aligncenter size-full wp-image-215" src="http://jpowcode.com/wp-content/uploads/2015/12/DS1054Z_DS1ZA172114964_2015-12-06_22.15.04.png" style="width: 800px; height: 480px;" /></a></p>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "explorations-with-a-rigol-ds1054z-oscilloscope-part-1.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/arduino.html">Arduino</a></li>
+		<li><a href="/category/c.html">C</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/radio-control.html">Radio Control</a></li>
+		<li><a href="/category/raspberry-pi.html">Raspberry Pi</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/reviews.html">Reviews</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/tools.html">Tools</a></li>
+		<li><a href="/category/uncategorised.html">Uncategorised</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/ds1054z.html">DS1054Z</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-3"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-3"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

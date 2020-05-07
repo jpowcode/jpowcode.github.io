@@ -68,21 +68,21 @@ function and then returns the function. To test out this functionality
 I've written five examples. First the following preamble is included at
 the top of the file containing the decorator functions:</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=preample.py'></script>
-    <noscript>
-        <pre><code>from functools import wraps
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=preample.py"></script>
+<noscript>
+<pre><code>from functools import wraps
 from datetime import datetime as dt
 import logging
                     
 logging.basicConfig(format='%(message)s',level=logging.NOTSET)</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p><strong>countit</strong> - will print a line to the terminal every time the function
 is called with the number of times it has been called.</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=countit.py'></script>
-    <noscript>
-        <pre><code>def countit(interceptedFunction):
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=countit.py"></script>
+<noscript>
+<pre><code>def countit(interceptedFunction):
 	"""A decorator that intercepts a function and it's arguments *args 
 	and **kwargs and logs the number of times the function has been 
 	called to the terminal"""
@@ -92,19 +92,19 @@ is called with the number of times it has been called.</p>
 		counter.called += 1
 		functionName = interceptedFunction.func_name
 		actualResult = interceptedFunction(*args, **kwargs)
-		logging.debug('\n ######  Function: [{fnc}] =>  [{count}]  ######'
+		logging.debug('\n ######  Function: [{fnc}] =&gt;  [{count}]  ######'
 					.format(fnc=functionName, count=counter.called))
 		return actualResult
 	counter.called = 0
 	return counter</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p><strong>timeit</strong> - times how long a function takes to run and prints this to
 the terminal.</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=timeit.py'></script>
-    <noscript>
-        <pre><code>def timeit(interceptedFunction):
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=timeit.py"></script>
+<noscript>
+<pre><code>def timeit(interceptedFunction):
 	"""A decorator that intercepts a function and it's arguments *args 
 	and **kwargs times the duration of thefunction and then returns it 
 	and logs it to the terminal """
@@ -116,20 +116,20 @@ the terminal.</p>
 		actualResult = interceptedFunction(*args, **kwargs)
 		stop = dt.now()
 		executionTime = stop - start
-		logging.debug('Function: [{fnc}] => Took [{timed}]'
+		logging.debug('Function: [{fnc}] =&gt; Took [{timed}]'
 					.format(fnc=functionName, timed=executionTime))
 		
 		return actualResult
 	
 	return timer</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p><strong>logit</strong> - prints to the the terminal the output that is returned from
 a function.</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=logit.py'></script>
-    <noscript>
-        <pre><code>def logit(interceptedFunction):
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=logit.py"></script>
+<noscript>
+<pre><code>def logit(interceptedFunction):
 	"""A decorator that intercepts a function and it's arguments *args 
 	and **kwargs and logs what the function returns to the terminal
 	as well as the input to the function"""
@@ -144,19 +144,19 @@ a function.</p>
 				functionArguments.append(arg)
             
 		actualResult = interceptedFunction(*args, **kwargs)
-		logging.debug('Function: [{fnc}] => Returns [{returned}] with input {inp}'
+		logging.debug('Function: [{fnc}] =&gt; Returns [{returned}] with input {inp}'
 					.format(fnc=functionName, returned=actualResult, inp=functionArguments))
 		return actualResult
 	
 	return logger</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p><strong>beforeit</strong> - runs a function that is passed as an argument to the
 decorator before each function call.</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=beforeit.py'></script>
-    <noscript>
-        <pre><code>def beforeit(inputFunc):
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=beforeit.py"></script>
+<noscript>
+<pre><code>def beforeit(inputFunc):
 	"""A decorator that intercepts a function and it's arguments *args 
 	and **kwargs and calls another function (inputFunc) first """
 	functionName = inputFunc.func_name
@@ -168,14 +168,14 @@ decorator before each function call.</p>
 			return actualResult					
 		return before
 	return beforeFunc</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p><strong>afterit</strong> - runs a function that is passed as an argument to the
 decorator after each function call.</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=afterit.py'></script>
-    <noscript>
-        <pre><code>def afterit(inputFunc):
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=afterit.py"></script>
+<noscript>
+<pre><code>def afterit(inputFunc):
 	"""A decorator that intercepts a function and it's arguments *args 
 	and **kwargs and calls another function (inputFunc) after """
 	functionName = inputFunc.func_name
@@ -187,7 +187,7 @@ decorator after each function call.</p>
 			return actualResult			
 		return after
 	return afterFunc</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Each of these decorators can be used individually or as a group. For
 example, this is a function that computes prime numbers in a rather
@@ -197,9 +197,9 @@ Eratosthenes</a>).
 It has been decorated with the first three functions above. It is then
 called three times as follows:</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=funcall.py'></script>
-    <noscript>
-        <pre><code>import time, random
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=funcall.py"></script>
+<noscript>
+<pre><code>import time, random
 from pythonDecorators import *
 
 @logit
@@ -207,7 +207,7 @@ from pythonDecorators import *
 @countit
 def isprime(p):
 	i=2
-	while i<= p/2:
+	while i&lt;= p/2:
 		if p%i==0:
 			return False
 		i=i+1
@@ -215,25 +215,25 @@ def isprime(p):
 	
 for num in (7919, 399941, 1042709):
 	isprime(num)</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>The output produced is:</p>
 <div class="gist">
-    <script src='https://gist.github.com/3b86f826d03c7852570b.js?file=output'></script>
-    <noscript>
-        <pre><code> ######  Function: [isprime] =>  [1]  ######
-Function: [isprime] => Took [0:00:00.008360]
-Function: [isprime] => Returns [True] with input [7919]
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=output"></script>
+<noscript>
+<pre><code> ######  Function: [isprime] =&gt;  [1]  ######
+Function: [isprime] =&gt; Took [0:00:00.008360]
+Function: [isprime] =&gt; Returns [True] with input [7919]
 
- ######  Function: [isprime] =>  [2]  ######
-Function: [isprime] => Took [0:00:00.120358]
-Function: [isprime] => Returns [True] with input [399941]
+ ######  Function: [isprime] =&gt;  [2]  ######
+Function: [isprime] =&gt; Took [0:00:00.120358]
+Function: [isprime] =&gt; Returns [True] with input [399941]
 
- ######  Function: [isprime] =>  [3]  ######
-Function: [isprime] => Took [0:00:00.251844]
-Function: [isprime] => Returns [True] with input [1042709]
+ ######  Function: [isprime] =&gt;  [3]  ######
+Function: [isprime] =&gt; Took [0:00:00.251844]
+Function: [isprime] =&gt; Returns [True] with input [1042709]
 </code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>So whenever I am writing a new python programme I can now import my
 decorators file and I will have access to the timeit, countit and logit
@@ -271,6 +271,7 @@ let me know in the comments.</p>
 		<li><a href="/category/c.html">C</a></li>
 		<li><a href="/category/electronics.html">Electronics</a></li>
 		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
 		<li><a href="/category/linux.html">Linux</a></li>
 		<li><a href="/category/making.html">Making</a></li>
 		<li><a href="/category/python.html">Python</a></li>
@@ -286,39 +287,41 @@ let me know in the comments.</p>
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
 	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
 	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
 	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
 </ul>
 
 

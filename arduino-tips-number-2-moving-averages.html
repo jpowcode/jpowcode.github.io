@@ -69,15 +69,15 @@ this. There is a good library that makes this easy called
 <a class="reference external" href="https://github.com/asheeshr/Microsmooth">microsmooth</a>. If you have
 the latest version of the Arduino IDE installed it is easy enough to
 install this. Select the Sketch/include library/manage libraries option
-form the menu and search for microsmooth. &nbsp;I've written a small
+form the menu and search for microsmooth.  I've written a small
 programme to below to demonstrate it's use. This programme will read a
 value from a light sensor connected to analogue pin A0 once every half a
 second and write both the unsmoothed and the smoothed value to the
 Serial port.</p>
 <div class="gist">
-    <script src='https://gist.github.com/04cd40554b76955271ab.js'></script>
-    <noscript>
-        <pre><code>#include <microsmooth.h>
+<script src="https://gist.github.com/04cd40554b76955271ab.js"></script>
+<noscript>
+<pre><code>#include <microsmooth.h>
 
 uint16_t *l_ptr;
 const int lightPin =  A0;
@@ -97,8 +97,8 @@ void loop()
   Serial.print(lightSensor);
   Serial.println(lightSmooth);
   delay(500);
-  }</code></pre>
-    </noscript>
+  }</microsmooth.h></code></pre>
+</noscript>
 </div>
 <p>The code works as follows:</p>
 <ul class="simple">
@@ -145,6 +145,7 @@ smoothed values to the serial port.</li>
 		<li><a href="/category/c.html">C</a></li>
 		<li><a href="/category/electronics.html">Electronics</a></li>
 		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
 		<li><a href="/category/linux.html">Linux</a></li>
 		<li><a href="/category/making.html">Making</a></li>
 		<li><a href="/category/python.html">Python</a></li>
@@ -160,39 +161,41 @@ smoothed values to the serial port.</li>
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
 	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
 	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
 	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
 </ul>
 
 

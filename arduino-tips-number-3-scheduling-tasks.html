@@ -67,7 +67,7 @@ For example, my home automation system has data collection boards that
 record temperature, humidity, light and motion. This can be done using
 the built in delay function, but everything halts whilst you wait for a
 delay or
-the&nbsp;<a class="reference external" href="https://www.arduino.cc/en/Reference/Millis">millis&nbsp;</a>function.
+the <a class="reference external" href="https://www.arduino.cc/en/Reference/Millis">millis </a>function.
 This all gets a bit complicated, but there is an easier and much more
 convenient way by using the <a class="reference external" href="http://playground.arduino.cc/Code/Timer">timer
 library</a>. This simple bit of
@@ -80,9 +80,9 @@ my temperature sensors. This will be called every two seconds. In the
 loop function we call the timer.update function which will repeatedly
 check the time to determine if a timer.every needs to be called.</p>
 <div class="gist">
-    <script src='https://gist.github.com/64b818bece119f62e0f4.js'></script>
-    <noscript>
-        <pre><code>#include "Timer.h"
+<script src="https://gist.github.com/64b818bece119f62e0f4.js"></script>
+<noscript>
+<pre><code>#include "Timer.h"
 Timer timer;
 
 void setup()
@@ -94,7 +94,7 @@ void loop()
   {
   timer.update();
   }</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>In my home automation code I define several different timer.every
 functions to call different functions for example to read smoke
@@ -131,6 +131,7 @@ all timed at different intervals for different uses.</p>
 		<li><a href="/category/c.html">C</a></li>
 		<li><a href="/category/electronics.html">Electronics</a></li>
 		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
 		<li><a href="/category/linux.html">Linux</a></li>
 		<li><a href="/category/making.html">Making</a></li>
 		<li><a href="/category/python.html">Python</a></li>
@@ -146,39 +147,41 @@ all timed at different intervals for different uses.</p>
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
 	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
 	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
 	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
 </ul>
 
 

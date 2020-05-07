@@ -65,30 +65,30 @@
               <p>I enjoy learning about different programming languages. One of my
 favourite resources for finding programming challenges is the <a class="reference external" href="https://projecteuler.net/">Project
 Euler</a> website. There are almost 500
-problems building up in difficulty. I have recently been learning&nbsp;to
+problems building up in difficulty. I have recently been learning to
 programme in C after originally learning Python. I usually a sizable
 chunk of time trying to work out how to do things in C that would be
 trivial in Python. One huge difference is in the C's handling of BIG
 integers. In Python there is no practical limit to the size of integers.
 However, in C we are limited by the operating system to either
 2<sup>32</sup>-1 for 32 bit systems or 2<sup>64</sup>-1 for 64 bit systems.
-In many of the Project Euler problems we are required to find&nbsp;very big
+In many of the Project Euler problems we are required to find very big
 numbers. The solution is to use the
 <a class="reference external" href="http://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library">gmp</a>
 (Gnu multi-precision) library. Basically this library converts an
-integer into a string of single digit numbers. It contains&nbsp;functions for
-performing all the basic arithmetical operations on these strings.&nbsp;Here
+integer into a string of single digit numbers. It contains functions for
+performing all the basic arithmetical operations on these strings. Here
 is a step by step guide on how to get started. All commands will be
-based on a&nbsp;Ubuntu operating system.</p>
+based on a Ubuntu operating system.</p>
 <p>First install the library, run this command in the terminal with this
 command:</p>
 <div class="highlight"><pre><span></span>sudo apt-get install libgmp3-dev
 </pre></div>
 <p>Copy this code into a file named big_numbers.c</p>
 <div class="gist">
-    <script src='https://gist.github.com/c28fffbb1759b0f12e3d.js?file=big_numbers.c'></script>
-    <noscript>
-        <pre><code>#include <stdlib.h>
+<script src="https://gist.github.com/c28fffbb1759b0f12e3d.js?file=big_numbers.c"></script>
+<noscript>
+<pre><code>#include <stdlib.h>
 #include <stdio.h>
 #include <gmp.h>
 
@@ -109,8 +109,8 @@ int main(int argc, char *argv[]){
 	gmp_printf("%Zd\n", output);
 	
 	return 0;
-}</code></pre>
-    </noscript>
+}</gmp.h></stdio.h></stdlib.h></code></pre>
+</noscript>
 </div>
 <p>compile with this command:</p>
 <div class="highlight"><pre><span></span>gcc big_numbers.c -o big_numbers -lgmp
@@ -153,6 +153,7 @@ int main(int argc, char *argv[]){
 		<li><a href="/category/c.html">C</a></li>
 		<li><a href="/category/electronics.html">Electronics</a></li>
 		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
 		<li><a href="/category/linux.html">Linux</a></li>
 		<li><a href="/category/making.html">Making</a></li>
 		<li><a href="/category/python.html">Python</a></li>
@@ -168,39 +169,41 @@ int main(int argc, char *argv[]){
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
 	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
 	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
 	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
 </ul>
 
 

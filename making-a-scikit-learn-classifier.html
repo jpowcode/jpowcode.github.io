@@ -80,24 +80,24 @@ and <a class="reference external" href="http://scikit-learn.org/stable/modules/g
 are the sklearn base classes that give us the
 required structure for our estimator.</p>
 <div class="gist">
-    <script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=sklearnclassifier.py'></script>
-    <noscript>
-        <pre><code>import pandas as pd
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=sklearnclassifier.py"></script>
+<noscript>
+<pre><code>import pandas as pd
 from sklearn import cross_validation
 from sklearn import preprocessing
 from sklearn.base import ClassifierMixin, BaseEstimator</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Import the data set (it will need to be in your working directory) and convert
 it to a Pandas data set and drop some of the columns that won't be required.
 The first row of the summary variable will hold the mean values for each feature.</p>
 <div class="gist">
-    <script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=read.py'></script>
-    <noscript>
-        <pre><code>TDat = pd.read_csv('trainData.csv', header=0)
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=read.py"></script>
+<noscript>
+<pre><code>TDat = pd.read_csv('trainData.csv', header=0)
 TDat_proc = TDat.drop(['Name', 'PassengerId', 'Ticket', 'Cabin', 'Embarked', 'Fare', 'Age'], axis=1)
 summary = TDat_proc.describe()</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Now define some processing functions. <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html">MinMaxScalar</a>
 scales each feature into a
@@ -105,47 +105,47 @@ given range. <a class="reference external" href="http://scikit-learn.org/stable/
 is used to transform the categorical data of the sex
 column into numerical data.</p>
 <div class="gist">
-    <script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=preproc.py'></script>
-    <noscript>
-        <pre><code>min_max_scaler = preprocessing.MinMaxScaler()
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=preproc.py"></script>
+<noscript>
+<pre><code>min_max_scaler = preprocessing.MinMaxScaler()
 catToNum = preprocessing.LabelEncoder()
 TDat_proc.Sex = catToNum.fit_transform(TDat_proc.Sex)</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Define a class that inherits from the BaseEstimator and ClassifierMixin classes.
 It must contain two functions: fit and predict. Predict simply returns a list of
 1's or 0's for each element on the data set. It returns a 1 if the element is a
 female or a 0 if they are a male.</p>
 <div class="gist">
-    <script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=classifier.py'></script>
-    <noscript>
-        <pre><code>class Classifier(BaseEstimator, ClassifierMixin):
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=classifier.py"></script>
+<noscript>
+<pre><code>class Classifier(BaseEstimator, ClassifierMixin):
     def fit(self, data, classes):
         pass
     
     def predict(self, data):
         return [1 if data[i][1] == 0 else 0 for i in range(len(data))]</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Turn the dataframe into a numpy array and split it into the features [Sex] and
 the target [Survived]</p>
 <div class="gist">
-    <script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=data.py'></script>
-    <noscript>
-        <pre><code>data = TDat_proc.values
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=data.py"></script>
+<noscript>
+<pre><code>data = TDat_proc.values
 train_features = data[:, 1:]
 train_target = data[:, 0]</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Define an instance of the class and call it using the cross validation function.</p>
 <div class="gist">
-    <script src='https://gist.github.com/62a8c0f5762ea165af3b.js?file=scores.py'></script>
-    <noscript>
-        <pre><code>clfSX = Classifier()
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=scores.py"></script>
+<noscript>
+<pre><code>clfSX = Classifier()
 scores = cross_validation.cross_val_score(clfSX, train_features, train_target, cv=10)
 print 'Sex based classifier'
 print scores.mean(), scores.std() </code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>This is obviously a very basic classifier. The aim of this post was to get
 across the concept of building your own classifier. More details can be found
@@ -182,6 +182,7 @@ data with the fit method.</p>
 		<li><a href="/category/c.html">C</a></li>
 		<li><a href="/category/electronics.html">Electronics</a></li>
 		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
 		<li><a href="/category/linux.html">Linux</a></li>
 		<li><a href="/category/making.html">Making</a></li>
 		<li><a href="/category/python.html">Python</a></li>
@@ -197,39 +198,41 @@ data with the fit method.</p>
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
 	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
 	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
 	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
 </ul>
 
 

@@ -1,0 +1,33 @@
+
+but_nav {
+  height: 40px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#c {
+  /*position: absolute;*/
+  left: 10%;
+  right: 10%;
+  /*top: 200px;
+  bottom: 100px*/
+  height: 400;
+  width: 400;
+}
+
+button {
+  background-color: yellow;
+  text-align: center;
+  border-radius: 8px;
+  width: 120px;
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+button:hover {
+    background-color: red; /* Green */
+    color: white;
+}

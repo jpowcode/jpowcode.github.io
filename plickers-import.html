@@ -72,17 +72,17 @@
 </ol>
 <p>One of the main drawbacks that this website has is that it can't import questions from an outside source or export questions to an outside source. This makes it nigh on impossible for teams of teachers to share questions. To help with this I have written a Python script that can read questions from a CSV file and simulate the necessary mouse clicks to import them into the website. This allows teachers to collaborate by sharing their CSV files and importing each other's into their own Plickers accounts. To run the script you will need to follow these steps. The steps are written for a Ubuntu style operating system. If you are running Windows first follow the extra steps below and then return to this poiint.</p>
 <ol class="arabic simple">
-<li>Download the repository from my GitHub page <a class="reference external" href="https://github.com/jpowcode/plickers_import">here</a>. For windows users use the directory C:\cycwin64\home\&quot;user_name&quot;\plickers_import</li>
+<li>Download the repository from my GitHub page <a class="reference external" href="https://github.com/jpowcode/plickers_import">here</a>. For windows users use the directory C:\cycwin64\home\"user_name"\plickers_import</li>
 <li>Setup a virtual environment for Python, activate it and install dependencies</li>
 </ol>
 <div class="gist">
-    <script src='https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=plickers'></script>
-    <noscript>
-        <pre><code>virtualenv plickers_import
+<script src="https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=plickers"></script>
+<noscript>
+<pre><code>virtualenv plickers_import
 cd plickers_import
 source bin/activate
 pip install selenium</code></pre>
-    </noscript>
+</noscript>
 </div>
 <ol class="arabic simple" start="3">
 <li>Put your Plickers username and password into the first two lines of the file login-details.txt Please make sure your password is not the same as for any other websites you use as it will be stored here in plain text which is not very secure.</li>
@@ -101,18 +101,18 @@ pip install selenium</code></pre>
 <p>1. Dowload and install <a class="reference external" href="https://www.cygwin.com/">Cygwin</a> During the install
 proceedure make sure to click on the word 'Default' next to Python. See the
 image below.</p>
-<p><a class="reference external" href="/images/small-plickers.jpg"><img alt="small-plickers" class="aligncenter wp-image-203" src="/images/small-plickers.jpg" style="width: 240px; height: 135px;" /></a></p>
+<p><a class="reference external" href="/images/small-plickers.jpg"><img alt="small-plickers" class="aligncenter wp-image-203" src="/images/small-plickers.jpg" style="width: 240px; height: 135px;"/></a></p>
 <ol class="arabic simple" start="2">
 <li>Download and install <a class="reference external" href="https://www.mozilla.org/en-US/firefox/new">Firefox</a>.</li>
-<li>Download <a class="reference external" href="https://github.com/mozilla/geckodriver/releases">Gecko Drivers</a> , unzip the file and put it in C:\cycwin64\home\&quot;user_name&quot;\plickers_import\Scripts</li>
+<li>Download <a class="reference external" href="https://github.com/mozilla/geckodriver/releases">Gecko Drivers</a> , unzip the file and put it in C:\cycwin64\home\"user_name"\plickers_import\Scripts</li>
 <li>Start Cygwin and run these commands</li>
 </ol>
 <div class="gist">
-    <script src='https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=cygwin'></script>
-    <noscript>
-        <pre><code>easy_install pip
+<script src="https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=cygwin"></script>
+<noscript>
+<pre><code>easy_install pip
 easy_install virtualenv</code></pre>
-    </noscript>
+</noscript>
 </div>
 <ol class="arabic simple" start="5">
 <li>Now follow the steps above</li>
@@ -121,33 +121,33 @@ easy_install virtualenv</code></pre>
 <p>First make the relevent imports. We will be using the Python <a class="reference external" href="https://pypi.python.org/pypi/selenium">selenium</a>
 libaray that can simulate mouse clicks on a webpage.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_import'></script>
-    <noscript>
-        <pre><code>import time
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_import"></script>
+<noscript>
+<pre><code>import time
 import csv
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>Next we initialise a driver instance to the Firefox browser. We add the  WebDriverWait function as an attribute to the driver so it can
 be accessed more easily. This function is used to make the driver wait a
 certain amount of time (here 5 seconds) for an event to occur.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_init'></script>
-    <noscript>
-        <pre><code>def init_driver():
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_init"></script>
+<noscript>
+<pre><code>def init_driver():
   driver = webdriver.Firefox()    
   driver.wait = WebDriverWait(driver, 5)    
   return driver</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>The lookup function takes two arguments: a driver instance and a query lookup (a string).
 It finds the sign in link on that page and clicks it.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_lookup'></script>
-    <noscript>
-        <pre><code>def lookup(driver, query):
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_lookup"></script>
+<noscript>
+<pre><code>def lookup(driver, query):
     driver.get(query)
     try:
         link = driver.find_element_by_link_text('Sign in')
@@ -155,14 +155,14 @@ It finds the sign in link on that page and clicks it.</p>
 
     except TimeoutException:
         print("Can't find sign in link")</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>The login function takes the driver as an input. Reads login details from a file
 and enters login details into the fields in the webpage.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_login'></script>
-    <noscript>
-        <pre><code>def login(driver):
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_login"></script>
+<noscript>
+<pre><code>def login(driver):
     try:
         with open('login_details.txt', 'r') as file:
             login_name = file.readline()
@@ -183,14 +183,14 @@ and enters login details into the fields in the webpage.</p>
 
     except TimeoutException:
         print('enter login failed')</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>The click_new_question function looks for an element in the html of the
 page with a class name 'btn', if it finds one it clicks it.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_question'></script>
-    <noscript>
-        <pre><code>def click_new_question():
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_question"></script>
+<noscript>
+<pre><code>def click_new_question():
     try:
         button = driver.find_element_by_class_name("btn")
         button.click()
@@ -198,38 +198,38 @@ page with a class name 'btn', if it finds one it clicks it.</p>
     except TimeoutException:
         print("new question button failed")
 </code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>The add_tf_question function conssits mainly of css locations for the
 various aspects of the question dialogue. I found these by using the
 developer tools in my browser and ispect the element I was interested in.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_add_tf'></script>
-    <noscript>
-        <pre><code>def add_tf_question(driver, question):
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_add_tf"></script>
+<noscript>
+<pre><code>def add_tf_question(driver, question):
     click_new_question()
     time.sleep(1)
 
-    radio_button_css = ".modal-body > pl-question-editor:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(1) > span:nth-child(2) \
-    > div:nth-child(1)"
+    radio_button_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) \
+    &gt; div:nth-child(1)"
 
-    check_box_1_css = ".modal-body > pl-question-editor:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) \
-    > div:nth-child(3) > div:nth-child(3) > div:nth-child(1)"
+    check_box_1_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(3) &gt; div:nth-child(3) &gt; div:nth-child(1)"
 
-    check_box_2_css = ".modal-body > pl-question-editor:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) \
-    > div:nth-child(4) > div:nth-child(3) > div:nth-child(1)"
+    check_box_2_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(4) &gt; div:nth-child(3) &gt; div:nth-child(1)"
 
-    save_button_css = ".modal-body > pl-question-editor:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) \
-    > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) \
-    > div:nth-child(3)"
+    save_button_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(2) \
+    &gt; div:nth-child(3)"
 
     if question[2] == 'T':
         box_to_tick = check_box_1_css
@@ -251,15 +251,15 @@ developer tools in my browser and ispect the element I was interested in.</p>
 
     except TimeoutException:
         print("failed to add question")</code></pre>
-    </noscript>
+</noscript>
 </div>
 <p>We call the functions in the main section of the programme. The time.sleep()
 calls are there to ensure that the webpage has enough time to render
 before the programme carries on with the next function.</p>
 <div class="gist">
-    <script src='https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_main'></script>
-    <noscript>
-        <pre><code>if __name__ == "__main__":
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_main"></script>
+<noscript>
+<pre><code>if __name__ == "__main__":
     driver = init_driver()
     lookup(driver, "https://www.plickers.com/")
     time.sleep(2)
@@ -278,7 +278,7 @@ before the programme carries on with the next function.</p>
     time.sleep(20)
     driver.quit()
 </code></pre>
-    </noscript>
+</noscript>
 </div>
 
             </div><!-- /.entry-content -->
@@ -311,6 +311,7 @@ before the programme carries on with the next function.</p>
 		<li><a href="/category/c.html">C</a></li>
 		<li><a href="/category/electronics.html">Electronics</a></li>
 		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
 		<li><a href="/category/linux.html">Linux</a></li>
 		<li><a href="/category/making.html">Making</a></li>
 		<li><a href="/category/python.html">Python</a></li>
@@ -326,39 +327,41 @@ before the programme carries on with the next function.</p>
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
 	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-3"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
 	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
 	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
 </ul>
 
 
