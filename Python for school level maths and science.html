@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Python for school level maths and science</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Python for school level maths and science.html" rel="bookmark"
+                   title="Permalink to Python for school level maths and science">Python for school level maths and science</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2020-05-12T10:20:00+01:00">
+                Tue 12 May 2020
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph > img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css"> .highlight pre  .hll { background-color: #ffffcc }
+ .highlight pre   { background: #f8f8f8; }
+ .highlight pre  .c { color: #408080; font-style: italic } /* Comment */
+ .highlight pre  .err { border: 1px solid #FF0000 } /* Error */
+ .highlight pre  .k { color: #008000; font-weight: bold } /* Keyword */
+ .highlight pre  .o { color: #666666 } /* Operator */
+ .highlight pre  .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+ .highlight pre  .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+ .highlight pre  .cp { color: #BC7A00 } /* Comment.Preproc */
+ .highlight pre  .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+ .highlight pre  .c1 { color: #408080; font-style: italic } /* Comment.Single */
+ .highlight pre  .cs { color: #408080; font-style: italic } /* Comment.Special */
+ .highlight pre  .gd { color: #A00000 } /* Generic.Deleted */
+ .highlight pre  .ge { font-style: italic } /* Generic.Emph */
+ .highlight pre  .gr { color: #FF0000 } /* Generic.Error */
+ .highlight pre  .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+ .highlight pre  .gi { color: #00A000 } /* Generic.Inserted */
+ .highlight pre  .go { color: #888888 } /* Generic.Output */
+ .highlight pre  .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+ .highlight pre  .gs { font-weight: bold } /* Generic.Strong */
+ .highlight pre  .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+ .highlight pre  .gt { color: #0044DD } /* Generic.Traceback */
+ .highlight pre  .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+ .highlight pre  .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+ .highlight pre  .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+ .highlight pre  .kp { color: #008000 } /* Keyword.Pseudo */
+ .highlight pre  .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+ .highlight pre  .kt { color: #B00040 } /* Keyword.Type */
+ .highlight pre  .m { color: #666666 } /* Literal.Number */
+ .highlight pre  .s { color: #BA2121 } /* Literal.String */
+ .highlight pre  .na { color: #7D9029 } /* Name.Attribute */
+ .highlight pre  .nb { color: #008000 } /* Name.Builtin */
+ .highlight pre  .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+ .highlight pre  .no { color: #880000 } /* Name.Constant */
+ .highlight pre  .nd { color: #AA22FF } /* Name.Decorator */
+ .highlight pre  .ni { color: #999999; font-weight: bold } /* Name.Entity */
+ .highlight pre  .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+ .highlight pre  .nf { color: #0000FF } /* Name.Function */
+ .highlight pre  .nl { color: #A0A000 } /* Name.Label */
+ .highlight pre  .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+ .highlight pre  .nt { color: #008000; font-weight: bold } /* Name.Tag */
+ .highlight pre  .nv { color: #19177C } /* Name.Variable */
+ .highlight pre  .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+ .highlight pre  .w { color: #bbbbbb } /* Text.Whitespace */
+ .highlight pre  .mb { color: #666666 } /* Literal.Number.Bin */
+ .highlight pre  .mf { color: #666666 } /* Literal.Number.Float */
+ .highlight pre  .mh { color: #666666 } /* Literal.Number.Hex */
+ .highlight pre  .mi { color: #666666 } /* Literal.Number.Integer */
+ .highlight pre  .mo { color: #666666 } /* Literal.Number.Oct */
+ .highlight pre  .sa { color: #BA2121 } /* Literal.String.Affix */
+ .highlight pre  .sb { color: #BA2121 } /* Literal.String.Backtick */
+ .highlight pre  .sc { color: #BA2121 } /* Literal.String.Char */
+ .highlight pre  .dl { color: #BA2121 } /* Literal.String.Delimiter */
+ .highlight pre  .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+ .highlight pre  .s2 { color: #BA2121 } /* Literal.String.Double */
+ .highlight pre  .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+ .highlight pre  .sh { color: #BA2121 } /* Literal.String.Heredoc */
+ .highlight pre  .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+ .highlight pre  .sx { color: #008000 } /* Literal.String.Other */
+ .highlight pre  .sr { color: #BB6688 } /* Literal.String.Regex */
+ .highlight pre  .s1 { color: #BA2121 } /* Literal.String.Single */
+ .highlight pre  .ss { color: #19177C } /* Literal.String.Symbol */
+ .highlight pre  .bp { color: #008000 } /* Name.Builtin.Pseudo */
+ .highlight pre  .fm { color: #0000FF } /* Name.Function.Magic */
+ .highlight pre  .vc { color: #19177C } /* Name.Variable.Class */
+ .highlight pre  .vg { color: #19177C } /* Name.Variable.Global */
+ .highlight pre  .vi { color: #19177C } /* Name.Variable.Instance */
+ .highlight pre  .vm { color: #19177C } /* Name.Variable.Magic */
+ .highlight pre  .il { color: #666666 } /* Literal.Number.Integer.Long */</style><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr/>
+<h1 id="Python-for-A-level-Mathematicians-and-Scientists">Python for A level Mathematicians and Scientists<a class="anchor-link" href="#Python-for-A-level-Mathematicians-and-Scientists">¶</a></h1><p>This document will take you through some programming concepts that you might find useful whilst studying A-level maths and science subjects. It is not difficult to get started programming, but it is an incredibly useful skill.</p>
+<p>It will cover lots of topics such as performing algebraic calculations, calculating with units and error bounds, analysing data and plotting graphs.</p>
+<p>The document is made up of individual cells. Some contain text like this one. Some contain code like the next one that can be run by clicking the play icon on the left of the cell. Go ahead and run the next cell. It just does some routine stuff that we will need. You don't need to worry about what it contains. Just move straight past onto the next cell titled "Expanding Brackets".</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">pint</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">q</span> <span class="n">uncertainties</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">s</span>
+<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="kn">import</span> <span class="nn">pint</span> <span class="k">as</span> <span class="nn">pt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">ufloat</span>
+<span class="kn">from</span> <span class="nn">uncertainties.umath</span> <span class="kn">import</span> <span class="o">*</span> 
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Math</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="k">def</span> <span class="nf">mview</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s2">"&lt;script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default'&gt;&lt;/script&gt;"</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">Math</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">pprint</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+  <span class="n">output</span><span class="o">=</span><span class="s1">''</span>
+  <span class="k">if</span>  <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+      
+      <span class="n">output</span> <span class="o">=</span> <span class="n">output</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\\\\</span><span class="s1">'</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">output</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+      <span class="n">output</span> <span class="o">=</span> <span class="n">output</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">latex</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="n">arg</span><span class="p">])</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\\\\</span><span class="s1">'</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">output</span>
+  <span class="k">return</span> <span class="n">mview</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+<span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span>  
+<span class="n">x</span> <span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">'x y z'</span><span class="p">)</span>
+
+<span class="n">units</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">UnitRegistry</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>     |████████████████████████████████| 194kB 1.4MB/s 
+     |████████████████████████████████| 235kB 1.4MB/s 
+  Building wheel for uncertainties (setup.py) ... done
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Expanding-brackets">Expanding brackets<a class="anchor-link" href="#Expanding-brackets">¶</a></h2><p>The expand function can be used to help you check your algebra or to perform complicated expansions. Make sure you put a * in between any brackets to multiply them. For example you can expand the following<br/>
+$(x+1)(x+2)(x+3)(x+4)$<br/>
+$(x+3)(x+5)^3$<br/>
+$(x+3)^3$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">expand</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">expand</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">expand</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$x^{4} + 10 x^{3} + 35 x^{2} + 50 x + 24\\x^{3} + 13 x^{2} + 55 x + 75\\x^{3} + 9 x^{2} + 27 x + 27\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Simplifying-expressions">Simplifying expressions<a class="anchor-link" href="#Simplifying-expressions">¶</a></h2><p>The simplify function can be used to simplify algebraic expressions. For example you can simplify<br/>
+$x^4+x^3+x^2-3x^4+4x^3$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$x^{2} \left(- 2 x^{2} + 5 x + 1\right)\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Variables">Variables<a class="anchor-link" href="#Variables">¶</a></h2><p>You may have wondered what the out[] is for. out is a variable. It is a particular type of variable called a list. We ar using a programming language called Python. Click on the links for more information on <a href="https://www.w3schools.com/python/python_variables.asp">variables</a> and <a href="https://www.w3schools.com/python/python_lists.asp">lists</a>. In Python you can make any expression or number a variable and make use of it later in your programme. For example</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$x^{3} + x^{2} y + x y^{2} + y^{3}\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solving-equations">Solving equations<a class="anchor-link" href="#Solving-equations">¶</a></h2><p>We can use python to solve equations. For example we can solver the equation $x^2 - 1 =0$. To do this we use the solve function. In the example below. Notice how the =0 is missed out. This is because the solve function can only solve equations that are equal to zero. Notice also that we need to tell the solve function what the variable in the equation is by putting in a comma followed by the x.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$\left [ -1, \quad 1\right ]\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mathematical-constants">Mathematical constants<a class="anchor-link" href="#Mathematical-constants">¶</a></h2><p>It might be useful to use mathmatical constants such as $\pi$ or $e$. Look at the next example to see how.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">5</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">e</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$78.53981633974483\\2.718281828459045\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Libraries">Libraries<a class="anchor-link" href="#Libraries">¶</a></h2><p>You might have noticed that in previous examples the fuctions started with an s. but in this example they start with an m. Python is built up of a core language plus lots of added extras called libraries. So far we have used the sympy libary for doing algebra and the math library for the constants. In the fisrt cell you might be able to see how we have imported these libraries into our code. click on the link for more information on <a href="https://swcarpentry.github.io/python-novice-gapminder/06-libraries/">libraries</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Scientific-constants">Scientific constants<a class="anchor-link" href="#Scientific-constants">¶</a></h2><p>There are also lots of scientific constants available such as Newtons gravitational constant G. Note we are now using another library called scipy. There are many more constants available in scipy. A full list can be found <a href="https://docs.scipy.org/doc/scipy/reference/constants.html">here</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">G</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">Planck</span>
+<span class="n">pprint</span><span class="p">([</span><span class="n">G</span><span class="p">,</span><span class="n">P</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$6.6743e-11\\6.62607015e-34\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-other-useful-functions">Some other useful functions<a class="anchor-link" href="#Some-other-useful-functions">¶</a></h2><p>There are many other useful functions for doing things. Here are some examples for finding factorials, the highest common factor (greatest common divisor), logarithms (log is the natural logarithm or base e) and the sqare root. Here is a full list of the functions available in the <a href="https://docs.python.org/3/library/math.html">math library</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="mi">1020</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">236</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$40320\\4\\20.085536923187668\\0.0\\15.362291495737216\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Solving-simultaneous-equations">Solving simultaneous equations<a class="anchor-link" href="#Solving-simultaneous-equations">¶</a></h2><p>This is very similar to solving one variable equations. All equations must be of the form $=0$ and we must tell the solve function what the different variables are. For example, we can solve<br/>
+$x+5y=2$<br/>
+$-3x+6y=15$<br/>
+First we have to rearrange them to make them $=0$<br/>
+$x+5y-2=0$<br/>
+$-3x+67-15=0$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">15</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$\left \{ x : -3, \quad y : 1\right \}\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Trigonometric-Functions">Trigonometric Functions<a class="anchor-link" href="#Trigonometric-Functions">¶</a></h2><p>You can find values of sin, cos and tan or the inverse of them by putting an a on the front, acos, asin and atan. Note how we are using the math library m.) when we are dealing with numerical calcualtion. f we want to do algebraic calculations we need to use the sympy library (s.)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">18</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">asin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">19</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$1.0\\1.0\\0.9999999999999999\\0.0\\0.0\\1.2626272556789118\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Differentiation">Differentiation<a class="anchor-link" href="#Differentiation">¶</a></h2><p>You can find derivatives. For example<br/>
+$\frac{d}{dx}\cos^2(x)$<br/>
+$\frac{d^3}{dx^3}x^4$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">diff</span><span class="p">((</span><span class="n">s</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">22</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$- 2 \sin{\left (x \right )} \cos{\left (x \right )}\\24 x\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Integration">Integration<a class="anchor-link" href="#Integration">¶</a></h2><p>You can also integrate. Note how we make the infinity symbol oo. For example<br/>
+$\int \cos(x) dx$<br/>
+$\int_0^{\infty}e^x dx$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">oo</span><span class="p">))</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$\sin{\left (x \right )}\\1\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Vectors-and-matrices">Vectors and matrices<a class="anchor-link" href="#Vectors-and-matrices">¶</a></h2><p>You can define matrices and vectors. Multiply them, find inverses and determinants. For example if<br/>
+A = $\begin{pmatrix}
+1 &amp; -1 \\
+3 &amp; 4 \\
+0 &amp; 2
+\end{pmatrix}
+B = \begin{pmatrix}
+1 &amp; 2 &amp; 4 \\
+3 &amp; 4 &amp; -2
+\end{pmatrix}
+C = \begin{pmatrix}
+1 &amp; -1 \\
+3 &amp; 4
+\end{pmatrix}$<br/>
+Find $A \cdot B, \det{B},$ and $C^{-1}$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">25</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">B</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">26</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">det</span><span class="p">()</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">27</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="o">**-</span><span class="mi">1</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">27</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$\left[\begin{matrix}-2 &amp; -2 &amp; 6\\15 &amp; 22 &amp; 4\\6 &amp; 8 &amp; -4\end{matrix}\right]\\7\\\left[\begin{matrix}\frac{4}{7} &amp; \frac{1}{7}\\- \frac{3}{7} &amp; \frac{1}{7}\end{matrix}\right]\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Complex-Numbers">Complex Numbers<a class="anchor-link" href="#Complex-Numbers">¶</a></h2><p>You can perfom complex number calculations by using an upper case I.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">s</span><span class="o">.</span><span class="n">I</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">s</span><span class="o">.</span><span class="n">I</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="n">out</span><span class="p">[</span><span class="mi">29</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">29</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$7 + 26 i\\3 - 4 i\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hyperbolic-Functions">Hyperbolic Functions<a class="anchor-link" href="#Hyperbolic-Functions">¶</a></h2><p>Hyperbolic functions work in exactly the same way as trigonometric functions do except you add an h on the end. For example<br/>
+$\sinh(\frac{\pi}{2})$</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">out</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$2.3012989023072947\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Repeating-things-using-loops">Repeating things using loops<a class="anchor-link" href="#Repeating-things-using-loops">¶</a></h2><p>The great thing about a programming language is you can get it to repeat things multiple times really easily. For example, lets say for example, we want to expand all of the expressions $(1+x)^n$ for n between 1 and 10, we could do it like this:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+  <span class="n">expansion</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">expand</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+  <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expansion</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=default"></script>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_latex output_subarea output_execute_result">
+$$x + 3\\x^{2} + 6 x + 9\\x^{3} + 9 x^{2} + 27 x + 27\\x^{4} + 12 x^{3} + 54 x^{2} + 108 x + 81\\x^{5} + 15 x^{4} + 90 x^{3} + 270 x^{2} + 405 x + 243\\x^{6} + 18 x^{5} + 135 x^{4} + 540 x^{3} + 1215 x^{2} + 1458 x + 729\\x^{7} + 21 x^{6} + 189 x^{5} + 945 x^{4} + 2835 x^{3} + 5103 x^{2} + 5103 x + 2187\\x^{8} + 24 x^{7} + 252 x^{6} + 1512 x^{5} + 5670 x^{4} + 13608 x^{3} + 20412 x^{2} + 17496 x + 6561\\x^{9} + 27 x^{8} + 324 x^{7} + 2268 x^{6} + 10206 x^{5} + 30618 x^{4} + 61236 x^{3} + 78732 x^{2} + 59049 x + 19683\\x^{10} + 30 x^{9} + 405 x^{8} + 3240 x^{7} + 17010 x^{6} + 61236 x^{5} + 153090 x^{4} + 262440 x^{3} + 295245 x^{2} + 196830 x + 59049\\$$
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have used a list called results to hold the output before printing it. Click on these links for more information on <a href="https://www.w3schools.com/python/python_for_loops.asp">loops</a> and <a href="https://www.w3schools.com/python/python_lists.asp">lists</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Units">Units<a class="anchor-link" href="#Units">¶</a></h2><p>We can make calcualtions using different units by using a library called Pint. For example, lets say we want to calculate a speed from a distance in kilometers and a time in minutes, but we want the answer in meters per second. There are hundreds of units including anything you are likely to ever want in science. A full list an be found <a href="https://github.com/hgrecco/pint/blob/master/pint/default_en.txt">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mf">24.0</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kilometers</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">minutes</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="n">d</span><span class="o">/</span><span class="n">t</span>
+<span class="n">speed</span><span class="o">.</span><span class="n">ito</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">meters</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>133.33333333333334 meter / second
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Prefixes">Prefixes<a class="anchor-link" href="#Prefixes">¶</a></h2><p>We can deal with prefixes simply by adding in to the unit defintinition. All of the standard scientific units are <a href="https://github.com/hgrecco/pint/blob/master/pint/default_en.txt">available</a>. For example, the above example modified with micro-meters and yocto-seconds with a conversion to meters per second.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mf">3.5</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">micrometers</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">2.1</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">yoctoseconds</span>
+<span class="n">speed</span> <span class="o">=</span> <span class="n">d</span><span class="o">/</span><span class="n">t</span>
+<span class="n">speed</span><span class="o">.</span><span class="n">ito</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">meters</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1.6666666666666668e+18 meter / second
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Error-Bounds">Error Bounds<a class="anchor-link" href="#Error-Bounds">¶</a></h2><p>Lets say we have the equation for gravitation force between two masses<br/>
+$F_g = \frac{Gm_1m_2}{r}$<br/>
+and we and we have the values for
+$G,m_1, m_2$ and $r$ defined as follows with error bounds given<br/>
+$m_1 = 3.5 \pm 0.1$ mega kilogrammes<br/>
+$m_1 = 2.1 \pm 0.2$   mega kilogrammes<br/>
+$r = 73000 \pm  1000$<br/>
+Lets say we also want to convert the answer into base units.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">megakilogram</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">megakilogram</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">ufloat</span><span class="p">(</span><span class="mi">73000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kilometer</span>
+<span class="n">G</span><span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">G</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">G</span><span class="o">*</span><span class="n">m1</span><span class="o">*</span><span class="n">m2</span><span class="o">/</span><span class="n">r</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">to_base_units</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(6.7+/-0.7)e-06 kilogram ** 2 / meter
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This example uses a function called uloat which comes from a library called uncertainties.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data">Data<a class="anchor-link" href="#Data">¶</a></h2><p>Python is very powerful at analysing and visualising data. Many professionals use Python for this purpose. For the following exercise you will need the csv files that came with this document. You will need to download these somewhere to your computer. Run the following cell to import the data. There is some two variable data, some time series data.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
+<span class="n">data_tv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="s1">'data_tv.csv'</span><span class="p">]))</span>
+<span class="n">data_ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="s1">'data_ts.csv'</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-454c95d321fa&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>uploaded <span class="ansi-blue-fg">=</span> files<span class="ansi-blue-fg">.</span>upload<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> data_tv <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>io<span class="ansi-blue-fg">.</span>BytesIO<span class="ansi-blue-fg">(</span>uploaded<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'data_tv.csv'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> data_ts <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>io<span class="ansi-blue-fg">.</span>BytesIO<span class="ansi-blue-fg">(</span>uploaded<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'data_ts.csv'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'files' is not defined</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Look-at-data">Look at data<a class="anchor-link" href="#Look-at-data">¶</a></h3><p>We can have a quick look at the top of a file with head()</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_ts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>time</th>
+<th>press</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>103</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>110</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+<td>111</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4</td>
+<td>105</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5</td>
+<td>108</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Two-Variable-Data">Two Variable Data<a class="anchor-link" href="#Two-Variable-Data">¶</a></h3><p>In the next two cells we graph the data and find the correlation coefficient.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_tv</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'temp'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'press'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0d3ddf2668&gt;</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAEGCAYAAACKB4k+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAADh0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uMy4yLjEsIGh0
+dHA6Ly9tYXRwbG90bGliLm9yZy+j8jraAAAXkklEQVR4nO3dcZRed13n8fdnzJDGTaHTZIylYYnQ
+IguckJURcMuuXYvQVbetRCtlWaLW7VnwcNBdaKt7pC6uZ9tU3VV6VLrYbdyDdYsB0xUESgqUdREM
+mIaUgkWhdErbDGkqjSZhwnz3j+fmOhkyySSdOzeTvF/nzLn3/u69z/3+ziTzee79Pc+9qSokSQIY
+6rsASdLJw1CQJLUMBUlSy1CQJLUMBUlSa0nfBTwZK1eurDVr1vRdhiQtKp/+9Ke/VlWjR1q3qENh
+zZo1bNu2re8yJGlRSfLAbOu8fCRJahkKkqSWoSBJahkKkqSWoSBJanUWCkluSbIryc5pbT+e5N4k
+U0nGprWvSPKRJHuT3NRVTZJ0Kti99wD3PPg4u/cemPfX7vIjqbcCNwG/P61tJ/Aq4B0ztt0P/BLw
+guZHknQEW7Y/xDWbdzA8NMTk1BQb16/lknXnztvrd3amUFV3A4/NaLuvqr5whG3/rqr+L4NwkCQd
+we69B7hm8w72T07xxIGD7J+c4urNO+b1jGHRjSkkuSrJtiTbJiYm+i5HkhbM+J59DA8d/md7eGiI
+8T375u0Yiy4UqurmqhqrqrHR0SN+S1uSTkmrR5YxOTV1WNvk1BSrR5bN2zEWXShI0ulqxfKlbFy/
+ljOGhzhz6RLOGB5i4/q1rFi+dN6OsajvfSRJp5tL1p3LBeetZHzPPlaPLJvXQIAOQyHJbcCFwMok
+48B1DAae3w6MAu9Lsr2qXtls/2XgqcBTklwGvKKqPtdVfZK0WK1YvnTew+CQzkKhqq6YZdV7Z9l+
+TVe1SJLmxjEFSVLLUJAktQwFSVLLUJAktQwFSVLLUJAktQwFSVLLUJAktQwFSVLLUJAktQwFSVLL
+UJAktQwFSVLLUJAktQwFSVLLUJAktToLhSS3JNmVZOe0th9Pcm+SqSRjM7b/hSRfTPKFJK/sqi7p
+VLJ77wHuefBxdu890HcpOkV0+YzmW4GbgN+f1rYTeBXwjukbJnke8Grg+cDTgQ8neU5VfbPD+qRF
+bcv2h7hm8w6Gh4aYnJpi4/q1XLLu3L7L0iLX2ZlCVd3N4JnM09vuq6ovHGHzS4E/rKoDVfUl4IvA
+i7uqTVrsdu89wDWbd7B/coonDhxk/+QUV2/e4RmDnrSTZUzhXODBacvjTdu3SHJVkm1Jtk1MTCxI
+cdLJZnzPPoaHDv/vOzw0xPiefT1VpFPFyRIKc1ZVN1fVWFWNjY6O9l2O1IvVI8uYnJo6rG1yaorV
+I8t6qkinipMlFB4CnjFteXXTJukIVixfysb1azljeIgzly7hjOEhNq5fy4rlS/suTYtclwPNx+MO
+4A+S/AaDgebzgU/1W5J0crtk3blccN5KxvfsY/XIMgNB86KzUEhyG3AhsDLJOHAdg4HntwOjwPuS
+bK+qV1bVvUluBz4HHAR+1k8eSce2YvlSw0DzqrNQqKorZln13lm2/1XgV7uqR5J0bCfLmIIk6SRg
+KEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiS
+WoaCJKllKEiSWp2FQpJbkuxKsnNa29lJ7kxyfzMdadpHkrw3yY4kn0rygq7qkiTNrsszhVuBi2e0
+XQtsrarzga3NMsAvAturai3wOuA3O6xLkjSLzkKhqu5m8Ezm6S4FNjXzm4DLmvnnAXc1+30eWJNk
+VVe1SZKObKHHFFZV1cPN/CPAoT/89wCvAkjyYuCZwOojvUCSq5JsS7JtYmKi63ol6bTS20BzVRVQ
+zeL1wFlJtgNvBP4S+OYs+91cVWNVNTY6OrowxUrSaWLJAh/v0STnVNXDSc4BdgFU1deBnwJIEuBL
+wN8scG2SdNpb6DOFO4ANzfwGYAtAkrOSPKVp/xng7iYoJEkLqLMzhSS3ARcCK5OMA9cxuEx0e5Ir
+gQeAy5vN/wmwKUkB9wJXdlWXJGl2nYVCVV0xy6qLjrDtJ4DndFWLJGlu/EazJKllKEiSWoaCJKll
+KEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKllKEiSWoaCJKnVaSgk
+uSXJriQ7p7WdneTOJPc305Gm/WlJ/k+Se5Lcm+SnuqxNEuzee4B7Hnyc3XsP9F2KThJdnyncClw8
+o+1aYGtVnQ9sbZYBfhb4XFW9kMET23592iM6Jc2zLdsf4oIb7uK17/wkF9xwF3dsf6jvknQS6DQU
+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
+"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_tv</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>temp</th>
+<th>press</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>temp</th>
+<td>1.000000</td>
+<td>0.777932</td>
+</tr>
+<tr>
+<th>press</th>
+<td>0.777932</td>
+<td>1.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Time-Series-Data">Time Series Data<a class="anchor-link" href="#Time-Series-Data">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [0]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'press'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[0]:</div>
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0d3b0f5b70&gt;</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_png output_subarea">
+<img src="data:image/png;base64,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
+FYD+P+uzuVJk8MbCAAAAAElFTkSuQmCC
+"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Python for school level maths and science.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/arduino.html">Arduino</a></li>
+		<li><a href="/category/c.html">C</a></li>
+		<li><a href="/category/computer-architecture.html">Computer Architecture</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/home-automation.html">Home Automation</a></li>
+		<li><a href="/category/javascript.html">Javascript</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/radio-control.html">Radio Control</a></li>
+		<li><a href="/category/raspberry-pi.html">Raspberry Pi</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/reviews.html">Reviews</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/tools.html">Tools</a></li>
+		<li><a href="/category/uncategorised.html">Uncategorised</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-1"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-1"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-3"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

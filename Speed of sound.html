@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="/css/images.css" type="text/css" />
 
 
         <title>Explorations with a Rigol DS1054Z Oscilloscope Part 4- Speed of sound</title>
@@ -73,13 +74,13 @@
 <p>More details now follow:   </p>
 <p><strong>Step 1</strong>: <br/>
 This is fairly straight forward. See the image below for my cheapo Ebay signal generator setup. It's not the best bit of kit: the signal is a bit weak and not very clean, but it will illustrate the process. I recommend using a decent quality signal generator if you can get access to one. You should also notice that I've kept the wires short and put 50 ohm resistor in series with the signal generator. Some Google searches recommended these adjustments and I seemed to get a better signal so I stuck with it. You should hear a sound that will probably be fairly annoying. The sound from my setup is a bit quiet so any outside noises affect the signal. A better signal generator should improve this.</p>
-<p><img alt="Signal generator and speaker setup" src="./images/small-speaker.jpg" width="50%"/></p>
+<p><img alt="Signal generator and speaker setup" src="./images/small-speaker.jpg#small"/></p>
 <p><strong>Step 2</strong>: <br/>
 Again fairly straight forward, just take one of the scopes probes, flick the switch on the probe to 1x,  and connect the ground (crocodile clip on short wire) to one terminal of the speaker and the probe tip to the other end of the speaker. You can see this in the image above.</p>
 <p><strong>Step 3</strong>: <br/>
 This is where it all started to get complicated (at least it did for me). I tried several microphones and could not get a reading on the scope. It looks like the voltage level is too low and noise levels too high to see the waveform adequately. After doing some internet research I discovered that not all microphones are created equally. It seems that an active microphone that contains some amplification circuitry is required to get this experiment to work well or at all really. (If anyone has suggestions to the contrary then please comment below). As a hack that gets this working with no extra spending I discovered that the humble mobile phone contains everything required. All you need is an old set of headphones you don’t mind cutting the headphones off. After cutting the headphones off and exposing the wires  connect the ground of the scope probe and the probe tip to each of the exposed wires. Connect this cable to your phone.  </p>
 <p>I’m using an android phone with an app called <a href="https://play.google.com/store/apps/details?id=net.vkrun.microphone_amplifier&amp;hl=en_GB">microphone amplifier</a>. Set the audio gain to about 16 (you can experiment with this later) turn the speaker on and hit the on button in the middle. Make a noise and you should see a wave form appear on the mobile phone screen. See example image below.</p>
-<p><img alt="Mobile phone amplifier screen" height="50%" src="./images/android_amp.png" width="50%,"/><br/>
+<p><img alt="Mobile phone amplifier screen" src="./images/android_amp.png#small"/> <br/>
 However, for good experimental results I recommend a decent quality active microphone.</p>
 <p><strong>Step 4</strong> <br/>
 You should now have the signal generator outputting a sound on the speaker, the scope connected to the speaker on channel 1 and the scope connected to the mobile phone on channel 2. The phone should have a waveform on the screen when you make a noise. </p>
@@ -89,7 +90,6 @@ You should now have the signal generator outputting a sound on the speaker, the 
 <li>Make sure the settings are the same as in the image below. To change the menu item you press the button next to it (figure 1 -12) twist the dial (figure 1 - 3, figure 3) and press the dial to select it. Make sure your values match those in the image.
 <img alt="Channel 1 setup image" src="./images/small-speed_sound_1.png"/></li>
 <li>Press the Auto button (figure 1 - 6 ) You should now see the output from the signal generator, which should be a nice steady sine wave. </li>
-<li>If it is waving about a bit try adjusting the trigger (figure 1 - 17, figure 5 - middle dial) until it settles down. You can see the current value of the trigger on the right side of the screen marked with a T (figure 6 - 11). You want it set somewhere about half the height of the waveform. </li>
 <li>My signal generator was not giving me a very clean waveform, especially when it was connected to a speaker. (Depending on your equipment you may be able to omit this step). I setup the scope to average the waveforms. You can do this by pressing the Aquire button (figure 1 - 4) and setting up the like the image below. You can experiment with the number of averages. </li>
 <li>You can get the scope to measure this frequency of this waveform by pressing the button on the left of the screen (figure 1 - 1). You should see this measurement displayed at the bottom of the screen and it should correspond closely with the frequency you set on the signal generator. 
 <img alt="Channel 1 setup image" src="./images/small-speed_sound_2.png"/></li>
@@ -174,42 +174,42 @@ You can now calculate the speed of sound by multiplying the frequency by the wav
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
-	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
 	    <li class="tag-4"><a href="/tag/blog.html">Blog</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/machine-learning.html">Machine Learning</a></li>
 	    <li class="tag-3"><a href="/tag/atom-ide.html">Atom IDE</a></li>
 	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home Automation</a></li>
 	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
-	    <li class="tag-4"><a href="/tag/quadcopters.html">quadcopters</a></li>
-	    <li class="tag-1"><a href="/tag/robotics.html">Robotics</a></li>
 	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
-	    <li class="tag-4"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
-	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
-	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
-	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-3"><a href="/tag/repair.html">Repair</a></li>
 	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">mqtt</a></li>
-	    <li class="tag-3"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
 	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-4"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/http.html">http</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
 </ul>
 
 

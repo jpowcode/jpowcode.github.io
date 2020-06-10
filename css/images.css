@@ -1,0 +1,9 @@
+img[src*="#thumbnail"] {
+    width:150px;
+    height:100px;
+ }
+
+ img[src*="#small"] {
+    width:50%;
+    height:50%;
+ }
