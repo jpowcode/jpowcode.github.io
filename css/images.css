@@ -4,6 +4,11 @@ img[src*="#thumbnail"] {
  }
 
  img[src*="#small"] {
-    width:50%;
+    width:20%;
     height:50%;
  }
+
+ img.resize {
+   width:20%;
+   height:20%;
+}
