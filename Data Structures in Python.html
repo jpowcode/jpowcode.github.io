@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>A big part of the A-level Computing syllabus has content on different data types. Arrays, stacks, queues, linked lists, graphs and trees to name a few. Another aspect of the syllabus is <a href="https://www.educative.io/blog/object-oriented-programming">object orientated programming</a>. In this post I aim to use an object oirentated approach to build some of these data structures from scratch. I will be using Python as a programming language. All data structures will be built up from the basic data structures that python contains, i.e., lists, strings and integers. I will also be adding in a few software engineeing practices such as <a href="https://realpython.com/python-testing/">unit testing</a>, <a href="https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it">linting</a>, using <a href="https://realpython.com/python-testing/">test runners</a>,  and task runners. This post is not inteded to be a tutorial on Object Orientated Programming (OOP) or data structures. It is more an illustration of how OOP principles can be applied using structures that should be famiuliar to an A-level computing student. I have written a priliminary activity to this one using shapes as a concept.</p>
+              <p>A big part of the A-level Computing syllabus has content on different data types. Arrays, stacks, queues, linked lists, graphs and trees to name a few. Another aspect of the syllabus is <a href="https://www.educative.io/blog/object-oriented-programming">object orientated programming</a>. In this post I aim to use an object orientated approach to build some of these data structures from scratch. I will be using Python as a programming language. All data structures will be built up from the basic data structures that python contains, i.e., lists, strings and integers. I will also be adding in a few software engineeing practices such as <a href="https://realpython.com/python-testing/">unit testing</a>, <a href="https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it">linting</a>, using <a href="https://realpython.com/python-testing/">test runners</a>,  and task runners. This post is not inteded to be a tutorial on Object Orientated Programming (OOP) or data structures. It is more an illustration of how OOP principles can be applied using structures that should be famiuliar to an A-level computing student. I have written a <a href="http://localhost:8002/Basic%20Classes%20in%20Python.html">priliminary activity</a> to this one using shapes as a concept.</p>
 <p>This is a summary of all that will be covered</p>
 <ul>
 <li>Creating data structures for an Array, Stack and Queue</li>
@@ -77,11 +77,10 @@
 <li>Using a task runner</li>
 <li>The concept of <a href="https://www.techtarget.com/searchapparchitecture/definition/refactoring">refactoring</a></li>
 <li>Linting</li>
-<li><a href="https://www.atlassian.com/continuous-delivery/software-testing/code-coverage">Code Coverage</a></li>
 </ul>
-<p>All resources will be hosted on my Github page. There is a table at the bottom of this post detailing which files are needed for each section of the tutorial.</p>
+<p>All resources will be hosted on my <a href="https://github.com/jpowcode/python_classes">Github</a> page. There is a table at the bottom of this post detailing which files are needed for each section of the tutorial.</p>
 <h3>0. Setting up our environment</h3>
-<p>A will be using a Linux based envirnment for much of this task. In school I would use <a href="https://www.pythonanywhere.com/">pythonanywhere</a> which gives us an IDE for editing python code and a bash shell for running the code and any tests etc. This is by far the easiest option and has the advantage of working wherever you have access to a web browser. If you are on windows you might consider using the windows subsystem for linux. </p>
+<p>I will be using a Linux based envirnment for much of this task. In school I would use <a href="https://www.pythonanywhere.com/">pythonanywhere</a> which gives us an IDE for editing python code and a bash shell for running the code and any tests etc. This is by far the easiest option and has the advantage of working wherever you have access to a web browser. If you are on windows you might consider using the windows subsystem for linux. </p>
 <h3>1. Creating the basic array class</h3>
 <p>We create the MyArray class with a constructor method (in python this is <code>__init__()</code>).  The constructor takes as input a number <code>given_i</code> (at the moment this is a one dimensional array) for the size of the array and a string <code>given_array_type</code> that specifies the type as either an 8 bit integer or a character. The constructor method sets the attributes 'i'and 'array_type' and also creates an empty list <code>array</code> to hold the array elements. The array is then populated with <code>None</code> values. We then run some tests by creating instances of the <code>MyArray</code> class to make sure there are no errors.  </p>
 <pre><code>class MyArray:
@@ -362,7 +361,6 @@ def __eq__(self, other):
             return False
     return True
 </code></pre>
-<p>```</p>
 <h3>13. Linting our code</h3>
 <p>There are many different ways in which a programmer code structure their code. For example, they could use 2 spaces or 4 spaces for indentation. They could leave a space after a comma or not. They could capitalise class names or not etc, etc. In 2001 Guido van Rossum created a style guide for python and published it as PEP8. PEP's or Python Enhancement Proposals are documents people write to suggest changes to the language. The Python comunnity will then need to decide on whether to accept the proposal or not. PEP8 focuses on descibing certain rules on how python code should be written and it is now what most software engineers adopt as standard. This helps when multiple people are working on the same project or when programmers are reading a code that is not thiers. A linter is a programme that checks your code against the rules of PEP8 and produces a report offering suggestions. We are going to use a linter called flake8. We might need to install this first using <code>pip3 install --user flake8</code>. Then we can run flake8 on all the python files in our directory with the command <code>flake8 *.py</code>. We will then get a list of all the things in our files that do not follow the PEP8 rules. You might notice lots of the same the same things. For example </p>
 <pre><code>E231 missing whitespace after ','
@@ -436,76 +434,72 @@ def fulltest(ctx):
     star_line('Linting Code')
     lint(ctx)
 </code></pre>
-<h3>15. Testing with coverage</h3>
-<pre><code>nosetests -v --with-coverage --no-byte-compile
-</code></pre>
 <h3>List of files required for each section</h3>
-<table>
-<thead>
-<tr>
-<th>Section Number</th>
-<th>File</th>
-<th>Test File</th>
-</tr>
-</thead>
+<table style="width: 742px; height: 369px;">
 <tbody>
-<tr>
-<td>1</td>
-<td>my_array_1.py</td>
-<td></td>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">Section Number</td>
+<td style="height: 22px; width: 241.104px;"> File</td>
+<td style="height: 22px; width: 290.636px;"> Test File</td>
 </tr>
-<tr>
-<td>2</td>
-<td>my_array_2.py</td>
-<td></td>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">1</td>
+<td style="height: 22px; width: 241.104px;"> my_array_1.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
 </tr>
-<tr>
-<td>3</td>
-<td>my_array_3.py</td>
-<td></td>
+<tr style="height: 23px;">
+<td style="height: 23px; width: 209.429px;">2 </td>
+<td style="height: 23px; width: 241.104px;"> my_array_2.py</td>
+<td style="height: 23px; width: 290.636px;"> </td>
 </tr>
-<tr>
-<td>4</td>
-<td>my_array_4.py</td>
-<td>test_array_1.py</td>
+<tr style="height: 25px;">
+<td style="height: 25px; width: 209.429px;">3 </td>
+<td style="height: 25px; width: 241.104px;"> my_array_3.py</td>
+<td style="height: 25px; width: 290.636px;"> </td>
 </tr>
-<tr>
-<td>5</td>
-<td>my_array_5.py</td>
-<td>test_array_2.py</td>
+<tr style="height: 10px;">
+<td style="height: 10px; width: 209.429px;">4 </td>
+<td style="height: 10px; width: 241.104px;"> my_array_4.py</td>
+<td style="height: 10px; width: 290.636px;"> test_array_1.py</td>
 </tr>
-<tr>
-<td>6</td>
-<td>my_array_6.py</td>
-<td></td>
+<tr style="height: 23px;">
+<td style="height: 23px; width: 209.429px;">5 </td>
+<td style="height: 23px; width: 241.104px;"> my_array_5.py</td>
+<td style="height: 23px; width: 290.636px;"> test_array_2.py</td>
 </tr>
-<tr>
-<td>7</td>
-<td>my_array_7.py</td>
-<td></td>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">6</td>
+<td style="height: 22px; width: 241.104px;"> my_array_6.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
 </tr>
-<tr>
-<td>8</td>
-<td>my_stack_1.py</td>
-<td>test_stack_1.py</td>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">7 </td>
+<td style="height: 22px; width: 241.104px;"> my_array_7.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
 </tr>
-<tr>
-<td>9</td>
-<td>my_array_7.py, my_stack_1.py</td>
-<td>test_array_2.py, test_stack_1.py</td>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">8 </td>
+<td style="height: 22px; width: 241.104px;"> my_stack_1.py</td>
+<td style="height: 22px; width: 290.636px;"> test_stack_1.py</td>
 </tr>
-<tr>
-<td>10</td>
-<td>my_array_7.py, my_stack_2.py</td>
-<td></td>
+<tr style="height: 22.8571px;">
+<td style="height: 22.8571px; width: 209.429px;">9 </td>
+<td style="height: 22.8571px; width: 241.104px;"> my_array_7.py, my_stack_1.py</td>
+<td style="height: 22.8571px; width: 290.636px;"> test_array_2.py, test_stack_1.py</td>
 </tr>
-<tr>
-<td>11</td>
-<td>my_array_7.py, my_stack_3.py</td>
-<td>test_stack_2.py</td>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">10 </td>
+<td style="height: 22px; width: 241.104px;"> my_array_7.py, my_stack_2.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">11 </td>
+<td style="height: 22px; width: 241.104px;"> my_array_7.py, my_stack_3.py</td>
+<td style="height: 22px; width: 290.636px;"> test_stack_2.py</td>
 </tr>
 </tbody>
 </table>
+<!-- DivTable.com -->
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
@@ -550,45 +544,45 @@ def fulltest(ctx):
 
 <h4>Tags</h4>
 	<ul class="blank">
-	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
-	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
-	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
-	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
-	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
-	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
-	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
-	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
-	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
-	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
-	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
-	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
 	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
-	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
-	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
-	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
-	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
 	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
-	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
-	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
-	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
-	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
-	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
-	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
-	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
-	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
-	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
 	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
 	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
-	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
-	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
-	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
-	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
 	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
-	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
-	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
-	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
 	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
 </ul>
 
 
