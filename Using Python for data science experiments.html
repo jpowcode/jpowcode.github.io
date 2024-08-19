@@ -3,7 +3,7 @@
 <head>
 
 
-        <title>Explorations with a Rigol DS1054Z Oscilloscope Part 3- Using an Android Signal Generator</title>
+        <title>Data Science with Pandas, ScikitLLearn and Altair</title>
         <meta charset="utf-8" />
 
 
@@ -51,35 +51,43 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="/Android signal generator.html" rel="bookmark"
-                   title="Permalink to Explorations with a Rigol DS1054Z Oscilloscope Part 3- Using an Android Signal Generator">Explorations with a Rigol DS1054Z Oscilloscope Part 3- Using an Android Signal Generator</a></h2>
+                <a href="/Using Python for data science experiments.html" rel="bookmark"
+                   title="Permalink to Data Science with Pandas, ScikitLLearn and Altair">Data Science with Pandas, ScikitLLearn and Altair</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2020-04-25T10:20:00+01:00">
-                Sat 25 April 2020
+              <abbr class="published" title="2020-04-22T10:20:00+01:00">
+                Wed 22 April 2020
               </abbr>
               <address class="vcard author">By 
                 <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Function/signal generators can be quite expensive, but there are some alternatives that can provide some interesting learning experiences. In my first post I talked about a cheap ebay function generator available for a few pounds. </p>
-<p>An alternative is to use a mobile phone app.  I have an Android phone and I used an app called <a href="https://play.google.com/store/apps/details?id=com.keuwl.functiongenerator&amp;hl=en_GB">Function Generator</a> by Keuwsolf. I butchered a headphone cable and connected the scope probe to it. Follow these steps:</p>
-<ol>
-<li>Cut the headphones off and expose the wires. </li>
-<li>Mark which cable is the left and which is the right headphone.  </li>
-<li>Pick either the left or the right headphone and connect the ground (crocodile clip on the probe) to one wire and the probe to the other wire.   </li>
-</ol>
-<p>The app is pretty easy to use and can provide a various different signals to explore on the scope. The main stumbling block is to make sure the output is set correctly. For example the sliders tell you which of the left of the right outputs each channel is on. The buttons left and right turn on the left and/or right outputs and the out button turns the output on or off. So if you have channel 1 setup and want to output only this on the left output your buttons should be set like this.</p>
-<p><img alt="Android screen shot image" src="./images/small-func_gen_screenshot.png"/></p>
-<p>You can use this app to do all of the same exercises as in the first post.</p>
+              <p><strong>Introduction</strong>
+In each of this series of posts I will tackle some problem that involves data. I'm going to ivestigate the data, visualise it and possibly perform some predictive analysis with machine learning. The aim is to learn the skills and tools involved at the same time as doing something useful or interesting. </p>
+<p><strong>The Tools</strong>
+I'll be using Google Colab as my IDE and running python3 as my programming language and making use of the following libraries
+<em><a href="https://numpy.org/">numpy</a> for dealing with vectors and arrays.
+</em><a href="https://pandas.pydata.org/">pandas</a> for manimulating data.
+<em><a href="https://altair-viz.github.io/">altair</a> for visualisation.
+</em><a href="https://scikit-learn.org/stable/">scikit</a> learn for training machine learning models.
+*<a href="https://scipy.org/">scipy</a> to provide numerical analysis algorithms</p>
+<p>Most notebooks will start with the following code to import the tools. The last line allows Google colab to open files from the local envirnment.</p>
+<pre><code>import io, math
+import numpy as np
+import altair as alt
+import pandas as pd
+import sklearn as skl
+import scipy as scp
+from google.colab import files
+</code></pre>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
               <div id="disqus_thread"></div>
               <script type="text/javascript">
-                var disqus_identifier = "Android signal generator.html";
+                var disqus_identifier = "Using Python for data science experiments.html";
                 (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'https://jpowcode.disqus.com/embed.js';
