@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Poscode Faker</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Creting valid fake postcodes.html" rel="bookmark"
+                   title="Permalink to Poscode Faker">Poscode Faker</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2024-10-29T10:20:00+00:00">
+                Tue 29 October 2024
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h3>Postcode Faker</h3>
+<p>A recent project I worked on involved plotting the location of home addresses on a map. The location of their home I generated from their postcode using an api provided by the Office for National Statistics. (There will be more details on this in a future post.) When writing this project up I want to show the visualisations I'd generated, but I did not want to display the actual location of the people in the data set as this is obviously not a good idea for privacy reasons. I started looking about for python libabries to generate valid postcodes. Valid, being key here as generating any random string will not necessarily result in a location that actually exists. </p>
+<p>A uk postcode is a combination of either 6 or 7 characters. What I want to be able to do is specify the start of the postcode as a string and generate a given number of random valid postcodes that start with that string. </p>
+<p>The first step was to obtain a list of all valid postcodes in the UK. This came from the <a href="https://geoportal.statistics.gov.uk/datasets/a2f8c9c5778a452bbf640d98c166657c/about">ONS, Office for National Statistics</a> in the form of a large spreadsheet. The first column of the spreadsheet contains the postcode. The rest of the columns are not-needed. First I ran the following command using <a href="https://www.cyberciti.biz/faq/bash-scripting-using-awk/">awk</a> to strip out the first column and save it as a separate CSV file.  </p>
+<pre><code>awk -F "," '{print $1}' ons_postcode_data.csv &gt; postcodes.csv
+</code></pre>
+<p>This sets a comma as a separator and prints out the first field. Awk uses 1 as the first field and not zero like python.</p>
+<p>Then I wrote a python function to produce the random postcodes. First import pandas and load csv file into a dataframe.</p>
+<pre><code>import pandas as pd
+postcodes = pd.read_csv('postcodes.csv')
+</code></pre>
+<p>Next create a function that takes as input a dataframe, a partial postcode and a number of random samples required. It compiles a regular expression that starts with the partial postcode searches for all postcodes that contain the string and then selects a random sample from them. Case is ignored. The resulting dataframe is returned from the function.</p>
+<pre><code>def pcfake(df, partial_pc, number):
+  regex = f'^{partial_pc}'
+  return df[df.iloc[:,0].str.contains(regex, case = False)].sample(n=number)
+</code></pre>
+<p>We can test this as follows and we should get 10 postcodes that all start with "np"</p>
+<pre><code>pcfake(postcodes, "Np", 10).head(10)
+</code></pre>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Creting valid fake postcodes.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

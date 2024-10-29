@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Repair</title><link href="/" rel="alternate"></link><link href="/feeds/repair.atom.xml" rel="self"></link><id>/</id><updated>2021-01-28T10:20:00+00:00</updated><entry><title>Bike light internals and repair</title><link href="/Inside%20a%20bike%20light%20and%20a%20repair.html" rel="alternate"></link><published>2021-01-28T10:20:00+00:00</published><updated>2021-01-28T10:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2021-01-28:/Inside a bike light and a repair.html</id><summary type="html">&lt;p&gt;A simple look inside and repair of a  bike light.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;As with lots of electronic items these days, after a while, they just stop working. Often with modern electronics that have a rechargeable lithium battery the cause is the battery wearing out. In some items the battery is not removable, in others the battery can be removed, but a replacement cannot be sourced.  In some of these cases an alternative battery can be fitted. In third category of cases the battery is removable and available making the fix easy.  This is what I was hoping for with this bike light.&lt;/p&gt;
+&lt;p&gt;The light was easy to dismantle with a few small hex wrenches. You can see in the photos below what it looks like on the inside. &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Im1" src="./images/bike_light1.jpg"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Im2" src="./images/bike_light2.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can see that there is a single cell 1850 lithium battery which should be easy to source on Ebay. This proved to be partially the case. I bought several, but for some reason they all appeared to be slightly too short. Rather that keep on wasting my money on more batteries I have wedged a small bit off copper between one end of the battery and the terminal. This has done the job and the light now charges and works fine. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Repair"></category><category term="Repair"></category><category term="Electronics"></category></entry><entry><title>TI Nspire Repair</title><link href="/ti-nspire-repair.html" rel="alternate"></link><published>2017-11-05T22:08:00+00:00</published><updated>2017-11-05T22:08:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-11-05:/ti-nspire-repair.html</id><summary type="html">&lt;p class="first last"&gt;Repair of a Texas Instruments Nspire that was starting up but freezing.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A Texas Instruments Nspire I had developed an fault where it would turn on, but
+after a minuite or two it would freeze up. The screen would stay on, but the
+calculator would become completely un responsive. My initial thought was a dodgy
+capacitor. I took it apart and tested them with an ESR meter and they all looked
+fine. The calculator was making a curious humming noise whilst it was glitching
+which was somewhat puzzling. After a closer visual inspection I noticed that
+the battery compartment makes contact with the main pcb by some springy metal clips
+that rely on pressure to stay connected. One of these had worn down the copper
+coating on the pcb and was no longer making a good contact (you can see this in
+the bottom right of the left most image below).  The simple fix was
+to bend it slightly to the side so it made contact with a fresh part of the pcb
+trace which is plenty wide enough to accomodate this. After reassembly it works
+just fine. I can only surmise that the contact between the metal spring and the
+pcb was not good enough to provide enough current for the calculator to fully
+work and as for the curious humming noise?&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external image-reference" href="/images/calc3.jpg"&gt;&lt;img alt="im3" class="aligncenter wp-image-200" src="/images/calc3.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/calc4.jpg"&gt;&lt;img alt="im4" class="aligncenter wp-image-198" src="/images/calc4.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/calc5.jpg"&gt;&lt;img alt="im5" class="aligncenter wp-image-202" src="/images/calc5.jpg"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Repair"></category><category term="Repair"></category><category term="Electronics"></category></entry><entry><title>Hitachi Hard Disk Recorder Repair</title><link href="/hitachi-hard-disk-recorder-repair.html" rel="alternate"></link><published>2015-10-30T22:38:00+00:00</published><updated>2015-10-30T22:38:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-30:/hitachi-hard-disk-recorder-repair.html</id><summary type="html">&lt;p class="first last"&gt;A simple repair of a hard disk recorder.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I've been watching the &lt;a class="reference external" href="https://www.youtube.com/user/EEVblog"&gt;EEV
+Blog&lt;/a&gt; videos by David Jones
+recently and was inspired by some of his repairs to give it a go myself.
+I found an old hard disk recorder, a Hitachi HDR080 that I'd stuffed
+away in a dark corner of my spare room. It had completely died a few
+years ago. There was no power getting to either the hard disk or the
+front control panel.  I suspected a power supply failure a first
+inspection revealed an electrolytic capacitor with a domed top. You can
+see the offending capacitor in the photo below left. I found a spare and
+replaced it. It's the big black on the left of the centre photo below.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-10-30_16.06.45.jpg"&gt;&lt;img alt="2015-10-30 16.06.45" class="aligncenter wp-image-185" src="/images/2015-10-30_16.06.45.jpg" style="width: 385px; height: 217px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-10-30_16.05.35.jpg"&gt;&lt;img alt="2015-10-30 16.05.35" class="aligncenter wp-image-188" src="/images/2015-10-30_16.05.35.jpg" style="width: 379px; height: 214px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-10-30_16.05.49.jpg"&gt;&lt;img alt="2015-10-30 16.05.49" class="aligncenter wp-image-186" src="/images/2015-10-30_16.05.49.jpg" style="width: 386px; height: 217px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This did the trick and the recorder powered up. Unfortunately it failed
+to properly tune in all the channels. Playback was fine but recording a
+new channel gave it problems. A bit of an internet search revealed that
+in 2012 my local TV transmitter had it's analogue signal turned off.
+Even though my recorder has a digital tuner this causes problems for
+some reason. I did try searching for a firmware update, but to no avail.
+According to some forums Hitachi did offer to upgrade the software if
+you sent your unit back, but that was more than 3 years ago so I think I
+will call this one a done. A successful repair, but unfortunately
+scuppered by things out of my control :-x&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Repair"></category><category term="Electronics"></category><category term="Repair"></category></entry></feed>

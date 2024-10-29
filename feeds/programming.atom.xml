@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Programming</title><link href="/" rel="alternate"></link><link href="/feeds/programming.atom.xml" rel="self"></link><id>/</id><updated>2017-11-27T22:31:00+00:00</updated><entry><title>Glimpses</title><link href="/glimpses.html" rel="alternate"></link><published>2017-11-27T22:31:00+00:00</published><updated>2017-11-27T22:31:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-11-27:/glimpses.html</id><summary type="html">&lt;p class="first last"&gt;A test of your vision!&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Years ago I remember seeing a presentation in which a small game was displayed.
+The game involved flashing a pattern of dots on the screen for a brief instance,
+a fraction of a second, or a glimpse. The aim was to describe exactly the pattern
+you had just seen. For example a 5x7 array of dots might be displayed, but
+surprisingly is it remarkable difficult to know whether you saw 5x6, 5x7 or 5x8.
+This has something to do with the brains ability to see how many of something it
+is seeing without having to count. When you look at three items you know there are
+three without having to count 'one', 'two', 'three', but when there are seven items
+it's not so easy. Play the game below to see what I mean.&lt;/p&gt;
+&lt;div class="but_nav"&gt; &lt;nav&gt; &lt;button onclick="GlimpseLevel(levels[current_level])" type="button"&gt;Glimpse&lt;/button&gt; &lt;button onclick="DrawLevel(levels[current_level])" type="button"&gt;Show&lt;/button&gt; &lt;button onclick="Next()" type="button"&gt;Next&lt;/button&gt; &lt;button onclick="Previous()" type="button"&gt;Previous&lt;/button&gt; &lt;/nav&gt; &lt;/div&gt; &lt;canvas height="600" id="c" width="600"&gt;&lt;/canvas&gt; &lt;script type="text/javascript"&gt; var canvas = document.querySelector("#c"); var context = canvas.getContext("2d"); var current_level = 0;  &lt;/script&gt;&lt;p&gt;The game has been created with a little help from the html canvas object. First
+within the body section of the html we create a navigation bar with some buttons
+each button will call a function defined within the javascript file. The GlimpseLevel
+and DrawLevel functions take as input the data required for each level in the
+form of coordinates. Then we set up the canvas object allowing us to draw to
+the screen and a current_level variable to keep track of which level number we are
+currently on.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/cf21c8d2547fa245bf062d175a9c2618.js?file=glimpses.html"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;&lt;div class="but_nav"&gt;
+  &lt;nav&gt;
+    &lt;button onclick="GlimpseLevel(levels[current_level])" type="button"&gt;Glimpse&lt;/button&gt;
+    &lt;button onclick="DrawLevel(levels[current_level])" type="button"&gt;Show&lt;/button&gt;
+    &lt;button onclick="Next()" type="button"&gt;Next&lt;/button&gt;
+    &lt;button onclick="Previous()" type="button"&gt;Previous&lt;/button&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;
+&lt;canvas height="600" id="c" width="600"&gt;&lt;/canvas&gt;
+
+&lt;script type="text/javascript"&gt;
+  var canvas = document.querySelector("#c");
+  var context = canvas.getContext("2d");
+  var current_level = 0;
+&lt;/script&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Each level is defined as a set of coordinates in the form [x, y, r,] representing
+the x and y coordinates relative to the center of the canvas and r, the radius
+of each circle.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/cf21c8d2547fa245bf062d175a9c2618.js?file=glimpses_coord.js"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;var bs = 30;
+
+var level0 = [
+  [-100, -100, bs],
+  [0, -100, bs],
+  [100, -100, bs],
+
+  [-100, 0, bs],
+  [0, 0, bs],
+  [100, 0, bs],
+
+  [-100, 100, bs],
+  [0, 100, bs],
+  [100, 100, bs],
+  ];&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The main functionality of the game is controlled by some javascript.
+First define an array to hold the information for all the levels. Then define
+some functions as follows:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;clearLevel - simply resets the canvas to be empty&lt;/li&gt;
+&lt;li&gt;Next - increments the current_level variable by one&lt;/li&gt;
+&lt;li&gt;Previous - decrements the current_level variable by one&lt;/li&gt;
+&lt;li&gt;DrawCircle - takes a coordinate pair as input and draws a circle to the canvas relative to the center.&lt;/li&gt;
+&lt;li&gt;DrawLevel - calls DrawCircle for all the coordinates in the current level .&lt;/li&gt;
+&lt;li&gt;GlimpseLevel - calls DrawLevel, but after a fixed time period clears the canvas.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/cf21c8d2547fa245bf062d175a9c2618.js?file=glimpses.js"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;var levels = [level0, level1, level2, level3, level4];
+
+function Next() {
+  clearLevel();
+  if (current_level &amp;lt; levels.length - 1) {
+    current_level = current_level + 1;
+  }
+}
+
+function Previous() {
+  clearLevel();
+  if (current_level &amp;gt; 0) {
+    current_level = current_level - 1;
+  }
+ }
+
+function DrawCircle(point) {
+  var centerX = point[0] + canvas.width / 2;
+  var centerY = point[1] + canvas.height / 2;
+  var radius = point[2];
+  context.beginPath();
+  context.arc(centerX, centerY, radius, 0, 2.0 * Math.PI, false);
+  context.fillStyle = "blue";
+  context.fill();
+  context.stroke();
+}
+
+function DrawLevel(levelArray) {
+  var arrayLength = levelArray.length;
+  for (var i = 0; i &amp;lt; arrayLength; i++) {
+    DrawCircle(levelArray[i]);
+  }
+}
+
+function clearLevel() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function GlimpseLevel(levelArray) {
+  DrawLevel(levelArray);
+  setTimeout(clearLevel, 50);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;And lastly we have a little bit of style, mainly to position everything neatly.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/cf21c8d2547fa245bf062d175a9c2618.js?file=glimpses.css"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;but_nav {
+  height: 40px;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+#c {
+  left: 10%;
+  right: 10%;
+  height: 400;
+  width: 400;
+}
+
+button {
+  background-color: yellow;
+  text-align: center;
+  border-radius: 8px;
+  width: 120px;
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+button:hover {
+    background-color: red;
+    color: white;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Programming"></category><category term="Javascript"></category><category term="Programming"></category></entry><entry><title>BIG numbers in C</title><link href="/big-numbers-in-c.html" rel="alternate"></link><published>2015-01-13T22:25:00+00:00</published><updated>2015-01-13T22:25:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-13:/big-numbers-in-c.html</id><summary type="html">&lt;p class="first last"&gt;Calculating with really big numbers in C using gmp.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I enjoy learning about different programming languages. One of my
+favourite resources for finding programming challenges is the &lt;a class="reference external" href="https://projecteuler.net/"&gt;Project
+Euler&lt;/a&gt; website. There are almost 500
+problems building up in difficulty. I have recently been learning to
+programme in C after originally learning Python. I usually a sizable
+chunk of time trying to work out how to do things in C that would be
+trivial in Python. One huge difference is in the C's handling of BIG
+integers. In Python there is no practical limit to the size of integers.
+However, in C we are limited by the operating system to either
+2&lt;sup&gt;32&lt;/sup&gt;-1 for 32 bit systems or 2&lt;sup&gt;64&lt;/sup&gt;-1 for 64 bit systems.
+In many of the Project Euler problems we are required to find very big
+numbers. The solution is to use the
+&lt;a class="reference external" href="http://en.wikipedia.org/wiki/GNU_Multiple_Precision_Arithmetic_Library"&gt;gmp&lt;/a&gt;
+(Gnu multi-precision) library. Basically this library converts an
+integer into a string of single digit numbers. It contains functions for
+performing all the basic arithmetical operations on these strings. Here
+is a step by step guide on how to get started. All commands will be
+based on a Ubuntu operating system.&lt;/p&gt;
+&lt;p&gt;First install the library, run this command in the terminal with this
+command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;libgmp3-dev
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Copy this code into a file named big_numbers.c&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/c28fffbb1759b0f12e3d.js?file=big_numbers.c"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;gmp.h&gt;
+
+int main(int argc, char *argv[]){
+	mpz_t num1, num2, output;		//declare big number variables
+	mpz_init(num1);		                //initialise bignumber variables
+	mpz_init(num2);
+	mpz_init(output);
+	
+	//set num1 to be the first command line argument in deciaml notation and num2 to be the second argument
+	mpz_set_str(num1, argv[1], 10); 
+	mpz_set_str(num2, argv[2], 10);
+	
+	//multiply num1 by num2 and save the output to output variable
+	mpz_mul(output, num1, num2);
+	
+	//need special print function to display output variable as it is not a normal variable. 
+	gmp_printf("%Zd\n", output);
+	
+	return 0;
+}&lt;/gmp.h&gt;&lt;/stdio.h&gt;&lt;/stdlib.h&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;compile with this command:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;gcc&lt;span class="w"&gt; &lt;/span&gt;big_numbers.c&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;big_numbers&lt;span class="w"&gt; &lt;/span&gt;-lgmp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;and run with this command to test multiplying some big numbers together&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./big_numbers&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;999999999999&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;999999999999&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The following links give some further information:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.cs.colorado.edu/~srirams/classes/doku.php/gmp_usage_tutorial"&gt;Sriram Sankaranarayanan's tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://beej.us/blog/data/pi-chudnovsky-gmp/"&gt;Beej's Bit Bucket&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://stackoverflow.com/questions/822734/square-root-of-bignum-using-gmp"&gt;Stackoverflow discussion&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Programming"></category><category term="C"></category><category term="Programming"></category></entry></feed>

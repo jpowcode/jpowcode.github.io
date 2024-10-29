@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Timing a Linux Server to Suspend and Restart</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/timing-a-linux-server-to-suspend-and-restart.html" rel="bookmark"
+                   title="Permalink to Timing a Linux Server to Suspend and Restart">Timing a Linux Server to Suspend and Restart</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-22T21:42:00+01:00">
+                Wed 22 April 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I run a Ubuntu Linux sever at home for various tasks such as serving out
+media, backing up files and acting as a personal cloud. I don't need it
+on all the time, but I don't want to be bothered turning in on and off.
+A simple fix for this is to make use of the commands rtcwake and
+crontab. The steps for doing this are as follows:</p>
+<ol class="arabic simple">
+<li>cron is a service that can be used to schedule events. To run it, in
+a terminal type <em>sudo crontab -e</em>. It is important to run this using
+sudo as the rtcwake command needs to be run with root privileges. You
+will have a crontab file for each user on your machine, but only the
+one for root will work.</li>
+<li>Enter the following line at the bottom of the file:</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="m">00</span><span class="w"> </span><span class="m">23</span><span class="w"> </span>***<span class="w"> </span>/usr/sbin/rtcwake<span class="w"> </span>-m<span class="w"> </span>mem<span class="w"> </span>-s<span class="w"> </span><span class="m">64800</span>
+</pre></div>
+<p>There are a few things to explain here:</p>
+<ul class="simple">
+<li>The first two digits represent the minutes past the hour, and the
+second two are the hour that my command will run.</li>
+<li>The three stars are in place of day, week and month, so my command
+will run every day at 23:00.</li>
+<li>It is import to include the full path to the rtcwake command. Check
+with the command <em>which rtcwake</em> that yours is in the same place.</li>
+<li>The -m mem part tells the rtcwake command to suspend everything and
+save it to RAM. It is also possible to save to disk, but I didn't
+have much success with this.</li>
+<li>the -s 64800 tells the rtcwake command to restart the machine after
+64800 seconds or 18 hours which is 17:00.</li>
+</ul>
+<p>So now my server will shut itself down at 11pm at night and restart at
+5pm every afternoon.</p>
+<p>When I explained this to my wife she instantly asked what if you're
+doing something with the server at 11pm will you loose it all. So there
+is an interesting question: how could I write a script to check if
+something important was happening and suspend the shutdown?</p>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "timing-a-linux-server-to-suspend-and-restart.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

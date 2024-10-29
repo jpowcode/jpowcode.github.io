@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Some Python Decorators</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/some-python-decorators.html" rel="bookmark"
+                   title="Permalink to Some Python Decorators">Some Python Decorators</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-03-01T17:13:00+00:00">
+                Sun 01 March 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I've been learning how to use decorators in Python. As far I understand
+it a decorator takes as input a function, does something with or to the
+function and then returns the function. To test out this functionality
+I've written five examples. First the following preamble is included at
+the top of the file containing the decorator functions:</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=preample.py"></script>
+<noscript>
+<pre><code>from functools import wraps
+from datetime import datetime as dt
+import logging
+                    
+logging.basicConfig(format='%(message)s',level=logging.NOTSET)</code></pre>
+</noscript>
+</div>
+<p><strong>countit</strong> - will print a line to the terminal every time the function
+is called with the number of times it has been called.</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=countit.py"></script>
+<noscript>
+<pre><code>def countit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and logs the number of times the function has been 
+	called to the terminal"""
+	
+	@wraps(interceptedFunction)
+	def counter(*args, **kwargs):
+		counter.called += 1
+		functionName = interceptedFunction.func_name
+		actualResult = interceptedFunction(*args, **kwargs)
+		logging.debug('\n ######  Function: [{fnc}] =&gt;  [{count}]  ######'
+					.format(fnc=functionName, count=counter.called))
+		return actualResult
+	counter.called = 0
+	return counter</code></pre>
+</noscript>
+</div>
+<p><strong>timeit</strong> - times how long a function takes to run and prints this to
+the terminal.</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=timeit.py"></script>
+<noscript>
+<pre><code>def timeit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs times the duration of thefunction and then returns it 
+	and logs it to the terminal """
+	
+	@wraps(interceptedFunction)
+	def timer(*args, **kwargs):
+		functionName = interceptedFunction.func_name
+		start = dt.now()
+		actualResult = interceptedFunction(*args, **kwargs)
+		stop = dt.now()
+		executionTime = stop - start
+		logging.debug('Function: [{fnc}] =&gt; Took [{timed}]'
+					.format(fnc=functionName, timed=executionTime))
+		
+		return actualResult
+	
+	return timer</code></pre>
+</noscript>
+</div>
+<p><strong>logit</strong> - prints to the the terminal the output that is returned from
+a function.</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=logit.py"></script>
+<noscript>
+<pre><code>def logit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and logs what the function returns to the terminal
+	as well as the input to the function"""
+	
+	@wraps(interceptedFunction)
+	def logger(*args, **kwargs):
+		functionName = interceptedFunction.func_name
+		functionArguments = []
+		
+		if kwargs is not None:
+			for arg in args:
+				functionArguments.append(arg)
+            
+		actualResult = interceptedFunction(*args, **kwargs)
+		logging.debug('Function: [{fnc}] =&gt; Returns [{returned}] with input {inp}'
+					.format(fnc=functionName, returned=actualResult, inp=functionArguments))
+		return actualResult
+	
+	return logger</code></pre>
+</noscript>
+</div>
+<p><strong>beforeit</strong> - runs a function that is passed as an argument to the
+decorator before each function call.</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=beforeit.py"></script>
+<noscript>
+<pre><code>def beforeit(inputFunc):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and calls another function (inputFunc) first """
+	functionName = inputFunc.func_name
+	def beforeFunc(interceptedFunction):		
+		@wraps(interceptedFunction)
+		def before(*args, **kwargs):
+			inputFunc()
+			actualResult = interceptedFunction(*args, **kwargs)
+			return actualResult					
+		return before
+	return beforeFunc</code></pre>
+</noscript>
+</div>
+<p><strong>afterit</strong> - runs a function that is passed as an argument to the
+decorator after each function call.</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=afterit.py"></script>
+<noscript>
+<pre><code>def afterit(inputFunc):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and calls another function (inputFunc) after """
+	functionName = inputFunc.func_name
+	def afterFunc(interceptedFunction):				
+		@wraps(interceptedFunction)
+		def after(*args, **kwargs):			
+			actualResult = interceptedFunction(*args, **kwargs)
+			inputFunc()
+			return actualResult			
+		return after
+	return afterFunc</code></pre>
+</noscript>
+</div>
+<p>Each of these decorators can be used individually or as a group. For
+example, this is a function that computes prime numbers in a rather
+inefficient manner by calculating the factors of each number smaller
+than it (a better method would be to use the <a class="reference external" href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">seive of
+Eratosthenes</a>).
+It has been decorated with the first three functions above. It is then
+called three times as follows:</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=funcall.py"></script>
+<noscript>
+<pre><code>import time, random
+from pythonDecorators import *
+
+@logit
+@timeit
+@countit
+def isprime(p):
+	i=2
+	while i&lt;= p/2:
+		if p%i==0:
+			return False
+		i=i+1
+	return True
+	
+for num in (7919, 399941, 1042709):
+	isprime(num)</code></pre>
+</noscript>
+</div>
+<p>The output produced is:</p>
+<div class="gist">
+<script src="https://gist.github.com/3b86f826d03c7852570b.js?file=output"></script>
+<noscript>
+<pre><code> ######  Function: [isprime] =&gt;  [1]  ######
+Function: [isprime] =&gt; Took [0:00:00.008360]
+Function: [isprime] =&gt; Returns [True] with input [7919]
+
+ ######  Function: [isprime] =&gt;  [2]  ######
+Function: [isprime] =&gt; Took [0:00:00.120358]
+Function: [isprime] =&gt; Returns [True] with input [399941]
+
+ ######  Function: [isprime] =&gt;  [3]  ######
+Function: [isprime] =&gt; Took [0:00:00.251844]
+Function: [isprime] =&gt; Returns [True] with input [1042709]
+</code></pre>
+</noscript>
+</div>
+<p>So whenever I am writing a new python programme I can now import my
+decorators file and I will have access to the timeit, countit and logit
+beforit and afterit decorators to aid in debugging.</p>
+<p>If you can think of any other useful applications for decorators please
+let me know in the comments.</p>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "some-python-decorators.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/images.css" type="text/css" />
+
+
+        <title>Explorations with a Rigol DS1054Z Oscilloscope Part 4 - Speed of Sound</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Speed of sound.html" rel="bookmark"
+                   title="Permalink to Explorations with a Rigol DS1054Z Oscilloscope Part 4 - Speed of Sound">Explorations with a Rigol DS1054Z Oscilloscope Part 4 - Speed of Sound</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2020-05-06T10:20:00+01:00">
+                Wed 06 May 2020
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>The challenge is to measure the speed of sound in air using an oscilloscope. This is a typical A-level Physics experiment. I found this quite a tricky one to get right from a technical perspective. Possibly due to my equipment, maybe my technique. If you have any suggestions for how to improve please use the comments below. The procedure is as follows:</p>
+<p><strong>Step 1</strong>: Plug a speaker into a signal generator and set it to something in the few thousand hz range.<br/>
+<strong>Step 2</strong>: Plug the signal generator into one of the scope channels.<br/>
+<strong>Step 3</strong>: Plug a microphone into the scope and set it in line with the speaker about a meter away.<br/>
+<strong>Step 4</strong>: Set up the scope to capture the waveform of both the signal generator and the microphone.<br/>
+<strong>Step 5</strong>: Move the speaker or microphone back and for until both waves are in phase.<br/>
+<strong>Step 6</strong>: Move the microphone and speaker apart until they are in phase again. Measure this distance.<br/>
+<strong>Step 7</strong>: Compare theory with reality.  </p>
+<p>More details now follow:   </p>
+<p><strong>Step 1</strong>: <br/>
+This is fairly straight forward. See the image below for my cheapo Ebay signal generator setup. It's not the best bit of kit: the signal is a bit weak and not very clean, but it will illustrate the process. I recommend using a decent quality signal generator if you can get access to one. You should also notice that I've kept the wires short and put 50 ohm resistor in series with the signal generator. Some Google searches recommended these adjustments and I seemed to get a better signal so I stuck with it. You should hear a sound that will probably be fairly annoying. The sound from my setup is a bit quiet so any outside noises affect the signal. A better signal generator should improve this.</p>
+<p><img alt="Signal generator and speaker setup" src="./images/small-speaker.jpg#small"/></p>
+<p><strong>Step 2</strong>: <br/>
+Again fairly straight forward, just take one of the scopes probes, flick the switch on the probe to 1x,  and connect the ground (crocodile clip on short wire) to one terminal of the speaker and the probe tip to the other end of the speaker. You can see this in the image above.</p>
+<p><strong>Step 3</strong>: <br/>
+This is where it all started to get complicated (at least it did for me). I tried several microphones and could not get a reading on the scope. It looks like the voltage level is too low and noise levels too high to see the waveform adequately. After doing some internet research I discovered that not all microphones are created equally. It seems that an active microphone that contains some amplification circuitry is required to get this experiment to work well or at all really. (If anyone has suggestions to the contrary then please comment below). As a hack that gets this working with no extra spending I discovered that the humble mobile phone contains everything required. All you need is an old set of headphones you don’t mind cutting the headphones off. After cutting the headphones off and exposing the wires  connect the ground of the scope probe and the probe tip to each of the exposed wires. Connect this cable to your phone.  </p>
+<p>I’m using an android phone with an app called <a href="https://play.google.com/store/apps/details?id=net.vkrun.microphone_amplifier&amp;hl=en_GB">microphone amplifier</a>. Set the audio gain to about 16 (you can experiment with this later) turn the speaker on and hit the on button in the middle. Make a noise and you should see a wave form appear on the mobile phone screen. See example image below.</p>
+<p><img alt="Mobile phone amplifier screen" src="./images/android_amp.png#small"/> <br/>
+However, for good experimental results I recommend a decent quality active microphone.</p>
+<p><strong>Step 4</strong> <br/>
+You should now have the signal generator outputting a sound on the speaker, the scope connected to the speaker on channel 1 and the scope connected to the mobile phone on channel 2. The phone should have a waveform on the screen when you make a noise. </p>
+<p>Now go to the scope controls. I Will use the figures at the bottom of this post to reference the controls. </p>
+<ol>
+<li>Make sure channel 1 is turned on and for now channel 2 is turned off by pressing the buttons next to the channel numbers (figure 1 - 12).  </li>
+<li>Make sure the settings are the same as in the image below. To change the menu item you press the button next to it (figure 1 -12) twist the dial (figure 1 - 3, figure 3) and press the dial to select it. Make sure your values match those in the image.
+<img alt="Channel 1 setup image" src="./images/small-speed_sound_1.png"/></li>
+<li>Press the Auto button (figure 1 - 6 ) You should now see the output from the signal generator, which should be a nice steady sine wave. </li>
+<li>My signal generator was not giving me a very clean waveform, especially when it was connected to a speaker. (Depending on your equipment you may be able to omit this step). I setup the scope to average the waveforms. You can do this by pressing the Aquire button (figure 1 - 4) and setting up the like the image below. You can experiment with the number of averages. </li>
+<li>You can get the scope to measure this frequency of this waveform by pressing the button on the left of the screen (figure 1 - 1). You should see this measurement displayed at the bottom of the screen and it should correspond closely with the frequency you set on the signal generator. 
+<img alt="Channel 1 setup image" src="./images/small-speed_sound_2.png"/></li>
+<li>Now we need to setup channel 2. Press the button to turn on channel 2 (figure 1 - 12). Turn the switch on the probe to 1X and setup the right hand menu like the image below.<br/>
+<img alt="Channel 1 setup image" src="./images/small-speed_sound_3.png"/><br/>
+Pay special attention to make sure the channel is set to AC coupling. You will probably need to set the vertical voltage range by turning the dial (figure 1 - 15, figure 2 - bottom). You will probably also need to set up averaging like the previous step. You should now see both traces like the image above.   </li>
+<li>We now need to adjust the position of the waveforms in the vertical direction so that the bottom of one waveform just touches the top of the other waveform. You can do this by selecting the channel you want by pressing the button next to the channel number (figure 1 - 12) then turning the dial (figure 1 - 15, figure 2 - top). </li>
+</ol>
+<p><strong>Step 5</strong> <br/>
+Move the microphone and or speaker away from each other until the trough of one waveform touches the peak of the other waveform. Your screen should look something like the image below. Record the position of the microphone and speaker.
+<img alt="Channel 1 setup image" src="./images/small-speed_sound_4.png"/> </p>
+<p><strong>Step 6</strong> <br/>
+Move the microphone and or speaker away from each other until and watch the screen, you should be able to match the trough of one wave to the next peak of the other wave. Record the positions of the microphone and speaker again. The difference between the position in the previous step to the position in this step should be one wavelength.</p>
+<p><strong>Step 7</strong> <br/>
+You can now calculate the speed of sound by multiplying the frequency by the wavelength. </p>
+<p>Figure 1
+<img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Figure 2</th>
+<th style="text-align: center;">Figure 3</th>
+<th style="text-align: center;">Figure 4</th>
+<th style="text-align: center;">Figure 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/></td>
+<td style="text-align: center;"><img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/></td>
+<td style="text-align: center;"><img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/></td>
+<td style="text-align: center;"><img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 6
+<img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/></p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Speed of sound.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

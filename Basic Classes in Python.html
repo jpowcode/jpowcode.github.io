@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Computing in School: An Introduction to Classes</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Basic Classes in Python.html" rel="bookmark"
+                   title="Permalink to Computing in School: An Introduction to Classes">Computing in School: An Introduction to Classes</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2024-06-11T10:20:00+01:00">
+                Tue 11 June 2024
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2>Computing in Schools: The Basics of OOP</h2>
+<p>In this post I will build up a collection of classes and objects using simple concepts of shape that all pupils should be familiar with. For example we will start with a shape class and build up triangles and quadriallterals classes that will inhert from the shape class, then a square class etc. </p>
+<h3>1. Create a class called Shape</h3>
+<p>We create a basic root class called Shape. We give it a constructor method. In python this is the <code>__init__()</code> method. The constructor to define the number of sides the shape has. The constructor method should take as input an integer to specify the number of sides it has. This should then be declared as an attribute within the method. We will also declare a name attribute within the constructor </p>
+<pre><code>class Shape:
+    def __init__(self, given_num_sides):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+</code></pre>
+<p>Note that I am going to use a naming convention whereby all variable names passed into a function will be prefixed with the word "given". For example <code>given_num_sides</code> is passed to the constructor so it can create the attribute <code>num_sides</code>. In practice I would probably just use the same name for both, but the exam mark schemes seem to prefer different names.</p>
+<h3>2. Create a Triangle class</h3>
+<p>The Triangle class should inherit from the Shape class. It needs its own constructor method. The contructor for Triangle should take as input a base and a height and declare these as attributes. The constructor should call the constructor of the class it inherits from. To do this in python we use the <code>super()</code> function. This super function needs to take as input the integer 3 which the Shape class will use to define a number of sides attribute. </p>
+<pre><code>class Triangle(Shape):
+    def __init__(self, given_base, given_height):
+        super().__init__(3)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+</code></pre>
+<h3>3. Add an area method to the Triangle class</h3>
+<p>We add a method to the Triangle class to calculate a the value of the area. Note that when using the values for the base and height within the class we need to use the <code>self</code> keyword that references the values of the object rather than the class. For example</p>
+<pre><code>class Triangle(Shape):
+    def __init__(self, given_base, given_height):
+        super().__init__(3)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+
+    def area(self):
+        return 0.5 * self.base * self.height
+</code></pre>
+<p>Note that we could have given the triangle and area attribute instead of a method like so</p>
+<pre><code>class Triangle(Shape):
+    def __init__(self, given_base, given_height):
+        super().__init__(3)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+        self.area = 0.5 * given_base * given_height
+</code></pre>
+<h3>4. Test everything works so far.</h3>
+<p>We will now instantiate (which just means create) a shape object from the Shape class and print its attributes. We will also instantiate a triangle object from the Triangle class (assuming we are using the first version of Triangle), print its attributes and call its area method. Note that even though we have not passed the number 3 as input when creating the triangle object its <code>num_sides</code> attribute will still be set to three inside the constructor.</p>
+<pre><code>shape = Shape(5)
+print(shape.name)
+print(shape.num_sides)
+
+triangle = Triangle(4, 5)
+print(triangle.name)
+print(triangle.num_sides)
+print(triangle.base)
+print(triangle.height)
+print(triangle.area())
+</code></pre>
+<h3>5. Create a Quadrillateral class</h3>
+<p>We create a Quadrillateral class that inherits from the Shape class. Everything is very similar to the Triangle class, i.e., it should have a constructor method that calls the super classes constructor with the number of sides as 4. The point of doing this is that if in future we decide that all quadrillaterals should have something in common they we only need to modify the quadrillateral class and not all the classes that inherit from it.</p>
+<pre><code>class Quadrillateral(Shape):
+    def __init__(self):
+        super().__init__(4)
+        self.name = "quadrillateral"
+</code></pre>
+<h3>6. Create a Square class</h3>
+<p>We will now create a class for a Square that should inherit from the Quadrillateral class. As usual it will need a constructor method and some attributes set. We add a list as an attribute to hold values for the angles of the square. We also add an area method.</p>
+<pre><code>class Square(Quadrillateral):
+    def __init__(self, given_length):
+        super().__init__()
+        self.angles = [90, 90, 90, 90]
+        self.length = given_length
+        self.name = "Square"
+
+    def area(self):
+        return self.length **2
+</code></pre>
+<p>At this point you might be thinking that actually all quadrillaterals have 4 angles so the Quadrillateral class should have an attribute to hold the angles. Or for that matter the Shape class should have an attribute for the angles. We will go ahead now and modify the classes to make this work. Note that angles will need to be passed through the constructor methods. This is an example of what programmers call refactoring, i.e., changing the structure of their programme without changing its functionality. This could be to make it more readable or maintainable for example. The new classes now look like this</p>
+<pre><code>class Shape:
+    def __init__(self, given_num_sides, given_angles):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+        self.angles = given_angles
+
+class Triangle(Shape):
+    def __init__(self, given_base, given_height, angles):
+        super().__init__(3, angles)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+
+    def area(self):
+        return 0.5 * self.base * self.height
+
+class Quadrillateral(Shape):
+    def __init__(self, given_angles):
+        super().__init__(4, given_angles)
+        self.name = "quadriallateral"
+
+class Square(Quadrillateral):
+    def __init__(self, given_length):
+        super().__init__([90, 90, 90, 90])
+        self.length = given_length
+        self.name = "Square"
+</code></pre>
+<h3>7 Test some more</h3>
+<p>Now that the classes have been refactored we will test them all to make sure they work</p>
+<pre><code>shape = Shape(5, [30, 40, 50, 60, 70])
+print(shape.name)
+print(shape.num_sides)
+print(shape.angles)
+
+triangle = Triangle(4, 5, [30, 60, 90])
+print(triangle.name)
+print(triangle.num_sides)
+print(triangle.base)
+print(triangle.height)
+print(triangle.area())
+
+square = Square(4)
+print(square.name)
+print(square.num_sides)
+print(square.length)
+print(square.area())
+</code></pre>
+<h3>8. Validation</h3>
+<p>You might have noticed that it is possible to define shapes that have angles that are not consistent. For example, there is nothing to stop us defining a triangle with angles of 10, 20 and 30. We will add a validation method to the shape class that will raise an error if the sum of the angles are not consistent with the number of sides of the shape. We also check to make sure the shape has at least 3 sides. We have included this in the Shape class so that all inherited classes will gain this method. The validator method is called within the constructor for the shape class. You might be able to think of other validations that need to be made to make sure only consistent shapes are created.</p>
+<pre><code>class Shape:
+    def __init__(self, given_num_sides, given_angles):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+        self.angles = given_angles
+        self.angle_sum = (self.num_sides - 2) * 180
+        self.validator()
+
+    def validator(self):
+        if sum(self.angles) != self.angle_sum:
+        raise ValueError("Angles must sum to "+str(self.angle_sum))
+        if self.num_sides &lt; 3:  
+        raise ValueError("The shape must have at least 3 sides")
+        if self.num_sides != len(self.angles):
+        raise ValueError("The number of sides must be the same as the number of angles")
+</code></pre>
+<h3>9. Encapsulation</h3>
+<p>We will add a private attribute to the Shape class. In python we doo this by adding a double underscore infront of the name. This attribute will only be able to be modified or accessed by methods within the class itself. The follwoing code should result in an error as we have tried to access a private attribute</p>
+<pre><code>class Shape:
+    def __init__(self, n, angles):
+        self.__secret = "You can't see me"
+
+    shape = Shape(3, [30, 60, 90])
+    shape.__secret
+</code></pre>
+<p>This is called encapsulation. The secret attitribute is encapsualted with the class. We can however allow access to this attribute from outside the class by writting what are called getter and setter methods. Getter's get the value of attribute and setter's change the value of the attribute. This makes it more unlikelikly that this attribute will be accessed or changed by accident (although not impossible). The Shape class now looks like</p>
+<pre><code>class Shape:
+    def __init__(self, given_num_sides, given_angles):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+        self.angles = given_angles
+        self.angle_sum = (self.num_sides - 2) * 180
+        self.validator()
+        self.__secret = "You can't see me"
+
+    def get_secret(self):
+        return self.__secret
+
+    def set_secret(self, given_secret):
+        self.__secret = given_secret
+
+    def validator(self):
+        if sum(self.angles) != self.angle_sum:
+        raise ValueError("Angles must sum to "+str(self.angle_sum))
+        if self.num_sides &lt; 3:  
+        raise ValueError("The shape must have at least 3 sides")
+        if self.num_sides != len(self.angles):
+        raise ValueError("The number of sides must be the same as the number of angles")
+</code></pre>
+<h3>10. Create a Tracker class</h3>
+<p>We will now create a class called Tracker thats purpose is to keep track of all the objects we create. This class will not inherit from Shape as it has nothing in common with it. Its constructor method will create an attribute called <code>created_objects</code> that will be an empy list and used for storing the shape objects we create. We will make it private by adding the double underscore as we don't want it to be accidentally changed. We add a setter method called add that will add an object to the list and a getter method called summarise that will print out the details of the objects. Note that neither the getter or settr methods access the <code>created_objects</code> attribute in its raw form. </p>
+<pre><code>class Tracker:
+    def __init__(self):
+        self.__created_objects = []
+
+    def add(self, obj):
+        if obj not in self.__created_objects:
+        self.__created_objects.append(obj)
+
+    def summarise(self):
+        for obj in self.__created_objects:
+        print(obj.name, obj.num_sides)
+</code></pre>
+<p>We now test it by instantiating an instance of the Triangle and Square classes then instantiating an instance of the Tracker class then calling the add method to add the triangle and square objects to the tracker object. We then call the summarise method to list the details of the stored objects.</p>
+<pre><code>triangle = Triangle(3, 4, [30, 60, 90])
+square = Square(4)
+tracker = Tracker()
+tracker.add(triangle)
+tracker.add(square)
+tracker.summarise()
+</code></pre>
+<p>More functionality could be added to the summarise method such as prettier printing with column titles for example and/or more details about the shapes.</p>
+<h3>11. Polymorphism</h3>
+<p>Let's say we would like to write a method that prints out all of the attributes of an object. For the shape class this might look something like</p>
+<pre><code>def print_all(self):
+    print("This shape has " + str(self.num_sides))
+    print("The angles of the shape are " ,self.angles)
+    print("The sum of the angles is " + str(self.angle_sum))
+</code></pre>
+<p>All classess that inherit from Shape will gain this method. However, subclasses of Shape may need to print out additional information. The Triangle class for example may need to print out its base and height. We will need to rewrite the print_all method for the Triangle class. This is an example of method overiding. The <code>print_all</code> method in the Triangle class "overirdes" the inherited version of the <code>print_all</code> method it got from the Shape class. This is an example of how the <code>print_all</code> method could be implemented in the Triangle class </p>
+<pre><code>def print_all(self):
+    super.print_all()
+    print("The triangle has a height of " + str(self.height))
+    print(" The triangle has a base of " + str(self.base))
+</code></pre>
+<p>Note we have made a call to the <code>print_all</code> function in the super class to avoid repeating code.</p>
+<h3>12. Further suggestions</h3>
+<p>This activity could be taken much further. We could implement methods to draw the shapes. methods to calculate other aspects of the shapes etc. Please comment below if you have any good suggestions. I am constantly modifying this every time I use it with pupils. If your have any suggestions then please post in the comments below.</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Basic Classes in Python.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

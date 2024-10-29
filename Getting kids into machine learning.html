@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Computing in School: ML for Kids</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Getting kids into machine learning.html" rel="bookmark"
+                   title="Permalink to Computing in School: ML for Kids">Computing in School: ML for Kids</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2021-01-24T10:20:00+00:00">
+                Sun 24 January 2021
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>The term "machine learning" gets bandied around in the press all the time these days. How many pupils when they come across this term understand what it means? How is it exactly that a machine "learns"? The website <a href="https://machinelearningforkids.co.uk/">machine learning for kids MLFK</a> goes some way to helping with the problem of educating pupils on the process of machine learning. What it doesn't do is look into the black box of the machine learning algorithm. For this you'd need a lot more maths. I've currently used this website with A-level pupils (aged 16-18) and GCSE pupils (aged 14-16). I'm going to describe my experience here to give you an idea about whether or not you want to give it a go.</p>
+<p>The first thing to do is set up a teacher account. This involves setting up a free account on IBM's Watson Cloud Compute service and connecting it to the MLFK website. With the excellent step by step instructions provided I found this pretty straight forward. Then you set up some accounts for the pupils to use. Now the free account on IMB Watson only allows you so many accounts to train models simultaneously. For example, for simple text based models you get 5 simultaneous accounts. However, what the website does allow you to do is set up group collaborative projects. So a few pupils or indeed a whole class can contribute to the same project. Whole class projects were the way I used the website.</p>
+<p>The first project I tried was a text based model. I set up two categories labeled "nice comments" and "nasty comments" and I encouraged the pupils to submit comments to each category. They were informed that comments were not allowed to be personal and they should be school appropriate. I monitored the submitted comments and deleted anything that didn't meet these expectations. They were pretty sensible, but quite creative in making comments with words I had never heard before! A bit of Googling followed to make sure they were appropriate! After we had a around 50 or so comments in each category we sent the model off to be "trained" by IBM Watson. And this is where it feels a little bit of a black box. There is no indication given about how the model is trained. That aside for the moment, it generally doesn't take very long to train a text based model. When finished a text box appears where pupils can enter different nice and nasty comments and the model will return which category it fits into and  what it's  percentage confidence is.  My challenge to the pupils was to fool the model. Could they make it categorise a nice comment as a nasty one. Once they'd achieved this we talked about what examples fooled the model and how that might have happened. We then went back to the training examples and added more in that would attempt to fix the incorrect classifications. This gave pupils a good overview of the process involved in training a model. What it didn't do was give any insight into the black box. The website does acknowledge this and provides a section dedicated to resources for teaching the internals of the models.</p>
+<p>The second project we tackled was an image classifier. I gave the pupils the categories "cat" and "dog". They went away and found images online for as many different cats and dogs as they could find. Then we repeated the same process as above, uploading the photos to the website. This took a bit longer to train so it's worth having something else to do whilst it completes. There are some interesting experiments to try with this project. For example if you fill the dog category with pictures that have sky in them and the cat category with pictures that are taken at night will the model focus on the content of the image or will the background dominate? I also tried getting the pupils to sketch pictures of dogs and cats. The website includes a function for this. It worked surprisingly well.</p>
+<p>The third project I tried was using a webcam to take pictures of the pupils faces and train a model to recognise them. This was a bit more limited in how accurate it was, but it started a discussion about the size and variation of the data set. We probably needed to upload a lot more photos of the pupils.</p>
+<p>I had a discussion recently with a computer scientist friend of mine about the pedagogical nature of how computer science should be taught. He was of the opinion that things should be taught from the bottom up. For example, starting with the basic algorithms and building on them gradually. However, I feel that pupils often lack motivation if they cannot see an application to what they are learning and I postulated that a top down approach was an alternative. Starting with the MLFK website pupils can get a feel for how ML works. The next step down could be a description of how a some aspects of text classifier work. I think pupils could get there heads around the concepts of <a href="https://studymachinelearning.com/stemming-and-lemmatization/">stemming</a> and <a href="https://studymachinelearning.com/stemming-and-lemmatization/">n-grams</a>. One further level down would be studying a particular algorithm in detail and coding it up. I haven't tried this yet with pupils but I will let you know when I do.</p>
+<p>In conclusion I would thoroughly recommend giving MLFK a go. It's great fun and gives pupils a fantastic insight into real world applications of computer science. </p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Getting kids into machine learning.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

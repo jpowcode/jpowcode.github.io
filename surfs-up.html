@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Surfs Up</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/surfs-up.html" rel="bookmark"
+                   title="Permalink to Surfs Up">Surfs Up</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-11-12T22:24:00+00:00">
+                Sun 12 November 2017
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I've just started learning how to surf. Using the website
+<a class="reference external" href="http://magicseaweed.com">Magic Seaweed</a>
+to look at conditions of the waves is vital to having a good time. My
+local beach break varies in conditions from pan flat to monster killer
+waves with ripping tidal flows. Now I'm too lazy to look at the website
+every day so I've written a script that lives on my server and scrapes
+information from <a class="reference external" href="http://magicseaweed.com">Magic Seaweed</a> and also
+<a class="reference external" href="https://www.tidetimes.org.uk">tidetimes.org</a> For tidal information.
+If a few conditions are met that make the surf ideal for me then the
+script sends me an email. Here is a walk through of the code</p>
+<p>First the required imports.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docs.python-requests.org/en/master/">requests</a> deals with making http requests to websites and returning the information in a useable format.</li>
+<li><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/">beautiful soup</a> deals with scraping the html on a page and searching for tags.</li>
+<li><a class="reference external" href="https://docs.python.org/2/library/datetime.html">datetime</a> and <a class="reference external" href="https://docs.python.org/2/library/time.html">time</a> for finding the time and date!</li>
+<li><a class="reference external" href="https://docs.python.org/2/library/smtplib.html">smtplib</a> for sending an email.</li>
+</ul>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_imports"></script>
+<noscript>
+<pre><code>import requests
+import bs4
+import time
+import datetime
+import smtplib</code></pre>
+</noscript>
+</div>
+<p>Now define the urls for magic seaweed and tidetimes.org splitting them into a
+root address and a sub address in case changes are needed in future.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_urls"></script>
+<noscript>
+<pre><code>msw_root_url = 'http://magicseaweed.com'
+msw_index_url = msw_root_url + '/Tynemouth-Longsands-Surf-Report/26/'
+
+tt_root_url = 'https://www.tidetimes.org.uk'
+tt_index_url = tt_root_url + '/river-tyne-north-shields-tide-times'</code></pre>
+</noscript>
+</div>
+<p>The email_alert function uses a Google api to send an email from an address
+I keep especially for automated alerts. This method avoids having to set up
+something like <a class="reference external" href="https://linux.die.net/man/8/sendmail.sendmail">sendmail</a>
+on my server. More details can be found in this
+<a class="reference external" href="https://jpowcode.github.io/send-email-without-a-server.html">post</a></p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_email"></script>
+<noscript>
+<pre><code>def email_alert(message, address):
+        fromaddr = 'email_address_here'
+        username = 'username_here'
+        password = 'password_here'
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(username, password)
+        server.sendmail(fromaddr, address, message)
+        server.quit()</code></pre>
+</noscript>
+</div>
+<p>A small function that takes a url as input, gives it to requests to get the
+page and feeds this to beautiful soup to parse. This is then returned from the
+function.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_get_page"></script>
+<noscript>
+<pre><code>def get_page(url):
+    response = requests.get(url, verify=False)
+    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    return soup</code></pre>
+</noscript>
+</div>
+<p>During the week I can only surf during the evenings so the next two functions
+are needed.</p>
+<p>A small function to find what day it is tomorrow.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_get_day"></script>
+<noscript>
+<pre><code>def get_day_tomorrow():
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+    return tomorrow.strftime("%A")</code></pre>
+</noscript>
+</div>
+<p>A small function that returns true if it its input is a weekday.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_weekday"></script>
+<noscript>
+<pre><code>def is_weekday(day):
+    weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    if day in weekdays:
+        return True
+    return False</code></pre>
+</noscript>
+</div>
+<p>I now had to inspect the html of the websites to find the particular tags that
+contained the information I needed. For example, the time for low tide
+is found between the ".tag &gt; span" tags.</p>
+<p>This function returns the low tide times from the tidetimes.org website.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_tide"></script>
+<noscript>
+<pre><code>def get_low_tide(soup):
+    elems = soup.select('.tac &gt; span')
+    low1 = elems[0].getText().split(':')[0]
+    low2 = elems[2].getText().split(':')[0]
+    return int(low1), int(low2)</code></pre>
+</noscript>
+</div>
+<p>This function returns the wind speed at 3 hourly intervals throughout the day
+from magic seaweed.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_wind"></script>
+<noscript>
+<pre><code>def get_wind(soup):
+    elems = soup.select('span.msw-fc-wg')
+    nums = [str(elems[i].getText()) for i in range(len(elems)-1)]
+    nums_tomorrow = nums[8:16]
+    nums_wind = [float(item.split('mph')[0].strip()) for item in nums_tomorrow]
+    return nums_wind</code></pre>
+</noscript>
+</div>
+<p>This function returns the size of the waves from magic seaweed.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_waves"></script>
+<noscript>
+<pre><code>def get_waves(soup):
+    elems = soup.select('span.h4.nomargin')
+    nums = [str(elems[i].getText()) for i in range(len(elems)-1)]
+    nums_tomorrow = nums[16:32]
+    
+    nums_height = [float(item.split('ft')[0].strip())
+                   for item in nums_tomorrow[::2]]
+
+    nums_space = [float(item.split('s')[0].strip())
+                  for item in nums_tomorrow[1:][::2]]
+
+    return nums_height, nums_space</code></pre>
+</noscript>
+</div>
+<p>Now call the functions defined above to find the information we need.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_info"></script>
+<noscript>
+<pre><code>msw_html_text = get_page(msw_index_url)
+tt_html_text = get_page(tt_index_url)
+
+tomorrow = get_day_tomorrow()
+wave_heights = get_waves(msw_html_text)[0]
+wave_periods = get_waves(msw_html_text)[1]
+low_tide = get_low_tide(tt_html_text)
+wind = get_wind(msw_html_text)</code></pre>
+</noscript>
+</div>
+<p>If it's a weekday look to see if low tide is around 11-1. This means
+the tide will be ideal by the time I get there. The check if the waves
+are between 2-4 feet and the wind is less than 15 mph. If all these
+conditions are true then return true. If it's not a weekday then the surf conditions could be good at any
+time during the day and we have to check these conditions separately.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_if"></script>
+<noscript>
+<pre><code>if is_weekday(tomorrow):
+    good_tide = low_tide[0] in [11, 12, 1] or low_tide[1] in [11, 12, 1]
+    good_waves = 2 &lt;= wave_heights[5] &lt;= 4
+    good_wind = wind[5] &lt;= 15
+    good_surf = good_waves and good_wind and good_tide
+
+else:
+    if low_tide[0] in [3, 4, 5] or low_tide[1] in [3, 4, 5]:
+        good_waves = 2 &lt;= wave_heights[3] &lt;= 4
+        good_wind = wind[3] &lt;= 15
+        good_surf = good_waves and good_wind
+
+    if low_tide[0] in [6, 7, 8] or low_tide[1] in [6, 7, 8]:
+        good_waves = 2 &lt;= wave_heights[4] &lt;= 4
+        good_wind = wind[4] &lt;= 15
+        good_surf = good_waves and good_wind
+
+    if low_tide[0] in [9, 10, 11] or low_tide[1] in [9, 10, 11]:
+        good_waves = 2 &lt;= wave_heights[5] &lt;= 4
+        good_wind = wind[5] &lt;= 15
+        good_surf = good_waves and good_wind
+
+    if low_tide[0] in [12, 1, 2] or low_tide[1] in [12, 1, 2]:
+        good_waves = 2 &lt;= wave_heights[6] &lt;= 4
+        good_wind = wind[6] &lt;= 15
+        good_surf = good_waves and good_wind</code></pre>
+</noscript>
+</div>
+<p>Send the email message.</p>
+<div class="gist">
+<script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_message"></script>
+<noscript>
+<pre><code>emails = ['address_to_send_to_here']
+if good_surf:
+    message = 'surfs up!'
+    email_alert(message, emails)
+
+else:
+    message = 'no surf today'
+    email_alert(message, emails)
+</code></pre>
+</noscript>
+</div>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "surfs-up.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

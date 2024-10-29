@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Linux</title><link href="/" rel="alternate"></link><link href="/feeds/linux.atom.xml" rel="self"></link><id>/</id><updated>2021-02-12T10:20:00+00:00</updated><entry><title>Customising Mouse Buttons in Linux</title><link href="/Customising%20extra%20mouse%20buttons%20in%20Linux.html" rel="alternate"></link><published>2021-02-12T10:20:00+00:00</published><updated>2021-02-12T10:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2021-02-12:/Customising extra mouse buttons in Linux.html</id><summary type="html">&lt;p&gt;Using xbindkeys to remap mouse buttons to run a bash script&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I recently bought a 4K monitor, which is great, but one of the things I noticed that annoys me was that when moving the mouse from one side of the screen to the other I have to pick it up and reset it. Once across the mouse matt is not enough to get the cursor from on side to the other. This is the case even with the acceleration of the mouse set to it's highest value.  I've eased this issue by binding a script to three of the extra mouse buttons that repositions the cursor to the top left, middle or top right depending on the button pressed. I'll outline the process below &lt;/p&gt;
+&lt;p&gt;Run the following command in the terminal&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xev -event mouse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Click on the area that appears with the buttons you want to use and pay attention to the output in the terminal. All you need is the number of each button you want to use.&lt;/p&gt;
+&lt;p&gt;Install xbindkeys and xdotool (on debian based systems that would be)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install xbindkeys
+sudo apt-get install xdotool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create a file in your home directory (the dot is important)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;touch .xbindkeysrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Edit this file with the bash commands you want to run using the example below as a guide. It does the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;moves the mouspointer to the point (200, 200) from the top left of the screen when I press my button 6.&lt;/li&gt;
+&lt;li&gt;moves the mouspointer to the point (3600, 200) from the top left of the screen, which is the top right of the screen on a 4K monitor, when I press my button 7.&lt;/li&gt;
+&lt;li&gt;moves the mouspointer to the point (1900, 200) from the top left of the screen, which is the middle of the screen, when I press my button 2.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Button 6, 7 and 2 correspond to the scroll wheel on my mouse which can be pushed down and to either side.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;"xdotool mousemove 200 200"
+        m:0x0 + b:6
+
+"xdotool mousemove 3600 200"
+        m:0x0 + b:7
+
+"xdotool mousemove 1900 200"
+        m:0x0 + b:2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run the following to kill any existing xbindkeys process running and restart it. Test it to make sure it works.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pkill -f xbindkeys
+xbindkeys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You now need to make sure it runs on startup. Every distro is going to be slightly different so you may need to Google it. However, on Mint when you install xbindkeys it is automatically configured to run on startup&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Linux"></category><category term="Linux"></category></entry><entry><title>Timing a Linux Server to Suspend and Restart</title><link href="/timing-a-linux-server-to-suspend-and-restart.html" rel="alternate"></link><published>2015-04-22T21:42:00+01:00</published><updated>2015-04-22T21:42:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-04-22:/timing-a-linux-server-to-suspend-and-restart.html</id><summary type="html">&lt;p class="first last"&gt;Using rtc wake to enable a server to restart itself.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I run a Ubuntu Linux sever at home for various tasks such as serving out
+media, backing up files and acting as a personal cloud. I don't need it
+on all the time, but I don't want to be bothered turning in on and off.
+A simple fix for this is to make use of the commands rtcwake and
+crontab. The steps for doing this are as follows:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;cron is a service that can be used to schedule events. To run it, in
+a terminal type &lt;em&gt;sudo crontab -e&lt;/em&gt;. It is important to run this using
+sudo as the rtcwake command needs to be run with root privileges. You
+will have a crontab file for each user on your machine, but only the
+one for root will work.&lt;/li&gt;
+&lt;li&gt;Enter the following line at the bottom of the file:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="m"&gt;00&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;23&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;***&lt;span class="w"&gt; &lt;/span&gt;/usr/sbin/rtcwake&lt;span class="w"&gt; &lt;/span&gt;-m&lt;span class="w"&gt; &lt;/span&gt;mem&lt;span class="w"&gt; &lt;/span&gt;-s&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;64800&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There are a few things to explain here:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The first two digits represent the minutes past the hour, and the
+second two are the hour that my command will run.&lt;/li&gt;
+&lt;li&gt;The three stars are in place of day, week and month, so my command
+will run every day at 23:00.&lt;/li&gt;
+&lt;li&gt;It is import to include the full path to the rtcwake command. Check
+with the command &lt;em&gt;which rtcwake&lt;/em&gt; that yours is in the same place.&lt;/li&gt;
+&lt;li&gt;The -m mem part tells the rtcwake command to suspend everything and
+save it to RAM. It is also possible to save to disk, but I didn't
+have much success with this.&lt;/li&gt;
+&lt;li&gt;the -s 64800 tells the rtcwake command to restart the machine after
+64800 seconds or 18 hours which is 17:00.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So now my server will shut itself down at 11pm at night and restart at
+5pm every afternoon.&lt;/p&gt;
+&lt;p&gt;When I explained this to my wife she instantly asked what if you're
+doing something with the server at 11pm will you loose it all. So there
+is an interesting question: how could I write a script to check if
+something important was happening and suspend the shutdown?&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Linux"></category><category term="Linux"></category><category term="Server"></category><category term="Ubuntu"></category></entry><entry><title>Linux Mint Graphics Driver Issue</title><link href="/linux-mint-graphics-driver-issue.html" rel="alternate"></link><published>2015-01-28T23:10:00+00:00</published><updated>2015-01-28T23:10:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-28:/linux-mint-graphics-driver-issue.html</id><summary type="html">&lt;p class="first last"&gt;Some isues with graphics drivers on Linux Mint and a fix.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I just installed Linux Mint 17 Cinamon on my PC. All went well until a
+few minutes after rebooting the screen went all wierd! I don't really
+know how else to describe it, funny squares all over the place. It seems
+to be a driver issue with the Nvidia Cards possibly linked to having a
+dual monitor setup. I'm running a GTX 660. A simple fix seems to be to
+disconnect one monitor restart the machine and change drivers. I opened
+the Driver Manager from the Administration menu and changed my driver to
+nvidia-331. No problems since then.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Linux"></category><category term="graphics driver"></category><category term="Linux"></category><category term="Mint"></category><category term="Ubuntu"></category></entry></feed>

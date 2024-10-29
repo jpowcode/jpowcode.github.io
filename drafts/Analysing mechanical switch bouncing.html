@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/images.css" type="text/css" />
+
+
+        <title>Explorations with a Rigol DS1054Z Oscilloscope Part 6 - switch debouncing.</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/drafts/Analysing mechanical switch bouncing.html" rel="bookmark"
+                   title="Permalink to Explorations with a Rigol DS1054Z Oscilloscope Part 6 - switch debouncing.">Explorations with a Rigol DS1054Z Oscilloscope Part 6 - switch debouncing.</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2020-05-22T10:20:00+01:00">
+                Fri 22 May 2020
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I’m going to investigate here the phenomena of mechanical switch bouncing with the Rigol scope and a few methods to fix it. If you haven’t come across the concept before, the idea is that as a mechanical switch closes the spring causes the contacts to vibrate a bit before remaining stationary so rather than the switch going from an off to an on state it alternates between a few on off states in between. This is a problem if your switch is being used to control some digital logic. You might get unexpected results if the switch triggers several on off states. What I’m going to do here is look at several different switches being turned on to see how bad the problem is and whether there is any variation between the switches and then look at two different methods for fixing it. I won’t go into a huge amount of detail about the theory here as it has been covered many times. An excellent Blog post can be found <a href="https://hackaday.com/2015/12/09/embed-with-elliot-debounce-your-noisy-buttons-part-i/">here</a>
+My main focus is the use of the Rigol scope. As in other posts in this series I will be referring to the reference figures at the bottom of this post when describing scope features. </p>
+<p>I found a variety of switches in my bits box. Some antique that are probably decades old and a few more modern.
+<img alt="Switches image" src="./images/small-switches.jpg#small" /> <br />
+I followed these steps on the scope: <br />
+<strong>Step 1</strong> Form the circuit <br />
+<strong>Step 2</strong> Setup the scope to trigger <br />
+<strong>Step 3</strong> Compare the results of switches <br />
+<strong>Step 4</strong> Apply debounce method 1 <br />
+<strong>Step 5</strong> Apply debounce method 2   </p>
+<p>Now in more detail</p>
+<p><strong>Step 1</strong> <br />
+1. Put a resistor in series with a switch and connect either side of the circuit to a power supply. Make sure the resistor is rated to a couple of watts and that the wire you use is not too thin. It’s not a big deal as the switch is going to be turned on and off fairly quickly, but in case the switch is accidentally left on we don’t want anything to melt. We could check everything mathematically at this point. Lets say we are using a $100 \Omega$ resistor and a 5V supply. Given $V=IR$ we are going to get a current of $\frac{5}{100}= \frac{1}{20}A$ The power generated is given by $P=IV$ and so we will get $\frac{1}{20}\times5 = \frac{1}{4}W$. This shouldn’t cause any problems. 
+2. Connect the scope probe to either side of the resistor. Make sure the ground (small crocodile clip on the probe) is connected to the negative side of the resistor.. </p>
+<p><strong>Step 2</strong> <br />
+The time frame over which the switch will bounce is going to be too small to observe in real time, we will need to use the trigger function.
+1. Press the channel button (figure 1 - 12) and set the options the same as in the image below. <br />
+2. Press the menu button in the trigger section (figure 1 - 17, figure 5) and set the options the same as the image below <br />
+3. Set the trigger to a value of a few hundred millivolts. It shouldn’t matter too much. You can see the value of the trigger on the right hand side of the screen (figure 6 - 11 ). Adjust it by turning the dial (figure 1 - 17, figure 5) <br />
+4. Set the horizontal scale to per division (figure 1 - 16, figure 4 bottom). Set the vertical scale to 1V per division (figure 1 - 15, figure 2 bottom) <br />
+5. Make sure your switch is off and press the single button (figure 1 - 8). There should now be nothing on the screen and the scope should display "Wait" in the top left. It is now waiting for a trigger signal.  <br />
+6. Flick the switch on and then off again. We should see a trace on the screen. Each switch is different so you may need to fiddle with the time scale and rerun the experiment until you are happy with the result.    </p>
+<p><strong>Step 3</strong> <br />
+I ran the experiment twice for each of the switches in the image above. The third image shows the cursors turned on so you can see the time it takes for the switch to settle. Here are the results. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Switch 1_1" src="./images/small-switch1_1.png" /></td>
+<td style="text-align: center;"><img alt="Switch 1_2" src="./images/small-switch1_2.png" /></td>
+<td style="text-align: center;"><img alt="Switch 1_3" src="./images/small-switch1_3.png" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><img alt="Switch 2_1" src="./images/small-switch2_1.png" /></td>
+<td style="text-align: center;"><img alt="Switch 2_3" src="./images/small-switch2_2.png" /></td>
+<td style="text-align: center;"><img alt="Switch 2_3" src="./images/small-switch2_3.png" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><img alt="Switch 3_1" src="./images/small-switch3_1.png" /></td>
+<td style="text-align: center;"><img alt="Switch 3_2" src="./images/small-switch3_2.png" /></td>
+<td style="text-align: center;"><img alt="Switch 3_3" src="./images/small-switch3_3.png" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><img alt="Switch 4_1" src="./images/small-switch4_1.png" /></td>
+<td style="text-align: center;"><img alt="Switch 4_2" src="./images/small-switch4_2.png" /></td>
+<td style="text-align: center;"><img alt="Switch 4_3" src="./images/small-switch4_3.png" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><img alt="Switch 5_1" src="./images/small-switch5_1.png" /></td>
+<td style="text-align: center;"><img alt="Switch 5_2" src="./images/small-switch5_2.png" /></td>
+<td style="text-align: center;"><img alt="Switch 5_3" src="./images/small-switch5_3.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 1
+<img alt="Rigol controls image" src="./images/small-Rigolfigure1.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Figure 2</th>
+<th style="text-align: center;">Figure 3</th>
+<th style="text-align: center;">Figure 4</th>
+<th style="text-align: center;">Figure 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Controls 2 image" src="./images/small-Rigolfigure2.png" /></td>
+<td style="text-align: center;"><img alt="Controls 3 image" src="./images/small-Rigolfigure3.png" /></td>
+<td style="text-align: center;"><img alt="Controls 4 image" src="./images/small-Rigolfigure4.png" /></td>
+<td style="text-align: center;"><img alt="Controls 5 image" src="./images/small-Rigolfigure5.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 6
+<img alt="Rigol screen image" src="./images/small-Rigolfigure6.png" /></p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "drafts/Analysing mechanical switch bouncing.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

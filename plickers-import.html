@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Plickers Import</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/plickers-import.html" rel="bookmark"
+                   title="Permalink to Plickers Import">Plickers Import</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-10-30T21:16:00+00:00">
+                Mon 30 October 2017
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p><a class="reference external" href="https://www.plickers.com">Plickers</a> is a website designed for obtaining feedback from pupils in a classroom environment. The basic process is as follows</p>
+<ol class="arabic simple">
+<li>The teacher sets up multiple choice questions (typically with 4 answers) on the Plickers website to gauge whether or not pupils understand a certain concept.</li>
+<li>The teacher sets up a mobile device with the plickers app.</li>
+<li>Pupils are all given an individual QR code like thing in the shape of a square  which they can hold up in any one of four orientations to answer the question presented to them on a classroom projector.</li>
+<li>The teacher then scans the room with the camera on the mobile device. The app recognises in which orientation each pupil is holding their QR code like thing and stores the data.</li>
+<li>The teacher can then use this information to plan their next teaching steps. For example they could chose to change the seating in the next lesson to put pupils who understand together with those that don't.</li>
+</ol>
+<p>One of the main drawbacks that this website has is that it can't import questions from an outside source or export questions to an outside source. This makes it nigh on impossible for teams of teachers to share questions. To help with this I have written a Python script that can read questions from a CSV file and simulate the necessary mouse clicks to import them into the website. This allows teachers to collaborate by sharing their CSV files and importing each other's into their own Plickers accounts. To run the script you will need to follow these steps. The steps are written for a Ubuntu style operating system. If you are running Windows first follow the extra steps below and then return to this poiint.</p>
+<ol class="arabic simple">
+<li>Download the repository from my GitHub page <a class="reference external" href="https://github.com/jpowcode/plickers_import">here</a>. For windows users use the directory C:\cycwin64\home\"user_name"\plickers_import</li>
+<li>Setup a virtual environment for Python, activate it and install dependencies</li>
+</ol>
+<div class="gist">
+<script src="https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=plickers"></script>
+<noscript>
+<pre><code>virtualenv plickers_import
+cd plickers_import
+source bin/activate
+pip install selenium</code></pre>
+</noscript>
+</div>
+<ol class="arabic simple" start="3">
+<li>Put your Plickers username and password into the first two lines of the file login-details.txt Please make sure your password is not the same as for any other websites you use as it will be stored here in plain text which is not very secure.</li>
+<li>Write you questions into the CSV file in the example format given in the downloaded file.<ul>
+<li>Column A is the text for the question.</li>
+<li>Column B should be an M for a multiple choice question and T for a True/False question</li>
+<li>Column C contains the correct answer A, B, C or D for multiple choice or T or F for a True/False question</li>
+<li>Columns D, E, F and G contain the answers for the questions</li>
+</ul>
+</li>
+<li>Run the script</li>
+</ol>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>plickers_import.py
+</pre></div>
+<p><strong>Extra steps for windows users</strong></p>
+<p>1. Dowload and install <a class="reference external" href="https://www.cygwin.com/">Cygwin</a> During the install
+proceedure make sure to click on the word 'Default' next to Python. See the
+image below.</p>
+<p><a class="reference external image-reference" href="/images/small-plickers.jpg"><img alt="small-plickers" class="aligncenter wp-image-203" src="/images/small-plickers.jpg" style="width: 240px; height: 135px;"/></a></p>
+<ol class="arabic simple" start="2">
+<li>Download and install <a class="reference external" href="https://www.mozilla.org/en-US/firefox/new">Firefox</a>.</li>
+<li>Download <a class="reference external" href="https://github.com/mozilla/geckodriver/releases">Gecko Drivers</a> , unzip the file and put it in C:\cycwin64\home\"user_name"\plickers_import\Scripts</li>
+<li>Start Cygwin and run these commands</li>
+</ol>
+<div class="gist">
+<script src="https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=cygwin"></script>
+<noscript>
+<pre><code>easy_install pip
+easy_install virtualenv</code></pre>
+</noscript>
+</div>
+<ol class="arabic simple" start="5">
+<li>Now follow the steps above</li>
+</ol>
+<p><strong>Explanation of the code</strong></p>
+<p>First make the relevent imports. We will be using the Python <a class="reference external" href="https://pypi.python.org/pypi/selenium">selenium</a>
+libaray that can simulate mouse clicks on a webpage.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_import"></script>
+<noscript>
+<pre><code>import time
+import csv
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException</code></pre>
+</noscript>
+</div>
+<p>Next we initialise a driver instance to the Firefox browser. We add the  WebDriverWait function as an attribute to the driver so it can
+be accessed more easily. This function is used to make the driver wait a
+certain amount of time (here 5 seconds) for an event to occur.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_init"></script>
+<noscript>
+<pre><code>def init_driver():
+  driver = webdriver.Firefox()    
+  driver.wait = WebDriverWait(driver, 5)    
+  return driver</code></pre>
+</noscript>
+</div>
+<p>The lookup function takes two arguments: a driver instance and a query lookup (a string).
+It finds the sign in link on that page and clicks it.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_lookup"></script>
+<noscript>
+<pre><code>def lookup(driver, query):
+    driver.get(query)
+    try:
+        link = driver.find_element_by_link_text('Sign in')
+        link.click()
+
+    except TimeoutException:
+        print("Can't find sign in link")</code></pre>
+</noscript>
+</div>
+<p>The login function takes the driver as an input. Reads login details from a file
+and enters login details into the fields in the webpage.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_login"></script>
+<noscript>
+<pre><code>def login(driver):
+    try:
+        with open('login_details.txt', 'r') as file:
+            login_name = file.readline()
+            password = file.readline()
+
+    except IOError:
+        print('login_details.txt file not found')
+
+    try:
+        username = driver.find_element_by_name("email")
+        username.send_keys(login_name)
+
+        username = driver.find_element_by_name("password")
+        username.send_keys(password)
+
+        button = driver.find_element_by_class_name("btn")
+        button.click()
+
+    except TimeoutException:
+        print('enter login failed')</code></pre>
+</noscript>
+</div>
+<p>The click_new_question function looks for an element in the html of the
+page with a class name 'btn', if it finds one it clicks it.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_question"></script>
+<noscript>
+<pre><code>def click_new_question():
+    try:
+        button = driver.find_element_by_class_name("btn")
+        button.click()
+
+    except TimeoutException:
+        print("new question button failed")
+</code></pre>
+</noscript>
+</div>
+<p>The add_tf_question function conssits mainly of css locations for the
+various aspects of the question dialogue. I found these by using the
+developer tools in my browser and ispect the element I was interested in.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_add_tf"></script>
+<noscript>
+<pre><code>def add_tf_question(driver, question):
+    click_new_question()
+    time.sleep(1)
+
+    radio_button_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) \
+    &gt; div:nth-child(1)"
+
+    check_box_1_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(3) &gt; div:nth-child(3) &gt; div:nth-child(1)"
+
+    check_box_2_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) \
+    &gt; div:nth-child(4) &gt; div:nth-child(3) &gt; div:nth-child(1)"
+
+    save_button_css = ".modal-body &gt; pl-question-editor:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) \
+    &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(2) \
+    &gt; div:nth-child(3)"
+
+    if question[2] == 'T':
+        box_to_tick = check_box_1_css
+    elif question[2] == 'F':
+        box_to_tick = check_box_2_css
+
+    try:
+        radio_button = driver.find_element_by_css_selector(radio_button_css)
+        radio_button.click()
+
+        text = driver.find_element_by_css_selector(".ng-touched")
+        text.send_keys(question[0])
+
+        check_box = driver.find_element_by_css_selector(box_to_tick)
+        check_box.click()
+
+        save_button = driver.find_element_by_css_selector(save_button_css)
+        save_button.click()
+
+    except TimeoutException:
+        print("failed to add question")</code></pre>
+</noscript>
+</div>
+<p>We call the functions in the main section of the programme. The time.sleep()
+calls are there to ensure that the webpage has enough time to render
+before the programme carries on with the next function.</p>
+<div class="gist">
+<script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_main"></script>
+<noscript>
+<pre><code>if __name__ == "__main__":
+    driver = init_driver()
+    lookup(driver, "https://www.plickers.com/")
+    time.sleep(2)
+    login(driver)
+    time.sleep(10)
+
+    with open('test_questions.csv') as file:
+        reader = csv.reader(file, delimiter=',')
+        for sample_question in reader:
+            if sample_question[1] == 'M':
+                add_multi_question(driver, sample_question)
+                time.sleep(1)
+            elif sample_question[1] == 'T':
+                add_tf_question(driver, sample_question)
+
+    time.sleep(20)
+    driver.quit()
+</code></pre>
+</noscript>
+</div>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "plickers-import.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>
