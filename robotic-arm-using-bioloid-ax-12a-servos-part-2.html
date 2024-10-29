@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Robotic Arm Using Bioloid AX-12A Servos: Part 2</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/robotic-arm-using-bioloid-ax-12a-servos-part-2.html" rel="bookmark"
+                   title="Permalink to Robotic Arm Using Bioloid AX-12A Servos: Part 2">Robotic Arm Using Bioloid AX-12A Servos: Part 2</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-01-31T12:24:00+00:00">
+                Sat 31 January 2015
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>In this post I will describe how I calculate the servo postions to place
+the tip of the arm at some specified coordinates. For example, if the
+arm needs to pick something up off the ground in a specific place there
+will be several combinations of joint positions that will get the arm to
+that place. I created a simple app
+using <a class="reference external" href="https://www.geogebra.org/">Geogebra</a> to demonstrate and
+test different joint positions. Moving the sliders changes the length of
+the joint position and gabbing and moving a point will change the joint
+angles. This will be useful for testing the code that controls the arm.
+This app can also be viewed on
+<a class="reference external" href="http://tube.geogebra.org/student/m557391">Geogebratube</a></p>
+<p><img alt="Simulation of the degrees of freedom of a robotic arm." class="size-full wp-image-153" src="/images/robot_arm_geogebra.png" style="width: 800px; height: 500px;"/></p>
+<p>To calculate the joint positions I have adapted a programme created by
+<a class="reference external" href="https://studywolf.wordpress.com/2013/04/11/inverse-kinematics-of-3-link-arm-with-constrained-minimization-in-python/">studywolf</a>
+to work for a 4 degree of freedom arm. The programme takes as input the
+current position of the arm and the desired position of the arm and uses
+an optimisation algorithm from the
+<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/tutorial/optimize.html">scipy</a>
+library to find joint positions that require the smallest change
+possible to reach the desired position. I've decommented the code,
+broken it up and described it below. The original code is on studywolfs
+<a class="reference external" href="https://github.com/studywolf/blog/tree/master/InvKin">github page</a>.</p>
+<p>We need to import math, numpy and scipy.optimise libraries. The init
+method of the class checks whether any parameters have been passed and
+creates any that are missing. The inputs are</p>
+<ul class="simple">
+<li>q - an array holding the initial joint positions.</li>
+<li>q0 - an array holding the resiting joint positions</li>
+<li>L - an array holding the lengths of the joints.</li>
+</ul>
+<p>Two arrays max_angles and min_angles are also created to provide
+limits of movement on the arm's joint positions to prevent it from over
+extending or moving to positions that are restricted by brackets.</p>
+<div class="gist">
+<script src="https://gist.github.com/525dd84515f94aa834f8.js?file=initfunc.py"></script>
+<noscript>
+<pre><code>import math
+import numpy as np
+import scipy.optimize  
+
+class Arm3Link:
+    
+    def __init__(self, q = None, q0 = None, L = None):       
+		
+        if q is None: 
+	        q = [math.pi/4, math.pi/4, 0, 0]
+	self.q = q
+			
+        if q0 is None: 
+		q0 = np.array([math.pi/4, math.pi/4, 0, 0]) 
+	self.q0 = q0
+			
+        if L is None: 
+		L = np.array([1, 1, 1, 1]) 
+	self.L = L
+			
+        self.max_angles = [math.pi, math.pi, math.pi, math.pi ]
+        self.min_angles = [0, 0, -math.pi, -math.pi]</code></pre>
+</noscript>
+</div>
+<p>The get_xy method takes as input an array of joint positions and
+calculates the (x,y) coordinates of the the end of the arm using some
+trigonometry. Details on studywolf's blog.</p>
+<div class="gist">
+<script src="https://gist.github.com/525dd84515f94aa834f8.js?file=getxyfunc.py"></script>
+<noscript>
+<pre><code>def get_xy(self, q=None):
+		       
+        if q is None: 
+		q = self.q
+
+        x = self.L[0]*np.cos(q[0]) + \
+            self.L[1]*np.cos(q[0]+q[1]) + \
+            self.L[2]*np.cos(q[0]+q[1]+q[2]) + \
+            self.L[3]*np.cos(np.sum(q)) 
+            
+
+        y = self.L[0]*np.sin(q[0]) + \
+            self.L[1]*np.sin(q[0]+q[1]) + \
+	    self.L[2]*np.sin(q[0]+q[1]+q[2]) + \
+            self.L[3]*np.sin(np.sum(q))
+
+        return [x, y]</code></pre>
+</noscript>
+</div>
+<p>The inv_kin method is the one that does all the grunt work using the
+scipy.optimise function.</p>
+<p>distance_to_default is the function that will be minimised. It is a
+measure of how far all the joints will have to move. The weight array
+puts heavier penalties on some joints moving that others.</p>
+<p>x_constraint calculates the distance in the x-direction from the
+current position to a new position with given joint angles.
+y_constraint does the same in the y direction.</p>
+<div class="gist">
+<script src="https://gist.github.com/525dd84515f94aa834f8.js?file=invkinfunc.py"></script>
+<noscript>
+<pre><code>def inv_kin(self, xy):
+        
+        def distance_to_default(q, *args): 
+            weight = [1, 1, 1.3, 1] 
+            return np.sqrt(np.sum([(qi - q0i)**2 * wi for qi,q0i,wi in zip(q, self.q0, weight)]))
+
+        def x_constraint(q, xy):          
+            x = ( self.L[0]*np.cos(q[0]) + self.L[1]*np.cos(q[0]+q[1]) + 
+                self.L[2]*np.cos(q[0]+q[1]+q[2]) + self.L[3]*np.cos(np.sum(q)) ) - xy[0]
+            return x
+
+        def y_constraint(q, xy): 
+            y = ( self.L[0]*np.sin(q[0]) + self.L[1]*np.sin(q[0]+q[1]) + 
+                self.L[2]*np.sin(q[0]+q[1]+q[2]) + self.L[3]*np.sin(np.sum(q)) ) - xy[1]
+            return y
+
+        return scipy.optimize.fmin_slsqp( func=distance_to_default, 
+            x0=self.q, eqcons=[x_constraint, y_constraint], 
+            args=(xy,), iprint=0) 
+</code></pre>
+</noscript>
+</div>
+<p>To get all of this to work we create a function findJointPos that
+creates an instance of the class and calls the inv_kin method. It
+returns an array cotaining the optimal joint positions to place the arm
+in this positon. For example if we call findJoinPos(2, 2) and we get the
+angles [-0.33, 0.84, 0.56, 0.80] which are in radians. Converting these
+to degrees gives approximately [-19, 48, 32, 46]. Using the Geogebra
+demo above to set the angles we can see that the arm does indeed get to
+the point (2,2).</p>
+<div class="gist">
+<script src="https://gist.github.com/525dd84515f94aa834f8.js?file=findjoitposfunc.py"></script>
+<noscript>
+<pre><code>def findJointPos(x, y):
+   
+    arm = Arm3Link()
+    xy = [x, y]
+    return arm.inv_kin(xy)
+    
+print findJointPos(2,2)</code></pre>
+</noscript>
+</div>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "robotic-arm-using-bioloid-ax-12a-servos-part-2.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

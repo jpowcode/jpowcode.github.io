@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Computing in School</title><link href="/" rel="alternate"></link><link href="/feeds/computing-in-school.atom.xml" rel="self"></link><id>/</id><updated>2024-07-14T10:20:00+01:00</updated><entry><title>Computing in School: Data Structures with Python Classes</title><link href="/Data%20Structures%20in%20Python.html" rel="alternate"></link><published>2024-07-14T10:20:00+01:00</published><updated>2024-07-14T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-07-14:/Data Structures in Python.html</id><summary type="html">&lt;p&gt;Creating data structures with classes in python&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A big part of the A-level Computing syllabus has content on different data types. Arrays, stacks, queues, linked lists, graphs and trees to name a few. Another aspect of the syllabus is &lt;a href="https://www.educative.io/blog/object-oriented-programming"&gt;object orientated programming&lt;/a&gt;. In this post I aim to use an object orientated approach to build some of these data structures from scratch. I will be using Python as a programming language. All data structures will be built up from the basic data structures that python contains, i.e., lists, strings and integers. I will also be adding in a few software engineeing practices such as &lt;a href="https://realpython.com/python-testing/"&gt;unit testing&lt;/a&gt;, &lt;a href="https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it"&gt;linting&lt;/a&gt;, using &lt;a href="https://realpython.com/python-testing/"&gt;test runners&lt;/a&gt;,  and task runners. This post is not inteded to be a tutorial on Object Orientated Programming (OOP) or data structures. It is more an illustration of how OOP principles can be applied using structures that should be famiuliar to an A-level computing student. I have written a &lt;a href="http://localhost:8002/Basic%20Classes%20in%20Python.html"&gt;priliminary activity&lt;/a&gt; to this one using shapes as a concept.&lt;/p&gt;
+&lt;p&gt;This is a summary of all that will be covered&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creating data structures for an Array, Stack and Queue&lt;/li&gt;
+&lt;li&gt;Using Classes&lt;/li&gt;
+&lt;li&gt;Inheritance&lt;/li&gt;
+&lt;li&gt;Encapsulation &lt;/li&gt;
+&lt;li&gt;Magic methods &lt;/li&gt;
+&lt;li&gt;Writing tests using Unittest library&lt;/li&gt;
+&lt;li&gt;Using a test runner&lt;/li&gt;
+&lt;li&gt;Using a task runner&lt;/li&gt;
+&lt;li&gt;The concept of &lt;a href="https://www.techtarget.com/searchapparchitecture/definition/refactoring"&gt;refactoring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All resources will be hosted on my &lt;a href="https://github.com/jpowcode/python_classes"&gt;Github&lt;/a&gt; page. There is a table at the bottom of this post detailing which files are needed for each section of the tutorial.&lt;/p&gt;
+&lt;h3&gt;0. Setting up our environment&lt;/h3&gt;
+&lt;p&gt;I will be using a Linux based envirnment for much of this task. In school I would use &lt;a href="https://www.pythonanywhere.com/"&gt;pythonanywhere&lt;/a&gt; which gives us an IDE for editing python code and a bash shell for running the code and any tests etc. This is by far the easiest option and has the advantage of working wherever you have access to a web browser. If you are on windows you might consider using the windows subsystem for linux. &lt;/p&gt;
+&lt;h3&gt;1. Creating the basic array class&lt;/h3&gt;
+&lt;p&gt;We create the MyArray class with a constructor method (in python this is &lt;code&gt;__init__()&lt;/code&gt;).  The constructor takes as input a number &lt;code&gt;given_i&lt;/code&gt; (at the moment this is a one dimensional array) for the size of the array and a string &lt;code&gt;given_array_type&lt;/code&gt; that specifies the type as either an 8 bit integer or a character. The constructor method sets the attributes 'i'and 'array_type' and also creates an empty list &lt;code&gt;array&lt;/code&gt; to hold the array elements. The array is then populated with &lt;code&gt;None&lt;/code&gt; values. We then run some tests by creating instances of the &lt;code&gt;MyArray&lt;/code&gt; class to make sure there are no errors.  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class MyArray:
+    def __init__(self, given_i, given_array_type):
+        """Allowed types
+            - int8: 8 bit unsigned integer 0 - 2^8 -1
+            - char: a single character
+        """
+        self.i = given_size
+        self.array_type = given_array_type
+        self.array = []
+
+        for _ in range(self.size):
+            self.array.append(None)
+
+
+print("""
+Conduct Tests
+________________________________________________________________________
+""")
+print("Check we can create a class, there should be no errors")
+array_1 = MyArray(1,'int8')
+array_2 = MyArray(5,'char')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the bash console run the command &lt;code&gt;python3 my_array_1.py&lt;/code&gt; to test the code.&lt;/p&gt;
+&lt;p&gt;In part 4 of this post the tests will be moved into a separate file and run separately.&lt;/p&gt;
+&lt;p&gt;Note that I am going to use a naming convention whereby all variable names passed into a function will be prefixed with the word "given". For example &lt;code&gt;given_i&lt;/code&gt; is passed to the constructor so it can create the attribute &lt;code&gt;i&lt;/code&gt;. In practice I would probably just use the same name for both, but the exam mark schemes seem to prefer different names.&lt;/p&gt;
+&lt;h3&gt;2. Add a method to check the type of the array&lt;/h3&gt;
+&lt;p&gt;We add a helper method called check_type. The method takes as input a value and then checks if this value is the same type as the array otherwise it returns &lt;code&gt;False&lt;/code&gt;. The &lt;code&gt;isinstance()&lt;/code&gt; function returns &lt;code&gt;True&lt;/code&gt; if the value is of the specified type. Note that we have added a extra condition to check that an int8 type is of between 0 and 255 and a char type is of length 1. This method will be used later when we add values to the array.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def check_type(self, value):
+        if self.array_type == 'int8':
+            return isinstance(value, int) and 0 &amp;lt; value &amp;lt;= 255
+
+        elif self.array_type == 'char':
+            return isinstance(value, str) and len(value) == 1
+        else:
+            return False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A few tests have been added below. Notice that we have written some valid, invalid and edge case tests. Also not that we don't get very good feedback from the tests. This will be fixed when introduce proper test runners in section 4. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print("Check the check_type function works correctly")
+print(array_1.check_type(1))
+print(array_1.check_type(0.5))
+print(array_1.check_type(280))
+print(array_1.check_type(255))
+print(array_1.check_type(0))
+
+print(array_2.check_type("a"))
+print(array_2.check_type(0.5))
+print(array_2.check_type("hello"))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;3. Add an input method&lt;/h3&gt;
+&lt;p&gt;In order to populate our arrays we need to add an input method to the MyArray class. This method takes as a parameter a list of values. It fist checks whether the length of this list is the correct length for the array. It then checks that the type of each value in the list is correct for the type of the array. If both of these are true then it will populate the array. I have not included any tests at the the end of this file. They will be included in the next iteration.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def input(self, values):
+        if len(values) != self.size:
+            return 'Incorrect data size'
+
+        for value in values:
+            if not self.check_type(value):
+                return 'Incorrect data type'
+
+        for index in range(self.self.size):
+            self.array[index] = values[index]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;4. Start using proper tests&lt;/h3&gt;
+&lt;p&gt;Having all the tests at the bottom of the file is not an ideal practice. We will now remove these. We do not want to be running tests when we are using our Classes. Putting tests into a separate file and runnning them independently would be superior. We will start using the unittest library to run tests. Each set of tests will be defined as a class in a separate test file. Each class will have a &lt;code&gt;setUp()&lt;/code&gt; method to create what it needs to perform the tests. For example, to instantiate an object for an array and populate it. We are testing that we cannot enter incorrect data types or an incorrect array size. Note that the name of each method within the class is descriptive of what the test performs. We are using the &lt;code&gt;assertEqual()&lt;/code&gt; function which takes three parameters. The first two parameters need to be the same for the test to pass otherwise a message is printed (the third parameter).  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import unittest
+from my_array_4 import MyArray
+
+class TestArrayInput(unittest.TestCase):
+
+    def setUp(self):
+        self.my_empty_array = MyArray(3, 'int8')
+        self.my_full_array = MyArray(3, 'int8')
+        self.my_full_array.input([3 ,2, 1])
+
+    def test_incorrect_data_char(self):
+        self.assertEqual(self.my_empty_array.input(['a',2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_float(self):
+        self.assertEqual(self.my_empty_array.input([3.2, 2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_big(self):
+        self.assertEqual(self.my_empty_array.input([3.2, 2, 300]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_negative(self):
+        self.assertEqual(self.my_empty_array.input([3, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_edge(self):
+        self.assertEqual(self.my_empty_array.input([0, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_size(self):
+        self.assertEqual(self.my_empty_array.input([5, -2, 1, 4]), 'Incorrect data size', "Should be Incorrect data size")
+
+    def test_incorrect_data_correct(self):
+        self.assertEqual(self.my_full_array.array, [3, 2, 1] , "Should be [3, 2, 1]")
+
+
+if __name__ == '__main__':
+    unittest.main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To run these tests enter the command &lt;code&gt;python3 test_array_1.py&lt;/code&gt; in bash. You should see something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+OK
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that in this step we haven't really added any functionality to our code. What we have done is "refactored" it. This is the porocess of making changes to our code to make it "better". This could be more readable, faster, more robust. In this case adding a better system for running tests. As we add more functionality to our array class we will add more tests. &lt;/p&gt;
+&lt;h3&gt;5. Add a method to calculate the size of an array&lt;/h3&gt;
+&lt;p&gt;We add a function that calculates the size of the array in bytes. The type of the array is taken in to consideration when doing this. We add a class to the test file to test the size of the array function.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def size(self):
+        if self.array_type == 'int8':
+            return self.i*8
+
+        elif self.array_type == 'char':
+            return self.i*4
+
+        else:
+            return "Incorrect type"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We add a test class to the test file as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class TestArraySize(unittest.TestCase):
+
+    def setUp(self):
+        self.my_int_array = MyArray(3, 'int8')
+        self.my_int_array.input([5 ,2, 1])
+
+        self.my_char_array = MyArray(4, 'char')
+        self.my_char_array.input(['a' ,'b', 'c', 'd'])
+
+    def test_correct_int_size(self):
+        self.assertEqual(self.my_int_array.size(), 24, "Should be 24")
+
+    def test_correct_char_size(self):
+        self.assertEqual(self.my_char_array.size(), 16, "Should be 16")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;6. Add a print method&lt;/h3&gt;
+&lt;p&gt;Add a method to print out the array. We won't bother writing any tests for this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def my_print(self):
+    for value in self.array:
+        print(value)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;7. Encaspulation&lt;/h3&gt;
+&lt;p&gt;Before we go too much further, now woould be a good time to talk about encapsualtion as shortly we will have multiple classes inheriting from each other. In python adding a double underscore before an attribute or method name makes it inaccessible from outside of the class. If other classes need to access or change a protected variable they would need to do iut through a getter or setter method.&lt;/p&gt;
+&lt;p&gt;The underscore is used as an index in the for loop instead of a variable name as it will not be used within the loop. This prevents python from creating variables that are not used. We modify the &lt;code&gt;array&lt;/code&gt; attribute within the constructor method to be private as we don't want any other classes to be able to modify it directly. This should be done through the &lt;code&gt;input()&lt;/code&gt; method for example.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class MyArray:
+    def __init__(self, i, array_type):
+        """Allowed types
+            - int8: 8 bit unsigned integer 0 - 2^8 -1
+            - char: a single character
+        """
+        self.__array = []
+        self.i = i
+        self.array_type = array_type
+
+        for _ in range(i):
+            self.__array.append(None)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that all references to &lt;code&gt;array&lt;/code&gt; attribute need to be modified to &lt;code&gt;__array&lt;/code&gt; within the class. This is another example of refactoring our code.&lt;/p&gt;
+&lt;h3&gt;8. Create a Stack Class&lt;/h3&gt;
+&lt;p&gt;Create a Stack structure that inherits from an Array. We need to run the constructor for the Array. Relabel the size of the array as max_size and set the current size of the stck to be -1 for empty. The stack will not always take up the full size of the array. We add an atribute called structure that tells us we are dealing with a stack. This will be useful in future when we inherit from the Stack class to create a Queue.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from my_array_7 import MyArray
+
+class MyStack(MyArray):
+    def __init__(self, max_size, stack_type):
+        MyArray.__init__(self, max_size, stack_type)
+        self.stack_size = -1
+        self.max_size = self.i
+        self.structure = "stack"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We create a test file for the stack and run it with &lt;code&gt;python3 test_stack_1.py&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import unittest
+from my_stack_1 import MyStack
+
+class TestStackInput(unittest.TestCase):
+
+    def setUp(self):
+        self.my_empty_stack = MyStack(3, 'int8')
+
+    def test_incorrect_data_char(self):
+        self.assertEqual(self.my_empty_stack.input(['a',2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_float(self):
+        self.assertEqual(self.my_empty_stack.input([3.2, 2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_big(self):
+        self.assertEqual(self.my_empty_stack.input([3.2, 2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_negative(self):
+        self.assertEqual(self.my_empty_stack.input([3, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_edge(self):
+        self.assertEqual(self.my_empty_stack.input([0, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_size(self):
+        self.assertEqual(self.my_empty_stack.input([5, -2, 1, 4]), 'Incorrect data size', "Should be Incorrect data size")
+
+if __name__ == '__main__':
+    unittest.main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;9. Using a test runner&lt;/h3&gt;
+&lt;p&gt;We now have multiple files and testfiles in our project so it will be useful to organise everything and employ the use of a test runner. A test runner is a programme that takes charge of running the tests and will add some functionality which you will see shortly. I am going be using nose which you might need to install with the command &lt;code&gt;pip3 install --user nosetests&lt;/code&gt;. Before running tests we will put all of the older files into an archive directory so the only files we will have in our current directory at this point will be my_array_7.py, my_stack_1.py, test_array_2.py and test_stack_1.py. We can run all of our tests with &lt;code&gt;nosetests -v  --no-byte-compile&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;-v&lt;/code&gt; option makes the output more verbose, i.e., we get more information
+The &lt;code&gt;--no-byte-compile&lt;/code&gt; prevents nosetests from producing lots of .pyc files that get in the way. &lt;/p&gt;
+&lt;p&gt;You should see something like the following output&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test_incorrect_data_big (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_char (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_correct (test_array_2.TestArrayInput) ... ERROR
+test_incorrect_data_edge (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_float (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_negative (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_size (test_array_2.TestArrayInput) ... ok
+test_correct_char_size (test_array_2.TestArraySize) ... ok
+test_correct_int_size (test_array_2.TestArraySize) ... ok
+test_incorrect_data_big (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_char (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_edge (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_float (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_negative (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_size (test_stack_1.TestStackInput) ... ok
+======================================================================
+ERROR: test_incorrect_data_correct (test_array_2.TestArrayInput)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+File "/home/jpowell/Alevel/data_structures/version2/test_array_2.py", line 30, in test_incorrect_data_correct
+    self.assertEqual(self.my_full_array.array, [3, 2, 1] , "Should be [3, 2, 1]")
+AttributeError: MyArray instance has no attribute 'array'
+----------------------------------------------------------------------
+Ran 15 tests in 0.043s
+FAILED (errors=1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The test &lt;code&gt;test_incorrect_data_correct&lt;/code&gt; from the file test_array_2.TestArrayInput has failed. &lt;/p&gt;
+&lt;p&gt;If we look at the error message we can see that  &lt;code&gt;AttributeError: MyArray instance has no attribute 'array'&lt;/code&gt; This is because we have made the attribute &lt;code&gt;array&lt;/code&gt; private in the array class by giving it the double underscore. We have a few options to fix this test. We could add a getter method to the array class to access the array attribute and refactor the test to use this method. However, we don't really want or need the class to have a getter method. Maybe the best thing to do is remove this test as it is now not testing any functionality we can make use of. &lt;/p&gt;
+&lt;h3&gt;10. Methods to calculate the size/height of the stack&lt;/h3&gt;
+&lt;p&gt;Before we can write push and pop methods for the stack we need to add some helper methods. &lt;code&gt;height()&lt;/code&gt; returns the current size(height) of the stack. &lt;code&gt;isEmpty&lt;/code&gt; returns true if the stack contains at least one value.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def height(self):
+        return self.stack_size + 1
+
+def isEmpty(self):
+    return self.stack_size &amp;lt; 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;11. Adding push and pop methods&lt;/h3&gt;
+&lt;p&gt;We add methods for push, pop and top. Push should put a value on to the top of the stack. Pop should remove a value from the top of the stack and return it. Top should return the value from the top of the stack without removing it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def push(self, value):
+    if self.stack_size + 1 == self.max_size:
+        return(self.structure, 'is full')
+    else:
+        self.stack_size += 1
+        self.stack.append(value)
+
+def pop(self):
+    if self.isEmpty():
+        return(self.structure, 'is empty')
+    else:
+        temp = self.stack[self.stack_size]
+        del self.stack[-1]
+        self.stack_size -=1
+        return temp
+
+def top(self):
+    if self.isEmpty():
+        return(self.structure, 'is empty')
+    else:
+        return self.stack[-1]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;12. Adding magic methods&lt;/h3&gt;
+&lt;p&gt;We add some magic methods to allow stacks to perform as normal data structures in python. For example if we create two stacks S1 and S2 that are the same and ask python S1 == S2 then we should get the reult True. This is performed by the &lt;code&gt;__eq__&lt;/code&gt; method. If we perform &lt;code&gt;str(S1)&lt;/code&gt; then &lt;code&gt;__str&lt;/code&gt; will deal with this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def __str__(self):
+    output = [str(x) for x in self.stack]
+    return ','.join(output)
+
+
+def __eq__(self, other):
+    if self.max_size != other.max_size:
+        return False
+
+    for i, j in zip(self.stack, other.stack):
+        if i != j:
+            return False
+    return True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;13. Linting our code&lt;/h3&gt;
+&lt;p&gt;There are many different ways in which a programmer code structure their code. For example, they could use 2 spaces or 4 spaces for indentation. They could leave a space after a comma or not. They could capitalise class names or not etc, etc. In 2001 Guido van Rossum created a style guide for python and published it as PEP8. PEP's or Python Enhancement Proposals are documents people write to suggest changes to the language. The Python comunnity will then need to decide on whether to accept the proposal or not. PEP8 focuses on descibing certain rules on how python code should be written and it is now what most software engineers adopt as standard. This helps when multiple people are working on the same project or when programmers are reading a code that is not thiers. A linter is a programme that checks your code against the rules of PEP8 and produces a report offering suggestions. We are going to use a linter called flake8. We might need to install this first using &lt;code&gt;pip3 install --user flake8&lt;/code&gt;. Then we can run flake8 on all the python files in our directory with the command &lt;code&gt;flake8 *.py&lt;/code&gt;. We will then get a list of all the things in our files that do not follow the PEP8 rules. You might notice lots of the same the same things. For example &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;E231 missing whitespace after ','
+E501 line too long (86 &amp;gt; 79 characters)  
+E265 block comment should start with '# '
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You should fix all of these now and run the linter on your code from time to time to check you are following the rules. This has been done to this code base and the files updated to new versions. &lt;/p&gt;
+&lt;h3&gt;14.Setting up a task runner&lt;/h3&gt;
+&lt;p&gt;We now have several commands that we are running on the bash terminal for executing the code, running our linter and running our tests. There might be more as the project grows. It can become awkward to remember what all the commands are for these tasks which is where a task runner comes in handy. I will be using invoke. We create a file called tasks.py and whenever we run &lt;code&gt;invoke "command name"&lt;/code&gt; invoke will look in the file tasks.py for the command name and run it. So then all we need to remember is the name of the tasks to be run. &lt;/p&gt;
+&lt;p&gt;Firstly we import the commands we need from the invoke library. The to create a task we simmply define a function and put the decorator &lt;code&gt;@task&lt;/code&gt; on the line above it. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from invoke import task, run
+
+@task
+def hello(ctx):
+    print("Hello world!")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So now when we run `invoke hello' on the command line it should print "Hello world!" Note the ctx variable that the function takes as an input is a "context". Do not worry about this, it's just some thing the library needs. This isn't very usefull so now lets write some more. I will use the same basic structure for all tasks&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@task
+def template(ctx):
+    cmd = []
+    cmd.append("bash syntax for command 1")
+    cmd.append("bash syntax for command 2")
+    cmd.append("bash syntax for command 3")
+    # as many commands as you want to run
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is the task for running a linter&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@task
+def lint(ctx):
+    cmd = []
+    cmd.append("flake8 *.py ")
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A task for running our tests.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@task
+def test(ctx):
+    cmd = []
+    cmd.append("clear")
+    cmd.append("nosetests -v --rednose --with-coverage")
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A function (not a task) to print out a divider&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def star_line(comment):
+    print()
+    print('*'*60)
+    print(comment)
+    print('*'*60)
+    print()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A task for cleaning up our directory.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@task
+def clean(ctx):
+    cmd = []
+    cmd.append("bash syntax for command 1")
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A task for performing a fulltest which runs unit tests and lints the code.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@task
+def fulltest(ctx):
+    clean(ctx)
+    star_line('Running Unit Tests')
+    test(ctx)
+    star_line('Linting Code')
+    lint(ctx)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;List of files required for each section&lt;/h3&gt;
+&lt;table style="width: 742px; height: 369px;"&gt;
+&lt;tbody&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;Section Number&lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; File&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; Test File&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;1&lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; my_array_1.py&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 23px;"&gt;
+&lt;td style="height: 23px; width: 209.429px;"&gt;2 &lt;/td&gt;
+&lt;td style="height: 23px; width: 241.104px;"&gt; my_array_2.py&lt;/td&gt;
+&lt;td style="height: 23px; width: 290.636px;"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 25px;"&gt;
+&lt;td style="height: 25px; width: 209.429px;"&gt;3 &lt;/td&gt;
+&lt;td style="height: 25px; width: 241.104px;"&gt; my_array_3.py&lt;/td&gt;
+&lt;td style="height: 25px; width: 290.636px;"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 10px;"&gt;
+&lt;td style="height: 10px; width: 209.429px;"&gt;4 &lt;/td&gt;
+&lt;td style="height: 10px; width: 241.104px;"&gt; my_array_4.py&lt;/td&gt;
+&lt;td style="height: 10px; width: 290.636px;"&gt; test_array_1.py&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 23px;"&gt;
+&lt;td style="height: 23px; width: 209.429px;"&gt;5 &lt;/td&gt;
+&lt;td style="height: 23px; width: 241.104px;"&gt; my_array_5.py&lt;/td&gt;
+&lt;td style="height: 23px; width: 290.636px;"&gt; test_array_2.py&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;6&lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; my_array_6.py&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;7 &lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; my_array_7.py&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;8 &lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; my_stack_1.py&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; test_stack_1.py&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22.8571px;"&gt;
+&lt;td style="height: 22.8571px; width: 209.429px;"&gt;9 &lt;/td&gt;
+&lt;td style="height: 22.8571px; width: 241.104px;"&gt; my_array_7.py, my_stack_1.py&lt;/td&gt;
+&lt;td style="height: 22.8571px; width: 290.636px;"&gt; test_array_2.py, test_stack_1.py&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;10 &lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; my_array_7.py, my_stack_2.py&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 22px;"&gt;
+&lt;td style="height: 22px; width: 209.429px;"&gt;11 &lt;/td&gt;
+&lt;td style="height: 22px; width: 241.104px;"&gt; my_array_7.py, my_stack_3.py&lt;/td&gt;
+&lt;td style="height: 22px; width: 290.636px;"&gt; test_stack_2.py&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;!-- DivTable.com --&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Python"></category></entry><entry><title>Computing in School: Scaffolding Programming Problems with Pseudocode</title><link href="/Project%20Euler%20Scaffolding%20in%20Python.html" rel="alternate"></link><published>2024-06-15T10:20:00+01:00</published><updated>2024-06-15T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-06-15:/Project Euler Scaffolding in Python.html</id><summary type="html">&lt;p&gt;Giving pupils some scaffolding when solving problems, using the Project Euler website.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;Scaffolding Programming Problems with Pseudocode&lt;/h2&gt;
+&lt;p&gt;Pupils oftern find it difficult to get started on a programming problem.  I have various different methods for scaffolding a problem to allow the pupils to get stuck in and make some progress. One of which is to provide pupils with a &lt;a href="https://builtin.com/data-science/pseudocode"&gt;psuedo-code&lt;/a&gt; version of a solution to a problem and allow pupils to convert it into Python code. This enables them to focus on the Python without worrying about how to solve the problem. This post will use the problems from the fantastic &lt;a href="https://projecteuler.net/archives"&gt;Project Euler&lt;/a&gt; website which are largely mathematically themed. Pupils also find it difficult to learn the language that programmers use. This exercise will get them into the habit interpreting what is meant by, for example, "initialise a variable". I've borrowed the soultions to the Project Euler problems from &lt;a href="https://github.com/nayuki/Project-Euler-solutions/blob/master/python/p003.py?ts=4"&gt;here&lt;/a&gt;. All the solutions can also be found on my &lt;a href="https://github.com/jpowellstm/project-Euler-Pseudocode"&gt;github&lt;/a&gt; page. If you find this task useful please let me know in the comments. If you would like to add some more examples then please email me and I will add them.&lt;/p&gt;
+&lt;h3&gt;Problem 1&lt;/h3&gt;
+&lt;p&gt;If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23. Find the sum of all the multiples of 3 or 5 below 1000.&lt;/p&gt;
+&lt;h3&gt;Pseudocode&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;define a function 'compute' with no inputs 
+    initialise a variable 'sum' to zero
+
+    loop 'number' from 1 to 10000
+        if 'number' is divisible by 3 or 5 add 'number' to 'sum'
+
+    return 'sum' from function
+
+call function 'compute' and print it
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def compute():
+    sum = 0 
+    for x in range(1000):
+        if x % 3 == 0 or x % 5 == 0:
+            sum = sum + x
+    return sum
+
+print(compute())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Problem 2&lt;/h3&gt;
+&lt;p&gt;Each new term in the Fibonacci sequence is generated by adding the previous two terms. By starting with 1 and 2, the first 10 terms will be:
+1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.&lt;/p&gt;
+&lt;h3&gt;Pseudocode&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;define a function 'compute' with no inputs
+    initialise a variable 'sum' to zero
+    initialise a variable 'f1' to 1
+    initialise a variable 'f2' to 2
+
+    loop until 'f1' is 4000000
+        if 'f1' is divisible by 2 add 'f1' to 'sum' 
+    otherwise make 'f1' equal to 'f2' and 'f2' equal to 'f1' + 'f2'
+
+    return 'sum' from function
+
+call function 'compute' and print it
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def compute():
+    ans = 0
+    x = 1  # Represents the current Fibonacci number being processed
+    y = 2  # Represents the next Fibonacci number in the sequence
+    while x &amp;lt;= 4000000:
+        if x % 2 == 0:
+            ans += x
+        x, y = y, x + y
+    return str(ans)
+
+print(compute())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Problem 3&lt;/h3&gt;
+&lt;p&gt;The prime factors of 13195 are 5, 7, 13 and 29. What is the largest prime factor of the number 600851475143 ?&lt;/p&gt;
+&lt;h3&gt;Pseudocode&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;define a function 'smallest_prime_factor' with one input 'number'
+    initaialise a variable 'max' to the square root of 'number + 1
+    cast 'max' into an integer
+    if 'number' is bigger than 2
+        loop 'i' from 2 to 'max'
+            if number is divisible by 'i' return 'i'
+    return 'number'
+
+define a function 'compute' with no inputs
+    initialise a variable 'n' to 600851475143
+    initalise a variable 'p' to 1
+    loop until 'p' is equal to 'n'
+        let 'p' = smallest_prime_factor('n')
+    if 'p' is less than 'n' replace 'n' by 'n' divided by 'p'
+    else return 'n'
+
+Call the function compute and print it
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def smallest_prime_factor(n):
+    assert n &amp;gt;= 2
+    for i in range(2, eulerlib.sqrt(n) + 1):
+        if n % i == 0:
+            return i
+    return n  # n itself is prime
+
+def compute():
+    n = 600851475143
+    while True:
+        p = smallest_prime_factor(n)
+        if p &amp;lt; n:
+            n //= p
+        else:
+            return str(n)
+
+print(compute())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Problem 4&lt;/h3&gt;
+&lt;p&gt;A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99. Find the largest palindrome made from the product of two 3-digit numbers.&lt;/p&gt;
+&lt;h3&gt;Pseudocode&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;define a function 'compute' with no inputs
+    initialise a variable 'ans' to be 0
+    loop 'i' from 100 to 1000
+        loop 'j' from 100 to 1000
+        initialise a variable 'prod' to 'i' times 'j'
+        cast prod to a string
+        reverse the string
+        if the string is equal to the reverse of the string and 'prod' is greater than 'ans' then let 'ans' = 'prod'
+    return 'ans'
+
+call the function 'compute' and print it
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def compute():
+    ans = 0
+    for i in range(100, 1000)
+        for j in range(100, 1000)
+            if str(i * j) == str(i * j)[ : : -1]) and i*j &amp;gt; ans:
+                ans = i*j
+
+    return ans
+
+print(compute())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Problem 5&lt;/h3&gt;
+&lt;p&gt;2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder. What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?&lt;/p&gt;
+&lt;h3&gt;Pseudocode&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;import the python 'fractions' library
+define a function 'compute' with no inputs
+    initialise a variable 'ans' to be 1
+    loop i from 1 to 21
+        call the gcd method from the fractions library with inputs 'i' and 'ans'
+        initialise this to a variable 'gcd'
+        let 'ans' be 'ans' times 'gcd'
+    retunr 'ans'
+
+call the function compute and print it
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;def compute():
+    ans = 1
+    for i in range(1, 21):
+        ans *= i // fractions.gcd(i, ans)
+    return str(ans)
+&lt;/code&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Python"></category></entry><entry><title>Computing in School: An Introduction to Classes</title><link href="/Basic%20Classes%20in%20Python.html" rel="alternate"></link><published>2024-06-11T10:20:00+01:00</published><updated>2024-06-11T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-06-11:/Basic Classes in Python.html</id><summary type="html">&lt;p&gt;Using shapes to introduce the concept of classes in python.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;Computing in Schools: The Basics of OOP&lt;/h2&gt;
+&lt;p&gt;In this post I will build up a collection of classes and objects using simple concepts of shape that all pupils should be familiar with. For example we will start with a shape class and build up triangles and quadriallterals classes that will inhert from the shape class, then a square class etc. &lt;/p&gt;
+&lt;h3&gt;1. Create a class called Shape&lt;/h3&gt;
+&lt;p&gt;We create a basic root class called Shape. We give it a constructor method. In python this is the &lt;code&gt;__init__()&lt;/code&gt; method. The constructor to define the number of sides the shape has. The constructor method should take as input an integer to specify the number of sides it has. This should then be declared as an attribute within the method. We will also declare a name attribute within the constructor &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Shape:
+    def __init__(self, given_num_sides):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that I am going to use a naming convention whereby all variable names passed into a function will be prefixed with the word "given". For example &lt;code&gt;given_num_sides&lt;/code&gt; is passed to the constructor so it can create the attribute &lt;code&gt;num_sides&lt;/code&gt;. In practice I would probably just use the same name for both, but the exam mark schemes seem to prefer different names.&lt;/p&gt;
+&lt;h3&gt;2. Create a Triangle class&lt;/h3&gt;
+&lt;p&gt;The Triangle class should inherit from the Shape class. It needs its own constructor method. The contructor for Triangle should take as input a base and a height and declare these as attributes. The constructor should call the constructor of the class it inherits from. To do this in python we use the &lt;code&gt;super()&lt;/code&gt; function. This super function needs to take as input the integer 3 which the Shape class will use to define a number of sides attribute. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Triangle(Shape):
+    def __init__(self, given_base, given_height):
+        super().__init__(3)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;3. Add an area method to the Triangle class&lt;/h3&gt;
+&lt;p&gt;We add a method to the Triangle class to calculate a the value of the area. Note that when using the values for the base and height within the class we need to use the &lt;code&gt;self&lt;/code&gt; keyword that references the values of the object rather than the class. For example&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Triangle(Shape):
+    def __init__(self, given_base, given_height):
+        super().__init__(3)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+
+    def area(self):
+        return 0.5 * self.base * self.height
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that we could have given the triangle and area attribute instead of a method like so&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Triangle(Shape):
+    def __init__(self, given_base, given_height):
+        super().__init__(3)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+        self.area = 0.5 * given_base * given_height
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;4. Test everything works so far.&lt;/h3&gt;
+&lt;p&gt;We will now instantiate (which just means create) a shape object from the Shape class and print its attributes. We will also instantiate a triangle object from the Triangle class (assuming we are using the first version of Triangle), print its attributes and call its area method. Note that even though we have not passed the number 3 as input when creating the triangle object its &lt;code&gt;num_sides&lt;/code&gt; attribute will still be set to three inside the constructor.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shape = Shape(5)
+print(shape.name)
+print(shape.num_sides)
+
+triangle = Triangle(4, 5)
+print(triangle.name)
+print(triangle.num_sides)
+print(triangle.base)
+print(triangle.height)
+print(triangle.area())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;5. Create a Quadrillateral class&lt;/h3&gt;
+&lt;p&gt;We create a Quadrillateral class that inherits from the Shape class. Everything is very similar to the Triangle class, i.e., it should have a constructor method that calls the super classes constructor with the number of sides as 4. The point of doing this is that if in future we decide that all quadrillaterals should have something in common they we only need to modify the quadrillateral class and not all the classes that inherit from it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Quadrillateral(Shape):
+    def __init__(self):
+        super().__init__(4)
+        self.name = "quadrillateral"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;6. Create a Square class&lt;/h3&gt;
+&lt;p&gt;We will now create a class for a Square that should inherit from the Quadrillateral class. As usual it will need a constructor method and some attributes set. We add a list as an attribute to hold values for the angles of the square. We also add an area method.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Square(Quadrillateral):
+    def __init__(self, given_length):
+        super().__init__()
+        self.angles = [90, 90, 90, 90]
+        self.length = given_length
+        self.name = "Square"
+
+    def area(self):
+        return self.length **2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;At this point you might be thinking that actually all quadrillaterals have 4 angles so the Quadrillateral class should have an attribute to hold the angles. Or for that matter the Shape class should have an attribute for the angles. We will go ahead now and modify the classes to make this work. Note that angles will need to be passed through the constructor methods. This is an example of what programmers call refactoring, i.e., changing the structure of their programme without changing its functionality. This could be to make it more readable or maintainable for example. The new classes now look like this&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Shape:
+    def __init__(self, given_num_sides, given_angles):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+        self.angles = given_angles
+
+class Triangle(Shape):
+    def __init__(self, given_base, given_height, angles):
+        super().__init__(3, angles)
+        self.base = given_base
+        self.height = given_height
+        self.name = "triangle"
+
+    def area(self):
+        return 0.5 * self.base * self.height
+
+class Quadrillateral(Shape):
+    def __init__(self, given_angles):
+        super().__init__(4, given_angles)
+        self.name = "quadriallateral"
+
+class Square(Quadrillateral):
+    def __init__(self, given_length):
+        super().__init__([90, 90, 90, 90])
+        self.length = given_length
+        self.name = "Square"
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;7 Test some more&lt;/h3&gt;
+&lt;p&gt;Now that the classes have been refactored we will test them all to make sure they work&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shape = Shape(5, [30, 40, 50, 60, 70])
+print(shape.name)
+print(shape.num_sides)
+print(shape.angles)
+
+triangle = Triangle(4, 5, [30, 60, 90])
+print(triangle.name)
+print(triangle.num_sides)
+print(triangle.base)
+print(triangle.height)
+print(triangle.area())
+
+square = Square(4)
+print(square.name)
+print(square.num_sides)
+print(square.length)
+print(square.area())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;8. Validation&lt;/h3&gt;
+&lt;p&gt;You might have noticed that it is possible to define shapes that have angles that are not consistent. For example, there is nothing to stop us defining a triangle with angles of 10, 20 and 30. We will add a validation method to the shape class that will raise an error if the sum of the angles are not consistent with the number of sides of the shape. We also check to make sure the shape has at least 3 sides. We have included this in the Shape class so that all inherited classes will gain this method. The validator method is called within the constructor for the shape class. You might be able to think of other validations that need to be made to make sure only consistent shapes are created.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Shape:
+    def __init__(self, given_num_sides, given_angles):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+        self.angles = given_angles
+        self.angle_sum = (self.num_sides - 2) * 180
+        self.validator()
+
+    def validator(self):
+        if sum(self.angles) != self.angle_sum:
+        raise ValueError("Angles must sum to "+str(self.angle_sum))
+        if self.num_sides &amp;lt; 3:  
+        raise ValueError("The shape must have at least 3 sides")
+        if self.num_sides != len(self.angles):
+        raise ValueError("The number of sides must be the same as the number of angles")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;9. Encapsulation&lt;/h3&gt;
+&lt;p&gt;We will add a private attribute to the Shape class. In python we doo this by adding a double underscore infront of the name. This attribute will only be able to be modified or accessed by methods within the class itself. The follwoing code should result in an error as we have tried to access a private attribute&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Shape:
+    def __init__(self, n, angles):
+        self.__secret = "You can't see me"
+
+    shape = Shape(3, [30, 60, 90])
+    shape.__secret
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is called encapsulation. The secret attitribute is encapsualted with the class. We can however allow access to this attribute from outside the class by writting what are called getter and setter methods. Getter's get the value of attribute and setter's change the value of the attribute. This makes it more unlikelikly that this attribute will be accessed or changed by accident (although not impossible). The Shape class now looks like&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Shape:
+    def __init__(self, given_num_sides, given_angles):
+        self.num_sides = given_num_sides
+        self.name = "shape"
+        self.angles = given_angles
+        self.angle_sum = (self.num_sides - 2) * 180
+        self.validator()
+        self.__secret = "You can't see me"
+
+    def get_secret(self):
+        return self.__secret
+
+    def set_secret(self, given_secret):
+        self.__secret = given_secret
+
+    def validator(self):
+        if sum(self.angles) != self.angle_sum:
+        raise ValueError("Angles must sum to "+str(self.angle_sum))
+        if self.num_sides &amp;lt; 3:  
+        raise ValueError("The shape must have at least 3 sides")
+        if self.num_sides != len(self.angles):
+        raise ValueError("The number of sides must be the same as the number of angles")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;10. Create a Tracker class&lt;/h3&gt;
+&lt;p&gt;We will now create a class called Tracker thats purpose is to keep track of all the objects we create. This class will not inherit from Shape as it has nothing in common with it. Its constructor method will create an attribute called &lt;code&gt;created_objects&lt;/code&gt; that will be an empy list and used for storing the shape objects we create. We will make it private by adding the double underscore as we don't want it to be accidentally changed. We add a setter method called add that will add an object to the list and a getter method called summarise that will print out the details of the objects. Note that neither the getter or settr methods access the &lt;code&gt;created_objects&lt;/code&gt; attribute in its raw form. &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Tracker:
+    def __init__(self):
+        self.__created_objects = []
+
+    def add(self, obj):
+        if obj not in self.__created_objects:
+        self.__created_objects.append(obj)
+
+    def summarise(self):
+        for obj in self.__created_objects:
+        print(obj.name, obj.num_sides)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We now test it by instantiating an instance of the Triangle and Square classes then instantiating an instance of the Tracker class then calling the add method to add the triangle and square objects to the tracker object. We then call the summarise method to list the details of the stored objects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;triangle = Triangle(3, 4, [30, 60, 90])
+square = Square(4)
+tracker = Tracker()
+tracker.add(triangle)
+tracker.add(square)
+tracker.summarise()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;More functionality could be added to the summarise method such as prettier printing with column titles for example and/or more details about the shapes.&lt;/p&gt;
+&lt;h3&gt;11. Polymorphism&lt;/h3&gt;
+&lt;p&gt;Let's say we would like to write a method that prints out all of the attributes of an object. For the shape class this might look something like&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def print_all(self):
+    print("This shape has " + str(self.num_sides))
+    print("The angles of the shape are " ,self.angles)
+    print("The sum of the angles is " + str(self.angle_sum))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;All classess that inherit from Shape will gain this method. However, subclasses of Shape may need to print out additional information. The Triangle class for example may need to print out its base and height. We will need to rewrite the print_all method for the Triangle class. This is an example of method overiding. The &lt;code&gt;print_all&lt;/code&gt; method in the Triangle class "overirdes" the inherited version of the &lt;code&gt;print_all&lt;/code&gt; method it got from the Shape class. This is an example of how the &lt;code&gt;print_all&lt;/code&gt; method could be implemented in the Triangle class &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def print_all(self):
+    super.print_all()
+    print("The triangle has a height of " + str(self.height))
+    print(" The triangle has a base of " + str(self.base))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note we have made a call to the &lt;code&gt;print_all&lt;/code&gt; function in the super class to avoid repeating code.&lt;/p&gt;
+&lt;h3&gt;12. Further suggestions&lt;/h3&gt;
+&lt;p&gt;This activity could be taken much further. We could implement methods to draw the shapes. methods to calculate other aspects of the shapes etc. Please comment below if you have any good suggestions. I am constantly modifying this every time I use it with pupils. If your have any suggestions then please post in the comments below.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Python"></category></entry><entry><title>Computing in School: ML for Kids</title><link href="/Getting%20kids%20into%20machine%20learning.html" rel="alternate"></link><published>2021-01-24T10:20:00+00:00</published><updated>2021-01-24T10:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2021-01-24:/Getting kids into machine learning.html</id><summary type="html">&lt;p&gt;Using the machine learning for kids website to introduce pupils to the concept.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;The term "machine learning" gets bandied around in the press all the time these days. How many pupils when they come across this term understand what it means? How is it exactly that a machine "learns"? The website &lt;a href="https://machinelearningforkids.co.uk/"&gt;machine learning for kids MLFK&lt;/a&gt; goes some way to helping with the problem of educating pupils on the process of machine learning. What it doesn't do is look into the black box of the machine learning algorithm. For this you'd need a lot more maths. I've currently used this website with A-level pupils (aged 16-18) and GCSE pupils (aged 14-16). I'm going to describe my experience here to give you an idea about whether or not you want to give it a go.&lt;/p&gt;
+&lt;p&gt;The first thing to do is set up a teacher account. This involves setting up a free account on IBM's Watson Cloud Compute service and connecting it to the MLFK website. With the excellent step by step instructions provided I found this pretty straight forward. Then you set up some accounts for the pupils to use. Now the free account on IMB Watson only allows you so many accounts to train models simultaneously. For example, for simple text based models you get 5 simultaneous accounts. However, what the website does allow you to do is set up group collaborative projects. So a few pupils or indeed a whole class can contribute to the same project. Whole class projects were the way I used the website.&lt;/p&gt;
+&lt;p&gt;The first project I tried was a text based model. I set up two categories labeled "nice comments" and "nasty comments" and I encouraged the pupils to submit comments to each category. They were informed that comments were not allowed to be personal and they should be school appropriate. I monitored the submitted comments and deleted anything that didn't meet these expectations. They were pretty sensible, but quite creative in making comments with words I had never heard before! A bit of Googling followed to make sure they were appropriate! After we had a around 50 or so comments in each category we sent the model off to be "trained" by IBM Watson. And this is where it feels a little bit of a black box. There is no indication given about how the model is trained. That aside for the moment, it generally doesn't take very long to train a text based model. When finished a text box appears where pupils can enter different nice and nasty comments and the model will return which category it fits into and  what it's  percentage confidence is.  My challenge to the pupils was to fool the model. Could they make it categorise a nice comment as a nasty one. Once they'd achieved this we talked about what examples fooled the model and how that might have happened. We then went back to the training examples and added more in that would attempt to fix the incorrect classifications. This gave pupils a good overview of the process involved in training a model. What it didn't do was give any insight into the black box. The website does acknowledge this and provides a section dedicated to resources for teaching the internals of the models.&lt;/p&gt;
+&lt;p&gt;The second project we tackled was an image classifier. I gave the pupils the categories "cat" and "dog". They went away and found images online for as many different cats and dogs as they could find. Then we repeated the same process as above, uploading the photos to the website. This took a bit longer to train so it's worth having something else to do whilst it completes. There are some interesting experiments to try with this project. For example if you fill the dog category with pictures that have sky in them and the cat category with pictures that are taken at night will the model focus on the content of the image or will the background dominate? I also tried getting the pupils to sketch pictures of dogs and cats. The website includes a function for this. It worked surprisingly well.&lt;/p&gt;
+&lt;p&gt;The third project I tried was using a webcam to take pictures of the pupils faces and train a model to recognise them. This was a bit more limited in how accurate it was, but it started a discussion about the size and variation of the data set. We probably needed to upload a lot more photos of the pupils.&lt;/p&gt;
+&lt;p&gt;I had a discussion recently with a computer scientist friend of mine about the pedagogical nature of how computer science should be taught. He was of the opinion that things should be taught from the bottom up. For example, starting with the basic algorithms and building on them gradually. However, I feel that pupils often lack motivation if they cannot see an application to what they are learning and I postulated that a top down approach was an alternative. Starting with the MLFK website pupils can get a feel for how ML works. The next step down could be a description of how a some aspects of text classifier work. I think pupils could get there heads around the concepts of &lt;a href="https://studymachinelearning.com/stemming-and-lemmatization/"&gt;stemming&lt;/a&gt; and &lt;a href="https://studymachinelearning.com/stemming-and-lemmatization/"&gt;n-grams&lt;/a&gt;. One further level down would be studying a particular algorithm in detail and coding it up. I haven't tried this yet with pupils but I will let you know when I do.&lt;/p&gt;
+&lt;p&gt;In conclusion I would thoroughly recommend giving MLFK a go. It's great fun and gives pupils a fantastic insight into real world applications of computer science. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Machine Learning"></category></entry><entry><title>Computing in School: The Little Man Computer</title><link href="/Some%20programmes%20written%20for%20the%20Little%20Man%20Computer.html" rel="alternate"></link><published>2021-01-05T10:20:00+00:00</published><updated>2021-01-05T10:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2021-01-05:/Some programmes written for the Little Man Computer.html</id><summary type="html">&lt;p&gt;Some programmes written for the Little Man Computer&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Basic assembly code programming is part of the A-level Computing syllabus in the UK. For many programmers the thought of writing in assembly code is extremly tedious. However, the pupils seem to actually quite like it. They like breaking the problems down into their absolute basic components. The excellent &lt;a href="https://peterhigginson.co.uk/LMC/"&gt;Little Man Computer&lt;/a&gt; designed by &lt;a href="https://en.wikipedia.org/wiki/Stuart_Madnick"&gt;Stuart Madnick&lt;/a&gt;  models a basic &lt;a href="https://www.bbc.co.uk/bitesize/guides/zbfny4j/revision/3"&gt;Von Neumann Arctitechture&lt;/a&gt; in a web browser. It has an instruction set of only &lt;a href="http://www.yorku.ca/sychen/research/LMC/LMCInstructions.html"&gt;9 commands&lt;/a&gt; so is easy to get started on. I've included some examples of programmes below. They can also be found on my &lt;a href="https://github.com/jpowellstm/LMC_Programmes"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;two numbers&lt;/strong&gt; &lt;br/&gt;
+Write a program that will prompt for 2 numbers, subtract the first from the second and output the answer, then subtract the second from the first and output the answer.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INP
+STA 90
+INP
+SUB 90
+OUT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;one to ten up&lt;/strong&gt; &lt;br/&gt;
+Write a program to output the numbers 1 to 10 in ascending order.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LDA one
+STA count
+OUT
+
+loopstart LDA count
+          ADD one
+          OUT
+          STA count
+          SUB ten
+          BRP loopend
+          BRA loopstart
+loopend HLT
+
+one     DAT 1
+ten     DAT 10
+count   DAT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;one to ten down&lt;/strong&gt; &lt;br/&gt;
+Write a program to output the numbers 1 to 10 in descending order.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LDA ten
+STA count
+OUT
+
+loopstart LDA count
+          SUB one
+          BRZ loopend
+          OUT
+          STA count
+          BRA loopstart
+loopend HLT
+
+one     DAT 1
+ten     DAT 10
+count   DAT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;count in twos&lt;/strong&gt; &lt;br/&gt;
+Write a program to input a number then count up to that number in steps of 2, outputting the sequence.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INP
+STA input
+
+loopstart LDA count
+          ADD two 
+          OUT
+          STA count
+          SUB input
+          BRP loopend 
+          BRA loopstart
+loopend HLT
+
+one     DAT 1
+two     DAT 2
+input   DAT
+count   DAT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;multiply two numbers&lt;/strong&gt; &lt;br/&gt;
+Write a program that will input two numbers and multiply them.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INP
+STA input1
+INP
+STA input2
+
+loopstart LDA output
+          ADD input2
+          STA output
+          LDA count
+          ADD one
+          STA count
+          SUB input1
+          BRP loopend 
+          BRA loopstart
+
+loopend LDA output
+        OUT
+        HLT
+
+input1  DAT
+input2  DAT
+count   DAT
+output  DAT 0
+one     DAT 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;multiply two numbers extended&lt;/strong&gt; &lt;br/&gt;
+Extend the program above that it will let the user repeatedly input and multiply pairs of numbers, only stopping if a zero is entered.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;start LDA zero
+      STA output
+      STA count
+      INP
+      BRZ end
+      STA input1
+      INP
+      BRZ end
+      STA input2
+
+loopstart LDA output
+          ADD input2
+          STA output
+          LDA count
+          ADD one
+          STA count
+          SUB input1
+          BRP loopend 
+         BRA loopstart
+
+loopend LDA output
+        OUT
+        BRA start
+
+end HLT
+
+input1  DAT
+input2  DAT
+count   DAT
+output  DAT 
+one     DAT 1
+zero    DAT 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;convert integer to binary&lt;/strong&gt; &lt;br/&gt;
+Take as input a positive whole number and output the binary equivalent&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;start INP
+    STA 99
+
+loopstart SUB one
+          BRZ loopend
+          ADD one
+          BRZ loopend
+          SUB two
+          STA 99
+          LDA count
+          ADD one
+          STA count
+          LDA 99
+          BRA loopstart
+
+loopend  LDA 99
+         OUT
+         LDA count
+         BRZ end
+
+         STA 99
+         LDA reset
+         STA count
+         LDA 99
+         BRA loopstart
+
+end HLT
+
+two     DAT 2
+one     DAT 1
+count   DAT 0
+reset   DAT 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;fibonacci&lt;/strong&gt; &lt;br/&gt;
+Take as input the number of terms in the sequence to calculate after 1,1. Output the terms in the sequence 1,1,2,3,5,8,13...   &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;start INP
+      STA count
+      LDA one
+      STA 98
+      STA 97
+      OUT     
+      OUT
+
+loopstart LAD 97
+          ADD 98
+          STA 99
+          OUT
+          LDA 98
+          STA 97
+          LDA 99
+          STA 98
+          LDA count
+          SUB one
+          STA count
+          BRZ loopend
+          BRA loopstart
+
+loopend HLT
+
+one DAT 1
+count DAT 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Assembly"></category></entry><entry><title>Python for School Level Maths and Science</title><link href="/Python%20for%20school%20level%20maths.html" rel="alternate"></link><published>2020-05-12T10:20:00+01:00</published><updated>2020-05-12T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-12:/Python for school level maths.html</id><summary type="html">&lt;p&gt;Python tools and libraies for school level maths and science.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Python is developing as an invaluable tool for scientists and mathematician and has some really excellent tools available. I’ve put a few of these tools together in an ipython notebook. It is aimed at pupils studying A-level maths in the UK. It requires no programming experience to make some use out of it. It has examples on how to use python for the following things.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Symbolic algebraic manipulation&lt;/li&gt;
+&lt;li&gt;Calculus&lt;/li&gt;
+&lt;li&gt;Solving equations&lt;/li&gt;
+&lt;li&gt;Using mathematical and scientific constants&lt;/li&gt;
+&lt;li&gt;Vectors and matrices&lt;/li&gt;
+&lt;li&gt;Complex numbers&lt;/li&gt;
+&lt;li&gt;Hyperbolic functions&lt;/li&gt;
+&lt;li&gt;Units&lt;/li&gt;
+&lt;li&gt;Prefixes&lt;/li&gt;
+&lt;li&gt;Error bounds&lt;/li&gt;
+&lt;li&gt;Basic data processing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This document is not intended to be comprehensive, but more an introduction to the possibilities that some programming experience can give you. &lt;/p&gt;
+&lt;p&gt;The easiest way to run the document is in your webbrowser by using a Google Colab Notebook. Follow these steps&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;First install the colab notebook app. In google drive I do this by clicking the "new - more - connect more apps" and then searching for "colab"&lt;/li&gt;
+&lt;li&gt;Go to this &lt;a href="https://drive.google.com/drive/folders/14G9E5jHA3GY8uqlakuUK2JoWhQue0rAy?usp=sharing"&gt;link&lt;/a&gt;.
+You should be able to right click on the document “Python for mathematicians and scientists” and select “open with” and there should be an option for "colab notebook".&lt;/li&gt;
+&lt;li&gt;Everything is then explained in the document.&lt;/li&gt;
+&lt;li&gt;If you want to edit the document you will need to make a copy of it to your own Google Drive.
+Any comments or suggestions, please use the comments below.&lt;/li&gt;
+&lt;li&gt;Alternatively you can get a copy of the document from my &lt;a href="https://github.com/jpowcode/python_school_level_maths"&gt;Github&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Python"></category></entry><entry><title>Mobile Raspberry Pi</title><link href="/mobile_pi.html" rel="alternate"></link><published>2017-10-31T22:36:00+00:00</published><updated>2017-10-31T22:36:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/mobile_pi.html</id><summary type="html">&lt;p class="first last"&gt;Setting up a Raspberry Pi to allow remote access using a phone or tablet.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Does this sound at all familiar? You get a Raspberry as a christmas or birthday
+present, set it up on the familly TV or computer monitor with a power pack
+connected and a keyboard and mouse. You do some stuff on it that you're proud of
+and  want to take it into school to show your mates. Unfortunately, the school
+computer monitors do not have an accessible hdmi port and the keyboards cannot
+be unplugged in because they have been cable tied in and there is no free power
+socket. The ICT technitiatians also frown when you start to pull cables out of
+machines. You could take your laptop in to connect to it, but this is going to
+draw to much attention and anyway isn't the point supposed to be that a Pi is a
+portable coding machine? So how can a Pi be made portable. Well one solution
+would be to buy a portable screen, but this is bit pricy. Here
+is my cheaper solution using stuff you probably already have.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup a wifi hotspot on your mobile phone with a secure password.&lt;/li&gt;
+&lt;li&gt;Install whatever version of the Pi operating system you want, but I reccomend Jessie Lite as you wont be using a graphical user interface.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;Precofigure the Raspberry Pi  with details of your phones wifi hotspot password. Instructions &lt;a class="reference external" href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md"&gt;here&lt;/a&gt; The Pi will connect to it as soon as it is turned on.&lt;/li&gt;
+&lt;li&gt;Power by a portable usb charging pack.&lt;/li&gt;
+&lt;li&gt;Connect to the Pi using ssh via an app on your phone called &lt;a class="reference external" href="https://juicessh.com/"&gt;juicessh&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Use a small bluetooth keyboard that connects to the phone to alllow for faster typing.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This gives you access to a terminal on the Pi. Ok it's not a full desktop
+environment, but for programming you can manage with this. To get multiple
+terminal shells use the &lt;a class="reference external" href="https://kb.iu.edu/d/acuy"&gt;screen&lt;/a&gt; programme.
+Using this you can have a text editor
+open in one terminal, debug code in another and run code in a third. All of
+these can be moved between with some easy to learn keyboard shortcuts.&lt;/p&gt;
+&lt;p&gt;The result of this is the Pi can stay in your bag or pocket and all you need on
+the table is your phone and bluetooth keyboard. Or if you really want to be
+descrete, despense with the keyboard. You can code to your hearts content in
+the smallest of spaces and no one will have a clue what you are doing!&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Computing in School"></category><category term="Raspberry Pi"></category></entry></feed>

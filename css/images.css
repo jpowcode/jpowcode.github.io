@@ -1,0 +1,14 @@
+img[src*="#thumbnail"] {
+    width:150px;
+    height:100px;
+ }
+
+ img[src*="#small"] {
+    width:20%;
+    height:50%;
+ }
+
+ img.resize {
+   width:20%;
+   height:20%;
+}

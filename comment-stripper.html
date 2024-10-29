@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Comment Stripper</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/comment-stripper.html" rel="bookmark"
+                   title="Permalink to Comment Stripper">Comment Stripper</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-11-12T21:48:00+00:00">
+                Sun 12 November 2017
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>When writing code I like to make sure it is commented properly for future me.
+I also like to include features such as doc strings. The problem I find is
+that when working on this code the comments take up a lot of space and make it
+difficult to see large portions of actual code that is not a comment on the
+screen. I've written a program that will extract the comments from a file and
+write a new file without the comments. This program acts as a watcher that
+continually waits for a change to made to the file with comments and writes to
+the comment-less file. Now this may be a feature that is available in some
+IDEs, but I use <a class="reference external" href="https://atom.io/">ATOM</a> and I couldn't find anything that
+would do this for me.
+The way I set up ATOM is with two windows, one on the left with the file
+including comments (which I make edits in) and one on the right which contains
+the comment less code and is updated as I work. Comment stripper currently
+supports python, c, haskell, javascript, html, clojure and perl. It can be used
+to convert a file to one without comments using this example command on a test c
+programme.</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>commentStripper.py<span class="w"> </span>-i<span class="w"> </span>test.c<span class="w"> </span>-o<span class="w"> </span>test_out.c
+</pre></div>
+<p>it can also be used in watch mode where the programme output is continually
+updated by running the following example command on a test python programme.</p>
+<div class="highlight"><pre><span></span>python<span class="w"> </span>commentStripper.py<span class="w"> </span>-w<span class="w"> </span>-i<span class="w"> </span>test.py<span class="w"> </span>-o<span class="w"> </span>test_out.py
+</pre></div>
+<p>The code is on my <a class="reference external" href="https://github.com/jpowcode/comment_stripper">github</a> page
+and an explanation follows.</p>
+<p>First make the necessary imports. optparse for dealing with command line
+options, time for delays, os for file management, and re for regular expressions.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_imports"></script>
+<noscript>
+<pre><code>from optparse import OptionParser
+import time
+import os
+import re
+
+</code></pre>
+</noscript>
+</div>
+<p>The find_file_type function takes a static as input splits it into its
+name and its extension and checks the extension against a dictionary of extensions
+it knows how to deal with.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_find_file"></script>
+<noscript>
+<pre><code>def find_file_type(infile):
+    file_type = infile.split('.')[1]
+    extensions = {'py': 'python', 'pyc': 'python',
+                  'c': 'c', 'cpp': 'c++', 'cxx': 'c++', 'cXX': 'c++',
+                  'lhs': 'haskell', 'hs': 'haskell',
+                  'js': 'js',
+                  'html': 'html',
+                  'rc': 'rust',
+                  'clj': 'clojure', 'cljs': 'clojure', 'cljc': 'clojure',
+                  'edn': 'clojure',
+                  'pl': 'perl'}
+    return extensions[file_type]</code></pre>
+</noscript>
+</div>
+<p>The check_time function checks to see if it has been more than five seconds
+since a file was modified using the os.stat function.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_time"></script>
+<noscript>
+<pre><code>def check_time(filename):
+    current_time = time.time()
+    file_time = os.stat(filename).st_mtime
+    if current_time - file_time &lt; 5:
+        return True
+    else:
+        return False</code></pre>
+</noscript>
+</div>
+<p>The gen_strip function does all the hard work. It reads through the file line
+by line looking for comment characters and strings. It takes as input
+filename and output filename and regular expressions for the start and end
+of single line comments and multi-line comments. These are defined in the
+individual functions for each programming language.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_gen_strip"></script>
+<noscript>
+<pre><code>def gen_strip(infile, outfile,
+              sing_line_com, multi_line_com_start,
+              multi_line_com_end, comment_no_text,
+              end_line_com, end_line_com_id):
+
+    f_in = open(infile, 'r')
+    f_out = open(outfile, 'w')
+    long_com = False
+
+    for line in f_in:
+        com = False
+
+        if sing_line_com.match(line):
+            com = True
+
+        elif end_line_com.match(line):
+            com = True
+            f_out.write(line.split(end_line_com_id)[0])
+            f_out.write('\n')
+
+        else:
+            if multi_line_com_start is not None:
+                if comment_no_text.match(line):
+                    if long_com is False:
+                        long_com = True
+
+                    else:
+                        long_com = False
+                        com = True
+
+                if multi_line_com_start.match(line) and long_com is False:
+                    long_com = True
+
+                if multi_line_com_end.match(line) and long_com is True:
+                    long_com = False
+                    com = True
+
+        if not (long_com or com):
+            f_out.write(line)
+
+    f_in.close()
+    f_out.close()</code></pre>
+</noscript>
+</div>
+<p>For example, the strip_python function contains the regular expressions
+that define the single and multi line comments and calls the gen__strip
+function with these.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_python"></script>
+<noscript>
+<pre><code>def strip_python(infile, outfile):
+    sing_line_com = re.compile('^#(.*)|^"""(.*)"""$')
+    multi_line_com_start = re.compile('^"""(.+)')
+    multi_line_com_end = re.compile('(.+)"""$')
+    comment_no_text = re.compile('^"""$')
+    end_line_com = re.compile('^(.+)#(.*)')
+    end_line_com_id = '#'
+
+    gen_strip(infile, outfile,
+              sing_line_com, multi_line_com_start,
+              multi_line_com_end, comment_no_text,
+              end_line_com, end_line_com_id)</code></pre>
+</noscript>
+</div>
+<p>The if statements just make sure the correct function is called depending on the
+programming language that needs to be stripped.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_iffs"></script>
+<noscript>
+<pre><code>def strip_files(infile, outfile):
+    file_type = find_file_type(infile)
+
+    if file_type == 'python':
+        strip_python(infile, outfile)
+
+    if file_type == 'c':
+        strip_c(infile, outfile)</code></pre>
+</noscript>
+</div>
+<p>The main function uses optparser to read the options from the command line. The
+-i option specifies input files to be stripped. The -o option specifies
+the corresponding output filenames.</p>
+<p>If -w is specified then the programme goes into an infinite loop and updates
+the files every 5 seconds, otherwise they are just stripped of comments and
+an output written.</p>
+<div class="gist">
+<script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_main"></script>
+<noscript>
+<pre><code>if __name__ == '__main__':
+    parser = OptionParser()
+    parser.add_option("-i", "--in", action="store", type="string",
+                      dest="infile",
+                      help="""specify a comma separated list of files to strip
+                      from comments, no spaces between names""")
+
+    parser.add_option("-o", "--out", action="store", type="string",
+                      dest="outfile",
+					  help="""specify a comma separatd list of output file,
+                      no spaces between names""")
+
+    parser.add_option("-w", "--watch", action="store_true", dest="watch",
+					  help="sets the programme into realtime watching mode")
+
+    (options, args) = parser.parse_args()
+    infiles = options.infile.split(',')
+    outfiles = options.outfile.split(',')
+
+    if options.watch:
+        while True:
+            time.sleep(5)
+            for i in range(len(infiles)):
+                if check_time(infiles[i]):
+
+                    strip_files(infiles[i], outfiles[i])
+
+    else:
+        for i in range(len(infiles)):
+            strip_files(infiles[i], outfiles[i])
+</code></pre>
+</noscript>
+</div>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "comment-stripper.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

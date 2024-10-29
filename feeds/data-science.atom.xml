@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Data Science</title><link href="/" rel="alternate"></link><link href="/feeds/data-science.atom.xml" rel="self"></link><id>/</id><updated>2024-08-19T10:20:00+01:00</updated><entry><title>Data Science with Pandas, ScikitLearn and Altair 1: Analysis of Pupil Progress</title><link href="/Analysing%20the%20progress%20made%20by%20financially%20deprived%20students.html" rel="alternate"></link><published>2024-08-19T10:20:00+01:00</published><updated>2024-08-19T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-08-19:/Analysing the progress made by financially deprived students.html</id><summary type="html"></summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h3&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;In the UK it's often the case that on average pupils from more (financially) deprived backgrounds do not attain as high grades at school as pupils from more (financially) well off backgrounds. (This is obviously a huge generallisation and will not be the case for all pupils in all schools in all subjects.) There are many reasons for this which I don't want to go into here. At my school (and many other UK schools) pupils have historically been put into sets (groups) based on their attainment. This starts when they arrive from primary school (the first 6 years of education) at age 11 and leave after sitting GCSE exams at age 16. When they first arrive at school the exam scores from primary school are used to put them into sets. Then at the end of each year they do an exam and again this determines what set they are placed in the following year (This is a somewhat simplified version of what actually happens. In reality many other factors are taken into account such as how pupils interact with each other and their teacher's professional judgement.) What I would like to do is examine a hypothesis at the school I teach that a contributing factor or these pupils attaining lower tghan their more well off opeers is to do with the sets they are placed in.  The hypothesis is that pupils from more deprived backgrounds have a tendency to "slide down" through the sets over the 5 years they are in school and are more likely to end up underperforming because of this. I will investigate this for a a single year group of pupils that have now left the school. The data set I have contains the set each pupil was in over the 5 years they were in school (Year 7 - Year 11) and also a field called PP. In the UK families that are less well off get labeled &lt;a href="https://www.gov.uk/government/publications/pupil-premium/pupil-premium#:~:text=pupil%20premium%20funding.-,Purpose,service%20pupil%20premium%20(%20SPP%20)."&gt;"Pupil Premium"&lt;/a&gt; and schools get extra funding to support them. I will compare PP students with non-PP students to see if there is any difference.  &lt;/p&gt;
+&lt;p&gt;An interactive version of this post can be found and run on Google Drive  &lt;a href="https://drive.google.com/file/d/1q2zG9vryDs7SVfuBSLGRqZBfnz5OR7UV/view?usp=sharing"&gt;here&lt;/a&gt; and the csv file &lt;a href="https://drive.google.com/file/d/1jCrJ73sJ_bx_1e1LRq2y3RwCJaOrOu3l/view?usp=sharing"&gt;here&lt;/a&gt; and also on &lt;a href="https://github.com/jpowcode/data_projects"&gt;github&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Import the required libraries&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;import io
+import altair as alt
+import pandas as pd
+import numpy as np
+import random
+from google.colab import files
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Upload the csv file with the class data.&lt;/h3&gt;
+&lt;p&gt;Names have been taken out of the data set in Excel for privacy and replaced with labels a1, a2 etc. The order of the pupils has also been randomised so it is no longer alphabetical. This was done in Excel before importing.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;uploaded = files.upload()
+y11_sets = pd.read_csv(io.BytesIO(uploaded['y11_sets_anon.csv']))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Check the types of the imported data.&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;y11_sets.dtypes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Convert data&lt;/h3&gt;
+&lt;p&gt;There is one field that is different to the others (for some reason the Excel file had different data types) so we will convert all numeric data to float64 for consistency and check this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;y11_sets = y11_sets.astype({'Y07_set': 'float64','Y09_set': 'float64','Y08_set': 'float64', 'Y10_set': 'float64', 'Y11_set': 'float64'})
+y11_sets.dtypes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3&gt;Transform Data&lt;/h3&gt;
+&lt;p&gt;Sometimes different year groups will contain a different number of sets. For example, there could be 11 sets in years 7 and 8 and 12 sets in years 9, 10 and 11. So a pupil who moves from set 6 in year 8 to set 7 in year 9 may not actually be changing that much in realtion to their peers. For this reason I am going to &lt;a href="https://en.wikipedia.org/wiki/Normalization_(statistics)"&gt;normalise&lt;/a&gt; the sets and create a new column for each year group. for example Y07_set_n will be the normalised set for year 7. The formula used for this is&lt;/p&gt;
+&lt;p&gt;$X_n=\frac{X-\mu}{\sigma}$&lt;/p&gt;
+&lt;p&gt;where
+$X$ is the unnormalised data,
+$\mu$ is the mean of the data,
+$\sigma$ is the sdandard deviation of the data and
+$X_n$ is the normalised data&lt;/p&gt;
+&lt;p&gt;Notice that there are some empty values which represent pupils who have joined or left the school at some point during 5 years. I will leave these values in.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;y11_sets['Y07_set_n'] = (y11_sets['Y07_set'] -y11_sets['Y07_set'].mean())/y11_sets['Y07_set'].std()
+y11_sets['Y08_set_n'] = (y11_sets['Y08_set'] -y11_sets['Y08_set'].mean())/y11_sets['Y08_set'].std()
+y11_sets['Y09_set_n'] = (y11_sets['Y09_set'] -y11_sets['Y09_set'].mean())/y11_sets['Y09_set'].std()
+y11_sets['Y10_set_n'] = (y11_sets['Y10_set'] -y11_sets['Y10_set'].mean())/y11_sets['Y10_set'].std()
+y11_sets['Y11_set_n'] = (y11_sets['Y11_set'] -y11_sets['Y11_set'].mean())/y11_sets['Y11_set'].std()
+y11_sets.head()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To assit in some visuals later I am going to add extra random fluctuation to the whole number that represents the set. This will be explained in more detail below. To do this I will create an array of random numbers in it's own data frame called rand and check this looks ok.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rand = pd.DataFrame()
+variation = 0.2
+rand['RAND1'] = np.random.random(size=len(y11_sets))*variation
+rand['RAND2'] = np.random.random(size=len(y11_sets))*variation
+rand['RAND3'] = np.random.random(size=len(y11_sets))*variation
+rand['RAND4'] = np.random.random(size=len(y11_sets))*variation
+rand['RAND5'] = np.random.random(size=len(y11_sets))*variation
+rand.head()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now I will create a new column for each year group with the random number added on. For example Y07_set_r will be the set number for year 7 with a random fluctuation added.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;y11_sets['Y07_set_r'] = y11_sets['Y07_set'] + rand['RAND1']
+y11_sets['Y08_set_r'] = y11_sets['Y08_set'] + rand['RAND2']
+y11_sets['Y09_set_r'] = y11_sets['Y09_set'] + rand['RAND3']
+y11_sets['Y10_set_r'] = y11_sets['Y10_set'] + rand['RAND4']
+y11_sets['Y11_set_r'] = y11_sets['Y11_set'] + rand['RAND5']
+y11_sets.head()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Calculate the means&lt;/h2&gt;
+&lt;p&gt;I am going to calculate the mean value of the set for each year group for the PP students and the non-PP students. For each set and group by whether they are a PP student or not. We round off all the data to two decimal places. We also add a row that contains the difference between the values for the PP and non-PP students.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mean_by_year_grouped = y11_sets.groupby('PP')[['Y07_set_n', 'Y08_set_n', 'Y09_set_n', 'Y10_set_n', 'Y11_set_n']].mean()
+mean_by_year = y11_sets[['Y07_set_n', 'Y08_set_n', 'Y09_set_n', 'Y10_set_n', 'Y11_set_n']].mean()
+mean_by_year_grouped.loc['A'] = [mean_by_year['Y07_set_n'],mean_by_year['Y08_set_n'],mean_by_year['Y09_set_n'], mean_by_year['Y10_set_n'], mean_by_year['Y11_set_n']]
+summary_data = mean_by_year_grouped.round(2)
+summary_data.loc['D'] = summary_data.diff().loc['Y']
+summary_data.head()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img alt="Summary Data" src="./images/small-means.png"/&gt;&lt;/p&gt;
+&lt;p&gt;Here N is the mean values for the non PP students, Y the mean values for the PP students, A is the mean values for all the students (Note that due to the values being normailsed a mean value of zero is correct) and D the difference in the mean values between the PP and non PP students.&lt;/p&gt;
+&lt;h3&gt;Analysis&lt;/h3&gt;
+&lt;p&gt;We need to bare in mind that the sets have been normalised to values between -1 and 1. So a value close to -1 represents a high attaining set and a value close to 1 represents a low attaining set. If there were 10 sets in a year group then a normalised value of 0.2 would represent about a set dfifference. When pupils enter the school in year 7 the difference between the PP and non-PP is 0.15, slightly less than a set difference. This increases slightly in year 8 to 0.22, about a set difference. The increase to year 9 however represents to biggest change to 0.41 and then continues to increase to year 10 and year 11. So it would appear from this analysis that the PP students do indeed appear to "slide down" through the sets in their time at school.&lt;/p&gt;
+&lt;h3&gt;Visualisation&lt;/h3&gt;
+&lt;p&gt;I'm going to create a parallel coordenates plot to track the movement for all pupils as they change sets throughout the years. To emphasize the numbers of pupils moving I have added a small random value to each set number. Without this most of the lines lie on top of each other and it is difficult to see any variation. The amount of variation can be experimented with by changing the variable "variation" above and rerunning that cell and the one below it.&lt;/p&gt;
+&lt;p&gt;PP and non-PP students have been given different colours.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alt.Chart(y11_sets, width=700, height=700).transform_window(
+    index='count()'
+    ).transform_fold(
+    ['Y07_set_r', 'Y08_set_r','Y09_set_r', 'Y10_set_r', 'Y11_set_r']
+).mark_line().encode(
+    x='key:N',
+    y='value:Q',
+    detail='index:N',
+    color='PP:N'
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img alt="Parallel Coordinates Plot" src="./images/small-pp_graph.png"/&gt;&lt;/p&gt;
+&lt;h3&gt;Observations&lt;/h3&gt;
+&lt;p&gt;Not many PP pupils seem to make it into the highest set in year 7. Those that do seem to have been moved down in year 8. Checking the actual numbers below we can see that only 8 PP pupils out of 60 remain in the highest set in year 8.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;y11_sets[y11_sets['Y07_set']==1.0].groupby('PP')[['Y07_set']].count()
+y11_sets[y11_sets['Y08_set']==1.0].groupby('PP')[['Y08_set']].count()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img alt="Year 7 counts" src="./images/small-y7_set.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Year 8 Counts" src="./images/small-y8_set.png"/&gt;&lt;/p&gt;
+&lt;p&gt;In years 7 and 8 pupils are split into two equal half year groups so there are two groups for set 1, two for set 2 etc. In years 9-11 pupils are put together into a single year group so there is now only 1 group for set 1 and one group for set 2 etc. The PP pupils definately seem to loose out during this change. There seem to be a higher proportion of PP pupils "slipping down" than non-PP and I would suggest that more attention needs to focused on this transition to ensure the PP pupils are not hard done by.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Data Science"></category><category term="Data Science"></category><category term="Python"></category></entry><entry><title>Data Science with Pandas, ScikitLearn and Altair 0: Introduction</title><link href="/Using%20Python%20for%20data%20science%20experiments.html" rel="alternate"></link><published>2024-08-19T10:20:00+01:00</published><updated>2024-08-19T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-08-19:/Using Python for data science experiments.html</id><summary type="html">&lt;p&gt;An introduction to the series and tools&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;
+In each of this series of posts I will tackle some problem that involves data processing and analysis. I'm going to ivestigate the data, visualise it and possibly perform some predictive analysis with machine learning. The aim is to demonstrate the skills and tools involved at the same time as doing something useful or interesting. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Tools&lt;/strong&gt;
+I'll be using Google Colab as my IDE and running python3 as my programming language and making use of the following libraries&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://numpy.org/"&gt;numpy&lt;/a&gt; for dealing with vectors and arrays.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pandas.pydata.org/"&gt;pandas&lt;/a&gt; for manimulating data.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://altair-viz.github.io/"&gt;altair&lt;/a&gt; for visualisation.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://scikit-learn.org/stable/"&gt;scikit&lt;/a&gt; learn for training machine learning models.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://scipy.org/"&gt;scipy&lt;/a&gt; to provide numerical analysis algorithms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Most notebooks will start with the following code to import the tools. The last line allows Google colab to open files from the local envirnment.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import io, math
+import numpy as np
+import altair as alt
+import pandas as pd
+import sklearn as skl
+import scipy as scp
+from google.colab import files
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The first few posts will focus on problems with an educational theme as that is my background.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Data Science"></category><category term="Data Science"></category><category term="Python"></category></entry><entry><title>Altair by Example</title><link href="/Python%20and%20Altair.html" rel="alternate"></link><published>2024-06-10T10:20:00+01:00</published><updated>2024-06-10T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-06-10:/Python and Altair.html</id><summary type="html">&lt;p&gt;A cookbook of examples for creating dashboard visualisations with python's Altair library.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A pupil of mine wanted to create a dashboard for trading Bitcoin. (He will either go bankrupt or become very rich!) We needed to create some nice looking visualisations and after doing a bit of experimentation with different libraries I came across &lt;a href="https://pypi.org/project/altair/"&gt;Altair&lt;/a&gt;. It looks good, has a nice syntax and works in ipython notebooks. I've created a cookbook of examples that build up from importing data to creating basic graphs and building them up into some dashboard components. You can download the ipython notebook &lt;a href="https://drive.google.com/file/d/1e6l_rY8bVxGImKrAbzgNESZJERr8qTHK/view?usp=drive_link"&gt;here&lt;/a&gt; or just run it in Google Colab. You will also need to download the following files &lt;a href="https://drive.google.com/file/d/128YI5DMBmCDlMech57hS-WIdRvbzy70G/view?usp=sharing"&gt;happiness&lt;/a&gt; and &lt;a href="https://drive.google.com/file/d/1qmrrh5S-VRjubyIkbAsMPX7rFFg4X7Fu/view?usp=sharing"&gt;happiness_2021&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Data Science"></category><category term="Python"></category><category term="Altair"></category><category term="Programming"></category></entry><entry><title>Making a Scikit Learn Classifier</title><link href="/making-a-scikit-learn-classifier.html" rel="alternate"></link><published>2016-10-18T22:08:00+01:00</published><updated>2016-10-18T22:08:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-18:/making-a-scikit-learn-classifier.html</id><summary type="html">&lt;p class="first last"&gt;Writing a custom made classifier for Scikit Learn using Kaggle's Titanic dataset as an example.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Sklearn has many built in classifiers that can be imported and used. In this post
+I will describe how to make your own classifier that is compatible with all the
+other sklearn modules such as cross validation. &lt;a class="reference external" href="https://www.kaggle.com/"&gt;Kaggle&lt;/a&gt;
+provides a dataset
+based on the Titanic sinking. It includes a list of all the passengers that
+were onboard along with information about: whether or not they survived; age;
+sex; cabin class and a few other things. I am going to build a very basic
+classifier here that just asks: is the passenger male or female, if they are
+female then predict they survived, if they are male predict they perished. This
+classifier can predict with about 75% accuarcy.&lt;/p&gt;
+&lt;p&gt;Import the relevant python modules. Pandas to handle the data as a dataframe;
+crossvalidation from sklearn to allow splitting of the data into a training set
+and a test set; preprocessing from sklearn for some basic munging functions;
+&lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html"&gt;ClassifierMixin&lt;/a&gt;
+and &lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html"&gt;BaseEstimator&lt;/a&gt;
+are the sklearn base classes that give us the
+required structure for our estimator.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=sklearnclassifier.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;import pandas as pd
+from sklearn import cross_validation
+from sklearn import preprocessing
+from sklearn.base import ClassifierMixin, BaseEstimator&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Import the data set (it will need to be in your working directory) and convert
+it to a Pandas data set and drop some of the columns that won't be required.
+The first row of the summary variable will hold the mean values for each feature.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=read.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;TDat = pd.read_csv('trainData.csv', header=0)
+TDat_proc = TDat.drop(['Name', 'PassengerId', 'Ticket', 'Cabin', 'Embarked', 'Fare', 'Age'], axis=1)
+summary = TDat_proc.describe()&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Now define some processing functions. &lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html"&gt;MinMaxScalar&lt;/a&gt;
+scales each feature into a
+given range. &lt;a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html"&gt;LabelEncoder&lt;/a&gt;
+is used to transform the categorical data of the sex
+column into numerical data.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=preproc.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;min_max_scaler = preprocessing.MinMaxScaler()
+catToNum = preprocessing.LabelEncoder()
+TDat_proc.Sex = catToNum.fit_transform(TDat_proc.Sex)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Define a class that inherits from the BaseEstimator and ClassifierMixin classes.
+It must contain two functions: fit and predict. Predict simply returns a list of
+1's or 0's for each element on the data set. It returns a 1 if the element is a
+female or a 0 if they are a male.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=classifier.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;class Classifier(BaseEstimator, ClassifierMixin):
+    def fit(self, data, classes):
+        pass
+    
+    def predict(self, data):
+        return [1 if data[i][1] == 0 else 0 for i in range(len(data))]&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Turn the dataframe into a numpy array and split it into the features [Sex] and
+the target [Survived]&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=data.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;data = TDat_proc.values
+train_features = data[:, 1:]
+train_target = data[:, 0]&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Define an instance of the class and call it using the cross validation function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=scores.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;clfSX = Classifier()
+scores = cross_validation.cross_val_score(clfSX, train_features, train_target, cv=10)
+print 'Sex based classifier'
+print scores.mean(), scores.std() &lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;This is obviously a very basic classifier. The aim of this post was to get
+across the concept of building your own classifier. More details can be found
+&lt;a class="reference external" href="http://scikit.ml/api/base.html"&gt;here&lt;/a&gt; with information about how to use training
+data with the fit method.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Data Science"></category><category term="Python"></category><category term="Machine Learning"></category><category term="Programming"></category></entry></feed>

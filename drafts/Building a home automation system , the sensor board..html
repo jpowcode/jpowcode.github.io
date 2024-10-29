@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Building a Home Automation System - the sensor board</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/drafts/Building a home automation system , the sensor board..html" rel="bookmark"
+                   title="Permalink to Building a Home Automation System - the sensor board">Building a Home Automation System - the sensor board</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2021-02-23T10:20:00+00:00">
+                Tue 23 February 2021
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>The sensor board will measure temperature, humidity, light, motion, gas levels. It will have several buttons and a port for a remote button. It will be based around an <a href="https://www.electronicshub.org/esp32-pinout/">ESP-WROOM-32</a> board. This is capable little board that has plenty of GPIO pins for future expansion and each pin can be configured as an analogue input if necessary. It will be running the Tasmota firmware and sit on a custom PCB and be housed in a custom 3D printed case.  I will describe the process for setting this up.</p>
+<p><strong>Step 1</strong>  - Get the downloads you need <br />
+Download all of the following and put them in the same directory <br />
+tasmota32.bin from <a href="https://github.com/arendst/Tasmota/tree/firmware/firmware/tasmota32">here</a> <br />
+boot_app0.bin, bootloader_dout_40m.bin and partitions.bin from <a href="https://github.com/arendst/Tasmota/tree/firmware/firmware/tasmota32/ESP32_needed_files">here</a>   </p>
+<p><strong>Step 2</strong> - Install esptool <br />
+Install esptool from <a href="https://github.com/espressif/esptool">here</a>. There are instructions on the page</p>
+<p><strong>Step 3</strong> - Install the Tasmota firmware onto the esp32 board. <br />
+Connect you esp32 to your computer and find what port the board is connected to
+Run the following command (coutesy of this <a href="https://www.cnx-software.com/2020/06/23/tasmota-esp32-ethernet-camera-boards/">website</a>) in the terminal, with "PORT" changed to the port you found in the previous step. This might be soemthing like /dev/ttyUSB0 on Linux.</p>
+<p>Might need to delete flash first https://gndtovcc.home.blog/2020/04/16/flashing-micropython-firmware-with-esptool-py-on-esp32-and-esp8266/ test this next time</p>
+<pre><code>esptool.py --chip esp32 --port PORT --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dout --flash_freq 40m --flash_size detect 0x1000 bootloader_dout_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 tasmota32.bin
+</code></pre>
+<p><strong>Step 4</strong> - Connect the board to Wifi
+The board will now set up it's own WiFi network which you can connect to with your mobile phone. You will see a page with a form. All you need to do is put the name of your WiFi network and the password and hit save. The board will then shut down it's WiFi network and connect to your network.</p>
+<p><strong>Step 5</strong> - Connect to the boards config page. <br />
+First use a tool like AngryIP or Fing to find the IP address that your router gave the board. Then type this IP address into your computers browser and you should see the following page.</p>
+<p><strong>Step 6</strong> - configure the board <br />
+1. Hit the configuration button then Configure MQTT <br />
+2. You need to enter the IP address for the server, the username and password you setup in the MQTT stage. Leave everything else the same. Then hit save.
+3. Hit the configuration page then confire other. Make sure the MQTT enable checkbox is ticked then hit save.
+4. Hit the configuaration button and then Configure Module <br />
+5. Set it up exactly like the image below. Then hit save. <br />
+6. Click configuration then main menu then console. Run the following commands. More details can be found <a href="https://blakadder.com/pir-in-tasmota-integration/">here</a></p>
+<pre><code>Backlog rule1 on switch1#state=1 do publish stat/%topic%/MOTION ON endon; rule1 1; switchmode1 2
+
+rule2 on system#boot do publish2 homeassistant/binary_sensor/%macaddr%_motion/config {"name":"Motion Sensor","state_topic":"stat/%topic%/MOTION","availability_topic":"tele/%topic%/LWT","payload_available":"Online","payload_not_available":"Offline","device_class":"motion","force_update":true,"off_delay":30,"unique_id":"%deviceid%_motion","device":{"connections":[["mac","%macaddr%"]]}} endon
+
+rule2 1
+
+restart 1
+</code></pre>
+<p>Autoscan for tasmota devies
+7. Now open the WebUI for the Home Assisstant server. Click on Supervisor then TasmoAdmin and find the Open Web UI link.
+8. From the drop down menu for Devices at the top of the TasmoAdmin page click on List <br />
+9. Click on the little cog icon for your board then click the MQTT tab. <br />
+10. At the bottom of the page change the TelePeriod in seconds option to 30 and click the check box for Retain:Sensor. Then hit save.</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "drafts/Building a home automation system , the sensor board..html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

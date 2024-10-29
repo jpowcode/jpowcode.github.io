@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Explorations with a Rigol DS1054Z Oscilloscope Part 1- Basic Functions</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Basic functions.html" rel="bookmark"
+                   title="Permalink to Explorations with a Rigol DS1054Z Oscilloscope Part 1- Basic Functions">Explorations with a Rigol DS1054Z Oscilloscope Part 1- Basic Functions</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2020-04-22T10:20:00+01:00">
+                Wed 22 April 2020
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>I recently acquired a Rigol DS1054Z oscilloscope. On researching the internet 
+for tutorials I was disappointed, by the apparat lack of them. There are lots 
+of tutorials on other scopes and generic tutorials but not much specific to the
+Rigol. So decided I'd  better write some myself. </p>
+<p>I'm planning a series of blog posts as I find out the
+things I can do with this scope. Lets make a start.</p>
+<p>I'll be using these reference images to describe where controls are and where things are on the screen.</p>
+<p>Figure 1
+<img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Figure 2</th>
+<th style="text-align: center;">Figure 3</th>
+<th style="text-align: center;">Figure 4</th>
+<th style="text-align: center;">Figure 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/></td>
+<td style="text-align: center;"><img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/></td>
+<td style="text-align: center;"><img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/></td>
+<td style="text-align: center;"><img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 6
+<img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/></p>
+<p><strong>Using the Test signal</strong></p>
+<p>First off I'm going to test the scope works by using the inbuilt test
+signal. The scope outputs a basic square wave function on the metal
+terminals at the bottom right of the front panel (fig 1 - 18). Follow these steps:</p>
+<ol>
+<li>Connect the probe to channel 1.</li>
+<li>Make sure the switch on the probe is set to 1x.</li>
+<li>Connect the black ground clip of the probe to the bottom metal
+   connector of the test signal (Figure 1 - 18).</li>
+<li>The probe comes with a plastic clip to allow it to stay connected to things. Insert the test clip onto the end of the probe and attach it to the
+   top metal connector of the test signal.</li>
+<li>Press the Auto button (Figure 1 - 6). You should see a square wave pattern on the screen like the image below.</li>
+</ol>
+<p><img alt="Square wave image" src="./images/small-rigol_blog1_test_sig.png"/></p>
+<p><strong>Using a signal generator</strong> </p>
+<p>There isn’t a lot more we can do with the scope until we can provide it with some different signals. A signal generator is the perfect job for this, but they can be quite expensive (although if you have this scope maybe you also have a signal generator). However, there are some cheap alternatives available from ebay that can provide some interesting learning experiences. I won’t put a link here as they are likely to change, but they look a bit like this:</p>
+<p><img alt="Sig gen image" src="./images/small-sig-gen.jpg"/>{width=50%}</p>
+<p>They are not going to be the greatest bit of kit in the world (as we will see later on), but if you are just learning then they are great for the money. Alternatively, you can use a mobile phone app which will be described in the next post in this series. Now we will learn about some of the scopes features by connecting it to a signal generator. I will be using the ebay cheapo here. </p>
+<p><strong>Step 1</strong>: connect signal generator to scope<br/>
+1. Connect it up to a power supply or a battery. <br/>
+2. Feed some wires into the output terminals.<br/>
+3. Connect the scope to these, the negative of the scope probe is the little wire with the crocodile clip attached.<br/>
+4. Set the switch on the scope to 1X.<br/>
+5. Set a frequency in the mid range of the signal generator. It doesn’t matter for now.  </p>
+<p><strong>Step 2</strong>: find trace on scope<br/>
+1. The easiest way to see the signal on the scope is to press the Auto button (figure 1 - 6). You should now see a trace on the scope. There will be more on manually setting the window parameters in later posts. For now the Auto button will work just fine.<br/>
+2. The scope has several measurement functions accessed through buttons on the left of the screen (figure 1 - 1). Press the frequency button and you should see this value displayed on the bottom of the screen which should correspond to the value you set on the signal generator. See the image below. </p>
+<p><img alt="Sine wave image" src="./images/small-sine_wave.png"/></p>
+<p><strong>Step 3</strong>: explore limits of the signal generator<br/>
+1. Set the signal generator to its lowest setting.   <br/>
+2. Press the Auto button on the scope (figure 1 - 6).<br/>
+3. You will probably find that the Auto setting struggles to find the wave form at low such low frequencies. Try turning the horizontal scale dial (figure 1-16, figure 4 bottom) in small increments until you see the waveform. You might also need to play with the vertical settings (figure 1- 15, figure 2). The wave form takes a while to update at low frequencies. More on manually setting the window in future posts.<br/>
+4. Now change the setting to a square wave and set it to the highest possible frequency.<br/>
+5. Press the Auto button (figure 1 - 6). You should a wave form like the upper image below.
+6. Press the measurement button on the left (figure 1-1) for rise time and also width. Ideally for a square wave the rise time should as small a fraction of the width as possible. The signal generator is really only estimating a square wave by adding together sine waves. At high frequencies it can’t do this very well. If you look at the lower image below at the bottom of the screen you can see that the rise time is more than a quarter of the width for this waveform.  </p>
+<p><img alt="Dodgy square image" src="./images/small-dodgy_square.png"/>
+<img alt="Rise time image" src="./images/small-rise_time.png"/></p>
+<p><strong>Step 4</strong>: moving the trace on the screen<br/>
+1. Set the signal generator to any reasonable setting.<br/>
+2. Press the Auto button so you can see the trace.<br/>
+3. Sometimes we would like to zoom in horizontally to a trace. We can do this by turning the dial (figure 1 - 16, figure 4 bottom).<br/>
+4. We might also want to move the trace left to right, for example to fit it with another trace. We can do this by tuning the dial (figure 1 - 16, figure 4 top ).<br/>
+5. If we want to move the trace in the vertical direction we can do so by twisting dial (figure 1 - 15, figure 2 top).<br/>
+6. We can also change the vertical scale by turning the dial (figure 1 -15, figure 4 bottom).<br/>
+7. If you look at the bottom of the screen (figure 6 - 12) you should see the number of volts per division. There are divisions vertically on the screen so multiply this number by 8 to get the full difference from bottom to top of the screen. <br/>
+8. If you look at the top of the screen (figure 6 - 5) you will see the time division. There are 12 divisions horizontally so multiply this number by 12 to get the full difference in time between the left and right of the screen.  </p>
+<p>In following posts we will look at a capacitor discharging and also calculate the speed of sound. If you have any other suggestions for things you’d like to see then use the comments below.</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Basic functions.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

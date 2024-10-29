@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2024-10-29T10:20:00+00:00</updated><entry><title>Poscode Faker</title><link href="/Creting%20valid%20fake%20postcodes.html" rel="alternate"></link><published>2024-10-29T10:20:00+00:00</published><updated>2024-10-29T10:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2024-10-29:/Creting valid fake postcodes.html</id><summary type="html">&lt;p&gt;A Python function to generate a given number of poscodes in a given region that are valid.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h3&gt;Postcode Faker&lt;/h3&gt;
+&lt;p&gt;A recent project I worked on involved plotting the location of home addresses on a map. The location of their home I generated from their postcode using an api provided by the Office for National Statistics. (There will be more details on this in a future post.) When writing this project up I want to show the visualisations I'd generated, but I did not want to display the actual location of the people in the data set as this is obviously not a good idea for privacy reasons. I started looking about for python libabries to generate valid postcodes. Valid, being key here as generating any random string will not necessarily result in a location that actually exists. &lt;/p&gt;
+&lt;p&gt;A uk postcode is a combination of either 6 or 7 characters. What I want to be able to do is specify the start of the postcode as a string and generate a given number of random valid postcodes that start with that string. &lt;/p&gt;
+&lt;p&gt;The first step was to obtain a list of all valid postcodes in the UK. This came from the &lt;a href="https://geoportal.statistics.gov.uk/datasets/a2f8c9c5778a452bbf640d98c166657c/about"&gt;ONS, Office for National Statistics&lt;/a&gt; in the form of a large spreadsheet. The first column of the spreadsheet contains the postcode. The rest of the columns are not-needed. First I ran the following command using &lt;a href="https://www.cyberciti.biz/faq/bash-scripting-using-awk/"&gt;awk&lt;/a&gt; to strip out the first column and save it as a separate CSV file.  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;awk -F "," '{print $1}' ons_postcode_data.csv &amp;gt; postcodes.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This sets a comma as a separator and prints out the first field. Awk uses 1 as the first field and not zero like python.&lt;/p&gt;
+&lt;p&gt;Then I wrote a python function to produce the random postcodes. First import pandas and load csv file into a dataframe.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import pandas as pd
+postcodes = pd.read_csv('postcodes.csv')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next create a function that takes as input a dataframe, a partial postcode and a number of random samples required. It compiles a regular expression that starts with the partial postcode searches for all postcodes that contain the string and then selects a random sample from them. Case is ignored. The resulting dataframe is returned from the function.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def pcfake(df, partial_pc, number):
+  regex = f'^{partial_pc}'
+  return df[df.iloc[:,0].str.contains(regex, case = False)].sample(n=number)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can test this as follows and we should get 10 postcodes that all start with "np"&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pcfake(postcodes, "Np", 10).head(10)
+&lt;/code&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category></entry><entry><title>Surfs Up</title><link href="/surfs-up.html" rel="alternate"></link><published>2017-11-12T22:24:00+00:00</published><updated>2017-11-12T22:24:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-11-12:/surfs-up.html</id><summary type="html">&lt;p class="first last"&gt;Scraping the web to find information on surf conditions&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I've just started learning how to surf. Using the website
+&lt;a class="reference external" href="http://magicseaweed.com"&gt;Magic Seaweed&lt;/a&gt;
+to look at conditions of the waves is vital to having a good time. My
+local beach break varies in conditions from pan flat to monster killer
+waves with ripping tidal flows. Now I'm too lazy to look at the website
+every day so I've written a script that lives on my server and scrapes
+information from &lt;a class="reference external" href="http://magicseaweed.com"&gt;Magic Seaweed&lt;/a&gt; and also
+&lt;a class="reference external" href="https://www.tidetimes.org.uk"&gt;tidetimes.org&lt;/a&gt; For tidal information.
+If a few conditions are met that make the surf ideal for me then the
+script sends me an email. Here is a walk through of the code&lt;/p&gt;
+&lt;p&gt;First the required imports.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://docs.python-requests.org/en/master/"&gt;requests&lt;/a&gt; deals with making http requests to websites and returning the information in a useable format.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/"&gt;beautiful soup&lt;/a&gt; deals with scraping the html on a page and searching for tags.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.python.org/2/library/datetime.html"&gt;datetime&lt;/a&gt; and &lt;a class="reference external" href="https://docs.python.org/2/library/time.html"&gt;time&lt;/a&gt; for finding the time and date!&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://docs.python.org/2/library/smtplib.html"&gt;smtplib&lt;/a&gt; for sending an email.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_imports"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;import requests
+import bs4
+import time
+import datetime
+import smtplib&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Now define the urls for magic seaweed and tidetimes.org splitting them into a
+root address and a sub address in case changes are needed in future.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_urls"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;msw_root_url = 'http://magicseaweed.com'
+msw_index_url = msw_root_url + '/Tynemouth-Longsands-Surf-Report/26/'
+
+tt_root_url = 'https://www.tidetimes.org.uk'
+tt_index_url = tt_root_url + '/river-tyne-north-shields-tide-times'&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The email_alert function uses a Google api to send an email from an address
+I keep especially for automated alerts. This method avoids having to set up
+something like &lt;a class="reference external" href="https://linux.die.net/man/8/sendmail.sendmail"&gt;sendmail&lt;/a&gt;
+on my server. More details can be found in this
+&lt;a class="reference external" href="https://jpowcode.github.io/send-email-without-a-server.html"&gt;post&lt;/a&gt;&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_email"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def email_alert(message, address):
+        fromaddr = 'email_address_here'
+        username = 'username_here'
+        password = 'password_here'
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.login(username, password)
+        server.sendmail(fromaddr, address, message)
+        server.quit()&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;A small function that takes a url as input, gives it to requests to get the
+page and feeds this to beautiful soup to parse. This is then returned from the
+function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_get_page"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def get_page(url):
+    response = requests.get(url, verify=False)
+    soup = bs4.BeautifulSoup(response.text, 'html.parser')
+    return soup&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;During the week I can only surf during the evenings so the next two functions
+are needed.&lt;/p&gt;
+&lt;p&gt;A small function to find what day it is tomorrow.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_get_day"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def get_day_tomorrow():
+    tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+    return tomorrow.strftime("%A")&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;A small function that returns true if it its input is a weekday.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_weekday"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def is_weekday(day):
+    weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    if day in weekdays:
+        return True
+    return False&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;I now had to inspect the html of the websites to find the particular tags that
+contained the information I needed. For example, the time for low tide
+is found between the ".tag &amp;gt; span" tags.&lt;/p&gt;
+&lt;p&gt;This function returns the low tide times from the tidetimes.org website.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_tide"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def get_low_tide(soup):
+    elems = soup.select('.tac &amp;gt; span')
+    low1 = elems[0].getText().split(':')[0]
+    low2 = elems[2].getText().split(':')[0]
+    return int(low1), int(low2)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;This function returns the wind speed at 3 hourly intervals throughout the day
+from magic seaweed.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_wind"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def get_wind(soup):
+    elems = soup.select('span.msw-fc-wg')
+    nums = [str(elems[i].getText()) for i in range(len(elems)-1)]
+    nums_tomorrow = nums[8:16]
+    nums_wind = [float(item.split('mph')[0].strip()) for item in nums_tomorrow]
+    return nums_wind&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;This function returns the size of the waves from magic seaweed.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_waves"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def get_waves(soup):
+    elems = soup.select('span.h4.nomargin')
+    nums = [str(elems[i].getText()) for i in range(len(elems)-1)]
+    nums_tomorrow = nums[16:32]
+    
+    nums_height = [float(item.split('ft')[0].strip())
+                   for item in nums_tomorrow[::2]]
+
+    nums_space = [float(item.split('s')[0].strip())
+                  for item in nums_tomorrow[1:][::2]]
+
+    return nums_height, nums_space&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Now call the functions defined above to find the information we need.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_info"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;msw_html_text = get_page(msw_index_url)
+tt_html_text = get_page(tt_index_url)
+
+tomorrow = get_day_tomorrow()
+wave_heights = get_waves(msw_html_text)[0]
+wave_periods = get_waves(msw_html_text)[1]
+low_tide = get_low_tide(tt_html_text)
+wind = get_wind(msw_html_text)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;If it's a weekday look to see if low tide is around 11-1. This means
+the tide will be ideal by the time I get there. The check if the waves
+are between 2-4 feet and the wind is less than 15 mph. If all these
+conditions are true then return true. If it's not a weekday then the surf conditions could be good at any
+time during the day and we have to check these conditions separately.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_if"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;if is_weekday(tomorrow):
+    good_tide = low_tide[0] in [11, 12, 1] or low_tide[1] in [11, 12, 1]
+    good_waves = 2 &amp;lt;= wave_heights[5] &amp;lt;= 4
+    good_wind = wind[5] &amp;lt;= 15
+    good_surf = good_waves and good_wind and good_tide
+
+else:
+    if low_tide[0] in [3, 4, 5] or low_tide[1] in [3, 4, 5]:
+        good_waves = 2 &amp;lt;= wave_heights[3] &amp;lt;= 4
+        good_wind = wind[3] &amp;lt;= 15
+        good_surf = good_waves and good_wind
+
+    if low_tide[0] in [6, 7, 8] or low_tide[1] in [6, 7, 8]:
+        good_waves = 2 &amp;lt;= wave_heights[4] &amp;lt;= 4
+        good_wind = wind[4] &amp;lt;= 15
+        good_surf = good_waves and good_wind
+
+    if low_tide[0] in [9, 10, 11] or low_tide[1] in [9, 10, 11]:
+        good_waves = 2 &amp;lt;= wave_heights[5] &amp;lt;= 4
+        good_wind = wind[5] &amp;lt;= 15
+        good_surf = good_waves and good_wind
+
+    if low_tide[0] in [12, 1, 2] or low_tide[1] in [12, 1, 2]:
+        good_waves = 2 &amp;lt;= wave_heights[6] &amp;lt;= 4
+        good_wind = wind[6] &amp;lt;= 15
+        good_surf = good_waves and good_wind&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Send the email message.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/18c0d6a70139c568dbbad159c42f87d4.js?file=surfs_up_message"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;emails = ['address_to_send_to_here']
+if good_surf:
+    message = 'surfs up!'
+    email_alert(message, emails)
+
+else:
+    message = 'no surf today'
+    email_alert(message, emails)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category><category term="Programming"></category></entry><entry><title>Comment Stripper</title><link href="/comment-stripper.html" rel="alternate"></link><published>2017-11-12T21:48:00+00:00</published><updated>2017-11-12T21:48:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-11-12:/comment-stripper.html</id><summary type="html">&lt;p class="first last"&gt;A python programme to remove comments from some code.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;When writing code I like to make sure it is commented properly for future me.
+I also like to include features such as doc strings. The problem I find is
+that when working on this code the comments take up a lot of space and make it
+difficult to see large portions of actual code that is not a comment on the
+screen. I've written a program that will extract the comments from a file and
+write a new file without the comments. This program acts as a watcher that
+continually waits for a change to made to the file with comments and writes to
+the comment-less file. Now this may be a feature that is available in some
+IDEs, but I use &lt;a class="reference external" href="https://atom.io/"&gt;ATOM&lt;/a&gt; and I couldn't find anything that
+would do this for me.
+The way I set up ATOM is with two windows, one on the left with the file
+including comments (which I make edits in) and one on the right which contains
+the comment less code and is updated as I work. Comment stripper currently
+supports python, c, haskell, javascript, html, clojure and perl. It can be used
+to convert a file to one without comments using this example command on a test c
+programme.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;commentStripper.py&lt;span class="w"&gt; &lt;/span&gt;-i&lt;span class="w"&gt; &lt;/span&gt;test.c&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;test_out.c
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;it can also be used in watch mode where the programme output is continually
+updated by running the following example command on a test python programme.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;commentStripper.py&lt;span class="w"&gt; &lt;/span&gt;-w&lt;span class="w"&gt; &lt;/span&gt;-i&lt;span class="w"&gt; &lt;/span&gt;test.py&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;test_out.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The code is on my &lt;a class="reference external" href="https://github.com/jpowcode/comment_stripper"&gt;github&lt;/a&gt; page
+and an explanation follows.&lt;/p&gt;
+&lt;p&gt;First make the necessary imports. optparse for dealing with command line
+options, time for delays, os for file management, and re for regular expressions.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_imports"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;from optparse import OptionParser
+import time
+import os
+import re
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The find_file_type function takes a static as input splits it into its
+name and its extension and checks the extension against a dictionary of extensions
+it knows how to deal with.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_find_file"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def find_file_type(infile):
+    file_type = infile.split('.')[1]
+    extensions = {'py': 'python', 'pyc': 'python',
+                  'c': 'c', 'cpp': 'c++', 'cxx': 'c++', 'cXX': 'c++',
+                  'lhs': 'haskell', 'hs': 'haskell',
+                  'js': 'js',
+                  'html': 'html',
+                  'rc': 'rust',
+                  'clj': 'clojure', 'cljs': 'clojure', 'cljc': 'clojure',
+                  'edn': 'clojure',
+                  'pl': 'perl'}
+    return extensions[file_type]&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The check_time function checks to see if it has been more than five seconds
+since a file was modified using the os.stat function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_time"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def check_time(filename):
+    current_time = time.time()
+    file_time = os.stat(filename).st_mtime
+    if current_time - file_time &amp;lt; 5:
+        return True
+    else:
+        return False&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The gen_strip function does all the hard work. It reads through the file line
+by line looking for comment characters and strings. It takes as input
+filename and output filename and regular expressions for the start and end
+of single line comments and multi-line comments. These are defined in the
+individual functions for each programming language.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_gen_strip"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def gen_strip(infile, outfile,
+              sing_line_com, multi_line_com_start,
+              multi_line_com_end, comment_no_text,
+              end_line_com, end_line_com_id):
+
+    f_in = open(infile, 'r')
+    f_out = open(outfile, 'w')
+    long_com = False
+
+    for line in f_in:
+        com = False
+
+        if sing_line_com.match(line):
+            com = True
+
+        elif end_line_com.match(line):
+            com = True
+            f_out.write(line.split(end_line_com_id)[0])
+            f_out.write('\n')
+
+        else:
+            if multi_line_com_start is not None:
+                if comment_no_text.match(line):
+                    if long_com is False:
+                        long_com = True
+
+                    else:
+                        long_com = False
+                        com = True
+
+                if multi_line_com_start.match(line) and long_com is False:
+                    long_com = True
+
+                if multi_line_com_end.match(line) and long_com is True:
+                    long_com = False
+                    com = True
+
+        if not (long_com or com):
+            f_out.write(line)
+
+    f_in.close()
+    f_out.close()&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;For example, the strip_python function contains the regular expressions
+that define the single and multi line comments and calls the gen__strip
+function with these.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_python"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def strip_python(infile, outfile):
+    sing_line_com = re.compile('^#(.*)|^"""(.*)"""$')
+    multi_line_com_start = re.compile('^"""(.+)')
+    multi_line_com_end = re.compile('(.+)"""$')
+    comment_no_text = re.compile('^"""$')
+    end_line_com = re.compile('^(.+)#(.*)')
+    end_line_com_id = '#'
+
+    gen_strip(infile, outfile,
+              sing_line_com, multi_line_com_start,
+              multi_line_com_end, comment_no_text,
+              end_line_com, end_line_com_id)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The if statements just make sure the correct function is called depending on the
+programming language that needs to be stripped.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_iffs"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def strip_files(infile, outfile):
+    file_type = find_file_type(infile)
+
+    if file_type == 'python':
+        strip_python(infile, outfile)
+
+    if file_type == 'c':
+        strip_c(infile, outfile)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The main function uses optparser to read the options from the command line. The
+-i option specifies input files to be stripped. The -o option specifies
+the corresponding output filenames.&lt;/p&gt;
+&lt;p&gt;If -w is specified then the programme goes into an infinite loop and updates
+the files every 5 seconds, otherwise they are just stripped of comments and
+an output written.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/2b273c2a11851a674e478b59a3521339.js?file=comment_stripper_main"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;if __name__ == '__main__':
+    parser = OptionParser()
+    parser.add_option("-i", "--in", action="store", type="string",
+                      dest="infile",
+                      help="""specify a comma separated list of files to strip
+                      from comments, no spaces between names""")
+
+    parser.add_option("-o", "--out", action="store", type="string",
+                      dest="outfile",
+					  help="""specify a comma separatd list of output file,
+                      no spaces between names""")
+
+    parser.add_option("-w", "--watch", action="store_true", dest="watch",
+					  help="sets the programme into realtime watching mode")
+
+    (options, args) = parser.parse_args()
+    infiles = options.infile.split(',')
+    outfiles = options.outfile.split(',')
+
+    if options.watch:
+        while True:
+            time.sleep(5)
+            for i in range(len(infiles)):
+                if check_time(infiles[i]):
+
+                    strip_files(infiles[i], outfiles[i])
+
+    else:
+        for i in range(len(infiles)):
+            strip_files(infiles[i], outfiles[i])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category><category term="Programming"></category></entry><entry><title>Http to Mqtt Bridge</title><link href="/http_to_mqtt.html" rel="alternate"></link><published>2017-10-31T22:33:00+00:00</published><updated>2017-10-31T22:33:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/http_to_mqtt.html</id><summary type="html">&lt;p class="first last"&gt;A Flask app that passes http requests to an mqtt broker.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I am working on a home automation project that will control various aspects of
+my house from heating and lighting to music playing and security. The backend of
+this consists of a server running on a Raspberry Pi. It is my intention for this
+server to be a hub to broker messages between the various different methods of
+communication and the protcols that sit on top of them. For example, I may wish
+to turn my heating up from an app on my mobile phone. This is a breakdown of the
+steps required to make that happen&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The mobile phone app sends an http request to the server&lt;/li&gt;
+&lt;li&gt;The server receives the http request and translates it into an mqtt message on the request temperature change channel&lt;/li&gt;
+&lt;li&gt;A programme concerned with heating control is subscribed to the request temperature change channel  and receives the message.&lt;/li&gt;
+&lt;li&gt;The heating control programme is also subscribed to the current temperature channel which is being pushed out by sensors in each room.&lt;/li&gt;
+&lt;li&gt;A calculation is made by the programme and a message sent out on the set temperature channel.&lt;/li&gt;
+&lt;li&gt;A programme to translate mqtt messages into a protocol suitable for rf communication intercepts the message and sends it out over a 433mhz network.&lt;/li&gt;
+&lt;li&gt;The radiator thermostat receives the rf communication and sets the temperature accordingly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It is the third step that I will describe in this post. Very simply this is a
+small Python programme using the &lt;a class="reference external" href="http://flask.pocoo.org/"&gt;Flask&lt;/a&gt; library
+that sits in its own process
+listening for particular http requests. When it gets one it strips out the
+relevent information and publishes it over an MQTT channel using the
+&lt;a class="reference external" href="https://pypi.python.org/pypi/paho-mqtt/0.9"&gt;paho&lt;/a&gt;. A more detailed
+description can be found under the code below.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/6e0db7263d5350a95e6c13deb271bec7.js"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;from flask import Flask, request
+import paho.mqtt.client as mq
+
+ip = '127.0.0.1' 
+port = 1883 
+
+app = Flask(__name__)
+
+@app.route('/mqtt', methods=['GET'])
+def get_id():    
+    
+  topic = request.args.get('topic')    
+  message = request.args.get('message')    
+  mqtt = mq.Client("restMQTT")    
+  mqtt.connect(ip, port, 15)    
+  mqtt.publish(topic, message)    
+  
+if __name__ == '__main__':    
+  app.run(debug=True)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;We first import the required libraries for Flask and mqtt. Then define the
+ip address and port for the mqtt server. In this
+case it is just running on the localhost. We then start the Flask app and
+define a route which will call the function get_id when we visit the web
+address at /mqtt. We pull out the topic and message from the http request, set
+up an mqtt client and then publish the message.&lt;/p&gt;
+&lt;p&gt;We can test it all works using the mosquitto broker and its command line tools&lt;/p&gt;
+&lt;p&gt;First install it by following these
+&lt;a class="reference external" href="https://howtoprogram.xyz/2016/10/15/install-mosquitto-mqtt-broker-ubuntu-16-04-lts-xenial-xerus/"&gt;instructions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now start the mosquitto mqtt server&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mosquitto
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Subscribe to a the channel 'test'&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mosquitto_sub&lt;span class="w"&gt; &lt;/span&gt;-h&lt;span class="w"&gt; &lt;/span&gt;localhost&lt;span class="w"&gt; &lt;/span&gt;-t&lt;span class="w"&gt; &lt;/span&gt;mqtt_test
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Send an http request by typing this into a web browser&lt;/p&gt;
+&lt;pre class="code literal-block"&gt;
+http://127.0.0.1:5000/mqtt?topic=mqtt_test&amp;amp;message=hello_world
+&lt;/pre&gt;
+&lt;p&gt;The message 'hello_world' should appear in the terminal&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Home automation"></category><category term="MQTT"></category><category term="Programming"></category></entry><entry><title>Pelican</title><link href="/Static%20site%20generator%20with%20pelican.html" rel="alternate"></link><published>2017-10-31T22:25:00+00:00</published><updated>2017-10-31T22:25:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-31:/Static site generator with pelican.html</id><summary type="html">&lt;p class="first last"&gt;Blog update, now using Pelican static site generator.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I got fed up with &lt;a class="reference external" href="https://wordpress.com/"&gt;Wordpress&lt;/a&gt; . I know it has it's
+uses and is a great blogging platform, but my minimal server just couldn't cope.
+I spent a long time trying, but despite my best efforts at configuring Apache and
+MySQL I just couldn't get the database to stop crashing. For a simple static blog
+I figured I didn't really need Wordpress anyway. I'm fairly comfortable with
+Python so I decided to look for a solution that utilised it. Three options looked
+attractive: &lt;a class="reference external" href="https://getnikola.com/"&gt;Nikola&lt;/a&gt; , &lt;a class="reference external" href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;
+and &lt;a class="reference external" href="http://lucumr.pocoo.org/2015/12/21/introducing-lektor/"&gt;Lektor&lt;/a&gt;.
+I started with Nikola and very quickly ran into some installation problems.
+Not a good sign so I tried Pelican. A very different experience, it installed
+quickly with minimum fuss and got a good looking site up and running. I've also
+decided to host the blog on Github which was not too difficult a process
+and is described in the Pelican tutorials. So now I get free hosting as well.
+For comments I'm using &lt;a class="reference external" href="https://disqus.com/"&gt;Disqus&lt;/a&gt; which takes the pressure
+off me having to deal with spam. All in all I'm very happy with Pelican and would
+recommend it for a simple blog.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category><category term="Pelican"></category></entry><entry><title>Plickers Import</title><link href="/plickers-import.html" rel="alternate"></link><published>2017-10-30T21:16:00+00:00</published><updated>2017-10-30T21:16:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2017-10-30:/plickers-import.html</id><summary type="html">&lt;p class="first last"&gt;A python script to import questions into the Plickers app.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.plickers.com"&gt;Plickers&lt;/a&gt; is a website designed for obtaining feedback from pupils in a classroom environment. The basic process is as follows&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The teacher sets up multiple choice questions (typically with 4 answers) on the Plickers website to gauge whether or not pupils understand a certain concept.&lt;/li&gt;
+&lt;li&gt;The teacher sets up a mobile device with the plickers app.&lt;/li&gt;
+&lt;li&gt;Pupils are all given an individual QR code like thing in the shape of a square  which they can hold up in any one of four orientations to answer the question presented to them on a classroom projector.&lt;/li&gt;
+&lt;li&gt;The teacher then scans the room with the camera on the mobile device. The app recognises in which orientation each pupil is holding their QR code like thing and stores the data.&lt;/li&gt;
+&lt;li&gt;The teacher can then use this information to plan their next teaching steps. For example they could chose to change the seating in the next lesson to put pupils who understand together with those that don't.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;One of the main drawbacks that this website has is that it can't import questions from an outside source or export questions to an outside source. This makes it nigh on impossible for teams of teachers to share questions. To help with this I have written a Python script that can read questions from a CSV file and simulate the necessary mouse clicks to import them into the website. This allows teachers to collaborate by sharing their CSV files and importing each other's into their own Plickers accounts. To run the script you will need to follow these steps. The steps are written for a Ubuntu style operating system. If you are running Windows first follow the extra steps below and then return to this poiint.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Download the repository from my GitHub page &lt;a class="reference external" href="https://github.com/jpowcode/plickers_import"&gt;here&lt;/a&gt;. For windows users use the directory C:\cycwin64\home\"user_name"\plickers_import&lt;/li&gt;
+&lt;li&gt;Setup a virtual environment for Python, activate it and install dependencies&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=plickers"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;virtualenv plickers_import
+cd plickers_import
+source bin/activate
+pip install selenium&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;ol class="arabic simple" start="3"&gt;
+&lt;li&gt;Put your Plickers username and password into the first two lines of the file login-details.txt Please make sure your password is not the same as for any other websites you use as it will be stored here in plain text which is not very secure.&lt;/li&gt;
+&lt;li&gt;Write you questions into the CSV file in the example format given in the downloaded file.&lt;ul&gt;
+&lt;li&gt;Column A is the text for the question.&lt;/li&gt;
+&lt;li&gt;Column B should be an M for a multiple choice question and T for a True/False question&lt;/li&gt;
+&lt;li&gt;Column C contains the correct answer A, B, C or D for multiple choice or T or F for a True/False question&lt;/li&gt;
+&lt;li&gt;Columns D, E, F and G contain the answers for the questions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run the script&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;plickers_import.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Extra steps for windows users&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1. Dowload and install &lt;a class="reference external" href="https://www.cygwin.com/"&gt;Cygwin&lt;/a&gt; During the install
+proceedure make sure to click on the word 'Default' next to Python. See the
+image below.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external image-reference" href="/images/small-plickers.jpg"&gt;&lt;img alt="small-plickers" class="aligncenter wp-image-203" src="/images/small-plickers.jpg" style="width: 240px; height: 135px;"/&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;Download and install &lt;a class="reference external" href="https://www.mozilla.org/en-US/firefox/new"&gt;Firefox&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Download &lt;a class="reference external" href="https://github.com/mozilla/geckodriver/releases"&gt;Gecko Drivers&lt;/a&gt; , unzip the file and put it in C:\cycwin64\home\"user_name"\plickers_import\Scripts&lt;/li&gt;
+&lt;li&gt;Start Cygwin and run these commands&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/0b96a440de7a3ba0d05ca4755756344a.js?file=cygwin"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;easy_install pip
+easy_install virtualenv&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;ol class="arabic simple" start="5"&gt;
+&lt;li&gt;Now follow the steps above&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Explanation of the code&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;First make the relevent imports. We will be using the Python &lt;a class="reference external" href="https://pypi.python.org/pypi/selenium"&gt;selenium&lt;/a&gt;
+libaray that can simulate mouse clicks on a webpage.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_import"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;import time
+import csv
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Next we initialise a driver instance to the Firefox browser. We add the  WebDriverWait function as an attribute to the driver so it can
+be accessed more easily. This function is used to make the driver wait a
+certain amount of time (here 5 seconds) for an event to occur.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_init"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def init_driver():
+  driver = webdriver.Firefox()    
+  driver.wait = WebDriverWait(driver, 5)    
+  return driver&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The lookup function takes two arguments: a driver instance and a query lookup (a string).
+It finds the sign in link on that page and clicks it.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_lookup"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def lookup(driver, query):
+    driver.get(query)
+    try:
+        link = driver.find_element_by_link_text('Sign in')
+        link.click()
+
+    except TimeoutException:
+        print("Can't find sign in link")&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The login function takes the driver as an input. Reads login details from a file
+and enters login details into the fields in the webpage.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_login"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def login(driver):
+    try:
+        with open('login_details.txt', 'r') as file:
+            login_name = file.readline()
+            password = file.readline()
+
+    except IOError:
+        print('login_details.txt file not found')
+
+    try:
+        username = driver.find_element_by_name("email")
+        username.send_keys(login_name)
+
+        username = driver.find_element_by_name("password")
+        username.send_keys(password)
+
+        button = driver.find_element_by_class_name("btn")
+        button.click()
+
+    except TimeoutException:
+        print('enter login failed')&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The click_new_question function looks for an element in the html of the
+page with a class name 'btn', if it finds one it clicks it.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_question"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def click_new_question():
+    try:
+        button = driver.find_element_by_class_name("btn")
+        button.click()
+
+    except TimeoutException:
+        print("new question button failed")
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The add_tf_question function conssits mainly of css locations for the
+various aspects of the question dialogue. I found these by using the
+developer tools in my browser and ispect the element I was interested in.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_add_tf"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def add_tf_question(driver, question):
+    click_new_question()
+    time.sleep(1)
+
+    radio_button_css = ".modal-body &amp;gt; pl-question-editor:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) &amp;gt; span:nth-child(2) \
+    &amp;gt; div:nth-child(1)"
+
+    check_box_1_css = ".modal-body &amp;gt; pl-question-editor:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(1)"
+
+    check_box_2_css = ".modal-body &amp;gt; pl-question-editor:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(4) &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(1)"
+
+    save_button_css = ".modal-body &amp;gt; pl-question-editor:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(3) &amp;gt; div:nth-child(1) \
+    &amp;gt; div:nth-child(1) &amp;gt; div:nth-child(2) &amp;gt; div:nth-child(2) \
+    &amp;gt; div:nth-child(3)"
+
+    if question[2] == 'T':
+        box_to_tick = check_box_1_css
+    elif question[2] == 'F':
+        box_to_tick = check_box_2_css
+
+    try:
+        radio_button = driver.find_element_by_css_selector(radio_button_css)
+        radio_button.click()
+
+        text = driver.find_element_by_css_selector(".ng-touched")
+        text.send_keys(question[0])
+
+        check_box = driver.find_element_by_css_selector(box_to_tick)
+        check_box.click()
+
+        save_button = driver.find_element_by_css_selector(save_button_css)
+        save_button.click()
+
+    except TimeoutException:
+        print("failed to add question")&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;We call the functions in the main section of the programme. The time.sleep()
+calls are there to ensure that the webpage has enough time to render
+before the programme carries on with the next function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/d821333d511cba8ec5b12410a3fd3b5d.js?file=plickers_main"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;if __name__ == "__main__":
+    driver = init_driver()
+    lookup(driver, "https://www.plickers.com/")
+    time.sleep(2)
+    login(driver)
+    time.sleep(10)
+
+    with open('test_questions.csv') as file:
+        reader = csv.reader(file, delimiter=',')
+        for sample_question in reader:
+            if sample_question[1] == 'M':
+                add_multi_question(driver, sample_question)
+                time.sleep(1)
+            elif sample_question[1] == 'T':
+                add_tf_question(driver, sample_question)
+
+    time.sleep(20)
+    driver.quit()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Plickers"></category><category term="Python"></category><category term="Selenium"></category><category term="Programming"></category></entry><entry><title>Send Email Without a Server</title><link href="/send-email-without-a-server.html" rel="alternate"></link><published>2016-10-19T21:43:00+01:00</published><updated>2016-10-19T21:43:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-19:/send-email-without-a-server.html</id><summary type="html">&lt;p class="first last"&gt;Use the Gmail API to send emails without needing to run a server.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Sending email alerts from a Python programme can be incredibly useful. For example,
+a home security system could email you when an intruder is detected. One way to
+do this would be to set up an email server, but it is possible to do this using a
+web based service. Gmail provides an &lt;a class="reference external" href="https://developers.google.com/gmail/imap/imap-smtp"&gt;API&lt;/a&gt;
+to allow you to use a python script to instruct an email account you have to send
+an email. I have a separate Gmail acount registed to use for alerting from scripts
+and that's all I use it for. It will send an email to another account I have which i
+look at one my phone. The code below contains a function that takes as input a
+message and a list of email accounts to send the message to. It is descibed in these
+steps:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;import the &lt;a class="reference external" href="https://docs.python.org/2/library/smtplib.html"&gt;smtplib&lt;/a&gt; library which can be used to send email using the Simple Mail Transfer Protocol.&lt;/li&gt;
+&lt;li&gt;Define variables for the email address to send from and the username and password for this account&lt;/li&gt;
+&lt;li&gt;link to the Gmail smtp api and assign this to the server variable&lt;/li&gt;
+&lt;li&gt;Login to the api&lt;/li&gt;
+&lt;li&gt;loop over all the email addreses in the list and send the message to each of them.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/6b5570cd4fa89420361fd62943ef32ee.js"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;import smtplib
+
+def email_alert(message, addresses):        
+	fromaddr = 'email address to send from'        
+	username = 'username of email to send from'        
+	password = 'password of email to send from'
+	
+	server = smtplib.SMTP('smtp.gmail.com:587')        
+	server.starttls()        
+	server.login(username, password)        
+	
+	for address in addresses:            
+		server.sendmail(fromaddr, address, message)        
+	server.quit()&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category><category term="Home Automation"></category><category term="IoT"></category><category term="Programming"></category></entry><entry><title>Issue with Python Package Folium</title><link href="/Issue%20with%20Python%20package%20Folium.html" rel="alternate"></link><published>2016-10-17T21:41:00+01:00</published><updated>2016-10-17T21:41:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-17:/Issue with Python package Folium.html</id><summary type="html">&lt;p class="first last"&gt;A problem with Chrome rendering Folium maps.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;a class="reference external" href="https://pypi.python.org/pypi/folium"&gt;Folium&lt;/a&gt; is a Python package used to
+create data visualisations of spatial data.
+I've noticed an issue with the way Google Chrome renders the Folium maps.
+The resolution is not always consistent for two indentical base maps that have
+slightly different points ploted on them. For example, the two maps below were
+created using exactly the same setings. The only difference being that the data
+points plotted are different. You can see that Chrome has given each map a
+different initial zoom and the text size can even be different on the two maps.
+However rendering in Firefox causes no such problems. I've no idea why this is,
+but in case you run into issues, try a different browser and see whether that
+fixes it.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="56%"/&gt;
+&lt;col width="44%"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external image-reference" href="/images/small-folium1.jpg"&gt;&lt;img alt="alternate text" class="align-middle" src="images/small-folium1.jpg" style="width: 400px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/small-folium2.jpg"&gt;&lt;img alt="alternate text" class="align-middle" src="images/small-folium2.jpg" style="width: 400px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category></entry><entry><title>Pyboard Basics</title><link href="/pyboard-basics.html" rel="alternate"></link><published>2015-10-13T21:27:00+01:00</published><updated>2015-10-13T21:27:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-13:/pyboard-basics.html</id><summary type="html">&lt;p class="first last"&gt;Running Micro Python on a microcontroller.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;There seems to be a new and different micro controller development board
+being released every week at the moment. There also seems to be a trend
+towards supporting different languages. I just got myself a
+&lt;a class="reference external" href="https://micropython.org/"&gt;Pyboard&lt;/a&gt; to play with. The clue is in the
+name with this one: it come preloaded with a restricted version of
+Python called MicroPython. IT took me a while to get set up with using
+this on Ubuntu so I thought I'd give a brief description here. First we
+are going to need a need a command line tool called minicom which can be
+installed with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt-get&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;minicom
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;Plug your Pyboard into the USB port and run minicom with this command:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;minicom&lt;span class="w"&gt; &lt;/span&gt;-D&lt;span class="w"&gt; &lt;/span&gt;/dev/ttyACM0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now hit ctrl-a, this will instruct minicom to accept commands, followed
+by ctrl-c which will send a keyboard interrupt tot the pyboard and you
+should now see an interactive command prompt or REPL (read, evaluate,
+print loop). Navigate to the PYBFLASH folder, open the main.py file with
+your favourite editor, edit it and save it. Now return to the command
+prompt with minicom running and hit ctrl-d this will perfom a soft
+restart of the pyboard. When it restarts it will run the main.py file.
+You should either see the output of your code at the command prompt or
+more likely a runtime error. Correct it, hit ctrl-d and repeat. If
+anything goes seriously wrong you will need to do a hard reset of the
+Pyboard by pressing the reset button on the board itself. Before doing
+this however, make sure you quit minicom by hitting ctrl-a, followed by
+x (without the ctrl). I have found failing to do this can cause Ubuntu
+to crash.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Internet of Things"></category><category term="Pyboard"></category><category term="Python"></category></entry><entry><title>More Python Decorators</title><link href="/more-python-decorators.html" rel="alternate"></link><published>2015-05-01T18:20:00+01:00</published><updated>2015-05-01T18:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-05-01:/more-python-decorators.html</id><summary type="html">&lt;p class="first last"&gt;Python decorators for errors and memoization&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I've read a few introductory books and articles about python now and
+decided it was time to look for a more advanced book. I've started
+reading &lt;a class="reference external" href="http://www.amazon.co.uk/Python-Experts-Voice-Open-Source/dp/1430227575"&gt;Pro
+Python&lt;/a&gt; by
+&lt;a class="reference external" href="http://martyalchin.com/"&gt;Marty Alchin&lt;/a&gt;. It goes into a lot more
+depth about python. One of the chapters talks a lot about functions and
+describes several more applications of decorators. Briefly as follows&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;A decorator that will suppress any error raised by using a try/except
+block&lt;/li&gt;
+&lt;li&gt;A memoization decorator that "remembers" arguments that a function
+has been called with in the past and it's corresponding return
+values. If the decorated function is called with the same arguments
+again it simply returns the value stored in the cache instead of
+performing the calculation again.&lt;/li&gt;
+&lt;li&gt;A decorator that turns a function into a decorator function! I know,
+bends your brain a bit doesn't it?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I thoroughly recommend reading this book if you want to learn more about
+the decorators. If you know any other good uses for decorators please
+let me know in the comments.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="decorators"></category><category term="Python"></category></entry><entry><title>Some Python Decorators</title><link href="/some-python-decorators.html" rel="alternate"></link><published>2015-03-01T17:13:00+00:00</published><updated>2015-03-01T17:13:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-03-01:/some-python-decorators.html</id><summary type="html">&lt;p class="first last"&gt;Python decorators for counting, timing and logging.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I've been learning how to use decorators in Python. As far I understand
+it a decorator takes as input a function, does something with or to the
+function and then returns the function. To test out this functionality
+I've written five examples. First the following preamble is included at
+the top of the file containing the decorator functions:&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=preample.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;from functools import wraps
+from datetime import datetime as dt
+import logging
+                    
+logging.basicConfig(format='%(message)s',level=logging.NOTSET)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;countit&lt;/strong&gt; - will print a line to the terminal every time the function
+is called with the number of times it has been called.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=countit.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def countit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and logs the number of times the function has been 
+	called to the terminal"""
+	
+	@wraps(interceptedFunction)
+	def counter(*args, **kwargs):
+		counter.called += 1
+		functionName = interceptedFunction.func_name
+		actualResult = interceptedFunction(*args, **kwargs)
+		logging.debug('\n ######  Function: [{fnc}] =&amp;gt;  [{count}]  ######'
+					.format(fnc=functionName, count=counter.called))
+		return actualResult
+	counter.called = 0
+	return counter&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;timeit&lt;/strong&gt; - times how long a function takes to run and prints this to
+the terminal.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=timeit.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def timeit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs times the duration of thefunction and then returns it 
+	and logs it to the terminal """
+	
+	@wraps(interceptedFunction)
+	def timer(*args, **kwargs):
+		functionName = interceptedFunction.func_name
+		start = dt.now()
+		actualResult = interceptedFunction(*args, **kwargs)
+		stop = dt.now()
+		executionTime = stop - start
+		logging.debug('Function: [{fnc}] =&amp;gt; Took [{timed}]'
+					.format(fnc=functionName, timed=executionTime))
+		
+		return actualResult
+	
+	return timer&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;logit&lt;/strong&gt; - prints to the the terminal the output that is returned from
+a function.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=logit.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def logit(interceptedFunction):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and logs what the function returns to the terminal
+	as well as the input to the function"""
+	
+	@wraps(interceptedFunction)
+	def logger(*args, **kwargs):
+		functionName = interceptedFunction.func_name
+		functionArguments = []
+		
+		if kwargs is not None:
+			for arg in args:
+				functionArguments.append(arg)
+            
+		actualResult = interceptedFunction(*args, **kwargs)
+		logging.debug('Function: [{fnc}] =&amp;gt; Returns [{returned}] with input {inp}'
+					.format(fnc=functionName, returned=actualResult, inp=functionArguments))
+		return actualResult
+	
+	return logger&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;beforeit&lt;/strong&gt; - runs a function that is passed as an argument to the
+decorator before each function call.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=beforeit.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def beforeit(inputFunc):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and calls another function (inputFunc) first """
+	functionName = inputFunc.func_name
+	def beforeFunc(interceptedFunction):		
+		@wraps(interceptedFunction)
+		def before(*args, **kwargs):
+			inputFunc()
+			actualResult = interceptedFunction(*args, **kwargs)
+			return actualResult					
+		return before
+	return beforeFunc&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;afterit&lt;/strong&gt; - runs a function that is passed as an argument to the
+decorator after each function call.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=afterit.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;def afterit(inputFunc):
+	"""A decorator that intercepts a function and it's arguments *args 
+	and **kwargs and calls another function (inputFunc) after """
+	functionName = inputFunc.func_name
+	def afterFunc(interceptedFunction):				
+		@wraps(interceptedFunction)
+		def after(*args, **kwargs):			
+			actualResult = interceptedFunction(*args, **kwargs)
+			inputFunc()
+			return actualResult			
+		return after
+	return afterFunc&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;Each of these decorators can be used individually or as a group. For
+example, this is a function that computes prime numbers in a rather
+inefficient manner by calculating the factors of each number smaller
+than it (a better method would be to use the &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes"&gt;seive of
+Eratosthenes&lt;/a&gt;).
+It has been decorated with the first three functions above. It is then
+called three times as follows:&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=funcall.py"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;import time, random
+from pythonDecorators import *
+
+@logit
+@timeit
+@countit
+def isprime(p):
+	i=2
+	while i&amp;lt;= p/2:
+		if p%i==0:
+			return False
+		i=i+1
+	return True
+	
+for num in (7919, 399941, 1042709):
+	isprime(num)&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The output produced is:&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/3b86f826d03c7852570b.js?file=output"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt; ######  Function: [isprime] =&amp;gt;  [1]  ######
+Function: [isprime] =&amp;gt; Took [0:00:00.008360]
+Function: [isprime] =&amp;gt; Returns [True] with input [7919]
+
+ ######  Function: [isprime] =&amp;gt;  [2]  ######
+Function: [isprime] =&amp;gt; Took [0:00:00.120358]
+Function: [isprime] =&amp;gt; Returns [True] with input [399941]
+
+ ######  Function: [isprime] =&amp;gt;  [3]  ######
+Function: [isprime] =&amp;gt; Took [0:00:00.251844]
+Function: [isprime] =&amp;gt; Returns [True] with input [1042709]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;So whenever I am writing a new python programme I can now import my
+decorators file and I will have access to the timeit, countit and logit
+beforit and afterit decorators to aid in debugging.&lt;/p&gt;
+&lt;p&gt;If you can think of any other useful applications for decorators please
+let me know in the comments.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Python"></category><category term="Python"></category></entry></feed>

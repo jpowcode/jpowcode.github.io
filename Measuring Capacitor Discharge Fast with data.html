@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/images.css" type="text/css" />
+
+
+        <title>Explorations with a Rigol DS1054Z Oscilloscope Part 5 - Capacitor Discharge, Short Time Values.</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Measuring Capacitor Discharge Fast with data.html" rel="bookmark"
+                   title="Permalink to Explorations with a Rigol DS1054Z Oscilloscope Part 5 - Capacitor Discharge, Short Time Values.">Explorations with a Rigol DS1054Z Oscilloscope Part 5 - Capacitor Discharge, Short Time Values.</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2020-05-15T10:20:00+01:00">
+                Fri 15 May 2020
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>In this tutorial we will look at the discharge rate of a capacitor using a Rigol 1054z digital oscilloscope. We are going to study a capacitor that takes a short time to discharge, in the order of a small fraction of a second. The article will mainly be concentrated on the use of the scope rather than providing a lesson in physics. We are going follow these 7 steps.</p>
+<p><strong>Step 1</strong> Select suitable values for a capacitor and resistor.<br/>
+<strong>Step 2</strong> Set up a circuit with a capacitor in series with a resistor to discharge through. Connect this to the scope and a power supply.<br/>
+<strong>Step 3</strong> Connect a signal generator to the capacitor. <br/>
+<strong>Step 4</strong> Set up the scope. <br/>
+<strong>Step 5</strong> Charge the capacitor.<br/>
+<strong>Step 6</strong> Observe the capacitor discharging on the scope.<br/>
+<strong>Step 7</strong> Compare theory with reality.     </p>
+<p>These steps are now broken down in detail.  </p>
+<p><strong>Step 1</strong> <br/>
+The time constant for a capacitor in parallel with a resistor is given by $\tau = RC$. This is the time in which the capacitor takes to get to approximately 37% of its initial voltage. $R$ is the value of the resistor in ohms. $C$ is the value of the capacitor in Farads. More information <a href="https://en.wikipedia.org/wiki/RC_time_constant">here</a>.  I've selected values of $C=10\mu F$ and $R=500\Omega$ giving us
+$\tau = 500\times 10\times 10^{-6} = 0.005s$.  </p>
+<p><strong>Step 2</strong> <br/>
+1. Wire up a capacitor in series with a resistor. You can do this with crocodile clips and it should look something like the image below. Notice I've soldered the resistor to the capacitor to make it less of a mess of wires. Be careful not to short the terminals on the capacitor if using this method.   </p>
+<p><strong>Step 3</strong> <br/>
+I will use a signal generator with a square wave function that will repeatedly charge and discharge the capacitor as it turns the voltage on and off. This will make it easier to capture a single cycle.  </p>
+<ol>
+<li>Turn your power supply off (you can use a battery for this if you don’t have a power supply). Connect your power supply to the signal generator and set the power supply to enough to power the signal generator.</li>
+<li>Connect the output of the signal generator to the capacitor making sure the negative of the power supply is connected to the negative of the capacitor.   </li>
+<li>We now need to set the square wave frequency. The time for one cycle needs to be longer than the time it will take the capacitor to fully discharge. Given the time constant is 0.005s and this is how long it takes to get to 37% of the initial voltage lets pick a 0.005s or a frequency of about 20hz for the signal generator. We can always modify this later. </li>
+</ol>
+<p><img alt="Resistor Capacitor setup image" src="./images/small-short_time_cap_circuit.jpg#small"/></p>
+<p><strong>Step 3</strong> <br/>
+I’ll be referring to the figures below when explaining this step<br/>
+1. Turn scope on (figure 1 - 10).   <br/>
+2. Connect a probe to channel 1 (figure 1 - 13) and set switch on the probe to 1X.   <br/>
+3. Press the channel 1 button on the scope (figure 2 top left). Your screen should now look something like image 3 below. The menu on the right is the important part for now. To change the menu item you press the button next to it (figure 1 -12) twist the dial (figure 1 - 3, figure 3) and press the dial to select it. Make sure your values match those in the image.<br/>
+<img alt="Set up the channel on scope image" src="./images/small-chan1.png"/><br/>
+4.  We are now going to set the vertical axis on the scope which measures voltage. At the very bottom left of the screen (figure 6 -12)  you should see a voltage value displayed next to the number 1. This shows the volts per division (the small squares on the screen). There are 8 divisions on the screen so if we set the volts per division to 500mV we should  have plenty of space to see the graph. You can do this by twisting the dial (figure 1 - 15, figure 2 bottom right).  <br/>
+5. If you look at the top left of the screen (fig 6 - 4) you should see a time measurement which is the time per horizontal division on the screen. There are 12 horizontal divisions. If we set the number of seconds per division to 20ms this will give us an appropriately sized screen to observe the capacitor discharge. To do this turn the dial (figure 1 - 16, figure 4 bottom).  <br/>
+6. If you look at the top of the screen to the right of the time division (figure 6 - 5) you should see a value with units MSa/s. This is the number of samples per second that the scope will capture. On its current setting the scope will take 2 Million samples per second. This is far too many for our purpose and will lead to a very noisy output. Observe the images below which show the a high sample rate left and a low sample rate right.   </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="High sample rate image" src="./images/small-high_sample.png"/></td>
+<td style="text-align: center;"><img alt="Low sample rate image" src="./images/small-low_sample.png"/></td>
+</tr>
+</tbody>
+</table>
+<p>To change the sample rate press the Acquire button (figure 1 - 4) your screen should look something like the image below. Notice that we can’t set the sample rate directly but we have to set the total number of samples. Using the buttons to the right of the menu and the dial (figure 1 - 3) set this to it’s lowest value.  <br/>
+<img alt="Scope acquire button image" src="./images/small-aquire.png"/><br/>
+7. Because the capacitor is going to charge and discharge very quickly we are going to use the trigger function of the oscilloscope to capture a single charge and discharge cycle. Use the dial (figure 1 - 17, figure 5 dial). You should see the value of the trigger displayed on the top right of the screen (figure 6 - 11). Set the trigger to a few hundred mV.<br/>
+8. To get rid of some noise you might want to turn down the intensity of the display. To do this press the channel button (figure 1 - 12) and turn the dial (figure 1 - 3). The images below show before and after intensity adjustments. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="High intensity image" src="./images/small-high_intensity.png"/></td>
+<td style="text-align: center;"><img alt="Low intensity image" src="./images/small-low_intensity.png"/></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4</strong> <br/>
+You now need to connect the scope probe to the resistor. Make sure the negative of the probe (the little wire with the crocodile clip attached) is attached to the end of the resistor that is connected to the negative of the capacitor. Clip the other end of the scope probe by pulling back on the plastic disk to reveal the the metal prong to the other end of the resistor.  </p>
+<p><strong>Step 5</strong> <br/>
+Press the run button on the scope (figure 1 - 7) and you should see a wave form. You may need to adjust the horizontal and vertical scales. Press the single button (figure 1 -8) and the scope should trigger on a single waveform. You can now adjust the controls to get a wave form to take up most of the screen.   </p>
+<p><strong>Step 6</strong> <br/>
+You are now going to use the cursor functionality to calculate the time constant for the capacitor, resistor circuit.<br/>
+1. Press the cursor button (figure 1 - 4) and use the menu buttons (figure 1-12) to set the mode to manual. Your screen should look something like the image below.<br/>
+<img alt="Scope cursor button Image" src="./images/small-fast_cursor.png"/><br/>
+2. You now have access to four cursors. Two in the X direction, AX and BX and two in the Y direction AY and BY. Press the dial (figure 1 - 3) to alternate between them and turn the dial to adjust them. You will need to press the second menu button down (figure 1-12) to alternate between x and y axes. You are trying to get the lower Y cursor to be 37% of the upper Y cursor. Then alter the X cursors to read off the time values. When you are done your screen should look something like the image below. <br/>
+3. The difference between the time values can be read off the screen as BY - AY. Compare this with the time constant for the circuit which should be 5ms.  <br/>
+<img alt="Cursor calculation image" src="./images/small-fast_calculation.png"/> </p>
+<p>Figure 1
+<img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Figure 2</th>
+<th style="text-align: center;">Figure 3</th>
+<th style="text-align: center;">Figure 4</th>
+<th style="text-align: center;">Figure 5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/></td>
+<td style="text-align: center;"><img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/></td>
+<td style="text-align: center;"><img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/></td>
+<td style="text-align: center;"><img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/></td>
+</tr>
+</tbody>
+</table>
+<p>Figure 6
+<img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/></p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Measuring Capacitor Discharge Fast with data.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

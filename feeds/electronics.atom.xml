@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Electronics</title><link href="/" rel="alternate"></link><link href="/feeds/electronics.atom.xml" rel="self"></link><id>/</id><updated>2021-01-05T10:20:00+00:00</updated><entry><title>Home Made Power Supplies</title><link href="/A%20few%20of%20my%20home%20made%20power%20supplies..html" rel="alternate"></link><published>2021-01-05T10:20:00+00:00</published><updated>2021-01-05T10:20:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2021-01-05:/A few of my home made power supplies..html</id><summary type="html">&lt;p&gt;Several power supplies I've constructed over the years for various reasons.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I realised that over the years I had constructed quite a few different power supplies for various different purposes. I though I'd gather them all together in this post with some pictures.&lt;/p&gt;
+&lt;p&gt;This is one I made for powering projects that required a lot of current. It uses an old server power supply with the 3v, 5v and 12v lines broken out. A simple plyword box. The handle is made from an old coping saw that had broken that I had in my bits box proving that you should never throw anything out.  &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 1_1" src="./images/pow_sup1_1.jpg"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 1_2" src="./images/pow_sup1_2.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This one is a portable variable supply. The idea being I can plug in any old laptop charger or a lithium battery and have a variable supply. It uses a cheap ebay buck converter. It also has fixed 3v, 5v and 12v outputs. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image 5_1" src="./images/pow_sup4_1.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;This one is an miniaturised version of the previous one using a slightly better ebay module and a more compact perspex "sandwich" case. &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 2_1" src="./images/pow_sup2_1.jpg"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 2_2" src="./images/pow_sup2_2.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I build this one as I was fed up of the multitude of devices I always seemed to have hanging about charging at various places in the house. It contains an old PC power supply which has plenty of current to charge many devices simultaneously. I've de-soldered some USB sockets from some old PC motherboards and used them to plug the various USB cables into. It has several USB micro, a USB C and a few USB mini cables. Adding more cables is easy as there are spare USB slots on the back. &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 3_1" src="./images/pow_sup3_1.jpg"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 3_2" src="./images/pow_sup3_2.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This one has already been documented in a previous &lt;a href="https://jpowcode.github.io/power-supply-build.html"&gt;post&lt;/a&gt;. It's an old NAS box with an old server power supply and a variable voltage/current ebay module. It gives 0-45v at 2 amps.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 4_1" src="./images/power1.jpg"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 4_2" src="./images/power5.jpg"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Image 4_3" src="./images/power3.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;This is one I have sat on my desk. It's an old PC power supply with the 3v, 5v and 12v broken out on the front. It also powers all the DC devices on my desk such as soldering extractor, lights, small monitor, ethernet switch, saving me having a multitude of AC adapters plugged in.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Image 6_1" src="./images/pow_sup5_1.jpg"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Tools"></category><category term="Electronics"></category></entry><entry><title>Building a CPU from the Ground up Part 8 - The Programme Counter</title><link href="/CPU%20Architecture%20-%20The%20Programme%20Counter.html" rel="alternate"></link><published>2020-05-24T10:20:00+01:00</published><updated>2020-05-24T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-24:/CPU Architecture - The Programme Counter.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up Part 8 - the programme counter&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;The programme counter (PC)is a complex beast. In its simplest mode 'increment', (when I is set to 1) it is just a 4 bit counter and allows the CPU to step through the 16 instructions stored in the ROM. However, if the CPU is to have any branch functions to allow loops in the code then the PC needs to be able to jump to any 4 bit number. To do this it has a load mode. When L is set to 1 the PC reads an address off the address bus and sets its value to this. The ROM will consequently then jump to this address on its next instruction. &lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/91982" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Building a CPU from the Ground up Part 7 - Binary Counters</title><link href="/CPU%20Architecture%20-%20Binary%20Counters.html" rel="alternate"></link><published>2020-05-23T10:20:00+01:00</published><updated>2020-05-23T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-23:/CPU Architecture - Binary Counters.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up part 7 - binary counters&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;To implement a Fetch, Decode, Execute cycle within the CPU I am going to need some binary counters. To implement these I’m going to need a JK flip flop. From this I will be able to implement a 2 BIT binary counter which I can then chain together to make a 4 BIT binary counter. These counters will be used within the control logic for the CPU.&lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/91979" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Building a CPU from the Ground up Part 6 - Memory</title><link href="/CPU%20Architecture%20-%20Memory.html" rel="alternate"></link><published>2020-05-22T10:20:00+01:00</published><updated>2020-05-22T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-22:/CPU Architecture - Memory.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up part 6 - memory&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;Registers&lt;/strong&gt;&lt;br/&gt;
+These are simply made from 4 DFlipflops. There is a tri-state buffer added to the input and one to the output to allow the register to be set into either a read or a write mode. &lt;/p&gt;
+&lt;p&gt;Memory is then built up as follows.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4 BIT Memory&lt;/strong&gt;&lt;br/&gt;
+4 of the 1 bit DFlipFlops are strung together to make a 4 bit memory module. I will add an enable line to allow the module to “remember” data for longer than one clock cycle. When the enable line is set to 0 the outputs do not change. When the enable line is set to 1 the output will change to the current data on the next high clock.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;16 x 4 BIT Memory&lt;/strong&gt;&lt;br/&gt;
+16 of the 4 BIT Memory modules are then strung together to make a memory module capable of being addressed by a 4 BIT address. 4 BITs = 16 memory locations, each of them 4 BITs in size. The input has a 1:16 demux to select which of 16 memory locations to use and the output has a 16:1 mux to select which of the memory locations to read.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RAM&lt;/strong&gt;&lt;br/&gt;
+My 16x4BIT memory module essentially copies the circuitverse RAM module or at least the features of it I use. I’ve added a few extras to my RAM module. A read enable control to the to allow control over whether or not it writes to the the buffer. A clock input to it so writes and reads only occur on positive clock cycles. Also given the RAM both reads and writes to the same buffet I’ve added some additional Dflipflops on the inputs to prevent any conflicts of signals.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ROM&lt;/strong&gt;&lt;br/&gt;
+The ROM is similar to the RAM. It differs in that you can easily change what it contains by typing in HEX codes. It also doesn’t need the input flipflops as it doesn’t read and write from the same places. The ROM will read from the Programme Counter and write to some specific registers.&lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/91964" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Building a CPU from the Ground up Part 5 - Sequential Logic</title><link href="/CPU%20Architecture%20-%20Sequential%20Logic.html" rel="alternate"></link><published>2020-05-18T10:20:00+01:00</published><updated>2020-05-18T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-18:/CPU Architecture - Sequential Logic.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up part 5 - sequential logic&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Now the ALU is complete the next fundamental building block of a CPU is memory. This will take several forms: 
+* Registers - small 4 bit chunks of memory that are used temporarily as buffers during the processor cycles. 
+* ROM - read only memory, this will hold the programme code. More on the design of this in the next post.
+* RAM - random access memory. This will be able to hold data more permanently than the registers during programme execution.&lt;/p&gt;
+&lt;p&gt;Before any of this I will need a few building blocks.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1 Bit D latch&lt;/strong&gt;&lt;br/&gt;
+A latch simply remembers a state. For example, if I set the Data line the output will only be changed when the clock signal goes high. When the clock signal is low the output will not change regardless of how many times the input is changed. These latches will be the fundamental building blocks of registers and memory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Flip flops&lt;/strong&gt;&lt;br/&gt;
+I will also need two different types of flip flops. A D type and a JK Type. You can find more information about these [here] (https://docs.circuitverse.org/#/Sequential).  &lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/88691" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Building a CPU from the Ground up Part 4 - The Arithmetic Logic Unit</title><link href="/CPU%20Architecture%20-%20The%20Arithmetic%20Logic%20Unit.html" rel="alternate"></link><published>2020-05-17T10:20:00+01:00</published><updated>2020-05-17T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-17:/CPU Architecture - The Arithmetic Logic Unit.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up part 4 - the arithmetic logic unit&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I’m going to recreate the ALU module that circuitverse has built in. Then according to my rules I will be able to use it in the main CPU build. The circuitverse ALU has two 4 bit inputs A and B, a 4 bit output Q and a 3 bit control line CTR. It performs the following functions on A and B depending on what CTR is set as  &lt;/p&gt;
+&lt;style type="text/css"&gt;
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+&lt;/style&gt;
+&lt;table class="tg"&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th class="tg-0pky"&gt;&lt;span style="font-weight:700;font-style:normal;text-decoration:none"&gt;CTR&lt;/span&gt;&lt;br/&gt;&lt;/th&gt;
+&lt;th class="tg-0pky"&gt;&lt;span style="font-weight:bold"&gt;Function&lt;/span&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;000&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A&amp;amp;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;001&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A|B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;010&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A+B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;011&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;100&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A&amp;amp;B'&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;101&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A|B'&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;110&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A-B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="tg-0pky"&gt;111&lt;/td&gt;
+&lt;td class="tg-0pky"&gt;A&amp;lt;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A&amp;amp;B and A|B I already have. These are just the 4 bit AND and 4 bit OR modules. &lt;/p&gt;
+&lt;p&gt;I’m going to use the modules for A&amp;amp;B and A|B I created to create the modules for A&amp;amp;B’ and A|B’. All I need is a 4 bit NOT gate on the input of B. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Binary adders and subtracters&lt;/strong&gt;&lt;br/&gt;
+I’m not going to go into detail about the theory of binary adders here. There is plenty of that on the internet already. I’ve created a single bit binary adder and combined four of them to make a 4 bit binary adder. The adders all have a carry in bit Cin and a carry out bit Cout. The binary subtractor was constructed using the 2’s compliment method: invert one of the inputs, add them then add 1 by setting the carry in bit to 1. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Comparators&lt;/strong&gt;&lt;br/&gt;
+The last module for the ALU is a comparator. Basically it outputs 1 if A&amp;lt;B and 0 otherwise. I’ve created a 1 bit comparator that has two outputs for less than and equality. When creating the 4 bit comparator I’ve used 4 1 bit comparators. Each of the 4 bits is compared and for each bit the more significant bits are checked for equality.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Putting it all together to construct the ALU&lt;/strong&gt;&lt;br/&gt;
+The inputs to the ALU A and B get fed into all 7 function modules simultaneously. The 3 bit control line is fed into an 8:1 4 bit mux to select which of the functions is passed through to the output.&lt;/p&gt;
+&lt;p&gt;&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/88151" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Building a CPU from the Ground up Part 3 - 4 BIT Logic</title><link href="/CPU%20Architecture%20-%204%20BIT%20Logic.html" rel="alternate"></link><published>2020-05-16T10:20:00+01:00</published><updated>2020-05-16T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-16:/CPU Architecture - 4 BIT Logic.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up part 3 - 4 bIT logic&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Given I am constructing a 4 bit CPU all operations will be conducted on 4 bits of data, in which case I need fundamental gates that act on 4 bits. This is a simple matter of wedging multiple 1 bit gates together and using the circuit verse bit splitter tool to separate a 4 bit input into 4 separate 1 bit inputs and put them back again. Below are constructions for 4 bit versions of  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AND   &lt;/li&gt;
+&lt;li&gt;OR   &lt;/li&gt;
+&lt;li&gt;NOT   &lt;/li&gt;
+&lt;li&gt;2:1 MUX   &lt;/li&gt;
+&lt;li&gt;8:1 MUX   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Feel free to experiment with them below.   &lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/88131" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Explorations with a Rigol DS1054Z Oscilloscope Part 5 - Capacitor Discharge, Short Time Values.</title><link href="/Measuring%20Capacitor%20Discharge%20Fast%20with%20data.html" rel="alternate"></link><published>2020-05-15T10:20:00+01:00</published><updated>2020-05-15T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-15:/Measuring Capacitor Discharge Fast with data.html</id><summary type="html">&lt;p&gt;Using a Rigol scope to measure capacitor discharge.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;In this tutorial we will look at the discharge rate of a capacitor using a Rigol 1054z digital oscilloscope. We are going to study a capacitor that takes a short time to discharge, in the order of a small fraction of a second. The article will mainly be concentrated on the use of the scope rather than providing a lesson in physics. We are going follow these 7 steps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt; Select suitable values for a capacitor and resistor.&lt;br/&gt;
+&lt;strong&gt;Step 2&lt;/strong&gt; Set up a circuit with a capacitor in series with a resistor to discharge through. Connect this to the scope and a power supply.&lt;br/&gt;
+&lt;strong&gt;Step 3&lt;/strong&gt; Connect a signal generator to the capacitor. &lt;br/&gt;
+&lt;strong&gt;Step 4&lt;/strong&gt; Set up the scope. &lt;br/&gt;
+&lt;strong&gt;Step 5&lt;/strong&gt; Charge the capacitor.&lt;br/&gt;
+&lt;strong&gt;Step 6&lt;/strong&gt; Observe the capacitor discharging on the scope.&lt;br/&gt;
+&lt;strong&gt;Step 7&lt;/strong&gt; Compare theory with reality.     &lt;/p&gt;
+&lt;p&gt;These steps are now broken down in detail.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt; &lt;br/&gt;
+The time constant for a capacitor in parallel with a resistor is given by $\tau = RC$. This is the time in which the capacitor takes to get to approximately 37% of its initial voltage. $R$ is the value of the resistor in ohms. $C$ is the value of the capacitor in Farads. More information &lt;a href="https://en.wikipedia.org/wiki/RC_time_constant"&gt;here&lt;/a&gt;.  I've selected values of $C=10\mu F$ and $R=500\Omega$ giving us
+$\tau = 500\times 10\times 10^{-6} = 0.005s$.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt; &lt;br/&gt;
+1. Wire up a capacitor in series with a resistor. You can do this with crocodile clips and it should look something like the image below. Notice I've soldered the resistor to the capacitor to make it less of a mess of wires. Be careful not to short the terminals on the capacitor if using this method.   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt; &lt;br/&gt;
+I will use a signal generator with a square wave function that will repeatedly charge and discharge the capacitor as it turns the voltage on and off. This will make it easier to capture a single cycle.  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Turn your power supply off (you can use a battery for this if you don’t have a power supply). Connect your power supply to the signal generator and set the power supply to enough to power the signal generator.&lt;/li&gt;
+&lt;li&gt;Connect the output of the signal generator to the capacitor making sure the negative of the power supply is connected to the negative of the capacitor.   &lt;/li&gt;
+&lt;li&gt;We now need to set the square wave frequency. The time for one cycle needs to be longer than the time it will take the capacitor to fully discharge. Given the time constant is 0.005s and this is how long it takes to get to 37% of the initial voltage lets pick a 0.005s or a frequency of about 20hz for the signal generator. We can always modify this later. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="Resistor Capacitor setup image" src="./images/small-short_time_cap_circuit.jpg#small"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt; &lt;br/&gt;
+I’ll be referring to the figures below when explaining this step&lt;br/&gt;
+1. Turn scope on (figure 1 - 10).   &lt;br/&gt;
+2. Connect a probe to channel 1 (figure 1 - 13) and set switch on the probe to 1X.   &lt;br/&gt;
+3. Press the channel 1 button on the scope (figure 2 top left). Your screen should now look something like image 3 below. The menu on the right is the important part for now. To change the menu item you press the button next to it (figure 1 -12) twist the dial (figure 1 - 3, figure 3) and press the dial to select it. Make sure your values match those in the image.&lt;br/&gt;
+&lt;img alt="Set up the channel on scope image" src="./images/small-chan1.png"/&gt;&lt;br/&gt;
+4.  We are now going to set the vertical axis on the scope which measures voltage. At the very bottom left of the screen (figure 6 -12)  you should see a voltage value displayed next to the number 1. This shows the volts per division (the small squares on the screen). There are 8 divisions on the screen so if we set the volts per division to 500mV we should  have plenty of space to see the graph. You can do this by twisting the dial (figure 1 - 15, figure 2 bottom right).  &lt;br/&gt;
+5. If you look at the top left of the screen (fig 6 - 4) you should see a time measurement which is the time per horizontal division on the screen. There are 12 horizontal divisions. If we set the number of seconds per division to 20ms this will give us an appropriately sized screen to observe the capacitor discharge. To do this turn the dial (figure 1 - 16, figure 4 bottom).  &lt;br/&gt;
+6. If you look at the top of the screen to the right of the time division (figure 6 - 5) you should see a value with units MSa/s. This is the number of samples per second that the scope will capture. On its current setting the scope will take 2 Million samples per second. This is far too many for our purpose and will lead to a very noisy output. Observe the images below which show the a high sample rate left and a low sample rate right.   &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="High sample rate image" src="./images/small-high_sample.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Low sample rate image" src="./images/small-low_sample.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;To change the sample rate press the Acquire button (figure 1 - 4) your screen should look something like the image below. Notice that we can’t set the sample rate directly but we have to set the total number of samples. Using the buttons to the right of the menu and the dial (figure 1 - 3) set this to it’s lowest value.  &lt;br/&gt;
+&lt;img alt="Scope acquire button image" src="./images/small-aquire.png"/&gt;&lt;br/&gt;
+7. Because the capacitor is going to charge and discharge very quickly we are going to use the trigger function of the oscilloscope to capture a single charge and discharge cycle. Use the dial (figure 1 - 17, figure 5 dial). You should see the value of the trigger displayed on the top right of the screen (figure 6 - 11). Set the trigger to a few hundred mV.&lt;br/&gt;
+8. To get rid of some noise you might want to turn down the intensity of the display. To do this press the channel button (figure 1 - 12) and turn the dial (figure 1 - 3). The images below show before and after intensity adjustments. &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="High intensity image" src="./images/small-high_intensity.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Low intensity image" src="./images/small-low_intensity.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt; &lt;br/&gt;
+You now need to connect the scope probe to the resistor. Make sure the negative of the probe (the little wire with the crocodile clip attached) is attached to the end of the resistor that is connected to the negative of the capacitor. Clip the other end of the scope probe by pulling back on the plastic disk to reveal the the metal prong to the other end of the resistor.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 5&lt;/strong&gt; &lt;br/&gt;
+Press the run button on the scope (figure 1 - 7) and you should see a wave form. You may need to adjust the horizontal and vertical scales. Press the single button (figure 1 -8) and the scope should trigger on a single waveform. You can now adjust the controls to get a wave form to take up most of the screen.   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 6&lt;/strong&gt; &lt;br/&gt;
+You are now going to use the cursor functionality to calculate the time constant for the capacitor, resistor circuit.&lt;br/&gt;
+1. Press the cursor button (figure 1 - 4) and use the menu buttons (figure 1-12) to set the mode to manual. Your screen should look something like the image below.&lt;br/&gt;
+&lt;img alt="Scope cursor button Image" src="./images/small-fast_cursor.png"/&gt;&lt;br/&gt;
+2. You now have access to four cursors. Two in the X direction, AX and BX and two in the Y direction AY and BY. Press the dial (figure 1 - 3) to alternate between them and turn the dial to adjust them. You will need to press the second menu button down (figure 1-12) to alternate between x and y axes. You are trying to get the lower Y cursor to be 37% of the upper Y cursor. Then alter the X cursors to read off the time values. When you are done your screen should look something like the image below. &lt;br/&gt;
+3. The difference between the time values can be read off the screen as BY - AY. Compare this with the time constant for the circuit which should be 5ms.  &lt;br/&gt;
+&lt;img alt="Cursor calculation image" src="./images/small-fast_calculation.png"/&gt; &lt;/p&gt;
+&lt;p&gt;Figure 1
+&lt;img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Figure 2&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 3&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 4&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 5&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Figure 6
+&lt;img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Rigol"></category><category term="Oscilloscope"></category></entry><entry><title>Building a CPU from the Ground up Part 2 - Multiplexers and Demultilexers</title><link href="/CPU%20Architecture%20-%20Multiplexers%20and%20Demultilexers%20(muxes%20and%20demuxes).html" rel="alternate"></link><published>2020-05-06T10:20:00+01:00</published><updated>2020-05-06T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-06:/CPU Architecture - Multiplexers and Demultilexers (muxes and demuxes).html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up part 1 - multiplexors and demultiplexerse (muxes and demuxes)&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;h3&gt;Multiplexors&lt;/h3&gt;
+&lt;p&gt;A multiplexer basically selects one of multiple inputs to be fed to a single output. For example, if there are two modules connected to an output display a multiplexer will select which one is displayed. In the 2:1 mux (for short) below when S is set to 0 Input 1 passes through to the output, when S is set to 1, Input 2 passes through to the output. The 4:1 works in the same way but it has two selectors which are set using binary 00, 01, 10, 11 to allow inputs from 1 to 4 to pass through to the output Q. When building the 4:1 mux I have used the circuitverse 2:1 mux modules and when building the 8:1 mux I’ve used the 4:1 and 2:1 muxes. &lt;/p&gt;
+&lt;h3&gt;Demultiplexors&lt;/h3&gt;
+&lt;p&gt;A demultiplexor basically does the reverse of a multiplexor. It takes one input and using select lines passes it through to one of a selection of multiple outputs. Again I’ve used the circuitverse module for the 1:2 demux when creating the 1:4 demux and so on for the 1:8 demux and 1:16 demux. Feel free to experiment with them below.&lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/86347" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Building a CPU from the Ground up Part 1 - Introduction and Fundamental Gates</title><link href="/CPU%20Architecture%20-%20fundamental%20gates.html" rel="alternate"></link><published>2020-05-06T10:20:00+01:00</published><updated>2020-05-06T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-06:/CPU Architecture - fundamental gates.html</id><summary type="html">&lt;p&gt;Building a CPU from the ground up Part 1 - introduction and fundamental gates&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I’ve been reading a bit about retro computers recently and wondered how easy it would be to design and build one from scratch. To aid me in this endeavour I thought I would try to simulate one in one of the many online logic simulation tools. My tool of choice is &lt;a href="https://circuitverse.org/"&gt;circuitverse&lt;/a&gt; It has a nice functional interface and has some fairly sophisticated features. I’m going to set myself some rules for the build:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rule 1&lt;/strong&gt;: everything must be built from a universal logic gate, nor or nand.&lt;br/&gt;
+&lt;strong&gt;Rule 2&lt;/strong&gt;: once I’ve built a module I will then allow myself to use the circuitverse equivalent in other modules, for example once I’ve built an AND gate I will then use the AND gate module from circuitverse.  &lt;/p&gt;
+&lt;p&gt;There are some CPU designs already on circuitverse, but what I'm interested in doing here is documenting the construction from the basics to a working CPU.  &lt;/p&gt;
+&lt;p&gt;I’m not going to go into loads of detail on the theory of the design. There are stacks of resources out on the interwebs which you can search for if you want to find out more.  &lt;/p&gt;
+&lt;h3&gt;Design Parameters&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I’m going to start with a NOR gate. Most designs I’ve seen seem to use a NAND gate, so let’s be different. It only really matters for the first stage anyway, after that I will mainly be using circuitverse modules.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I’m going to construct a 4 bit CPU. 8 bits seemed a bit too many to make it practical to construct all the component parts. What can be done with a 4 bit CPU I'm not sure yet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I aim to finish with a arithmetic logic unit, separate RAM and ROM, memory registers and control logic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Notation&lt;/h3&gt;
+&lt;p&gt;I will use the following conventions when labelling designs.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I for single bit inputs.   &lt;/li&gt;
+&lt;li&gt;Q for outputs.  &lt;/li&gt;
+&lt;li&gt;A and B for 4 bit inputs.  &lt;/li&gt;
+&lt;li&gt;D for data lines.  &lt;/li&gt;
+&lt;li&gt;E for enable lines, i.e. to turn modules on or off.  &lt;/li&gt;
+&lt;li&gt;S for select lines.  &lt;/li&gt;
+&lt;li&gt;CLK for the clock signal.  &lt;/li&gt;
+&lt;li&gt;Multiples will be indicated with subscripts.  &lt;/li&gt;
+&lt;li&gt;A prime ‘ will be used to denote NOT so Q’ is NOT(Q).  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Basic fundamental gates&lt;/h3&gt;
+&lt;p&gt;To start with I’m going to need the following fundamental logic gates: AND, OR, NAND, NOT, XOR, XNOR. I first created a NOT gate as it quite useful in creating the AND and OR gates, which in turn get used for the NAND and NOR and so on. You can see all the fundamental gates in the window below. The window is interactive so feel free to change the inputs and observe the output.&lt;/p&gt;
+&lt;h3&gt;Multiple input fundamental gates&lt;/h3&gt;
+&lt;p&gt;I am also going to need several multiple input gates, for example an AND gate with 4 inputs. Circuitverse has nice modules for these, but I need to create them from what I’ve already got. It is fairly straightforward to chain together 2 AND gates to make a 3 input AND gate for example. Below you can see the constructions for the multiple input gates I’ve used. After creating the 4 input AND I’ve then used the circuitverse version of this in the construction of the 5 input AND as per rule 2.&lt;/p&gt;
+&lt;iframe allowfullscreen="" height="400px" id="projectPreview" mozallowfullscreen="" scrolling="no" src="https://circuitverse.org/simulator/embed/86237" webkitallowfullscreen="" width="600px"&gt;&lt;/iframe&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Logic"></category></entry><entry><title>Explorations with a Rigol DS1054Z Oscilloscope Part 4 - Speed of Sound</title><link href="/Speed%20of%20sound.html" rel="alternate"></link><published>2020-05-06T10:20:00+01:00</published><updated>2020-05-06T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-05-06:/Speed of sound.html</id><summary type="html">&lt;p&gt;Basic Functions of the Rogol 1054Z scope&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;The challenge is to measure the speed of sound in air using an oscilloscope. This is a typical A-level Physics experiment. I found this quite a tricky one to get right from a technical perspective. Possibly due to my equipment, maybe my technique. If you have any suggestions for how to improve please use the comments below. The procedure is as follows:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: Plug a speaker into a signal generator and set it to something in the few thousand hz range.&lt;br/&gt;
+&lt;strong&gt;Step 2&lt;/strong&gt;: Plug the signal generator into one of the scope channels.&lt;br/&gt;
+&lt;strong&gt;Step 3&lt;/strong&gt;: Plug a microphone into the scope and set it in line with the speaker about a meter away.&lt;br/&gt;
+&lt;strong&gt;Step 4&lt;/strong&gt;: Set up the scope to capture the waveform of both the signal generator and the microphone.&lt;br/&gt;
+&lt;strong&gt;Step 5&lt;/strong&gt;: Move the speaker or microphone back and for until both waves are in phase.&lt;br/&gt;
+&lt;strong&gt;Step 6&lt;/strong&gt;: Move the microphone and speaker apart until they are in phase again. Measure this distance.&lt;br/&gt;
+&lt;strong&gt;Step 7&lt;/strong&gt;: Compare theory with reality.  &lt;/p&gt;
+&lt;p&gt;More details now follow:   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: &lt;br/&gt;
+This is fairly straight forward. See the image below for my cheapo Ebay signal generator setup. It's not the best bit of kit: the signal is a bit weak and not very clean, but it will illustrate the process. I recommend using a decent quality signal generator if you can get access to one. You should also notice that I've kept the wires short and put 50 ohm resistor in series with the signal generator. Some Google searches recommended these adjustments and I seemed to get a better signal so I stuck with it. You should hear a sound that will probably be fairly annoying. The sound from my setup is a bit quiet so any outside noises affect the signal. A better signal generator should improve this.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Signal generator and speaker setup" src="./images/small-speaker.jpg#small"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt;: &lt;br/&gt;
+Again fairly straight forward, just take one of the scopes probes, flick the switch on the probe to 1x,  and connect the ground (crocodile clip on short wire) to one terminal of the speaker and the probe tip to the other end of the speaker. You can see this in the image above.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt;: &lt;br/&gt;
+This is where it all started to get complicated (at least it did for me). I tried several microphones and could not get a reading on the scope. It looks like the voltage level is too low and noise levels too high to see the waveform adequately. After doing some internet research I discovered that not all microphones are created equally. It seems that an active microphone that contains some amplification circuitry is required to get this experiment to work well or at all really. (If anyone has suggestions to the contrary then please comment below). As a hack that gets this working with no extra spending I discovered that the humble mobile phone contains everything required. All you need is an old set of headphones you don’t mind cutting the headphones off. After cutting the headphones off and exposing the wires  connect the ground of the scope probe and the probe tip to each of the exposed wires. Connect this cable to your phone.  &lt;/p&gt;
+&lt;p&gt;I’m using an android phone with an app called &lt;a href="https://play.google.com/store/apps/details?id=net.vkrun.microphone_amplifier&amp;amp;hl=en_GB"&gt;microphone amplifier&lt;/a&gt;. Set the audio gain to about 16 (you can experiment with this later) turn the speaker on and hit the on button in the middle. Make a noise and you should see a wave form appear on the mobile phone screen. See example image below.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Mobile phone amplifier screen" src="./images/android_amp.png#small"/&gt; &lt;br/&gt;
+However, for good experimental results I recommend a decent quality active microphone.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt; &lt;br/&gt;
+You should now have the signal generator outputting a sound on the speaker, the scope connected to the speaker on channel 1 and the scope connected to the mobile phone on channel 2. The phone should have a waveform on the screen when you make a noise. &lt;/p&gt;
+&lt;p&gt;Now go to the scope controls. I Will use the figures at the bottom of this post to reference the controls. &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make sure channel 1 is turned on and for now channel 2 is turned off by pressing the buttons next to the channel numbers (figure 1 - 12).  &lt;/li&gt;
+&lt;li&gt;Make sure the settings are the same as in the image below. To change the menu item you press the button next to it (figure 1 -12) twist the dial (figure 1 - 3, figure 3) and press the dial to select it. Make sure your values match those in the image.
+&lt;img alt="Channel 1 setup image" src="./images/small-speed_sound_1.png"/&gt;&lt;/li&gt;
+&lt;li&gt;Press the Auto button (figure 1 - 6 ) You should now see the output from the signal generator, which should be a nice steady sine wave. &lt;/li&gt;
+&lt;li&gt;My signal generator was not giving me a very clean waveform, especially when it was connected to a speaker. (Depending on your equipment you may be able to omit this step). I setup the scope to average the waveforms. You can do this by pressing the Aquire button (figure 1 - 4) and setting up the like the image below. You can experiment with the number of averages. &lt;/li&gt;
+&lt;li&gt;You can get the scope to measure this frequency of this waveform by pressing the button on the left of the screen (figure 1 - 1). You should see this measurement displayed at the bottom of the screen and it should correspond closely with the frequency you set on the signal generator. 
+&lt;img alt="Channel 1 setup image" src="./images/small-speed_sound_2.png"/&gt;&lt;/li&gt;
+&lt;li&gt;Now we need to setup channel 2. Press the button to turn on channel 2 (figure 1 - 12). Turn the switch on the probe to 1X and setup the right hand menu like the image below.&lt;br/&gt;
+&lt;img alt="Channel 1 setup image" src="./images/small-speed_sound_3.png"/&gt;&lt;br/&gt;
+Pay special attention to make sure the channel is set to AC coupling. You will probably need to set the vertical voltage range by turning the dial (figure 1 - 15, figure 2 - bottom). You will probably also need to set up averaging like the previous step. You should now see both traces like the image above.   &lt;/li&gt;
+&lt;li&gt;We now need to adjust the position of the waveforms in the vertical direction so that the bottom of one waveform just touches the top of the other waveform. You can do this by selecting the channel you want by pressing the button next to the channel number (figure 1 - 12) then turning the dial (figure 1 - 15, figure 2 - top). &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Step 5&lt;/strong&gt; &lt;br/&gt;
+Move the microphone and or speaker away from each other until the trough of one waveform touches the peak of the other waveform. Your screen should look something like the image below. Record the position of the microphone and speaker.
+&lt;img alt="Channel 1 setup image" src="./images/small-speed_sound_4.png"/&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 6&lt;/strong&gt; &lt;br/&gt;
+Move the microphone and or speaker away from each other until and watch the screen, you should be able to match the trough of one wave to the next peak of the other wave. Record the positions of the microphone and speaker again. The difference between the position in the previous step to the position in this step should be one wavelength.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 7&lt;/strong&gt; &lt;br/&gt;
+You can now calculate the speed of sound by multiplying the frequency by the wavelength. &lt;/p&gt;
+&lt;p&gt;Figure 1
+&lt;img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Figure 2&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 3&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 4&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 5&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Figure 6
+&lt;img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Rigol"></category><category term="Oscilloscope"></category></entry><entry><title>Explorations with a Rigol DS1054Z Oscilloscope Part 3- Using an Android Signal Generator</title><link href="/Android%20signal%20generator.html" rel="alternate"></link><published>2020-04-25T10:20:00+01:00</published><updated>2020-04-25T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-04-25:/Android signal generator.html</id><summary type="html">&lt;p&gt;Using an Android signal generator with the Rigol 1054Z scope&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Function/signal generators can be quite expensive, but there are some alternatives that can provide some interesting learning experiences. In my first post I talked about a cheap ebay function generator available for a few pounds. &lt;/p&gt;
+&lt;p&gt;An alternative is to use a mobile phone app.  I have an Android phone and I used an app called &lt;a href="https://play.google.com/store/apps/details?id=com.keuwl.functiongenerator&amp;amp;hl=en_GB"&gt;Function Generator&lt;/a&gt; by Keuwsolf. I butchered a headphone cable and connected the scope probe to it. Follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cut the headphones off and expose the wires. &lt;/li&gt;
+&lt;li&gt;Mark which cable is the left and which is the right headphone.  &lt;/li&gt;
+&lt;li&gt;Pick either the left or the right headphone and connect the ground (crocodile clip on the probe) to one wire and the probe to the other wire.   &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The app is pretty easy to use and can provide a various different signals to explore on the scope. The main stumbling block is to make sure the output is set correctly. For example the sliders tell you which of the left of the right outputs each channel is on. The buttons left and right turn on the left and/or right outputs and the out button turns the output on or off. So if you have channel 1 setup and want to output only this on the left output your buttons should be set like this.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Android screen shot image" src="./images/small-func_gen_screenshot.png"/&gt;&lt;/p&gt;
+&lt;p&gt;You can use this app to do all of the same exercises as in the first post.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Rigol"></category><category term="Oscilloscope"></category></entry><entry><title>Explorations with a Rigol DS1054Z Oscilloscope Part 2 - Capacitor Discharge, Long Time Values</title><link href="/Measuring%20Capacitor%20Discharge.html" rel="alternate"></link><published>2020-04-23T10:20:00+01:00</published><updated>2020-04-23T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-04-23:/Measuring Capacitor Discharge.html</id><summary type="html">&lt;p&gt;Using a Rigol scope to measure capacitor discharge.&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;In this tutorial we will look at the discharge rate of a capacitor using a Rigol 1054z digital oscilloscope. We are going to study a capacitor that takes a long time to discharge, in the order of 10’s of seconds. The article will mainly be concentrated on the use of the scope rather than providing a lesson in physics. We are going follow these 6 steps.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt; Select suitable values for a capacitor and resistor.&lt;br/&gt;
+&lt;strong&gt;Step 2&lt;/strong&gt; Set up a circuit with a capacitor in parallel with a resistor to discharge through. Connect this to the scope and a power supply.&lt;br/&gt;
+&lt;strong&gt;Step 3&lt;/strong&gt; Set up the scope. &lt;br/&gt;
+&lt;strong&gt;Step 4&lt;/strong&gt; Charge the capacitor.&lt;br/&gt;
+&lt;strong&gt;Step 5&lt;/strong&gt; Observe the capacitor discharging on the scope.&lt;br/&gt;
+&lt;strong&gt;Step 6&lt;/strong&gt; Compare theory with reality.     &lt;/p&gt;
+&lt;p&gt;These steps are now broken down in detail.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt; &lt;br/&gt;
+The time constant for a capacitor in parallel with a resistor is given by $\tau = RC$. This is the time in which the capacitor takes to get to approximately 37% of its initial voltage. $R$ is the value of the resistor in ohms. $C$ is the value of the capacitor in Farads. More information &lt;a href="https://en.wikipedia.org/wiki/RC_time_constant"&gt;here&lt;/a&gt; . Ideally we’d like to see the value of $\tau$ to be about 10 seconds to give us enough time to observe this on the scope. Selecting values of $C=1000\mu F$ and $R=10k$ gives us
+$\tau = 10\times 10^{3}\times 1000\times 10^{-6} = 10s$.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt; &lt;br/&gt;
+1. Wire up a capacitor in parallel with a resistor. You can do this with crocodile clips and it should look something like the image below. Be careful not to short the terminals on the capacitor if using this method. &lt;br/&gt;
+2. Turn your power supply off (you can use a battery for this if you don’t have a power supply). Connect your power supply to the capacitor making sure the negative of the power supply is connected to the negative of the capacitor. A setting of about 5 Volts on the power supply is sufficient. When you turn the power supply on it will charge the capacitor. A few seconds is fine to fully charge the capacitor. When you turn the power supply off the capacitor will discharge through the resistor and this is what we will be measuring.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Resistor Capacitor setup image" src="./images/small-res_cap.jpg#small"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt; &lt;br/&gt;
+I’ll be referring to the figures below when explaining this step&lt;br/&gt;
+1. Turn scope on (figure 1 - 10).   &lt;br/&gt;
+2. Connect a probe to channel 1 (figure 1 - 13) and set switch on the probe to 1X.   &lt;br/&gt;
+3. Press the channel 1 button on the scope (figure 2 top left). Your screen should now look something like image 3 below. The menu on the right is the important part for now. To change the menu item you press the button next to it (figure 1 -12) twist the dial (figure 1 - 3, figure 3) and press the dial to select it. Make sure your values match those in the image.&lt;br/&gt;
+&lt;img alt="Set up the channel on scope image" src="./images/small-chan1.png"/&gt;&lt;br/&gt;
+4.  We are now going to set the vertical axis on the scope which measures voltage. At the very bottom left of the screen (figure 6 -12)  you should see a voltage value displayed next to the number 1. This shows the volts per division (the small squares on the screen). We are going to charge the capacitor to 5v. There are 8 divisions on the screen so if we set the volts per division to 1v we should  have plenty of space to see the graph. You can do this by twisting the dial (figure 1 - 15, figure 2 bottom right).  &lt;br/&gt;
+5. If you look at the top left of the screen (fig 6 - 4) you should see a time measurement which is the time per horizontal division on the screen. There are 12 horizontal divisions. If we set the number of seconds per division to 5s this will give a minute to observe the capacitor discharge. To do this turn the dial (figure 1 - 16, figure 4 bottom).  &lt;br/&gt;
+6. If you look at the top of the screen to the right of the time division (figure 6 - 5) you should see a value with units MSa/s. This is the number of samples per second that the scope will capture. On its current setting the scope will take 2 Million samples per second. This is far too many for our purpose and will lead to a very noisy output. Observe the images below which show the a high sample rate left and a low sample rate right. &lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Image 1&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Image 2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="High sample rate image" src="./images/small-high_sample.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Low sample rate image" src="./images/small-low_sample.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;To change the sample rate press the Acquire button (figure 1 - 4) your screen should look something like the image below. Notice that we can’t set the sample rate directly but we have to set the total number of samples. Using the buttons to the right of the menu and the dial (figure 1 - 3) set this to it’s lowest value.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Scope acquire button image" src="./images/small-aquire.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt; &lt;br/&gt;
+1. You now need to connect the scope probe to the resistor. Make sure the negative of the probe (the little wire with the crocodile clip attached) is attached to the end of the resistor that is connected to the negative of the capacitor. Clip the other end of the scope probe by pulling back on the plastic disk to reveal the the metal prong to the other end of the resistor.&lt;br/&gt;
+2. Now turn your power supply on briefly, a few seconds should do. To observe the voltage value more directly you can also connect a multimeter to the same place as the scope probe. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 5&lt;/strong&gt; &lt;br/&gt;
+At first you won’t see anything on the scope screen. This is perfectly normal, it could take a few tens of seconds before you see anything. When the scope has collected enough data you will begin to see the trace. Just before the trace reaches the right hand edge of the screen press the stop button (figure 1 -7). If you don’t do this you will loose the data for the first part of the trace.   &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 6&lt;/strong&gt; &lt;br/&gt;
+You are now going to use the cursor functionality to calculate the time constant for the capacitor, resistor circuit.&lt;br/&gt;
+1. Press the cursor button (figure 1 - 4) and use the menu buttons (figure 1-12) to set the mode to manual. Your screen should look something like the image below.&lt;br/&gt;
+&lt;img alt="Scope cursor button Image" src="./images/small-cursor.png"/&gt;&lt;br/&gt;
+2. You now have access to four cursors. Two in the X direction, AX and BX and two in the Y direction AY and BY. Press the dial (figure 1 - 3) to alternate between them and turn the dial to adjust them. You will need to press the second menu button down (figure 1-12) to alternate between x and y axes. You are trying to get the lower Y cursor to be 37% of the upper Y cursor. Then alter the X cursors to read off the time values. When you are done your screen should look something like the image below. &lt;br/&gt;
+3. The difference between the time values can be read off the screen as BY - AY. Compare this with the time constant for the circuit which should be 10s.&lt;br/&gt;
+&lt;img alt="Cursor calculation image" src="./images/small-calculation.png"/&gt; &lt;/p&gt;
+&lt;p&gt;Other tutorials in the series look at a fast discharge capacitor, resistor circuit which requires the use of a signal generator and also how to download the data from the scope for use in an spreadsheet application. This requires the scope to be network connected.&lt;/p&gt;
+&lt;p&gt;Figure 1
+&lt;img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Figure 2&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 3&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 4&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 5&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Figure 6
+&lt;img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Rigol"></category><category term="Oscilloscope"></category></entry><entry><title>Explorations with a Rigol DS1054Z Oscilloscope Part 1- Basic Functions</title><link href="/Basic%20functions.html" rel="alternate"></link><published>2020-04-22T10:20:00+01:00</published><updated>2020-04-22T10:20:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2020-04-22:/Basic functions.html</id><summary type="html">&lt;p&gt;Basic Functions of the Rogol 1054Z scope&lt;/p&gt;</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I recently acquired a Rigol DS1054Z oscilloscope. On researching the internet 
+for tutorials I was disappointed, by the apparat lack of them. There are lots 
+of tutorials on other scopes and generic tutorials but not much specific to the
+Rigol. So decided I'd  better write some myself. &lt;/p&gt;
+&lt;p&gt;I'm planning a series of blog posts as I find out the
+things I can do with this scope. Lets make a start.&lt;/p&gt;
+&lt;p&gt;I'll be using these reference images to describe where controls are and where things are on the screen.&lt;/p&gt;
+&lt;p&gt;Figure 1
+&lt;img alt="Rigol controls image" src="./images/small-Rigolfigure1.png"/&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="text-align: center;"&gt;Figure 2&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 3&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 4&lt;/th&gt;
+&lt;th style="text-align: center;"&gt;Figure 5&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 2 image" src="./images/small-Rigolfigure2.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 3 image" src="./images/small-Rigolfigure3.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 4 image" src="./images/small-Rigolfigure4.png"/&gt;&lt;/td&gt;
+&lt;td style="text-align: center;"&gt;&lt;img alt="Controls 5 image" src="./images/small-Rigolfigure5.png"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Figure 6
+&lt;img alt="Rigol screen image" src="./images/small-Rigolfigure6.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Using the Test signal&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;First off I'm going to test the scope works by using the inbuilt test
+signal. The scope outputs a basic square wave function on the metal
+terminals at the bottom right of the front panel (fig 1 - 18). Follow these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect the probe to channel 1.&lt;/li&gt;
+&lt;li&gt;Make sure the switch on the probe is set to 1x.&lt;/li&gt;
+&lt;li&gt;Connect the black ground clip of the probe to the bottom metal
+   connector of the test signal (Figure 1 - 18).&lt;/li&gt;
+&lt;li&gt;The probe comes with a plastic clip to allow it to stay connected to things. Insert the test clip onto the end of the probe and attach it to the
+   top metal connector of the test signal.&lt;/li&gt;
+&lt;li&gt;Press the Auto button (Figure 1 - 6). You should see a square wave pattern on the screen like the image below.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt="Square wave image" src="./images/small-rigol_blog1_test_sig.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Using a signal generator&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;There isn’t a lot more we can do with the scope until we can provide it with some different signals. A signal generator is the perfect job for this, but they can be quite expensive (although if you have this scope maybe you also have a signal generator). However, there are some cheap alternatives available from ebay that can provide some interesting learning experiences. I won’t put a link here as they are likely to change, but they look a bit like this:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sig gen image" src="./images/small-sig-gen.jpg"/&gt;{width=50%}&lt;/p&gt;
+&lt;p&gt;They are not going to be the greatest bit of kit in the world (as we will see later on), but if you are just learning then they are great for the money. Alternatively, you can use a mobile phone app which will be described in the next post in this series. Now we will learn about some of the scopes features by connecting it to a signal generator. I will be using the ebay cheapo here. &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 1&lt;/strong&gt;: connect signal generator to scope&lt;br/&gt;
+1. Connect it up to a power supply or a battery. &lt;br/&gt;
+2. Feed some wires into the output terminals.&lt;br/&gt;
+3. Connect the scope to these, the negative of the scope probe is the little wire with the crocodile clip attached.&lt;br/&gt;
+4. Set the switch on the scope to 1X.&lt;br/&gt;
+5. Set a frequency in the mid range of the signal generator. It doesn’t matter for now.  &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 2&lt;/strong&gt;: find trace on scope&lt;br/&gt;
+1. The easiest way to see the signal on the scope is to press the Auto button (figure 1 - 6). You should now see a trace on the scope. There will be more on manually setting the window parameters in later posts. For now the Auto button will work just fine.&lt;br/&gt;
+2. The scope has several measurement functions accessed through buttons on the left of the screen (figure 1 - 1). Press the frequency button and you should see this value displayed on the bottom of the screen which should correspond to the value you set on the signal generator. See the image below. &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Sine wave image" src="./images/small-sine_wave.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 3&lt;/strong&gt;: explore limits of the signal generator&lt;br/&gt;
+1. Set the signal generator to its lowest setting.   &lt;br/&gt;
+2. Press the Auto button on the scope (figure 1 - 6).&lt;br/&gt;
+3. You will probably find that the Auto setting struggles to find the wave form at low such low frequencies. Try turning the horizontal scale dial (figure 1-16, figure 4 bottom) in small increments until you see the waveform. You might also need to play with the vertical settings (figure 1- 15, figure 2). The wave form takes a while to update at low frequencies. More on manually setting the window in future posts.&lt;br/&gt;
+4. Now change the setting to a square wave and set it to the highest possible frequency.&lt;br/&gt;
+5. Press the Auto button (figure 1 - 6). You should a wave form like the upper image below.
+6. Press the measurement button on the left (figure 1-1) for rise time and also width. Ideally for a square wave the rise time should as small a fraction of the width as possible. The signal generator is really only estimating a square wave by adding together sine waves. At high frequencies it can’t do this very well. If you look at the lower image below at the bottom of the screen you can see that the rise time is more than a quarter of the width for this waveform.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Dodgy square image" src="./images/small-dodgy_square.png"/&gt;
+&lt;img alt="Rise time image" src="./images/small-rise_time.png"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Step 4&lt;/strong&gt;: moving the trace on the screen&lt;br/&gt;
+1. Set the signal generator to any reasonable setting.&lt;br/&gt;
+2. Press the Auto button so you can see the trace.&lt;br/&gt;
+3. Sometimes we would like to zoom in horizontally to a trace. We can do this by turning the dial (figure 1 - 16, figure 4 bottom).&lt;br/&gt;
+4. We might also want to move the trace left to right, for example to fit it with another trace. We can do this by tuning the dial (figure 1 - 16, figure 4 top ).&lt;br/&gt;
+5. If we want to move the trace in the vertical direction we can do so by twisting dial (figure 1 - 15, figure 2 top).&lt;br/&gt;
+6. We can also change the vertical scale by turning the dial (figure 1 -15, figure 4 bottom).&lt;br/&gt;
+7. If you look at the bottom of the screen (figure 6 - 12) you should see the number of volts per division. There are divisions vertically on the screen so multiply this number by 8 to get the full difference from bottom to top of the screen. &lt;br/&gt;
+8. If you look at the top of the screen (figure 6 - 5) you will see the time division. There are 12 divisions horizontally so multiply this number by 12 to get the full difference in time between the left and right of the screen.  &lt;/p&gt;
+&lt;p&gt;In following posts we will look at a capacitor discharging and also calculate the speed of sound. If you have any other suggestions for things you’d like to see then use the comments below.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category><category term="Rigol"></category><category term="Oscilloscope"></category></entry><entry><title>Power Supply Build</title><link href="/power-supply-build.html" rel="alternate"></link><published>2016-10-19T21:19:00+01:00</published><updated>2016-10-19T21:19:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-19:/power-supply-build.html</id><summary type="html">&lt;p class="first last"&gt;Building a variable voltage and current limited powersupply using and old server power supply
+power supply.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;My local &lt;a class="reference external" href="http://www.makerspace.org.uk"&gt;Makerspace&lt;/a&gt; has some shelves called
+Hack or Die Anything on these shelves
+must be taken for a project or within a few weeks it willed be binned. I found a
+rather nice Network Attached Storage device made by Netgear which obviously didn't
+work or wouldn't have been sat on the shelves! However, the case was extruded
+aluminium and rather nice. Sat right next to it was a 50V server power supply
+that looked almost the right size to slot inside the case. And with slight hacksaw
+modifications it did. Ebay provided the rest in the form of a programmable dc-dc
+converter with a display for current and voltage. The result is a 0-50V variable
+power supply with programmable settings, voltage and current displays.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img alt="im1" class="aligncenter wp-image-201" src="/images/power1.jpg"/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="im2" class="aligncenter wp-image-197" src="/images/power2.jpg"/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="im3" class="aligncenter wp-image-200" src="/images/power3.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="3"&gt;&lt;img alt="im4" class="aligncenter wp-image-198" src="/images/power4.jpg"/&gt; &lt;img alt="im5" class="aligncenter wp-image-202" src="/images/power5.jpg"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Electronics"></category></entry><entry><title>Review of 858D Hot Air Rework Station</title><link href="/review-of-858d-hot-air-rework-station.html" rel="alternate"></link><published>2015-11-14T12:37:00+00:00</published><updated>2015-11-14T12:37:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-11-14:/review-of-858d-hot-air-rework-station.html</id><summary type="html">&lt;p class="first last"&gt;A review and look inside a cheap chinese hot air gun.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A hot air rework station was something I'd wanted for a while, but not
+something I wanted to pay hundreds of pounds for initially until I'd
+seen how much use they got. I picked up one of these cheap Chinese
+models from Ebay after seeing it reviewed on the &lt;a class="reference external" href="https://www.youtube.com/watch?v=vva2t21sOAs"&gt;EEV
+Blog.&lt;/a&gt; There are lots of
+different ones on Ebay with various different logos, but they all look
+like exactly the same model. I was a bit concerned by some of the
+comments on the EEV forum about them not being wired safely, but given
+how cheap they were I'd thought I'd take the risk and take it apart
+before using it to check he wiring myself. On inspection it looks to be
+ok. The mains is wired ok and the earth is all connected up as it should
+be. The circuit board is all trough-hole component and looks like it
+hasn't had that much care with wonky heat-sinks and transistors and
+blobs of glue squirted in abundance around the cable entry point.
+ Having said that the solder joints are ok, there's heat shrink around
+the switch contacts and the cables are neatly tied together. All in all
+for the money I'm pleased. I'll see how it works in practice and report
+back.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="56%"/&gt;
+&lt;col width="44%"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external image-reference" href="/images/small-2015-11-14_10.36.06.jpg"&gt;&lt;img alt="small-2015-11-14-10.36.06" class="aligncenter wp-image-203" src="/images/small-2015-11-14_10.36.06.jpg" style="width: 480px; height: 270px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-11-14_10.52.00.jpg"&gt;&lt;img alt="2015-11-14 10.52.00" class="aligncenter wp-image-196" src="/images/2015-11-14_10.52.00.jpg" style="width: 480px; height: 270px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-11-14_10.42.20.jpg"&gt;&lt;img alt="2015-11-14 10.42.20" class="aligncenter wp-image-194" src="/images/2015-11-14_10.42.20.jpg" style="width: 350px; height: 620px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-11-14_10.35.50.jpg"&gt;&lt;img alt="2015-11-14 10.35.50" class="aligncenter wp-image-193" src="/images/2015-11-14_10.35.50.jpg" style="width: 350px; height: 620px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've now used this a few times to desolder some surface mount chips and
+it worked pretty well. The only small gripe I have is how long it takes
+to cool down when replaced on the stand. This wouldn't be a problem
+apart from the fact that it does this with the fan still running and my
+desk is quite close to the curtains. Bit of a fire risk maybe? It turns
+it off when it's sufficiently cool.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Review"></category><category term="Electronics"></category></entry><entry><title>Review of Xytronic LF-1700 Soldering Iron</title><link href="/review-of-xytronic-lf-1700-soldering-iron.html" rel="alternate"></link><published>2015-11-14T12:21:00+00:00</published><updated>2015-11-14T12:21:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-11-14:/review-of-xytronic-lf-1700-soldering-iron.html</id><summary type="html">&lt;p class="first last"&gt;A good quality high powered soldering iron from Xytronic.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I have a few surface mount projects I'd like to work on as decided it
+was time to replace my ageing 18W fixed temperature soldering iron with
+decent temperature controlled soldering station. After doing a bit of
+research my first impressions were just how expensive these things were.
+A Weller would have been nice, but the price was off putting. In the end
+I plumped for this &lt;a class="reference external" href="http://www.xytronic.com/"&gt;Xytronic&lt;/a&gt; model from
+&lt;a class="reference external" href="http://www.rapidonline.com/"&gt;Rapid electronics&lt;/a&gt;. First impressions
+are pretty good. It's very solidly built, with both the stand and the
+base unit feeling like they will last a long time. The iron itself feels
+quite nice to hold, the bits are easy to change and the connection to
+the base unit feels quite reliable. My first job was to solder a few
+banana plugs onto some power cables. This is a job that my old 18w iron
+just could not cope with. The heat wicked away so fast through the mass
+of the banana plug that it just would not heat enough to let the solder
+stick. The Xytronic however with it's 100w of power has no such
+difficulty. I changed the bit to a nice wide chisel tip to allow the
+heat to transfer and it worked like a dream.  Next up will be having a
+go at some surface mount components.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;col width="33%"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;img alt="small-2015-11-14-11.04.34" class="aligncenter wp-image-201" src="/images/small-2015-11-14_11.04.34.jpg" style="width: 500px; height: 280px;"/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="2015-11-14-11.05.23" class="aligncenter wp-image-197" src="/images/2015-11-14_11.05.23.jpg" style="width: 500px; height: 280px;"/&gt;&lt;/td&gt;
+&lt;td&gt;&lt;img alt="small-2015-11-14-11.04.14" class="aligncenter wp-image-200" src="/images/small-2015-11-14_11.04.14.jpg" style="width: 500px; height: 280px;"/&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;a class="reference external image-reference" href="/images/2015-11-14_11.05.49.jpg"&gt;&lt;img alt="2015-11-14-11.05.49" class="aligncenter wp-image-198" src="/images/2015-11-14_11.05.49.jpg" style="width: 270px; height: 485px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a class="reference external image-reference" href="/images/small-2015-11-14_11.04.54.jpg"&gt;&lt;img alt="small-2015-11-14-11.04.54" class="aligncenter wp-image-202" src="/images/small-2015-11-14_11.04.54.jpg" style="width: 270px; height: 485px;"/&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt; &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I'v now used this to solder a few surface mount components including
+some fairly small package sizes. It performed really well. It heats up
+and changes temperature in virtually no time at all so soldering
+different components that need different temperature is not a problem.
+There's loads of power so heat transfer is rapid. A very good purchase.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Review"></category></entry><entry><title>Arduino Tips Number 3: Scheduling Tasks</title><link href="/arduino-tips-number-3-scheduling-tasks.html" rel="alternate"></link><published>2015-10-20T22:10:00+01:00</published><updated>2015-10-20T22:10:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-20:/arduino-tips-number-3-scheduling-tasks.html</id><summary type="html">&lt;p class="first last"&gt;Using a library to time events on a set interval.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Often an Arduino sketch needs to do things at regular time intervals.
+For example, my home automation system has data collection boards that
+record temperature, humidity, light and motion. This can be done using
+the built in delay function, but everything halts whilst you wait for a
+delay or
+the &lt;a class="reference external" href="https://www.arduino.cc/en/Reference/Millis"&gt;millis &lt;/a&gt;function.
+This all gets a bit complicated, but there is an easier and much more
+convenient way by using the &lt;a class="reference external" href="http://playground.arduino.cc/Code/Timer"&gt;timer
+library&lt;/a&gt;. This simple bit of
+code demonstrates how it works in my home automation system. We start by
+importing the library and setting up timer variable. In the setup
+function we call the timer.every function with arguments 2000 (in
+milliseconds) and findTemp. This will call my function findTemp
+(defiened later in the code), which contains all of the gubbins to read
+my temperature sensors. This will be called every two seconds. In the
+loop function we call the timer.update function which will repeatedly
+check the time to determine if a timer.every needs to be called.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/64b818bece119f62e0f4.js"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;#include "Timer.h"
+Timer timer;
+
+void setup()
+  {
+  timer.every(2000, findTemp);
+  }
+  
+void loop()
+  {
+  timer.update();
+  }&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;In my home automation code I define several different timer.every
+functions to call different functions for example to read smoke
+detectors, light sensors, motion sensors and humidity sensors. They are
+all timed at different intervals for different uses.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Arduino"></category><category term="Home Automation"></category><category term="Robotics"></category><category term="IoT"></category><category term="C"></category></entry><entry><title>Arduino Tips Number 2: Moving Averages</title><link href="/arduino-tips-number-2-moving-averages.html" rel="alternate"></link><published>2015-10-19T21:13:00+01:00</published><updated>2015-10-19T21:13:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-19:/arduino-tips-number-2-moving-averages.html</id><summary type="html">&lt;p class="first last"&gt;Calculate moving averages easily for smoothing sensor data.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;Sometimes when you collect data it can be quite noisy and you need to
+smooth it out. A &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average"&gt;moving
+average&lt;/a&gt; is perfect for
+this. There is a good library that makes this easy called
+&lt;a class="reference external" href="https://github.com/asheeshr/Microsmooth"&gt;microsmooth&lt;/a&gt;. If you have
+the latest version of the Arduino IDE installed it is easy enough to
+install this. Select the Sketch/include library/manage libraries option
+form the menu and search for microsmooth.  I've written a small
+programme to below to demonstrate it's use. This programme will read a
+value from a light sensor connected to analogue pin A0 once every half a
+second and write both the unsmoothed and the smoothed value to the
+Serial port.&lt;/p&gt;
+&lt;div class="gist"&gt;
+&lt;script src="https://gist.github.com/04cd40554b76955271ab.js"&gt;&lt;/script&gt;
+&lt;noscript&gt;
+&lt;pre&gt;&lt;code&gt;#include &lt;microsmooth.h&gt;
+
+uint16_t *l_ptr;
+const int lightPin =  A0;
+
+void setup()
+  {
+  l_ptr = ms_init(SMA);
+  
+  Serial.begin(9600);
+  Serial.println("StartSerial");
+  }
+  
+void loop()
+  {
+  int lightSensor  = analogRead(lightPin);
+  int lightSmooth = sma_filter(lightSensor, l_ptr);
+  Serial.print(lightSensor);
+  Serial.println(lightSmooth);
+  delay(500);
+  }&lt;/microsmooth.h&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/noscript&gt;
+&lt;/div&gt;
+&lt;p&gt;The code works as follows:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;before the setup function we import the library and then setup a
+pointer to accept the smoothed value and an integer to hold the value
+of the analogue pin to be read (this just aids in readability of the
+code later on).&lt;/li&gt;
+&lt;li&gt;in the setup function we initialise the pointer using an function
+from the microsmooth library and setup the serial port.&lt;/li&gt;
+&lt;li&gt;in the main loop we read the value of the light sensor (or any other
+sensor) pass this value in to the microsmooth sma function, which is
+a simple moving average, and print both the unsmoothed and the
+smoothed values to the serial port.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are other types of smoothing available in the library&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Arduino"></category><category term="Home Automation"></category><category term="Robotics"></category><category term="Electronics"></category><category term="C"></category></entry><entry><title>Arduino Tips Number 1: Using an External IDE</title><link href="/arduino-tips-number-1-using-an-external-ide.html" rel="alternate"></link><published>2015-04-19T21:17:00+01:00</published><updated>2015-04-19T21:17:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-04-19:/arduino-tips-number-1-using-an-external-ide.html</id><summary type="html">&lt;p class="first last"&gt;Using an IDE other that the basic Arduino IDE for programming.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.arduino.cc/"&gt;Arduino&lt;/a&gt; is a great resource, but I'm not a
+great fan of the Intergrated Development Environment (IDE) that it comes
+with. It can however be configured to work with an external IDE. I'm
+using the &lt;a class="reference external" href="https://atom.io/"&gt;Atom&lt;/a&gt; IDE which has a few packages that
+can be installed to help with things like  code completion. To configure
+this follow these steps&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;In the Arduino IDE click the &lt;em&gt;File&lt;/em&gt; menu followed by &lt;em&gt;Preferences&lt;/em&gt;.
+Check the box that says "Use external editor" and click on &lt;em&gt;OK&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;In the Atom IDE click the &lt;em&gt;Edit&lt;/em&gt; menu followed by &lt;em&gt;Preferences&lt;/em&gt;.
+Click on the &lt;em&gt;Install&lt;/em&gt; option and a search bar should appear. Type in
+&lt;em&gt;Arduino&lt;/em&gt;. Hit the &lt;em&gt;Install&lt;/em&gt; button for the the package
+"&lt;a class="reference external" href="https://atom.io/packages/language-arduino"&gt;language-arduino&lt;/a&gt;"&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;My work flow for programming an Arduino now goes like this:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Open a file in both the Atom and Arduino IDE's.&lt;/li&gt;
+&lt;li&gt;Edit some code in Atom and save it.&lt;/li&gt;
+&lt;li&gt;Alt-Tab to switch to the Arduino IDE.&lt;/li&gt;
+&lt;li&gt;Either Ctrl-R to verify the code or Ctrl-U to download it to the chip&lt;/li&gt;
+&lt;li&gt;Alt-Tab back to the Atom IDE and edit some more.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This give me the power and ease of using the same IDE for editing all my
+code, but takes very little time and faff to set up.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update October 2017&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I've now discovered &lt;a class="reference external" href="http://platformio.org/"&gt;PlatformIO&lt;/a&gt; which integrates
+very nicely with the &lt;a class="reference external" href="https://atom.io/"&gt;Atom Editor&lt;/a&gt; and allows programming
+of many different microcontrollers directly from the editor.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Electronics"></category><category term="Arduino"></category><category term="Programming"></category></entry></feed>

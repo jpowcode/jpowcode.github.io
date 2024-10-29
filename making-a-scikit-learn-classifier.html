@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Making a Scikit Learn Classifier</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/making-a-scikit-learn-classifier.html" rel="bookmark"
+                   title="Permalink to Making a Scikit Learn Classifier">Making a Scikit Learn Classifier</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-10-18T22:08:00+01:00">
+                Tue 18 October 2016
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>Sklearn has many built in classifiers that can be imported and used. In this post
+I will describe how to make your own classifier that is compatible with all the
+other sklearn modules such as cross validation. <a class="reference external" href="https://www.kaggle.com/">Kaggle</a>
+provides a dataset
+based on the Titanic sinking. It includes a list of all the passengers that
+were onboard along with information about: whether or not they survived; age;
+sex; cabin class and a few other things. I am going to build a very basic
+classifier here that just asks: is the passenger male or female, if they are
+female then predict they survived, if they are male predict they perished. This
+classifier can predict with about 75% accuarcy.</p>
+<p>Import the relevant python modules. Pandas to handle the data as a dataframe;
+crossvalidation from sklearn to allow splitting of the data into a training set
+and a test set; preprocessing from sklearn for some basic munging functions;
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.ClassifierMixin.html">ClassifierMixin</a>
+and <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html">BaseEstimator</a>
+are the sklearn base classes that give us the
+required structure for our estimator.</p>
+<div class="gist">
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=sklearnclassifier.py"></script>
+<noscript>
+<pre><code>import pandas as pd
+from sklearn import cross_validation
+from sklearn import preprocessing
+from sklearn.base import ClassifierMixin, BaseEstimator</code></pre>
+</noscript>
+</div>
+<p>Import the data set (it will need to be in your working directory) and convert
+it to a Pandas data set and drop some of the columns that won't be required.
+The first row of the summary variable will hold the mean values for each feature.</p>
+<div class="gist">
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=read.py"></script>
+<noscript>
+<pre><code>TDat = pd.read_csv('trainData.csv', header=0)
+TDat_proc = TDat.drop(['Name', 'PassengerId', 'Ticket', 'Cabin', 'Embarked', 'Fare', 'Age'], axis=1)
+summary = TDat_proc.describe()</code></pre>
+</noscript>
+</div>
+<p>Now define some processing functions. <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html">MinMaxScalar</a>
+scales each feature into a
+given range. <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">LabelEncoder</a>
+is used to transform the categorical data of the sex
+column into numerical data.</p>
+<div class="gist">
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=preproc.py"></script>
+<noscript>
+<pre><code>min_max_scaler = preprocessing.MinMaxScaler()
+catToNum = preprocessing.LabelEncoder()
+TDat_proc.Sex = catToNum.fit_transform(TDat_proc.Sex)</code></pre>
+</noscript>
+</div>
+<p>Define a class that inherits from the BaseEstimator and ClassifierMixin classes.
+It must contain two functions: fit and predict. Predict simply returns a list of
+1's or 0's for each element on the data set. It returns a 1 if the element is a
+female or a 0 if they are a male.</p>
+<div class="gist">
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=classifier.py"></script>
+<noscript>
+<pre><code>class Classifier(BaseEstimator, ClassifierMixin):
+    def fit(self, data, classes):
+        pass
+    
+    def predict(self, data):
+        return [1 if data[i][1] == 0 else 0 for i in range(len(data))]</code></pre>
+</noscript>
+</div>
+<p>Turn the dataframe into a numpy array and split it into the features [Sex] and
+the target [Survived]</p>
+<div class="gist">
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=data.py"></script>
+<noscript>
+<pre><code>data = TDat_proc.values
+train_features = data[:, 1:]
+train_target = data[:, 0]</code></pre>
+</noscript>
+</div>
+<p>Define an instance of the class and call it using the cross validation function.</p>
+<div class="gist">
+<script src="https://gist.github.com/62a8c0f5762ea165af3b.js?file=scores.py"></script>
+<noscript>
+<pre><code>clfSX = Classifier()
+scores = cross_validation.cross_val_score(clfSX, train_features, train_target, cv=10)
+print 'Sex based classifier'
+print scores.mean(), scores.std() </code></pre>
+</noscript>
+</div>
+<p>This is obviously a very basic classifier. The aim of this post was to get
+across the concept of building your own classifier. More details can be found
+<a class="reference external" href="http://scikit.ml/api/base.html">here</a> with information about how to use training
+data with the fit method.</p>
+
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "making-a-scikit-learn-classifier.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>

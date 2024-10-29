@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>jpowcode - Other</title><link href="/" rel="alternate"></link><link href="/feeds/other.atom.xml" rel="self"></link><id>/</id><updated>2016-10-18T21:27:00+01:00</updated><entry><title>Qbot Micro Tips</title><link href="/Qbot%20micro%20tips.html" rel="alternate"></link><published>2016-10-18T21:27:00+01:00</published><updated>2016-10-18T21:27:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2016-10-18:/Qbot micro tips.html</id><summary type="html">&lt;p class="first last"&gt;Some tips for using the Hobbying Qbot Micro&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I own a &lt;a class="reference external" href="http://www.hobbyking.com/hobbyking/store/__29595__Q_BOT_Micro_Quadcopter_w_2_4gHz_RF_Module_Spektrum_JR_Futaba_compatible_.html"&gt;Qbot Micro&lt;/a&gt;
+Quadcopter from HobbyKing which I bought because it came with a
+tx module that would allow me to fly it with my &lt;a class="reference external" href="http://www.hobbyking.co.uk/hobbyking/store/__51442__Turnigy_9XR_PRO_Radio_Transmitter_Mode_2_without_module_.html"&gt;Turnigy 9XR transmitter&lt;/a&gt;
+. This is
+in contrast to something like a &lt;a class="reference external" href="http://www.hubsan.com/product/index413.html"&gt;Hubsan&lt;/a&gt;
+which comes with it's own transmitter.
+There is nothing wrong with using this it's just nicer to use my own. Anyway,
+there are a few points that might help people out there to fly the Qbot a bit more
+successfully. Firstly, it has an acrobatic mode which causes it to do a flip when
+the controls are pushed 100% in any direction. I found it pretty unflyable with this
+mode turned on with my limited skills. It should be possible to turn this off, but
+I can't figure out how. Instead I've altered the mixer on my Transmitter so that
+the maximum values on the Aileron, Elevator and Rudder are set to 90%. This stops
+the Qbot doing flips and makes it easier to fly. Secondly, I discovered that spare
+parts are not so easy to buy from the UK warehouse. They seem to only be stocked
+in the international warehouse and I can't be bothered with the hassle of that.
+However, Hubsan spares are easy and cheap to come by on Ebay. The propellers and
+motors are compatible and I've used a few replacements now with no issues.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Other"></category><category term="Quadcopters"></category></entry><entry><title>Search Documentation from your IDE</title><link href="/search-documentation-from-your-ide.html" rel="alternate"></link><published>2015-10-15T21:13:00+01:00</published><updated>2015-10-15T21:13:00+01:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-10-15:/search-documentation-from-your-ide.html</id><summary type="html">&lt;p class="first last"&gt;Using Zeal for documentation searching from Atom.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;I stumbled across &lt;a class="reference external" href="https://zealdocs.org/"&gt;Zeal&lt;/a&gt; in a magazine. It's a
+GUI for displaying the documentation for various different programming
+languages and tools all in one place. There are also plugins for various
+different IDE and text editors. I use the Atom browser and installed
+&lt;a class="reference external" href="https://atom.io/packages/atom-zeal"&gt;atom-zeal&lt;/a&gt;. Now all I have to do
+is put the cursor over a word in my code, press ctrl-h and up pops zeal
+with the relevant documentation.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Other"></category><category term="Atom IDE"></category><category term="Linux"></category></entry><entry><title>Android Apps for Programmers, Makers and Hackers</title><link href="/android-apps-for-programmers-makers-and-hackers.html" rel="alternate"></link><published>2015-01-17T20:38:00+00:00</published><updated>2015-01-17T20:38:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-17:/android-apps-for-programmers-makers-and-hackers.html</id><summary type="html">&lt;p class="first last"&gt;A selection of useful apps for programmers and makers.&lt;/p&gt;
+</summary><content type="html">&lt;html&gt;&lt;body&gt;&lt;p&gt;A while ago I bought a new Android phone, a Motorola Moto-G. What's
+the frst thing I did? Install loads of apps for programming and other stuff for general making and hacking. I'm going
+to describe them here. I haven't used all of them yet so I'd be interest to know, if anyone is using them and what for?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;General Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.estrongs.android.pop&amp;amp;hl=en_GB"&gt;ES File Explorer&lt;/a&gt;
+View the file system on your phone/tablet.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.opticron.grapher&amp;amp;hl=en_GB"&gt;Grapher&lt;/a&gt;
+Graph mathematical functions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Programming Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.hipipal.qpyplus&amp;amp;hl=en_GB"&gt;Q Python&lt;/a&gt;
+Write and run python scripts.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=org.pocketworkstation.pckeyboard&amp;amp;hl=en_GB"&gt;Hackers Keyboard&lt;/a&gt;
+If you want to programme on Android it's often difficult to enter some
+characters on the default  keyboard. The hackers keyboard gives you
+all the keys you could ever need.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=jackpal.androidterm&amp;amp;hl=en_GB"&gt;Terminal Emulator&lt;/a&gt;
+Android is based on Linux and contains a hidden command shell. This
+app gives you access to it.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.oscd.manpages&amp;amp;hl=en_GB"&gt;*nix manpagees&lt;/a&gt;
+Full listing of all the Linux command man pages.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.henrythompson.quoda&amp;amp;hl=en_GB"&gt;Quoda&lt;/a&gt;
+and &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.aor.droidedit&amp;amp;hl=en_GB"&gt;Droid
+Edit&lt;/a&gt;
+Fully featured text editors for writing code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Network Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.overlook.android.fing&amp;amp;hl=en_GB"&gt;Fing&lt;/a&gt;
+Scans the WiFi you are currently connected to and gives details on all
+other devices connected to it include IP addresses
+and MAC addressess. Very useful for setting up and testing your home
+network.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite&amp;amp;hl=en_GB"&gt;Webdavnav&lt;/a&gt;
+If you have a webdav enabled server this gives you access to all the files on it.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.sonelli.juicessh&amp;amp;hl=en_GB"&gt;JuiceSSH&lt;/a&gt;
+Sets up an ssh connection to another computer on your network. Use it
+for server admin.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.realvnc.viewer.android&amp;amp;hl=en_GB"&gt;VNC Viewer&lt;/a&gt;
+Give you a full graphical connection to another computer on your
+network.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Arduino Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.primavera.arduino.listener&amp;amp;hl=en_GB"&gt;Arduino UNO Communicator&lt;/a&gt;
+Connects to your Arduino UNO board and allows it to send messages to
+your phone.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=name.antonsmirnov.android.arduinodroid2&amp;amp;hl=en_GB"&gt;Arduino Droid&lt;/a&gt;
+Full IDE and compile for the arduino. Programme an
+&lt;a class="reference external" href="http://www.arduino.cc/"&gt;Arduino&lt;/a&gt; from a tablet or phone.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Design Tools&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.grabcad&amp;amp;hl=en_GB"&gt;Grab CAD&lt;/a&gt;and&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.thingiverse&amp;amp;hl=en_GB"&gt;Thingiverse&lt;/a&gt;
+Apps that allow you to browse the libraries of
+&lt;a class="reference external" href="http://www.thingiverse.com/"&gt;Thingiverse&lt;/a&gt; and
+&lt;a class="reference external" href="http://grabcad.com/"&gt;Grabcad&lt;/a&gt;. These are libraries of downloadable
+resources that can be 3D printed or lasercut.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.autocadws&amp;amp;hl=en_GB"&gt;AutoCAD360&lt;/a&gt;
+and
+&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.ADRViewer&amp;amp;hl=en_GB"&gt;AutoDesk360&lt;/a&gt;
+View and edit autocad files.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.fbd.activities&amp;amp;hl=en_GB"&gt;AutoDesk Force Effect&lt;/a&gt;
+and Force &lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.forceeffectmotion&amp;amp;hl=en_GB"&gt;Efffect Motion&lt;/a&gt;
+Invent and design a working contraption! Experiment with forces and joints.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.autodesk.Fysc&amp;amp;hl=en_GB"&gt;Inventor Publisher&lt;/a&gt;
+Veiw your inventor publisher files.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://play.google.com/store/apps/details?id=com.sketchbookexpress&amp;amp;hl=en_GB"&gt;Sketchbook Mobile Express&lt;/a&gt;
+Design and sketch.&lt;/p&gt;
+&lt;p&gt;I Hope you find some of these useful. If there is anything else you think I might like please let me know.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</content><category term="Other"></category><category term="Android"></category><category term="Arduino"></category><category term="CAD"></category><category term="Programming"></category><category term="Making"></category></entry><entry><title>Hello Blogging world!</title><link href="/hello-world.html" rel="alternate"></link><published>2015-01-10T18:07:00+00:00</published><updated>2015-01-10T18:07:00+00:00</updated><author><name>jpowcode</name></author><id>tag:None,2015-01-10:/hello-world.html</id><content type="html">&lt;p&gt;Welcome to my Blog about programming miscellanea. I will be writing
+about whatever interests me in the world of programming, electronics and making
+amonst other stuff.&lt;/p&gt;
+</content><category term="Other"></category></entry></feed>

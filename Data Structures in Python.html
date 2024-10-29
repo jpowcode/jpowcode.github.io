@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+        <title>Computing in School: Data Structures with Python Classes</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="/">jpowcode <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+                <li><a href="/pages/about-me.html">About</a></li>
+                <li><a href="/pages/photos.html">Photos</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="/Data Structures in Python.html" rel="bookmark"
+                   title="Permalink to Computing in School: Data Structures with Python Classes">Computing in School: Data Structures with Python Classes</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2024-07-14T10:20:00+01:00">
+                Sun 14 July 2024
+              </abbr>
+              <address class="vcard author">By 
+                <a class="url fn" href="/author/jpowcode.html"> jpowcode</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>A big part of the A-level Computing syllabus has content on different data types. Arrays, stacks, queues, linked lists, graphs and trees to name a few. Another aspect of the syllabus is <a href="https://www.educative.io/blog/object-oriented-programming">object orientated programming</a>. In this post I aim to use an object orientated approach to build some of these data structures from scratch. I will be using Python as a programming language. All data structures will be built up from the basic data structures that python contains, i.e., lists, strings and integers. I will also be adding in a few software engineeing practices such as <a href="https://realpython.com/python-testing/">unit testing</a>, <a href="https://sourcelevel.io/blog/what-is-a-linter-and-why-your-team-should-use-it">linting</a>, using <a href="https://realpython.com/python-testing/">test runners</a>,  and task runners. This post is not inteded to be a tutorial on Object Orientated Programming (OOP) or data structures. It is more an illustration of how OOP principles can be applied using structures that should be famiuliar to an A-level computing student. I have written a <a href="http://localhost:8002/Basic%20Classes%20in%20Python.html">priliminary activity</a> to this one using shapes as a concept.</p>
+<p>This is a summary of all that will be covered</p>
+<ul>
+<li>Creating data structures for an Array, Stack and Queue</li>
+<li>Using Classes</li>
+<li>Inheritance</li>
+<li>Encapsulation </li>
+<li>Magic methods </li>
+<li>Writing tests using Unittest library</li>
+<li>Using a test runner</li>
+<li>Using a task runner</li>
+<li>The concept of <a href="https://www.techtarget.com/searchapparchitecture/definition/refactoring">refactoring</a></li>
+<li>Linting</li>
+</ul>
+<p>All resources will be hosted on my <a href="https://github.com/jpowcode/python_classes">Github</a> page. There is a table at the bottom of this post detailing which files are needed for each section of the tutorial.</p>
+<h3>0. Setting up our environment</h3>
+<p>I will be using a Linux based envirnment for much of this task. In school I would use <a href="https://www.pythonanywhere.com/">pythonanywhere</a> which gives us an IDE for editing python code and a bash shell for running the code and any tests etc. This is by far the easiest option and has the advantage of working wherever you have access to a web browser. If you are on windows you might consider using the windows subsystem for linux. </p>
+<h3>1. Creating the basic array class</h3>
+<p>We create the MyArray class with a constructor method (in python this is <code>__init__()</code>).  The constructor takes as input a number <code>given_i</code> (at the moment this is a one dimensional array) for the size of the array and a string <code>given_array_type</code> that specifies the type as either an 8 bit integer or a character. The constructor method sets the attributes 'i'and 'array_type' and also creates an empty list <code>array</code> to hold the array elements. The array is then populated with <code>None</code> values. We then run some tests by creating instances of the <code>MyArray</code> class to make sure there are no errors.  </p>
+<pre><code>class MyArray:
+    def __init__(self, given_i, given_array_type):
+        """Allowed types
+            - int8: 8 bit unsigned integer 0 - 2^8 -1
+            - char: a single character
+        """
+        self.i = given_size
+        self.array_type = given_array_type
+        self.array = []
+
+        for _ in range(self.size):
+            self.array.append(None)
+
+
+print("""
+Conduct Tests
+________________________________________________________________________
+""")
+print("Check we can create a class, there should be no errors")
+array_1 = MyArray(1,'int8')
+array_2 = MyArray(5,'char')
+</code></pre>
+<p>In the bash console run the command <code>python3 my_array_1.py</code> to test the code.</p>
+<p>In part 4 of this post the tests will be moved into a separate file and run separately.</p>
+<p>Note that I am going to use a naming convention whereby all variable names passed into a function will be prefixed with the word "given". For example <code>given_i</code> is passed to the constructor so it can create the attribute <code>i</code>. In practice I would probably just use the same name for both, but the exam mark schemes seem to prefer different names.</p>
+<h3>2. Add a method to check the type of the array</h3>
+<p>We add a helper method called check_type. The method takes as input a value and then checks if this value is the same type as the array otherwise it returns <code>False</code>. The <code>isinstance()</code> function returns <code>True</code> if the value is of the specified type. Note that we have added a extra condition to check that an int8 type is of between 0 and 255 and a char type is of length 1. This method will be used later when we add values to the array.</p>
+<pre><code>def check_type(self, value):
+        if self.array_type == 'int8':
+            return isinstance(value, int) and 0 &lt; value &lt;= 255
+
+        elif self.array_type == 'char':
+            return isinstance(value, str) and len(value) == 1
+        else:
+            return False
+</code></pre>
+<p>A few tests have been added below. Notice that we have written some valid, invalid and edge case tests. Also not that we don't get very good feedback from the tests. This will be fixed when introduce proper test runners in section 4. </p>
+<pre><code>print("Check the check_type function works correctly")
+print(array_1.check_type(1))
+print(array_1.check_type(0.5))
+print(array_1.check_type(280))
+print(array_1.check_type(255))
+print(array_1.check_type(0))
+
+print(array_2.check_type("a"))
+print(array_2.check_type(0.5))
+print(array_2.check_type("hello"))
+</code></pre>
+<h3>3. Add an input method</h3>
+<p>In order to populate our arrays we need to add an input method to the MyArray class. This method takes as a parameter a list of values. It fist checks whether the length of this list is the correct length for the array. It then checks that the type of each value in the list is correct for the type of the array. If both of these are true then it will populate the array. I have not included any tests at the the end of this file. They will be included in the next iteration.</p>
+<pre><code>def input(self, values):
+        if len(values) != self.size:
+            return 'Incorrect data size'
+
+        for value in values:
+            if not self.check_type(value):
+                return 'Incorrect data type'
+
+        for index in range(self.self.size):
+            self.array[index] = values[index]
+</code></pre>
+<h3>4. Start using proper tests</h3>
+<p>Having all the tests at the bottom of the file is not an ideal practice. We will now remove these. We do not want to be running tests when we are using our Classes. Putting tests into a separate file and runnning them independently would be superior. We will start using the unittest library to run tests. Each set of tests will be defined as a class in a separate test file. Each class will have a <code>setUp()</code> method to create what it needs to perform the tests. For example, to instantiate an object for an array and populate it. We are testing that we cannot enter incorrect data types or an incorrect array size. Note that the name of each method within the class is descriptive of what the test performs. We are using the <code>assertEqual()</code> function which takes three parameters. The first two parameters need to be the same for the test to pass otherwise a message is printed (the third parameter).  </p>
+<pre><code>import unittest
+from my_array_4 import MyArray
+
+class TestArrayInput(unittest.TestCase):
+
+    def setUp(self):
+        self.my_empty_array = MyArray(3, 'int8')
+        self.my_full_array = MyArray(3, 'int8')
+        self.my_full_array.input([3 ,2, 1])
+
+    def test_incorrect_data_char(self):
+        self.assertEqual(self.my_empty_array.input(['a',2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_float(self):
+        self.assertEqual(self.my_empty_array.input([3.2, 2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_big(self):
+        self.assertEqual(self.my_empty_array.input([3.2, 2, 300]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_negative(self):
+        self.assertEqual(self.my_empty_array.input([3, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_edge(self):
+        self.assertEqual(self.my_empty_array.input([0, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_size(self):
+        self.assertEqual(self.my_empty_array.input([5, -2, 1, 4]), 'Incorrect data size', "Should be Incorrect data size")
+
+    def test_incorrect_data_correct(self):
+        self.assertEqual(self.my_full_array.array, [3, 2, 1] , "Should be [3, 2, 1]")
+
+
+if __name__ == '__main__':
+    unittest.main()
+</code></pre>
+<p>To run these tests enter the command <code>python3 test_array_1.py</code> in bash. You should see something like:</p>
+<pre><code>.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+OK
+</code></pre>
+<p>Note that in this step we haven't really added any functionality to our code. What we have done is "refactored" it. This is the porocess of making changes to our code to make it "better". This could be more readable, faster, more robust. In this case adding a better system for running tests. As we add more functionality to our array class we will add more tests. </p>
+<h3>5. Add a method to calculate the size of an array</h3>
+<p>We add a function that calculates the size of the array in bytes. The type of the array is taken in to consideration when doing this. We add a class to the test file to test the size of the array function.</p>
+<pre><code>def size(self):
+        if self.array_type == 'int8':
+            return self.i*8
+
+        elif self.array_type == 'char':
+            return self.i*4
+
+        else:
+            return "Incorrect type"
+</code></pre>
+<p>We add a test class to the test file as follows:</p>
+<pre><code>class TestArraySize(unittest.TestCase):
+
+    def setUp(self):
+        self.my_int_array = MyArray(3, 'int8')
+        self.my_int_array.input([5 ,2, 1])
+
+        self.my_char_array = MyArray(4, 'char')
+        self.my_char_array.input(['a' ,'b', 'c', 'd'])
+
+    def test_correct_int_size(self):
+        self.assertEqual(self.my_int_array.size(), 24, "Should be 24")
+
+    def test_correct_char_size(self):
+        self.assertEqual(self.my_char_array.size(), 16, "Should be 16")
+</code></pre>
+<h3>6. Add a print method</h3>
+<p>Add a method to print out the array. We won't bother writing any tests for this.</p>
+<pre><code>def my_print(self):
+    for value in self.array:
+        print(value)
+</code></pre>
+<h3>7. Encaspulation</h3>
+<p>Before we go too much further, now woould be a good time to talk about encapsualtion as shortly we will have multiple classes inheriting from each other. In python adding a double underscore before an attribute or method name makes it inaccessible from outside of the class. If other classes need to access or change a protected variable they would need to do iut through a getter or setter method.</p>
+<p>The underscore is used as an index in the for loop instead of a variable name as it will not be used within the loop. This prevents python from creating variables that are not used. We modify the <code>array</code> attribute within the constructor method to be private as we don't want any other classes to be able to modify it directly. This should be done through the <code>input()</code> method for example.</p>
+<pre><code>class MyArray:
+    def __init__(self, i, array_type):
+        """Allowed types
+            - int8: 8 bit unsigned integer 0 - 2^8 -1
+            - char: a single character
+        """
+        self.__array = []
+        self.i = i
+        self.array_type = array_type
+
+        for _ in range(i):
+            self.__array.append(None)
+</code></pre>
+<p>Note that all references to <code>array</code> attribute need to be modified to <code>__array</code> within the class. This is another example of refactoring our code.</p>
+<h3>8. Create a Stack Class</h3>
+<p>Create a Stack structure that inherits from an Array. We need to run the constructor for the Array. Relabel the size of the array as max_size and set the current size of the stck to be -1 for empty. The stack will not always take up the full size of the array. We add an atribute called structure that tells us we are dealing with a stack. This will be useful in future when we inherit from the Stack class to create a Queue.</p>
+<pre><code>from my_array_7 import MyArray
+
+class MyStack(MyArray):
+    def __init__(self, max_size, stack_type):
+        MyArray.__init__(self, max_size, stack_type)
+        self.stack_size = -1
+        self.max_size = self.i
+        self.structure = "stack"
+</code></pre>
+<p>We create a test file for the stack and run it with <code>python3 test_stack_1.py</code></p>
+<pre><code>import unittest
+from my_stack_1 import MyStack
+
+class TestStackInput(unittest.TestCase):
+
+    def setUp(self):
+        self.my_empty_stack = MyStack(3, 'int8')
+
+    def test_incorrect_data_char(self):
+        self.assertEqual(self.my_empty_stack.input(['a',2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_float(self):
+        self.assertEqual(self.my_empty_stack.input([3.2, 2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_big(self):
+        self.assertEqual(self.my_empty_stack.input([3.2, 2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_negative(self):
+        self.assertEqual(self.my_empty_stack.input([3, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_edge(self):
+        self.assertEqual(self.my_empty_stack.input([0, -2, 1]), 'Incorrect data type', "Should be Incorrect data type")
+
+    def test_incorrect_data_size(self):
+        self.assertEqual(self.my_empty_stack.input([5, -2, 1, 4]), 'Incorrect data size', "Should be Incorrect data size")
+
+if __name__ == '__main__':
+    unittest.main()
+</code></pre>
+<h3>9. Using a test runner</h3>
+<p>We now have multiple files and testfiles in our project so it will be useful to organise everything and employ the use of a test runner. A test runner is a programme that takes charge of running the tests and will add some functionality which you will see shortly. I am going be using nose which you might need to install with the command <code>pip3 install --user nosetests</code>. Before running tests we will put all of the older files into an archive directory so the only files we will have in our current directory at this point will be my_array_7.py, my_stack_1.py, test_array_2.py and test_stack_1.py. We can run all of our tests with <code>nosetests -v  --no-byte-compile</code></p>
+<p>The <code>-v</code> option makes the output more verbose, i.e., we get more information
+The <code>--no-byte-compile</code> prevents nosetests from producing lots of .pyc files that get in the way. </p>
+<p>You should see something like the following output</p>
+<pre><code>test_incorrect_data_big (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_char (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_correct (test_array_2.TestArrayInput) ... ERROR
+test_incorrect_data_edge (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_float (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_negative (test_array_2.TestArrayInput) ... ok
+test_incorrect_data_size (test_array_2.TestArrayInput) ... ok
+test_correct_char_size (test_array_2.TestArraySize) ... ok
+test_correct_int_size (test_array_2.TestArraySize) ... ok
+test_incorrect_data_big (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_char (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_edge (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_float (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_negative (test_stack_1.TestStackInput) ... ok
+test_incorrect_data_size (test_stack_1.TestStackInput) ... ok
+======================================================================
+ERROR: test_incorrect_data_correct (test_array_2.TestArrayInput)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+File "/home/jpowell/Alevel/data_structures/version2/test_array_2.py", line 30, in test_incorrect_data_correct
+    self.assertEqual(self.my_full_array.array, [3, 2, 1] , "Should be [3, 2, 1]")
+AttributeError: MyArray instance has no attribute 'array'
+----------------------------------------------------------------------
+Ran 15 tests in 0.043s
+FAILED (errors=1)
+</code></pre>
+<p>The test <code>test_incorrect_data_correct</code> from the file test_array_2.TestArrayInput has failed. </p>
+<p>If we look at the error message we can see that  <code>AttributeError: MyArray instance has no attribute 'array'</code> This is because we have made the attribute <code>array</code> private in the array class by giving it the double underscore. We have a few options to fix this test. We could add a getter method to the array class to access the array attribute and refactor the test to use this method. However, we don't really want or need the class to have a getter method. Maybe the best thing to do is remove this test as it is now not testing any functionality we can make use of. </p>
+<h3>10. Methods to calculate the size/height of the stack</h3>
+<p>Before we can write push and pop methods for the stack we need to add some helper methods. <code>height()</code> returns the current size(height) of the stack. <code>isEmpty</code> returns true if the stack contains at least one value.</p>
+<pre><code>def height(self):
+        return self.stack_size + 1
+
+def isEmpty(self):
+    return self.stack_size &lt; 0
+</code></pre>
+<h3>11. Adding push and pop methods</h3>
+<p>We add methods for push, pop and top. Push should put a value on to the top of the stack. Pop should remove a value from the top of the stack and return it. Top should return the value from the top of the stack without removing it.</p>
+<pre><code>def push(self, value):
+    if self.stack_size + 1 == self.max_size:
+        return(self.structure, 'is full')
+    else:
+        self.stack_size += 1
+        self.stack.append(value)
+
+def pop(self):
+    if self.isEmpty():
+        return(self.structure, 'is empty')
+    else:
+        temp = self.stack[self.stack_size]
+        del self.stack[-1]
+        self.stack_size -=1
+        return temp
+
+def top(self):
+    if self.isEmpty():
+        return(self.structure, 'is empty')
+    else:
+        return self.stack[-1]
+</code></pre>
+<h3>12. Adding magic methods</h3>
+<p>We add some magic methods to allow stacks to perform as normal data structures in python. For example if we create two stacks S1 and S2 that are the same and ask python S1 == S2 then we should get the reult True. This is performed by the <code>__eq__</code> method. If we perform <code>str(S1)</code> then <code>__str</code> will deal with this.</p>
+<pre><code>def __str__(self):
+    output = [str(x) for x in self.stack]
+    return ','.join(output)
+
+
+def __eq__(self, other):
+    if self.max_size != other.max_size:
+        return False
+
+    for i, j in zip(self.stack, other.stack):
+        if i != j:
+            return False
+    return True
+</code></pre>
+<h3>13. Linting our code</h3>
+<p>There are many different ways in which a programmer code structure their code. For example, they could use 2 spaces or 4 spaces for indentation. They could leave a space after a comma or not. They could capitalise class names or not etc, etc. In 2001 Guido van Rossum created a style guide for python and published it as PEP8. PEP's or Python Enhancement Proposals are documents people write to suggest changes to the language. The Python comunnity will then need to decide on whether to accept the proposal or not. PEP8 focuses on descibing certain rules on how python code should be written and it is now what most software engineers adopt as standard. This helps when multiple people are working on the same project or when programmers are reading a code that is not thiers. A linter is a programme that checks your code against the rules of PEP8 and produces a report offering suggestions. We are going to use a linter called flake8. We might need to install this first using <code>pip3 install --user flake8</code>. Then we can run flake8 on all the python files in our directory with the command <code>flake8 *.py</code>. We will then get a list of all the things in our files that do not follow the PEP8 rules. You might notice lots of the same the same things. For example </p>
+<pre><code>E231 missing whitespace after ','
+E501 line too long (86 &gt; 79 characters)  
+E265 block comment should start with '# '
+</code></pre>
+<p>You should fix all of these now and run the linter on your code from time to time to check you are following the rules. This has been done to this code base and the files updated to new versions. </p>
+<h3>14.Setting up a task runner</h3>
+<p>We now have several commands that we are running on the bash terminal for executing the code, running our linter and running our tests. There might be more as the project grows. It can become awkward to remember what all the commands are for these tasks which is where a task runner comes in handy. I will be using invoke. We create a file called tasks.py and whenever we run <code>invoke "command name"</code> invoke will look in the file tasks.py for the command name and run it. So then all we need to remember is the name of the tasks to be run. </p>
+<p>Firstly we import the commands we need from the invoke library. The to create a task we simmply define a function and put the decorator <code>@task</code> on the line above it. </p>
+<pre><code>from invoke import task, run
+
+@task
+def hello(ctx):
+    print("Hello world!")
+</code></pre>
+<p>So now when we run `invoke hello' on the command line it should print "Hello world!" Note the ctx variable that the function takes as an input is a "context". Do not worry about this, it's just some thing the library needs. This isn't very usefull so now lets write some more. I will use the same basic structure for all tasks</p>
+<pre><code>@task
+def template(ctx):
+    cmd = []
+    cmd.append("bash syntax for command 1")
+    cmd.append("bash syntax for command 2")
+    cmd.append("bash syntax for command 3")
+    # as many commands as you want to run
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+</code></pre>
+<p>This is the task for running a linter</p>
+<pre><code>@task
+def lint(ctx):
+    cmd = []
+    cmd.append("flake8 *.py ")
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+</code></pre>
+<p>A task for running our tests.</p>
+<pre><code>@task
+def test(ctx):
+    cmd = []
+    cmd.append("clear")
+    cmd.append("nosetests -v --rednose --with-coverage")
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+</code></pre>
+<p>A function (not a task) to print out a divider</p>
+<pre><code>def star_line(comment):
+    print()
+    print('*'*60)
+    print(comment)
+    print('*'*60)
+    print()
+</code></pre>
+<p>A task for cleaning up our directory.</p>
+<pre><code>@task
+def clean(ctx):
+    cmd = []
+    cmd.append("bash syntax for command 1")
+
+    for command in cmd:
+        run(command, hide=False, warn=False)
+</code></pre>
+<p>A task for performing a fulltest which runs unit tests and lints the code.</p>
+<pre><code>@task
+def fulltest(ctx):
+    clean(ctx)
+    star_line('Running Unit Tests')
+    test(ctx)
+    star_line('Linting Code')
+    lint(ctx)
+</code></pre>
+<h3>List of files required for each section</h3>
+<table style="width: 742px; height: 369px;">
+<tbody>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">Section Number</td>
+<td style="height: 22px; width: 241.104px;"> File</td>
+<td style="height: 22px; width: 290.636px;"> Test File</td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">1</td>
+<td style="height: 22px; width: 241.104px;"> my_array_1.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 23px;">
+<td style="height: 23px; width: 209.429px;">2 </td>
+<td style="height: 23px; width: 241.104px;"> my_array_2.py</td>
+<td style="height: 23px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 25px;">
+<td style="height: 25px; width: 209.429px;">3 </td>
+<td style="height: 25px; width: 241.104px;"> my_array_3.py</td>
+<td style="height: 25px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 10px;">
+<td style="height: 10px; width: 209.429px;">4 </td>
+<td style="height: 10px; width: 241.104px;"> my_array_4.py</td>
+<td style="height: 10px; width: 290.636px;"> test_array_1.py</td>
+</tr>
+<tr style="height: 23px;">
+<td style="height: 23px; width: 209.429px;">5 </td>
+<td style="height: 23px; width: 241.104px;"> my_array_5.py</td>
+<td style="height: 23px; width: 290.636px;"> test_array_2.py</td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">6</td>
+<td style="height: 22px; width: 241.104px;"> my_array_6.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">7 </td>
+<td style="height: 22px; width: 241.104px;"> my_array_7.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">8 </td>
+<td style="height: 22px; width: 241.104px;"> my_stack_1.py</td>
+<td style="height: 22px; width: 290.636px;"> test_stack_1.py</td>
+</tr>
+<tr style="height: 22.8571px;">
+<td style="height: 22.8571px; width: 209.429px;">9 </td>
+<td style="height: 22.8571px; width: 241.104px;"> my_array_7.py, my_stack_1.py</td>
+<td style="height: 22.8571px; width: 290.636px;"> test_array_2.py, test_stack_1.py</td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">10 </td>
+<td style="height: 22px; width: 241.104px;"> my_array_7.py, my_stack_2.py</td>
+<td style="height: 22px; width: 290.636px;"> </td>
+</tr>
+<tr style="height: 22px;">
+<td style="height: 22px; width: 209.429px;">11 </td>
+<td style="height: 22px; width: 241.104px;"> my_array_7.py, my_stack_3.py</td>
+<td style="height: 22px; width: 290.636px;"> test_stack_2.py</td>
+</tr>
+</tbody>
+</table>
+<!-- DivTable.com -->
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "Data Structures in Python.html";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'https://jpowcode.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+
+
+        </div><!-- /.eleven.columns -->
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="/pages/about-me.html">About</a></li>
+      <li><a href="/pages/photos.html">Photos</a></li>
+  </ul>
+
+<h4>Categories</h4>
+<ul class="blank">
+		<li><a href="/category/computing-in-school.html">Computing in School</a></li>
+		<li><a href="/category/data-science.html">Data Science</a></li>
+		<li><a href="/category/electronics.html">Electronics</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/making.html">Making</a></li>
+		<li><a href="/category/other.html">Other</a></li>
+		<li><a href="/category/programming.html">Programming</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/repair.html">Repair</a></li>
+		<li><a href="/category/robotics.html">Robotics</a></li>
+		<li><a href="/category/stem-activities.html">STEM Activities</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul class="blank">
+	    <li class="tag-2"><a href="/tag/home-automation.html">Home automation</a></li>
+	    <li class="tag-3"><a href="/tag/machine-learning.html">Machine Learning</a></li>
+	    <li class="tag-1"><a href="/tag/python.html">Python</a></li>
+	    <li class="tag-2"><a href="/tag/repair.html">Repair</a></li>
+	    <li class="tag-4"><a href="/tag/selenium.html">Selenium</a></li>
+	    <li class="tag-4"><a href="/tag/assembly.html">Assembly</a></li>
+	    <li class="tag-4"><a href="/tag/inverse-kinematics.html">Inverse Kinematics</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">Pelican</a></li>
+	    <li class="tag-4"><a href="/tag/raspberry-pi.html">Raspberry Pi</a></li>
+	    <li class="tag-4"><a href="/tag/pyboard.html">Pyboard</a></li>
+	    <li class="tag-3"><a href="/tag/data-science.html">Data Science</a></li>
+	    <li class="tag-3"><a href="/tag/review.html">Review</a></li>
+	    <li class="tag-4"><a href="/tag/decorators.html">decorators</a></li>
+	    <li class="tag-2"><a href="/tag/robotics.html">Robotics</a></li>
+	    <li class="tag-4"><a href="/tag/mqtt.html">MQTT</a></li>
+	    <li class="tag-1"><a href="/tag/electronics.html">Electronics</a></li>
+	    <li class="tag-3"><a href="/tag/ubuntu.html">Ubuntu</a></li>
+	    <li class="tag-4"><a href="/tag/mint.html">Mint</a></li>
+	    <li class="tag-3"><a href="/tag/iot.html">IoT</a></li>
+	    <li class="tag-4"><a href="/tag/altair.html">Altair</a></li>
+	    <li class="tag-2"><a href="/tag/c.html">C</a></li>
+	    <li class="tag-4"><a href="/tag/android.html">Android</a></li>
+	    <li class="tag-4"><a href="/tag/graphics-driver.html">graphics driver</a></li>
+	    <li class="tag-2"><a href="/tag/making.html">Making</a></li>
+	    <li class="tag-2"><a href="/tag/arduino.html">Arduino</a></li>
+	    <li class="tag-2"><a href="/tag/rigol.html">Rigol</a></li>
+	    <li class="tag-4"><a href="/tag/tools.html">Tools</a></li>
+	    <li class="tag-4"><a href="/tag/server.html">Server</a></li>
+	    <li class="tag-4"><a href="/tag/geogebra.html">Geogebra</a></li>
+	    <li class="tag-4"><a href="/tag/cad.html">CAD</a></li>
+	    <li class="tag-4"><a href="/tag/atom-ide.html">Atom IDE</a></li>
+	    <li class="tag-4"><a href="/tag/plickers.html">Plickers</a></li>
+	    <li class="tag-2"><a href="/tag/linux.html">Linux</a></li>
+	    <li class="tag-2"><a href="/tag/oscilloscope.html">Oscilloscope</a></li>
+	    <li class="tag-1"><a href="/tag/logic.html">Logic</a></li>
+	    <li class="tag-4"><a href="/tag/quadcopters.html">Quadcopters</a></li>
+	    <li class="tag-4"><a href="/tag/javascript.html">Javascript</a></li>
+	    <li class="tag-4"><a href="/tag/internet-of-things.html">Internet of Things</a></li>
+	    <li class="tag-1"><a href="/tag/programming.html">Programming</a></li>
+</ul>
+
+
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="https://github.com/jpowcode" target="_blank">Github</a></div></li>
+
+                <li><div class="btn twitter"><a href="https://twitter.com/jpowcode" target="_blank">Twitter</a></div></li>
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'jpowcode';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
+  <!-- Go to www.addthis.com/dashboard to customize your tools -->
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57646b97f1a74a01"></script>
+</body>
+</html>
